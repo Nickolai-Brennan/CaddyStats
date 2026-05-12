@@ -1,19 +1,18 @@
-Phase 5 — Editor Implementation
+# Phase 5 — Editor Implementation
 
-Phase Objective
+## Phase Objective
 
 Build the editorial management system for Caddy Stats, including article creation, structured content blocks, AI-assisted writing, SEO controls, revision history, publishing workflow, and role-based editorial permissions.
 
-
 ---
 
-5.1 Editor Architecture
+## 5.1 Editor Architecture
 
-App Location
+### App Location
 
 apps/editor/
 
-Purpose
+### Purpose
 
 The editor is a dedicated internal application for:
 
@@ -31,12 +30,11 @@ publishing workflow
 
 stats-grounded editorial blocks
 
-
-
 ---
 
-5.2 Editor Folder Structure
+## 5.2 Editor Folder Structure
 
+```text
 apps/editor/
 │
 ├── public/
@@ -57,12 +55,13 @@ apps/editor/
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
-
+```
 
 ---
 
-5.3 Editor Feature Modules
+## 5.3 Editor Feature Modules
 
+```text
 src/features/
 ├── articles/
 ├── blocks/
@@ -73,11 +72,11 @@ src/features/
 ├── revisions/
 ├── authors/
 └── permissions/
-
+```
 
 ---
 
-5.4 Editorial Data Model
+## 5.4 Editorial Data Model
 
 Primary Entities
 
@@ -99,11 +98,9 @@ Editorial workflow state
 
 AI generation log
 
-
-
 ---
 
-5.5 Article Workflow States
+## 5.5 Article Workflow States
 
 draft
 in_review
@@ -113,39 +110,36 @@ scheduled
 published
 archived
 
-Rules
+### Rules
 
-only editors and admins can publish
+- only editors and admins can publish
 
-AI-generated sections require validation
+- AI-generated sections require validation
 
-published articles must have SEO metadata
+- published articles must have SEO metadata
 
-scheduled posts require publish_at
+- scheduled posts require publish_at
 
-archived posts remain queryable by admin
-
-
+- archived posts remain queryable by admin
 
 ---
 
-5.6 Editor Routing
+## 5.6 Editor Routing
 
 /
- /articles
- /articles/new
- /articles/:articleId/edit
- /articles/:articleId/preview
- /articles/:articleId/revisions
- /seo
- /media
- /workflow
- /settings
-
+/articles
+/articles/new
+/articles/:articleId/edit
+/articles/:articleId/preview
+/articles/:articleId/revisions
+/seo
+/media
+/workflow
+/settings
 
 ---
 
-5.7 Structured Block Editor
+## 5.7 Structured Block Editor
 
 Block Types
 
@@ -176,12 +170,11 @@ stats blocks must reference verified data
 
 unsafe HTML is sanitized
 
-
-
 ---
 
-5.8 Block Folder Structure
+## 5.8 Block Folder Structure
 
+```text
 src/features/blocks/
 ├── components/
 │   ├── BlockEditor.tsx
@@ -192,18 +185,19 @@ src/features/blocks/
 ├── schemas/
 ├── validators/
 └── registry.ts
-
+```
 
 ---
 
-5.9 Block Registry Pattern
+## 5.9 Block Registry Pattern
 
-Purpose
+### Purpose
 
 Centralize block rendering, editing, validation, and serialization.
 
 Required Registry Shape
 
+```ts
 export type BlockDefinition = {
   type: string;
   label: string;
@@ -212,12 +206,13 @@ export type BlockDefinition = {
   schema: unknown;
   requiresStatsGrounding: boolean;
 };
-
+```
 
 ---
 
-5.10 SEO Editor
+## 5.10 SEO Editor
 
+```text
 src/features/seo/
 ├── SeoPanel.tsx
 ├── MetaTitleInput.tsx
@@ -226,31 +221,31 @@ src/features/seo/
 ├── SlugEditor.tsx
 ├── SchemaPreview.tsx
 └── SeoScore.tsx
+```
 
-Required Fields
+### Required Fields
 
-meta title
+- meta title
 
-meta description
+- meta description
 
-slug
+- slug
 
-canonical URL
+- canonical URL
 
-Open Graph title
+- Open Graph title
 
-Open Graph description
+- Open Graph description
 
-structured data type
+- structured data type
 
-noindex flag
-
-
+- noindex flag
 
 ---
 
-5.11 AI Editorial Assist
+## 5.11 AI Editorial Assist
 
+```text
 src/features/ai-assist/
 ├── AiAssistPanel.tsx
 ├── PromptSelector.tsx
@@ -258,6 +253,7 @@ src/features/ai-assist/
 ├── GenerationPreview.tsx
 ├── ValidationResult.tsx
 └── AiAuditTrail.tsx
+```
 
 Required Controls
 
@@ -273,11 +269,9 @@ insert as draft block only
 
 audit log display
 
-
-
 ---
 
-5.12 AI Integrity Rules
+## 5.12 AI Integrity Rules
 
 Hard Requirements
 
@@ -293,11 +287,9 @@ prompt, source IDs, model, and validation result must be logged
 
 editor must see grounding status
 
-
-
 ---
 
-5.13 Stats-Grounded Blocks
+## 5.13 Stats-Grounded Blocks
 
 Supported Blocks
 
@@ -311,8 +303,7 @@ BettingEdgeBlock
 
 ChartBlock
 
-
-Rule
+### Rule
 
 Every stat block must store:
 
@@ -326,17 +317,17 @@ computed value metadata
 
 display formatting config
 
-
-
 ---
 
-5.14 Revision System
+## 5.14 Revision System
 
+```text
 src/features/revisions/
 ├── RevisionList.tsx
 ├── RevisionDiff.tsx
 ├── RestoreRevisionButton.tsx
 └── VersionTimeline.tsx
+```
 
 Revision Requirements
 
@@ -352,18 +343,18 @@ publish snapshot
 
 audit trail integration
 
-
-
 ---
 
-5.15 Publishing Workflow
+## 5.15 Publishing Workflow
 
+```text
 src/features/workflow/
 ├── WorkflowStatusBadge.tsx
 ├── SubmitForReviewButton.tsx
 ├── ApprovalPanel.tsx
 ├── SchedulePublishPanel.tsx
 └── PublishChecklist.tsx
+```
 
 Publish Checklist
 
@@ -383,11 +374,9 @@ AI blocks reviewed
 
 author assigned
 
-
-
 ---
 
-5.16 Permissions
+## 5.16 Permissions
 
 Roles
 
@@ -397,87 +386,82 @@ writer
 analyst
 seo_manager
 
-Permission Examples
+### Permission Examples
 
-article:create
-article:update
-article:submit_review
-article:approve
-article:publish
-article:schedule
-seo:update
-ai:generate
-stats_block:create
-
-
----
-
-5.17 Preview System
-
-Requirements
-
-preview unpublished articles
-
-preview premium blocks
-
-preview SEO metadata
-
-preview mobile layout
-
-preview structured data output
-
-noindex preview URLs
-
-
+- article:create
+- article:update
+- article:submit_review
+- article:approve
+- article:publish
+- article:schedule
+- seo:update
+- ai:generate
+- stats_block:create
 
 ---
 
-5.18 Autosave
+## 5.17 Preview System
 
-Requirements
+### Requirements
 
-debounce saves
+- preview unpublished articles
 
-save block order
+- preview premium blocks
 
-preserve invalid draft blocks
+- preview SEO metadata
 
-show save status
+- preview mobile layout
 
-avoid overwriting newer revisions
+- preview structured data output
 
-conflict detection required
-
-
+- noindex preview URLs
 
 ---
 
-5.19 Media Management
+## 5.18 Autosave
 
+### Requirements
+
+- debounce saves
+
+- save block order
+
+- preserve invalid draft blocks
+
+- show save status
+
+- avoid overwriting newer revisions
+
+- conflict detection required
+
+---
+
+## 5.19 Media Management
+
+```text
 src/features/media/
 ├── MediaLibrary.tsx
 ├── MediaUploader.tsx
 ├── ImageMetadataPanel.tsx
 ├── AltTextInput.tsx
 └── ImagePicker.tsx
+```
 
-Requirements
+### Requirements
 
-alt text required
+- alt text required
 
-image compression
+- image compression
 
-CDN URL storage
+- CDN URL storage
 
-role-based upload permission
+- role-based upload permission
 
-metadata validation
-
-
+- metadata validation
 
 ---
 
-5.20 Editor API Usage
+## 5.20 Editor API Usage
 
 GraphQL
 
@@ -495,7 +479,6 @@ workflow transitions
 
 AI generation logs
 
-
 REST
 
 Use REST for:
@@ -508,13 +491,11 @@ projection lookup
 
 betting edge lookup
 
-
-
 ---
 
-5.21 Editor Validation Checklist
+## 5.21 Editor Validation Checklist
 
-Architecture
+### Architecture
 
 [ ] Editor app scaffolded
 
@@ -523,7 +504,6 @@ Architecture
 [ ] Block registry implemented
 
 [ ] Editor routes configured
-
 
 Editorial
 
@@ -535,7 +515,6 @@ Editorial
 
 [ ] Preview system implemented
 
-
 SEO
 
 [ ] SEO panel created
@@ -546,8 +525,7 @@ SEO
 
 [ ] SEO publish gate enforced
 
-
-AI
+### AI
 
 [ ] AI assist panel created
 
@@ -556,7 +534,6 @@ AI
 [ ] AI outputs logged
 
 [ ] AI blocks inserted as drafts only
-
 
 Security
 
@@ -568,11 +545,18 @@ Security
 
 [ ] Publish action restricted
 
-
-
 ---
 
-Phase 5 Exit Condition
+## 5.17 Additional Required Tasks Identified
+
+### Tasks
+
+- Add editorial review states, approval workflows, and publish audit trails.
+- Add sanitized preview rendering, internal-link validation, and metadata completeness checks inside the editor.
+- Add AI draft provenance, citation visibility, and human-review checkpoints for generated content.
+- Add rollback, diff, and recovery tooling for article and block revisions.
+
+## Phase 5 Exit Condition
 
 Phase 5 is complete only when:
 
@@ -592,5 +576,5 @@ Publishing checklist blocks invalid content
 
 Role-based permissions are enforced
 
-
 Only after completion may Phase 6 Templates Implementation begin.
+---

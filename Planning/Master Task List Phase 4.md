@@ -1,13 +1,12 @@
-Phase 4 — Frontend Implementation
+# Phase 4 — Frontend Implementation
 
-Phase Objective
+## Phase Objective
 
 Build the React + Vite + TypeScript frontend for Caddy Stats, including public site architecture, analytics dashboards, premium views, editorial rendering, routing, SEO readiness, and performance standards.
 
-
 ---
 
-4.1 Frontend Stack
+## 4.1 Frontend Stack
 
 Core Stack
 
@@ -29,16 +28,15 @@ Recharts
 
 Zod
 
-
-App Location
+### App Location
 
 apps/web/
 
-
 ---
 
-4.2 Frontend Folder Structure
+## 4.2 Frontend Folder Structure
 
+```text
 apps/web/
 │
 ├── public/
@@ -62,11 +60,11 @@ apps/web/
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
-
+```
 
 ---
 
-4.3 Application Domains
+## 4.3 Application Domains
 
 Public Site
 
@@ -86,7 +84,6 @@ Projections
 
 Course history
 
-
 Premium Dashboards
 
 Player comparison
@@ -101,34 +98,34 @@ Model trend analysis
 
 Simulation results
 
-
 Admin/Editor Access
 
 Handled later in Phase 5 and Phase 10.
 
-
 ---
 
-4.4 Routing Structure
+## 4.4 Routing Structure
 
+```text
 src/routes/
 ├── router.tsx
 ├── publicRoutes.tsx
 ├── premiumRoutes.tsx
 └── errorRoutes.tsx
+```
 
 Required Public Routes
 
 /
- /articles
- /articles/:slug
- /players
- /players/:playerSlug
- /tournaments
- /tournaments/:tournamentSlug
- /rankings
- /projections
- /betting
+/articles
+/articles/:slug
+/players
+/players/:playerSlug
+/tournaments
+/tournaments/:tournamentSlug
+/rankings
+/projections
+/betting
 
 Required Premium Routes
 
@@ -138,11 +135,11 @@ Required Premium Routes
 /premium/betting-edges
 /premium/simulations
 
-
 ---
 
-4.5 API Client Layer
+## 4.5 API Client Layer
 
+```text
 src/api/
 ├── client.ts
 ├── endpoints.ts
@@ -150,23 +147,23 @@ src/api/
 ├── queries/
 ├── mutations/
 └── schemas/
+```
 
-Rules
+### Rules
 
-REST for stats/projections/rankings
+- REST for stats/projections/rankings
 
-GraphQL for content/editorial reads
+- GraphQL for content/editorial reads
 
-Zod validation for API responses
+- Zod validation for API responses
 
-Typed hooks wrapping TanStack Query
-
-
+- Typed hooks wrapping TanStack Query
 
 ---
 
-4.6 TanStack Query Standards
+## 4.6 TanStack Query Standards
 
+```text
 src/api/queries/
 ├── usePlayers.ts
 ├── usePlayerDetail.ts
@@ -175,6 +172,7 @@ src/api/queries/
 ├── useProjections.ts
 ├── useBettingEdges.ts
 └── useArticles.ts
+```
 
 Query Rules
 
@@ -186,12 +184,11 @@ cache invalidation documented
 
 loading/error states standardized
 
-
-
 ---
 
-4.7 Component Architecture
+## 4.7 Component Architecture
 
+```text
 src/components/
 ├── common/
 ├── layout/
@@ -202,6 +199,7 @@ src/components/
 ├── seo/
 ├── navigation/
 └── premium/
+```
 
 Component Rules
 
@@ -213,12 +211,11 @@ shared components move to packages/ui
 
 no direct API calls inside display components
 
-
-
 ---
 
-4.8 Feature Module Structure
+## 4.8 Feature Module Structure
 
+```text
 src/features/
 ├── articles/
 ├── players/
@@ -228,9 +225,11 @@ src/features/
 ├── betting/
 ├── premium/
 └── seo/
+```
 
 Example Feature
 
+```text
 src/features/players/
 ├── components/
 ├── hooks/
@@ -238,11 +237,11 @@ src/features/players/
 ├── services/
 ├── types.ts
 └── utils.ts
-
+```
 
 ---
 
-4.9 Table Architecture
+## 4.9 Table Architecture
 
 TanStack Table Use Cases
 
@@ -258,7 +257,6 @@ course history
 
 ownership projections
 
-
 Required Table Features
 
 sorting
@@ -273,11 +271,9 @@ mobile handling
 
 export-ready structure
 
-
-
 ---
 
-4.10 Chart Architecture
+## 4.10 Chart Architecture
 
 Chart Domains
 
@@ -293,7 +289,6 @@ ownership trends
 
 course fit profile
 
-
 Chart Requirements
 
 responsive containers
@@ -304,18 +299,18 @@ no misleading axes
 
 premium chart gates where required
 
-
-
 ---
 
-4.11 SEO Component System
+## 4.11 SEO Component System
 
+```text
 src/components/seo/
 ├── MetaTags.tsx
 ├── JsonLd.tsx
 ├── BreadcrumbSchema.tsx
 ├── ArticleSchema.tsx
 └── PlayerSchema.tsx
+```
 
 SEO Requirements
 
@@ -331,14 +326,13 @@ structured data injection
 
 sitemap compatibility
 
-
-
 ---
 
-4.12 Editorial Rendering
+## 4.12 Editorial Rendering
 
 Article Block Components
 
+```text
 src/features/articles/blocks/
 ├── TextBlock.tsx
 ├── HeadingBlock.tsx
@@ -348,29 +342,30 @@ src/features/articles/blocks/
 ├── ProjectionBlock.tsx
 ├── BettingEdgeBlock.tsx
 └── DisclaimerBlock.tsx
+```
 
-Rules
+### Rules
 
-sanitize HTML
+- sanitize HTML
 
-validate block schema
+- validate block schema
 
-never render untrusted markup directly
+- never render untrusted markup directly
 
-distinguish computed data from editorial text
-
-
+- distinguish computed data from editorial text
 
 ---
 
-4.13 Premium Gating
+## 4.13 Premium Gating
 
+```text
 src/features/premium/
 ├── PremiumGate.tsx
 ├── SubscriptionBadge.tsx
 ├── UpgradePrompt.tsx
 ├── useAccess.ts
 └── accessRules.ts
+```
 
 Gate Types
 
@@ -384,61 +379,56 @@ chart overlay gate
 
 export gate
 
+---
 
+## 4.14 State Management
+
+### Rules
+
+- TanStack Query for server state
+
+- React local state for UI state
+
+- URL params for filters where shareable
+
+- avoid global state unless required
+
+- Possible Global State
+
+- auth session
+
+- user preferences
+
+- subscription access
+
+- feature flags
 
 ---
 
-4.14 State Management
+## 4.15 Authentication Frontend
 
-Rules
-
-TanStack Query for server state
-
-React local state for UI state
-
-URL params for filters where shareable
-
-avoid global state unless required
-
-
-Possible Global State
-
-auth session
-
-user preferences
-
-subscription access
-
-feature flags
-
-
-
----
-
-4.15 Authentication Frontend
-
+```text
 src/features/auth/
 ├── LoginPage.tsx
 ├── AuthProvider.tsx
 ├── ProtectedRoute.tsx
 ├── useAuth.ts
 └── sessionStorage.ts
+```
 
-Requirements
+### Requirements
 
-token refresh handling
+- token refresh handling
 
-secure logout
+- secure logout
 
-protected premium routes
+- protected premium routes
 
-role-based route access
-
-
+- role-based route access
 
 ---
 
-4.16 Performance Standards
+## 4.16 Performance Standards
 
 Targets
 
@@ -454,7 +444,6 @@ table virtualization for large data
 
 cached API queries
 
-
 Required Techniques
 
 dynamic imports
@@ -467,62 +456,60 @@ image optimization
 
 bundle analysis
 
+---
 
+## 4.17 Accessibility Standards
+
+### Required
+
+- semantic HTML
+
+- keyboard navigation
+
+- focus management
+
+- accessible tables
+
+- chart text alternatives
+
+- color contrast compliance
+
+- ARIA only where needed
 
 ---
 
-4.17 Accessibility Standards
+## 4.18 Error & Loading States
 
-Required
-
-semantic HTML
-
-keyboard navigation
-
-focus management
-
-accessible tables
-
-chart text alternatives
-
-color contrast compliance
-
-ARIA only where needed
-
-
-
----
-
-4.18 Error & Loading States
-
+```text
 src/components/common/
 ├── LoadingState.tsx
 ├── ErrorState.tsx
 ├── EmptyState.tsx
 └── Skeleton.tsx
+```
 
-Rules
+### Rules
 
-no blank loading pages
+- no blank loading pages
 
-user-safe error messages
+- user-safe error messages
 
-retry actions where useful
+- retry actions where useful
 
-premium-gated errors distinguished from failures
-
-
+- premium-gated errors distinguished from failures
 
 ---
 
-4.19 Testing Strategy
+## 4.19 Testing Strategy
 
+```text
 apps/web/src/tests/
 ├── unit/
 ├── integration/
 ├── accessibility/
 ├── e2e/
 └── fixtures/
+```
 
 Required Testing
 
@@ -538,11 +525,9 @@ article block rendering
 
 accessibility checks
 
-
-
 ---
 
-4.20 Frontend Environment Variables
+## 4.20 Frontend Environment Variables
 
 VITE_API_URL=
 VITE_GRAPHQL_URL=
@@ -550,14 +535,13 @@ VITE_CDN_URL=
 VITE_APP_ENV=
 VITE_SENTRY_DSN=
 
-Rule
+### Rule
 
 Only expose public-safe values through VITE_.
 
-
 ---
 
-4.21 Build Configuration
+## 4.21 Build Configuration
 
 Required Config Files
 
@@ -567,12 +551,11 @@ tsconfig.node.json
 .eslintrc
 .prettierrc
 
-
 ---
 
-4.22 Frontend Validation Checklist
+## 4.22 Frontend Validation Checklist
 
-Architecture
+### Architecture
 
 [ ] React app scaffolded
 
@@ -582,7 +565,6 @@ Architecture
 
 [ ] Routing configured
 
-
 Data
 
 [ ] TanStack Query hooks created
@@ -590,7 +572,6 @@ Data
 [ ] Zod schemas added
 
 [ ] API errors normalized
-
 
 UI
 
@@ -602,7 +583,6 @@ UI
 
 [ ] Premium gates created
 
-
 SEO
 
 [ ] Meta components implemented
@@ -610,7 +590,6 @@ SEO
 [ ] JSON-LD components created
 
 [ ] Canonical support added
-
 
 Security
 
@@ -620,7 +599,6 @@ Security
 
 [ ] Untrusted content sanitized
 
-
 Performance
 
 [ ] Lazy loading enabled
@@ -629,11 +607,18 @@ Performance
 
 [ ] Lighthouse target documented
 
-
-
 ---
 
-Phase 4 Exit Condition
+## 4.17 Additional Required Tasks Identified
+
+### Tasks
+
+- Add accessibility acceptance criteria for public, premium, and data-heavy page experiences.
+- Add entitlement-aware UI states and loading or error patterns tied to backend gating APIs.
+- Add page-level schema and SEO integration hooks for player, tournament, course, and editorial views.
+- Add frontend performance budgets and bundle-monitoring tasks for high-traffic routes.
+
+## Phase 4 Exit Condition
 
 Phase 4 is complete only when:
 
@@ -653,5 +638,5 @@ Performance standards are measurable
 
 Core frontend tests pass
 
-
 Only after completion may Phase 5 Editor Implementation begin.
+---

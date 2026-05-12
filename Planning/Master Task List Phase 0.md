@@ -1,720 +1,654 @@
-Caddy Stats — Phase 0 Master Task Index
+# Caddy Stats — Phase 0 Master Task Index
 
-Phase Objective
+## Phase Objective
 
 Establish the foundational documentation, governance, architecture, standards, operational rules, and execution sequencing required before infrastructure or application implementation begins.
 
 Phase 0 defines the authoritative system blueprint.
 
-Reference expansion plan: fileciteturn1file0
-
-
----
-
-PHASE 0 — DOCUMENTATION & FOUNDATIONAL ARCHITECTURE
-
-0.1 Vision & Product Definition
-
-Tasks
-
-Define platform mission statement
-
-Define target audiences
-
-Define monetization model
-
-Define subscription tiers
-
-Define editorial philosophy
-
-Define analytics differentiation strategy
-
-Define sportsbook intelligence positioning
-
-Define AI-assisted workflow strategy
-
-Define long-term scalability objectives
-
-
-Deliverables
-
-/docs/business/vision.md
-
-/docs/business/personas.md
-
-/docs/business/monetization.md
-
-/docs/business/product-positioning.md
-
-
-Validation Gate
-
-Business model documented
-
-Audience segmentation approved
-
-Monetization paths mapped to features
-
-
+Reference expansion plan: `Planning/App Assets & Attributes Matrix.md`
 
 ---
 
-0.2 Governance System
+## PHASE 0 — DOCUMENTATION & FOUNDATIONAL ARCHITECTURE
 
-Tasks
+## 0.1 Vision & Product Definition
 
-Establish architecture governance rules
+### Tasks
 
-Define engineering principles
+- Define platform mission statement
 
-Define documentation ownership
+- Define target audiences
 
-Define release governance
+- Define monetization model
 
-Define migration governance
+- Define subscription tiers
 
-Define naming conventions
+- Define editorial philosophy
 
-Define branching strategy
+- Define analytics differentiation strategy
 
-Define commit standards
+- Define sportsbook intelligence positioning
 
-Define code review requirements
+- Define AI-assisted workflow strategy
 
-Define production release approval flow
+- Define long-term scalability objectives
 
+### Deliverables
 
-Deliverables
+- /docs/business/vision.md
 
-/docs/governance/engineering-standards.md
+- /docs/business/personas.md
 
-/docs/governance/release-policy.md
+- /docs/business/monetization.md
 
-/docs/governance/database-governance.md
+- /docs/business/product-positioning.md
 
-/docs/governance/git-workflow.md
+### Validation Gate
 
-/docs/governance/security-governance.md
+- Business model documented
 
+- Audience segmentation approved
 
-Validation Gate
-
-Governance policies finalized
-
-Team workflow documented
-
-Deployment approval chain defined
-
-
+- Monetization paths mapped to features
 
 ---
 
-0.3 ADR (Architecture Decision Record) Framework
+## 0.2 Governance System
 
-Tasks
+### Tasks
 
-Establish ADR format
+- Establish architecture governance rules
 
-Define ADR numbering system
+- Define engineering principles
 
-Define architecture review process
+- Define documentation ownership
 
-Define mandatory ADR triggers
+- Define release governance
 
-Create initial ADR records
+- Define migration governance
 
+- Define naming conventions
 
-Initial ADR Topics
+- Define branching strategy
 
-PostgreSQL-first architecture
+- Define commit standards
 
-FastAPI + Strawberry stack
+- Define code review requirements
 
-React + TanStack selection
+- Define production release approval flow
 
-Docker deployment strategy
+### Deliverables
 
-AI grounding architecture
+- /docs/governance/engineering-standards.md
 
-Multi-schema database design
+- /docs/governance/release-policy.md
 
-Materialized view strategy
+- /docs/governance/database-governance.md
 
-Worker orchestration strategy
+- /docs/governance/git-workflow.md
 
+- /docs/governance/security-governance.md
 
-Deliverables
+### Validation Gate
 
-/docs/adr/README.md
+- Governance policies finalized
 
-/docs/adr/ADR-001-postgres-first.md
+- Team workflow documented
 
-/docs/adr/ADR-002-api-architecture.md
-
-/docs/adr/ADR-003-frontend-stack.md
-
-
-Validation Gate
-
-ADR system operational
-
-Core architecture decisions documented
-
-
+- Deployment approval chain defined
 
 ---
 
-0.4 System Architecture Blueprint
+## 0.3 ADR (Architecture Decision Record) Framework
 
-Tasks
+### Tasks
 
-Define platform-wide architecture
+- Establish ADR format
 
-Define service boundaries
+- Define ADR numbering system
 
-Define API strategy
+- Define architecture review process
 
-Define schema separation strategy
+- Define mandatory ADR triggers
 
-Define analytics pipeline architecture
+- Create initial ADR records
 
-Define caching architecture
+### Initial ADR Topics
 
-Define CDN strategy
+- PostgreSQL-first architecture
 
-Define observability architecture
+- FastAPI + Strawberry stack
 
-Define background worker architecture
+- React + TanStack selection
 
-Define AI injection architecture
+- Docker deployment strategy
 
+- AI grounding architecture
 
-Deliverables
+- Multi-schema database design
 
-/docs/architecture/system-overview.md
+- Materialized view strategy
 
-/docs/architecture/service-map.md
+- Worker orchestration strategy
 
-/docs/architecture/data-flow.md
+### Deliverables
 
-/docs/architecture/cache-strategy.md
+- /docs/adr/README.md
 
-/docs/architecture/worker-architecture.md
+- /docs/adr/ADR-001-postgres-first.md
 
+- /docs/adr/ADR-002-api-architecture.md
 
-Validation Gate
+- /docs/adr/ADR-003-frontend-stack.md
 
-Full platform architecture approved
+### Validation Gate
 
-Service responsibilities documented
+- ADR system operational
 
-
-
----
-
-0.5 Database Architecture Planning
-
-Tasks
-
-Define PostgreSQL schema strategy
-
-Define content schema
-
-Define stats schema
-
-Define indexing standards
-
-Define JSONB usage rules
-
-Define partitioning strategy
-
-Define materialized view strategy
-
-Define migration standards
-
-Define backup/recovery architecture
-
-Define retention policies
-
-
-Deliverables
-
-/docs/database/schema-strategy.md
-
-/docs/database/indexing-standards.md
-
-/docs/database/materialized-views.md
-
-/docs/database/partitioning.md
-
-/docs/database/backup-strategy.md
-
-
-Validation Gate
-
-Database strategy approved
-
-High-read optimization documented
-
-Scalability plan validated
-
-
+- Core architecture decisions documented
 
 ---
 
-0.6 API Architecture Standards
+## 0.4 System Architecture Blueprint
 
-Tasks
+### Tasks
 
-Define GraphQL conventions
+- Define platform-wide architecture
 
-Define REST usage rules
+- Define service boundaries
 
-Define authentication standards
+- Define API strategy
 
-Define authorization model
+- Define schema separation strategy
 
-Define pagination strategy
+- Define analytics pipeline architecture
 
-Define query complexity limits
+- Define caching architecture
 
-Define rate limiting standards
+- Define CDN strategy
 
-Define API versioning policy
+- Define observability architecture
 
-Define API error structure
+- Define background worker architecture
 
-Define caching standards
+- Define AI injection architecture
 
+### Deliverables
 
-Deliverables
+- /docs/architecture/system-overview.md
 
-/docs/api/graphql-standards.md
+- /docs/architecture/service-map.md
 
-/docs/api/rest-standards.md
+- /docs/architecture/data-flow.md
 
-/docs/api/authentication.md
+- /docs/architecture/cache-strategy.md
 
-/docs/api/error-handling.md
+- /docs/architecture/worker-architecture.md
 
+### Validation Gate
 
-Validation Gate
+- Full platform architecture approved
 
-API standards approved
-
-Security boundaries defined
-
-
+- Service responsibilities documented
 
 ---
 
-0.7 Frontend Architecture Standards
+## 0.5 Database Architecture Planning
 
-Tasks
+### Tasks
 
-Define component architecture
+- Define PostgreSQL schema strategy
 
-Define state management rules
+- Define content schema
 
-Define TanStack usage standards
+- Define stats schema
 
-Define routing strategy
+- Define indexing standards
 
-Define responsive design system
+- Define JSONB usage rules
 
-Define accessibility standards
+- Define partitioning strategy
 
-Define frontend folder structure
+- Define materialized view strategy
 
-Define performance optimization rules
+- Define migration standards
 
-Define lazy loading strategy
+- Define backup/recovery architecture
 
+- Define retention policies
 
-Deliverables
+### Deliverables
 
-/docs/frontend/component-architecture.md
+- /docs/database/schema-strategy.md
 
-/docs/frontend/design-system.md
+- /docs/database/indexing-standards.md
 
-/docs/frontend/performance-standards.md
+- /docs/database/materialized-views.md
 
-/docs/frontend/routing-standards.md
+- /docs/database/partitioning.md
 
+- /docs/database/backup-strategy.md
 
-Validation Gate
+### Validation Gate
 
-Frontend standards finalized
+- Database strategy approved
 
-UI scalability strategy approved
+- High-read optimization documented
 
-
-
----
-
-0.8 AI Grounding & Editorial Intelligence
-
-Tasks
-
-Define AI grounding rules
-
-Define prompt injection system
-
-Define editorial AI workflow
-
-Define model observability rules
-
-Define hallucination prevention strategy
-
-Define source traceability standards
-
-Define narrative vs computed data rules
-
-Define AI audit logging
-
-
-Deliverables
-
-/docs/ai/grounding-architecture.md
-
-/docs/ai/prompt-system.md
-
-/docs/ai/observability.md
-
-/docs/ai/editorial-assist.md
-
-
-Validation Gate
-
-AI governance approved
-
-Statistical integrity controls validated
-
-
+- Scalability plan validated
 
 ---
 
-0.9 SEO & Content Engineering
+## 0.6 API Architecture Standards
 
-Tasks
+### Tasks
 
-Define technical SEO architecture
+- Define GraphQL conventions
 
-Define schema markup strategy
+- Define REST usage rules
 
-Define article metadata standards
+- Define authentication standards
 
-Define slug conventions
+- Define authorization model
 
-Define internal linking strategy
+- Define pagination strategy
 
-Define sitemap architecture
+- Define query complexity limits
 
-Define page performance requirements
+- Define rate limiting standards
 
-Define content block strategy
+- Define API versioning policy
 
-Define SERP targeting framework
+- Define API error structure
 
+- Define caching standards
 
-Deliverables
+### Deliverables
 
-/docs/seo/technical-seo.md
+- /docs/api/graphql-standards.md
 
-/docs/seo/schema-strategy.md
+- /docs/api/rest-standards.md
 
-/docs/seo/content-architecture.md
+- /docs/api/authentication.md
 
-/docs/seo/internal-linking.md
+- /docs/api/error-handling.md
 
+### Validation Gate
 
-Validation Gate
+- API standards approved
 
-SEO architecture finalized
-
-Performance targets documented
-
-
+- Security boundaries defined
 
 ---
 
-0.10 Security Architecture
+## 0.7 Frontend Architecture Standards
 
-Tasks
+### Tasks
 
-Define authentication architecture
+- Define component architecture
 
-Define JWT strategy
+- Define state management rules
 
-Define RBAC permissions
+- Define TanStack usage standards
 
-Define secrets management
+- Define routing strategy
 
-Define container security standards
+- Define responsive design system
 
-Define API security policy
+- Define accessibility standards
 
-Define WAF/CDN strategy
+- Define frontend folder structure
 
-Define vulnerability management workflow
+- Define performance optimization rules
 
-Define audit logging standards
+- Define lazy loading strategy
 
+### Deliverables
 
-Deliverables
+- /docs/frontend/component-architecture.md
 
-/docs/security/auth-strategy.md
+- /docs/frontend/design-system.md
 
-/docs/security/rbac-model.md
+- /docs/frontend/performance-standards.md
 
-/docs/security/secrets-management.md
+- /docs/frontend/routing-standards.md
 
-/docs/security/container-security.md
+### Validation Gate
 
+- Frontend standards finalized
 
-Validation Gate
-
-Security model approved
-
-Production hardening standards documented
-
-
+- UI scalability strategy approved
 
 ---
 
-0.11 DevOps & Infrastructure Planning
+## 0.8 AI Grounding & Editorial Intelligence
 
-Tasks
+### Tasks
 
-Define environment structure
+- Define AI grounding rules
 
-Define CI/CD architecture
+- Define prompt injection system
 
-Define deployment strategy
+- Define editorial AI workflow
 
-Define Docker standards
+- Define model observability rules
 
-Define monitoring stack
+- Define hallucination prevention strategy
 
-Define logging architecture
+- Define source traceability standards
 
-Define uptime targets
+- Define narrative vs computed data rules
 
-Define rollback procedures
+- Define AI audit logging
 
-Define disaster recovery workflow
+### Deliverables
 
+- /docs/ai/grounding-architecture.md
 
-Deliverables
+- /docs/ai/prompt-system.md
 
-/docs/devops/environment-strategy.md
+- /docs/ai/observability.md
 
-/docs/devops/cicd.md
+- /docs/ai/editorial-assist.md
 
-/docs/devops/monitoring.md
+### Validation Gate
 
-/docs/devops/disaster-recovery.md
+- AI governance approved
 
-
-Validation Gate
-
-Infrastructure strategy approved
-
-Reliability standards defined
-
-
+- Statistical integrity controls validated
 
 ---
 
-0.12 Analytics & Modeling Infrastructure
+## 0.9 SEO & Content Engineering
 
-Tasks
+### Tasks
 
-Define projection modeling framework
+- Define technical SEO architecture
 
-Define simulation architecture
+- Define schema markup strategy
 
-Define betting intelligence pipelines
+- Define article metadata standards
 
-Define metric standardization
+- Define slug conventions
 
-Define model recalculation strategy
+- Define internal linking strategy
 
-Define worker scheduling framework
+- Define sitemap architecture
 
-Define historical storage standards
+- Define page performance requirements
 
-Define model versioning standards
+- Define content block strategy
 
+- Define SERP targeting framework
 
-Deliverables
+### Deliverables
 
-/docs/analytics/modeling-framework.md
+- /docs/seo/technical-seo.md
 
-/docs/analytics/simulation-engine.md
+- /docs/seo/schema-strategy.md
 
-/docs/analytics/metric-standards.md
+- /docs/seo/content-architecture.md
 
-/docs/analytics/model-versioning.md
+- /docs/seo/internal-linking.md
 
+### Validation Gate
 
-Validation Gate
+- SEO architecture finalized
 
-Modeling architecture approved
-
-Statistical consistency rules documented
-
-
+- Performance targets documented
 
 ---
 
-0.13 Reliability & Observability
+## 0.10 Security Architecture
 
-Tasks
+### Tasks
 
-Define observability stack
+- Define authentication architecture
 
-Define application metrics
+- Define JWT strategy
 
-Define tracing architecture
+- Define RBAC permissions
 
-Define alert thresholds
+- Define secrets management
 
-Define uptime SLAs
+- Define container security standards
 
-Define error budgets
+- Define API security policy
 
-Define incident response workflow
+- Define WAF/CDN strategy
 
-Define log retention policy
+- Define vulnerability management workflow
 
+- Define audit logging standards
 
-Deliverables
+### Deliverables
 
-/docs/observability/metrics.md
+- /docs/security/auth-strategy.md
 
-/docs/observability/tracing.md
+- /docs/security/rbac-model.md
 
-/docs/observability/alerts.md
+- /docs/security/secrets-management.md
 
-/docs/observability/incident-response.md
+- /docs/security/container-security.md
 
+### Validation Gate
 
-Validation Gate
+- Security model approved
 
-Monitoring architecture approved
-
-Incident workflows documented
-
-
+- Production hardening standards documented
 
 ---
 
-0.14 Monetization Systems Planning
+## 0.11 DevOps & Infrastructure Planning
 
-Tasks
+### Tasks
 
-Define subscription gating architecture
+- Define environment structure
 
-Define premium analytics strategy
+- Define CI/CD architecture
 
-Define affiliate monetization structure
+- Define deployment strategy
 
-Define conversion funnel framework
+- Define Docker standards
 
-Define retention mechanics
+- Define monitoring stack
 
-Define member segmentation strategy
+- Define logging architecture
 
-Define paywall architecture
+- Define uptime targets
 
+- Define rollback procedures
 
-Deliverables
+- Define disaster recovery workflow
 
-/docs/business/subscription-architecture.md
+### Deliverables
 
-/docs/business/affiliate-strategy.md
+- /docs/devops/environment-strategy.md
 
-/docs/business/conversion-funnels.md
+- /docs/devops/cicd.md
 
+- /docs/devops/monitoring.md
 
-Validation Gate
+- /docs/devops/disaster-recovery.md
 
-Revenue architecture aligned with platform features
+### Validation Gate
 
+- Infrastructure strategy approved
 
-
----
-
-0.15 Diagram Governance
-
-Tasks
-
-Define diagram standards
-
-Define architecture diagram formats
-
-Define sequence diagram conventions
-
-Define ERD governance
-
-Define infrastructure visualization standards
-
-
-Deliverables
-
-/docs/diagrams/standards.md
-
-/docs/diagrams/system-context.md
-
-/docs/diagrams/infrastructure.md
-
-
-Validation Gate
-
-Diagram consistency standards approved
-
-
+- Reliability standards defined
 
 ---
 
-0.16 Dependency Mapping & Execution Sequencing
+## 0.12 Analytics & Modeling Infrastructure
 
-Tasks
+### Tasks
 
-Define cross-phase dependencies
+- Define projection modeling framework
 
-Define implementation order
+- Define simulation architecture
 
-Define critical path dependencies
+- Define betting intelligence pipelines
 
-Define migration prerequisites
+- Define metric standardization
 
-Define release sequencing
+- Define model recalculation strategy
 
-Define environment readiness checkpoints
+- Define worker scheduling framework
 
+- Define historical storage standards
 
-Deliverables
+- Define model versioning standards
 
-/docs/planning/dependency-map.md
+### Deliverables
 
-/docs/planning/build-sequence.md
+- /docs/analytics/modeling-framework.md
 
-/docs/planning/readiness-gates.md
+- /docs/analytics/simulation-engine.md
 
+- /docs/analytics/metric-standards.md
 
-Validation Gate
+- /docs/analytics/model-versioning.md
 
-Full build sequence approved
+### Validation Gate
 
-Blocking dependencies documented
+- Modeling architecture approved
 
-
+- Statistical consistency rules documented
 
 ---
 
-0.17 Build Readiness Gates
+## 0.13 Reliability & Observability
+
+### Tasks
+
+- Define observability stack
+
+- Define application metrics
+
+- Define tracing architecture
+
+- Define alert thresholds
+
+- Define uptime SLAs
+
+- Define error budgets
+
+- Define incident response workflow
+
+- Define log retention policy
+
+### Deliverables
+
+- /docs/observability/metrics.md
+
+- /docs/observability/tracing.md
+
+- /docs/observability/alerts.md
+
+- /docs/observability/incident-response.md
+
+### Validation Gate
+
+- Monitoring architecture approved
+
+- Incident workflows documented
+
+---
+
+## 0.14 Monetization Systems Planning
+
+### Tasks
+
+- Define subscription gating architecture
+
+- Define premium analytics strategy
+
+- Define affiliate monetization structure
+
+- Define conversion funnel framework
+
+- Define retention mechanics
+
+- Define member segmentation strategy
+
+- Define paywall architecture
+
+### Deliverables
+
+- /docs/business/subscription-architecture.md
+
+- /docs/business/affiliate-strategy.md
+
+- /docs/business/conversion-funnels.md
+
+### Validation Gate
+
+- Revenue architecture aligned with platform features
+
+---
+
+## 0.15 Diagram Governance
+
+### Tasks
+
+- Define diagram standards
+
+- Define architecture diagram formats
+
+- Define sequence diagram conventions
+
+- Define ERD governance
+
+- Define infrastructure visualization standards
+
+### Deliverables
+
+- /docs/diagrams/standards.md
+
+- /docs/diagrams/system-context.md
+
+- /docs/diagrams/infrastructure.md
+
+### Validation Gate
+
+- Diagram consistency standards approved
+
+---
+
+## 0.16 Dependency Mapping & Execution Sequencing
+
+### Tasks
+
+- Define cross-phase dependencies
+
+- Define implementation order
+
+- Define critical path dependencies
+
+- Define migration prerequisites
+
+- Define release sequencing
+
+- Define environment readiness checkpoints
+
+### Deliverables
+
+- /docs/planning/dependency-map.md
+
+- /docs/planning/build-sequence.md
+
+- /docs/planning/readiness-gates.md
+
+### Validation Gate
+
+- Full build sequence approved
+
+- Blocking dependencies documented
+
+---
+
+## 0.17 Build Readiness Gates
 
 Required Completion Criteria
 
@@ -740,8 +674,6 @@ Monetization alignment reviewed
 
 Dependency map finalized
 
-
-
 ---
 
 MASTER OUTPUT INVENTORY
@@ -760,7 +692,6 @@ Retention
 
 Subscription architecture
 
-
 Governance
 
 Standards
@@ -771,8 +702,7 @@ Release governance
 
 Security governance
 
-
-Architecture
+### Architecture
 
 System design
 
@@ -782,8 +712,7 @@ Data flow
 
 Worker orchestration
 
-
-Database
+### Database
 
 Schema strategy
 
@@ -793,8 +722,7 @@ Indexing
 
 Materialized views
 
-
-API
+### API
 
 GraphQL standards
 
@@ -804,8 +732,7 @@ Auth
 
 Error handling
 
-
-Frontend
+### Frontend
 
 Component system
 
@@ -813,8 +740,7 @@ Performance standards
 
 Design system
 
-
-AI
+### AI
 
 Grounding
 
@@ -824,7 +750,6 @@ Observability
 
 Editorial assist
 
-
 SEO
 
 Technical SEO
@@ -832,7 +757,6 @@ Technical SEO
 Schema strategy
 
 Internal linking
-
 
 Security
 
@@ -844,17 +768,15 @@ Secrets management
 
 Hardening
 
-
 DevOps
 
 CI/CD
 
 Monitoring
 
-Reliability
+### Reliability
 
 Disaster recovery
-
 
 Analytics
 
@@ -864,11 +786,19 @@ Simulations
 
 Statistical governance
 
-
-
+---
 ---
 
-PHASE 0 EXIT CONDITION
+## 0.17 Additional Required Tasks Identified
+
+### Tasks
+
+- Add a documentation traceability matrix that links roadmap outcomes, PRD requirements, ADRs, and phase deliverables.
+- Add a shared domain glossary for analytics, editorial, subscription, and betting terminology.
+- Add responsible-gambling, affiliate disclosure, and compliance documentation standards.
+- Add incident response and disaster recovery documentation requirements with target RTO and RPO definitions.
+
+## PHASE 0 EXIT CONDITION
 
 Phase 0 is complete only when:
 
@@ -891,7 +821,6 @@ Dependency sequencing is validated
 Monetization alignment is complete
 
 All readiness gates pass
-
 
 Only after completion may Phase 1 Folder Setup begin.
 
@@ -923,5 +852,4 @@ Build readiness gates
 
 Phase exit conditions
 
-
-The structure aligns with the advanced setup expansion plan documented in 
+The structure aligns with the advanced setup expansion plan documented in

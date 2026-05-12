@@ -1,45 +1,43 @@
-Phase 7 — SEO Implementation
+# Phase 7 — SEO Implementation
 
-Phase Objective
+## Phase Objective
 
 Implement the technical SEO system for Caddy Stats, including metadata generation, structured data, canonical URLs, sitemap automation, robots configuration, internal linking, content discoverability, and Core Web Vitals readiness.
 
-
 ---
 
-7.1 SEO Architecture
+## 7.1 SEO Architecture
 
-Core SEO Domains
+### Core SEO Domains
 
 apps/web/src/features/seo/
 packages/seo/
 packages/templates/src/seo/
 docs/seo/
 
-SEO Objectives
+### SEO Objectives
 
-indexable public pages
+- indexable public pages
 
-scalable programmatic metadata
+- scalable programmatic metadata
 
-structured data coverage
+- structured data coverage
 
-fast page performance
+- fast page performance
 
-clean canonical strategy
+- clean canonical strategy
 
-strong internal linking
+- strong internal linking
 
-article and stats page discoverability
+- article and stats page discoverability
 
-premium content crawl-safe gating
-
-
+- premium content crawl-safe gating
 
 ---
 
-7.2 SEO Folder Structure
+## 7.2 SEO Folder Structure
 
+```text
 packages/seo/
 ├── src/
 │   ├── metadata/
@@ -54,12 +52,13 @@ packages/seo/
 ├── tests/
 ├── package.json
 └── tsconfig.json
-
+```
 
 ---
 
-7.3 Frontend SEO Components
+## 7.3 Frontend SEO Components
 
+```text
 apps/web/src/components/seo/
 ├── MetaTags.tsx
 ├── JsonLd.tsx
@@ -69,14 +68,15 @@ apps/web/src/components/seo/
 ├── PlayerSchema.tsx
 ├── TournamentSchema.tsx
 └── DatasetSchema.tsx
-
+```
 
 ---
 
-7.4 Metadata Standards
+## 7.4 Metadata Standards
 
-Required Metadata Fields
+### Required Metadata Fields
 
+```ts
 export type SeoMetadata = {
   title: string;
   description: string;
@@ -87,121 +87,115 @@ export type SeoMetadata = {
   ogImage?: string;
   twitterCard: "summary" | "summary_large_image";
 };
+```
 
-Rules
+### Rules
 
-every indexable route must have metadata
+- every indexable route must have metadata
 
-titles must be unique
+- titles must be unique
 
-descriptions must be human-readable
+- descriptions must be human-readable
 
-canonical URL must be absolute
+- canonical URL must be absolute
 
-no duplicate canonical paths
+- no duplicate canonical paths
 
-noindex all previews and internal editor routes
-
-
+- noindex all previews and internal editor routes
 
 ---
 
-7.5 Canonical URL Strategy
+## 7.5 Canonical URL Strategy
 
-Canonical Rules
+### Canonical Rules
 
-/articles/:slug
-/players/:playerSlug
-/tournaments/:tournamentSlug
-/rankings
-/projections
-/betting
+- /articles/:slug
+- /players/:playerSlug
+- /tournaments/:tournamentSlug
+- /rankings
+- /projections
+- /betting
 
-Exclusions
+### Exclusions
 
-/editor/*
-/admin/*
-/preview/*
-/premium/internal/*
+- /editor/*
+- /admin/*
+- /preview/*
+- /premium/internal/*
 
-Required Utility
+### Required Utility
 
 packages/seo/src/canonical/buildCanonicalUrl.ts
 
-
 ---
 
-7.6 Structured Data Strategy
+## 7.6 Structured Data Strategy
 
-Required JSON-LD Types
+### Required JSON-LD Types
 
-Article
+- Article
 
-NewsArticle
+- NewsArticle
 
-BreadcrumbList
+- BreadcrumbList
 
-Person
+- Person
 
-SportsEvent
+- SportsEvent
 
-Dataset
+- Dataset
 
-Organization
+- Organization
 
-FAQPage
+- FAQPage
 
-
-Folder
+### Folder
 
 packages/seo/src/schema/
 
-Rule
+### Rule
 
 JSON-LD must be generated from validated typed entities.
 
-
 ---
 
-7.7 Article Schema
+## 7.7 Article Schema
 
-Required Fields
+### Required Fields
 
-headline
+- headline
 
-description
+- description
 
-datePublished
+- datePublished
 
-dateModified
+- dateModified
 
-author
+- author
 
-publisher
+- publisher
 
-image
+- image
 
-mainEntityOfPage
+- mainEntityOfPage
 
-
-Component
+### Component
 
 apps/web/src/components/seo/ArticleSchema.tsx
 
-
 ---
 
-7.8 Player Page SEO
+## 7.8 Player Page SEO
 
-Route
+### Route
 
 /players/:playerSlug
 
-Metadata Pattern
+### Metadata Pattern
 
 {Player Name} Stats, Rankings, Projections & Course History | Caddy Stats
 
-Structured Data
+### Structured Data
 
 Person
 
@@ -209,21 +203,19 @@ Dataset
 
 BreadcrumbList
 
-
-
 ---
 
-7.9 Tournament Page SEO
+## 7.9 Tournament Page SEO
 
-Route
+### Route
 
 /tournaments/:tournamentSlug
 
-Metadata Pattern
+### Metadata Pattern
 
 {Tournament Name} Odds, Projections, Field & Course Preview | Caddy Stats
 
-Structured Data
+### Structured Data
 
 SportsEvent
 
@@ -231,37 +223,33 @@ Dataset
 
 BreadcrumbList
 
-
-
 ---
 
-7.10 Rankings SEO
+## 7.10 Rankings SEO
 
-Route
+### Route
 
 /rankings
 
-Metadata Pattern
+### Metadata Pattern
 
 Golf Player Rankings, Form Ratings & Projection Models | Caddy Stats
 
-Structured Data
+### Structured Data
 
 Dataset
 
 BreadcrumbList
 
-
-
 ---
 
-7.11 Betting SEO
+## 7.11 Betting SEO
 
-Route
+### Route
 
 /betting
 
-Metadata Pattern
+### Metadata Pattern
 
 Golf Betting Edges, Odds Movement & Model Projections | Caddy Stats
 
@@ -269,10 +257,9 @@ Required Disclaimer
 
 Betting content must include responsible gambling language where legally required.
 
-
 ---
 
-7.12 Sitemap Architecture
+## 7.12 Sitemap Architecture
 
 Sitemap Types
 
@@ -292,37 +279,34 @@ Required Route
 GET /sitemap.xml
 GET /sitemap-index.xml
 
-
 ---
 
-7.13 Robots.txt
+## 7.13 Robots.txt
 
 Required File
 
 apps/web/public/robots.txt
 
-Rules
+### Rules
 
-allow public pages
+- allow public pages
 
-disallow admin/editor/preview routes
+- disallow admin/editor/preview routes
 
-include sitemap index URL
+- include sitemap index URL
 
+- User-agent: *
+- Disallow: /admin/
+- Disallow: /editor/
+- Disallow: /preview/
+- Disallow: /premium/internal/
+- Allow: /
 
-User-agent: *
-Disallow: /admin/
-Disallow: /editor/
-Disallow: /preview/
-Disallow: /premium/internal/
-Allow: /
-
-Sitemap: https://caddystats.com/sitemap-index.xml
-
+- Sitemap: https://caddystats.com/sitemap-index.xml
 
 ---
 
-7.14 Internal Linking System
+## 7.14 Internal Linking System
 
 Package Folder
 
@@ -342,15 +326,13 @@ related articles
 
 premium upgrade paths
 
-
-Required Utility
+### Required Utility
 
 suggestInternalLinks.ts
 
-
 ---
 
-7.15 Breadcrumbs
+## 7.15 Breadcrumbs
 
 Required Breadcrumb Routes
 
@@ -364,39 +346,35 @@ Home → Rankings
 
 Home → Betting
 
-
-Component
+### Component
 
 apps/web/src/components/seo/BreadcrumbSchema.tsx
 
+---
+
+## 7.16 Slug Strategy
+
+### Rules
+
+- lowercase
+
+- hyphen-separated
+
+- no dates unless needed
+
+- no duplicate slugs
+
+- preserve historical slug redirects
+
+- article slug changes create redirects
+
+- Required Table
+
+- content.redirects
 
 ---
 
-7.16 Slug Strategy
-
-Rules
-
-lowercase
-
-hyphen-separated
-
-no dates unless needed
-
-no duplicate slugs
-
-preserve historical slug redirects
-
-article slug changes create redirects
-
-
-Required Table
-
-content.redirects
-
-
----
-
-7.17 Redirect System
+## 7.17 Redirect System
 
 Backend Route
 
@@ -412,18 +390,15 @@ moved tournament pages
 
 campaign landing pages
 
-
 Required Status Codes
 
 301 for permanent
 
 302 for temporary
 
-
-
 ---
 
-7.18 Indexability Rules
+## 7.18 Indexability Rules
 
 Indexable
 
@@ -439,7 +414,6 @@ public betting pages
 
 static marketing pages
 
-
 Noindex
 
 drafts
@@ -454,47 +428,41 @@ internal premium dashboards
 
 duplicate filtered table URLs
 
+---
 
+## 7.19 Pagination SEO
+
+### Rules
+
+- canonical base listing route
+
+- avoid indexing infinite filter combinations
+
+- server-readable pagination metadata
+
+- clean URL params only
 
 ---
 
-7.19 Pagination SEO
+## 7.20 Premium Content SEO
 
-Rules
+### Rules
 
-canonical base listing route
+- public teaser content indexable
 
-avoid indexing infinite filter combinations
+- premium tables partially rendered
 
-server-readable pagination metadata
+- no cloaking
 
-clean URL params only
+- upgrade CTAs visible
 
+- structured data must not expose gated values
 
-
----
-
-7.20 Premium Content SEO
-
-Rules
-
-public teaser content indexable
-
-premium tables partially rendered
-
-no cloaking
-
-upgrade CTAs visible
-
-structured data must not expose gated values
-
-premium-only dashboards noindex
-
-
+- premium-only dashboards noindex
 
 ---
 
-7.21 Core Web Vitals
+## 7.21 Core Web Vitals
 
 Targets
 
@@ -507,7 +475,6 @@ CLS <0.1
 Lighthouse SEO >95
 
 Lighthouse Performance >90
-
 
 Required Techniques
 
@@ -523,11 +490,9 @@ minimized JavaScript
 
 cached API responses
 
-
-
 ---
 
-7.22 Open Graph & Social Cards
+## 7.22 Open Graph & Social Cards
 
 Required Defaults
 
@@ -541,15 +506,13 @@ player page OG images
 
 tournament page OG images
 
-
-Folder
+### Folder
 
 packages/seo/src/metadata/openGraph.ts
 
-
 ---
 
-7.23 SEO Validation
+## 7.23 SEO Validation
 
 Required Validator
 
@@ -571,12 +534,11 @@ missing OG fields
 
 duplicate slugs
 
-
-
 ---
 
-7.24 SEO Testing
+## 7.24 SEO Testing
 
+```text
 packages/seo/tests/
 ├── metadata.test.ts
 ├── canonical.test.ts
@@ -585,12 +547,13 @@ packages/seo/tests/
 ├── robots.test.ts
 ├── breadcrumbs.test.ts
 └── redirects.test.ts
-
+```
 
 ---
 
-7.25 SEO Documentation
+## 7.25 SEO Documentation
 
+```text
 docs/seo/
 ├── technical-seo.md
 ├── schema-strategy.md
@@ -599,11 +562,20 @@ docs/seo/
 ├── internal-linking.md
 ├── premium-content-seo.md
 └── redirect-policy.md
-
+```
 
 ---
 
-Phase 7 Validation Checklist
+## 7.16 Additional Required Tasks Identified
+
+### Tasks
+
+- Add automated metadata, canonical, and schema validation checks to CI or docs review workflows.
+- Add Lighthouse or Core Web Vitals performance budgets for each indexable public page type.
+- Add teaser, noindex, and crawl-safety validation for premium or gated content surfaces.
+- Add sitemap diffing, broken-link monitoring, and search-index health review tasks.
+
+## Phase 7 Validation Checklist
 
 Metadata
 
@@ -615,8 +587,7 @@ Metadata
 
 [ ] Preview routes noindexed
 
-
-Structured Data
+### Structured Data
 
 [ ] Article schema implemented
 
@@ -627,7 +598,6 @@ Structured Data
 [ ] Tournament schema implemented
 
 [ ] Dataset schema implemented
-
 
 Sitemap
 
@@ -641,7 +611,6 @@ Sitemap
 
 [ ] Sitemap routes exposed
 
-
 Robots
 
 [ ] robots.txt created
@@ -649,7 +618,6 @@ Robots
 [ ] Admin/editor routes disallowed
 
 [ ] Sitemap index referenced
-
 
 Internal Linking
 
@@ -659,7 +627,6 @@ Internal Linking
 
 [ ] Player/tournament link graph supported
 
-
 Performance
 
 [ ] Core Web Vitals targets documented
@@ -668,11 +635,9 @@ Performance
 
 [ ] API caching aligned
 
-
-
 ---
 
-Phase 7 Exit Condition
+## Phase 7 Exit Condition
 
 Phase 7 is complete only when:
 
@@ -694,5 +659,5 @@ Core Web Vitals targets are measurable
 
 SEO tests pass
 
-
 Only after completion may Phase 8 AI Implementation begin.
+---

@@ -1,16 +1,16 @@
-Phase 11 — Integrations
+# Phase 11 — Integrations
 
-Phase Objective
+## Phase Objective
 
 Connect Caddy Stats to external services required for data ingestion, betting intelligence, payments, email, analytics, media, AI providers, and operational automation.
 
-
 ---
 
-11.1 Integration Architecture
+## 11.1 Integration Architecture
 
 Core Integration Domains
 
+```text
 integrations/
 ├── data-providers/
 ├── sportsbooks/
@@ -22,40 +22,39 @@ integrations/
 ├── monitoring/
 ├── webhooks/
 └── affiliates/
+```
 
-Backend Location
+### Backend Location
 
 services/api/app/integrations/
 
+---
+
+## 11.2 Integration Principles
+
+### Rules
+
+- every integration uses a provider abstraction
+
+- every external request has timeout handling
+
+- retries use exponential backoff
+
+- webhooks are verified
+
+- raw payloads are stored when useful
+
+- secrets are never logged
+
+- provider failures degrade gracefully
+
+- integrations expose health status
 
 ---
 
-11.2 Integration Principles
+## 11.3 Folder Structure
 
-Rules
-
-every integration uses a provider abstraction
-
-every external request has timeout handling
-
-retries use exponential backoff
-
-webhooks are verified
-
-raw payloads are stored when useful
-
-secrets are never logged
-
-provider failures degrade gracefully
-
-integrations expose health status
-
-
-
----
-
-11.3 Folder Structure
-
+```text
 services/api/app/integrations/
 ├── base/
 │   ├── client.py
@@ -104,11 +103,11 @@ services/api/app/integrations/
     ├── verifier.py
     ├── dispatcher.py
     └── handlers/
-
+```
 
 ---
 
-11.4 Data Provider Integrations
+## 11.4 Data Provider Integrations
 
 Primary Data Sources
 
@@ -122,44 +121,40 @@ weather provider
 
 course database source
 
+### Required Capabilities
 
-Required Capabilities
+- fetch players
 
-fetch players
+- fetch tournaments
 
-fetch tournaments
+- fetch field lists
 
-fetch field lists
+- fetch historical rounds
 
-fetch historical rounds
+- fetch strokes gained
 
-fetch strokes gained
+- fetch rankings
 
-fetch rankings
+- fetch betting odds
 
-fetch betting odds
-
-fetch weather conditions
-
-
+- fetch weather conditions
 
 ---
 
-11.5 Data Provider Abstraction
+## 11.5 Data Provider Abstraction
 
 from typing import Protocol, Any
 
 class GolfDataProvider(Protocol):
-    async def fetch_players(self) -> list[dict[str, Any]]: ...
-    async def fetch_tournaments(self, season: int) -> list[dict[str, Any]]: ...
-    async def fetch_field(self, tournament_id: str) -> list[dict[str, Any]]: ...
-    async def fetch_rounds(self, tournament_id: str) -> list[dict[str, Any]]: ...
-    async def health_check(self) -> bool: ...
-
+async def fetch_players(self) -> list[dict[str, Any]]: ...
+async def fetch_tournaments(self, season: int) -> list[dict[str, Any]]: ...
+async def fetch_field(self, tournament_id: str) -> list[dict[str, Any]]: ...
+async def fetch_rounds(self, tournament_id: str) -> list[dict[str, Any]]: ...
+async def health_check(self) -> bool: ...
 
 ---
 
-11.6 Sportsbook Integration
+## 11.6 Sportsbook Integration
 
 Required Markets
 
@@ -177,83 +172,75 @@ round leader
 
 make/miss cut
 
+### Required Fields
 
-Required Fields
+- sportsbook
 
-sportsbook
+- market type
 
-market type
+- player
 
-player
+- odds
 
-odds
+- implied probability
 
-implied probability
+- timestamp
 
-timestamp
+- source event ID
 
-source event ID
-
-source market ID
-
-
+- source market ID
 
 ---
 
-11.7 Odds Normalization
+## 11.7 Odds Normalization
 
-Requirements
+### Requirements
 
-normalize player names
+- normalize player names
 
-map sportsbook event IDs to tournaments
+- map sportsbook event IDs to tournaments
 
-convert American odds to implied probability
+- convert American odds to implied probability
 
-deduplicate markets
+- deduplicate markets
 
-detect stale lines
+- detect stale lines
 
-preserve raw odds payloads
+- preserve raw odds payloads
 
+- Storage Tables
 
-Storage Tables
-
-stats.betting_lines
-ingestion.source_payloads
-ingestion.source_mappings
-
+- stats.betting_lines
+- ingestion.source_payloads
+- ingestion.source_mappings
 
 ---
 
-11.8 Payment Integration
+## 11.8 Payment Integration
 
 Preferred Provider
 
 Stripe
 
+### Required Capabilities
 
-Required Capabilities
+- checkout session creation
 
-checkout session creation
+- customer portal
 
-customer portal
+- subscription lifecycle handling
 
-subscription lifecycle handling
+- invoice tracking
 
-invoice tracking
+- failed payment handling
 
-failed payment handling
+- cancellation tracking
 
-cancellation tracking
-
-webhook verification
-
-
+- webhook verification
 
 ---
 
-11.9 Subscription Events
+## 11.9 Subscription Events
 
 Required Webhooks
 
@@ -264,23 +251,21 @@ customer.subscription.deleted
 invoice.payment_succeeded
 invoice.payment_failed
 
-Rules
+### Rules
 
-webhook event ID must be idempotent
+- webhook event ID must be idempotent
 
-provider is source of truth
+- provider is source of truth
 
-failed webhook events are retried
+- failed webhook events are retried
 
-billing actions are audited
-
-
+- billing actions are audited
 
 ---
 
-11.10 Email Integration
+## 11.10 Email Integration
 
-Use Cases
+### Use Cases
 
 account verification
 
@@ -296,50 +281,45 @@ publish confirmations
 
 billing notices
 
+### Requirements
 
-Requirements
+- template registry
 
-template registry
+- delivery logs
 
-delivery logs
+- unsubscribe support
 
-unsubscribe support
+- bounce handling
 
-bounce handling
-
-provider abstraction
-
-
+- provider abstraction
 
 ---
 
-11.11 AI Provider Integration
+## 11.11 AI Provider Integration
 
-Requirements
+### Requirements
 
-provider abstraction
+- provider abstraction
 
-model routing
+- model routing
 
-token usage tracking
+- token usage tracking
 
-latency tracking
+- latency tracking
 
-retry logic
+- retry logic
 
-validation pipeline integration
+- validation pipeline integration
 
-fallback model support
+- fallback model support
 
-no raw secrets in logs
-
-
+- no raw secrets in logs
 
 ---
 
-11.12 Object Storage Integration
+## 11.12 Object Storage Integration
 
-Use Cases
+### Use Cases
 
 article images
 
@@ -351,28 +331,25 @@ downloadable reports
 
 exports
 
+### Requirements
 
-Requirements
+- signed uploads
 
-signed uploads
+- signed downloads for private files
 
-signed downloads for private files
+- CDN URL generation
 
-CDN URL generation
+- metadata storage
 
-metadata storage
+- file size validation
 
-file size validation
+- MIME type validation
 
-MIME type validation
-
-lifecycle policies
-
-
+- lifecycle policies
 
 ---
 
-11.13 Analytics Integration
+## 11.13 Analytics Integration
 
 Events To Track
 
@@ -394,22 +371,19 @@ article published
 
 AI generation accepted
 
+### Requirements
 
-Requirements
+- privacy-safe tracking
 
-privacy-safe tracking
+- consent-aware analytics
 
-consent-aware analytics
+- server-side event support
 
-server-side event support
-
-user ID hashing where needed
-
-
+- user ID hashing where needed
 
 ---
 
-11.14 Affiliate Integration
+## 11.14 Affiliate Integration
 
 Affiliate Domains
 
@@ -421,25 +395,23 @@ fantasy tools
 
 newsletter sponsorships
 
+### Requirements
 
-Requirements
+- outbound click tracking
 
-outbound click tracking
+- affiliate disclosure blocks
 
-affiliate disclosure blocks
+- campaign attribution
 
-campaign attribution
+- revenue reporting
 
-revenue reporting
-
-no cloaked betting claims
-
-
+- no cloaked betting claims
 
 ---
 
-11.15 Webhook Architecture
+## 11.15 Webhook Architecture
 
+```text
 services/api/app/integrations/webhooks/
 ├── verifier.py
 ├── dispatcher.py
@@ -449,6 +421,7 @@ services/api/app/integrations/webhooks/
 │   ├── data_provider_handler.py
 │   └── affiliate_handler.py
 └── schemas.py
+```
 
 Webhook Rules
 
@@ -464,11 +437,9 @@ log failures
 
 retry safely
 
-
-
 ---
 
-11.16 Integration Health Checks
+## 11.16 Integration Health Checks
 
 Endpoint
 
@@ -490,11 +461,9 @@ object storage
 
 analytics
 
-
-
 ---
 
-11.17 Integration Error Handling
+## 11.17 Integration Error Handling
 
 Error Categories
 
@@ -507,41 +476,37 @@ webhook_signature_failed
 timeout
 unknown_provider_error
 
-Requirements
+### Requirements
 
-normalized error shape
+- normalized error shape
 
-retry policy per error type
+- retry policy per error type
 
-admin visibility
+- admin visibility
 
-alerting for critical failures
-
-
+- alerting for critical failures
 
 ---
 
-11.18 Rate Limits & Quotas
+## 11.18 Rate Limits & Quotas
 
-Required Tracking
+### Required Tracking
 
-API provider quota usage
+- API provider quota usage
 
-sportsbook request limits
+- sportsbook request limits
 
-AI token limits
+- AI token limits
 
-email send limits
+- email send limits
 
-storage bandwidth
+- storage bandwidth
 
-webhook failure volume
-
-
+- webhook failure volume
 
 ---
 
-11.19 Data Quality Controls
+## 11.19 Data Quality Controls
 
 Required Validation
 
@@ -557,12 +522,11 @@ missing round data detection
 
 suspicious outlier detection
 
-
-
 ---
 
-11.20 Integration Tests
+## 11.20 Integration Tests
 
+```text
 services/api/tests/integrations/
 ├── test_data_provider_client.py
 ├── test_odds_normalization.py
@@ -572,12 +536,13 @@ services/api/tests/integrations/
 ├── test_storage_client.py
 ├── test_analytics_events.py
 └── test_webhook_verification.py
-
+```
 
 ---
 
-11.21 Integration Documentation
+## 11.21 Integration Documentation
 
+```text
 docs/integrations/
 ├── data-providers.md
 ├── sportsbook-odds.md
@@ -589,11 +554,20 @@ docs/integrations/
 ├── affiliates.md
 ├── webhooks.md
 └── provider-health.md
-
+```
 
 ---
 
-Phase 11 Validation Checklist
+## 11.16 Additional Required Tasks Identified
+
+### Tasks
+
+- Add vendor SLA, outage fallback mode, and degraded-operation tasks for each critical integration.
+- Add idempotent webhook replay, retry, and dead-letter handling requirements.
+- Add credential rotation, scope minimization, and integration secret ownership controls.
+- Add affiliate disclosure, attribution, and partner reporting validation tasks.
+
+## Phase 11 Validation Checklist
 
 Data Providers
 
@@ -607,7 +581,6 @@ Data Providers
 
 [ ] Source mappings stored
 
-
 Sportsbooks
 
 [ ] Odds provider connected
@@ -617,7 +590,6 @@ Sportsbooks
 [ ] Raw payloads stored
 
 [ ] Stale lines detected
-
 
 Payments
 
@@ -629,7 +601,6 @@ Payments
 
 [ ] Webhook idempotency enforced
 
-
 Email
 
 [ ] Email provider connected
@@ -640,15 +611,13 @@ Email
 
 [ ] Unsubscribe handling implemented
 
-
-AI
+### AI
 
 [ ] AI provider abstraction implemented
 
 [ ] Usage tracking enabled
 
 [ ] Fallback routing supported
-
 
 Storage
 
@@ -658,7 +627,6 @@ Storage
 
 [ ] MIME validation enforced
 
-
 Analytics
 
 [ ] Event tracker implemented
@@ -666,7 +634,6 @@ Analytics
 [ ] Subscription events tracked
 
 [ ] Premium engagement tracked
-
 
 Security
 
@@ -678,11 +645,9 @@ Security
 
 [ ] Integration health checks exposed
 
-
-
 ---
 
-Phase 11 Exit Condition
+## Phase 11 Exit Condition
 
 Phase 11 is complete only when:
 
@@ -706,5 +671,5 @@ Integration health checks are visible
 
 Provider failures degrade safely
 
-
 Only after completion may Phase 12 Scale & Optimization begin.
+---

@@ -1,16 +1,16 @@
-Phase X — Business & Monetization Expansion
+# Phase X — Business & Monetization Expansion
 
-Phase Objective
+## Phase Objective
 
 Expand Caddy Stats into a scalable revenue platform with subscription systems, affiliate monetization, premium analytics products, retention systems, conversion optimization, partnerships, and long-term business intelligence infrastructure.
 
-
 ---
 
-X.1 Business Architecture
+## X.1 Business Architecture
 
-Revenue Domains
+### Revenue Domains
 
+```text
 business/
 ├── subscriptions/
 ├── affiliates/
@@ -22,40 +22,39 @@ business/
 ├── partnerships/
 ├── sponsorships/
 └── experimentation/
+```
 
-Core Objectives
+### Core Objectives
 
-recurring subscription revenue
+- recurring subscription revenue
 
-premium analytics differentiation
+- premium analytics differentiation
 
-SEO-driven acquisition
+- SEO-driven acquisition
 
-affiliate monetization
+- affiliate monetization
 
-retention optimization
+- retention optimization
 
-high-LTV subscriber base
+- high-LTV subscriber base
 
-scalable content monetization
+- scalable content monetization
 
-operational profitability
-
-
+- operational profitability
 
 ---
 
-X.2 Subscription Architecture
+## X.2 Subscription Architecture
 
-Subscription Tiers
+### Subscription Tiers
 
-free
-premium
-premium_plus
-analyst_pro
-enterprise
+- free
+- premium
+- premium_plus
+- analyst_pro
+- enterprise
 
-Tier Examples
+### Tier Examples
 
 Free
 
@@ -66,7 +65,6 @@ limited projections
 public articles
 
 teaser betting edges
-
 
 Premium
 
@@ -80,7 +78,6 @@ ownership projections
 
 advanced rankings
 
-
 Premium Plus
 
 simulation access
@@ -90,7 +87,6 @@ export tools
 premium reports
 
 advanced trend dashboards
-
 
 Analyst Pro
 
@@ -102,7 +98,6 @@ saved dashboards
 
 model comparison tools
 
-
 Enterprise
 
 multi-seat access
@@ -113,126 +108,116 @@ custom reporting
 
 priority support
 
+---
 
+## X.3 Subscription Entitlements
+
+### Entitlement Types
+
+- projection_access
+- betting_edge_access
+- simulation_access
+- ownership_access
+- report_downloads
+- api_access
+- premium_articles
+- historical_exports
+
+### Backend Enforcement
+
+- API middleware
+
+- GraphQL permission guards
+
+- frontend route guards
+
+- export restrictions
+
+- feature flag integration
 
 ---
 
-X.3 Subscription Entitlements
+## X.4 Paywall System
 
-Entitlement Types
+### Paywall Types
 
-projection_access
-betting_edge_access
-simulation_access
-ownership_access
-report_downloads
-api_access
-premium_articles
-historical_exports
+- hard_paywall
+- metered_paywall
+- partial_table_gate
+- premium_chart_overlay
+- blurred_projection_gate
+- download_gate
 
-Backend Enforcement
+### Rules
 
-API middleware
+- no cloaking
 
-GraphQL permission guards
+- SEO-safe teaser content
 
-frontend route guards
+- upgrade CTA tracking
 
-export restrictions
+- entitlement-aware rendering
 
-feature flag integration
-
-
+- premium analytics hidden server-side
 
 ---
 
-X.4 Paywall System
+## X.5 Pricing Infrastructure
 
-Paywall Types
+### Requirements
 
-hard_paywall
-metered_paywall
-partial_table_gate
-premium_chart_overlay
-blurred_projection_gate
-download_gate
+- configurable pricing plans
 
-Rules
+- billing interval support
 
-no cloaking
+- coupon support
 
-SEO-safe teaser content
+- free trial support
 
-upgrade CTA tracking
+- upgrade/downgrade flow
 
-entitlement-aware rendering
+- proration handling
 
-premium analytics hidden server-side
+- cancellation reason tracking
 
+### Required Tables
 
-
----
-
-X.5 Pricing Infrastructure
-
-Requirements
-
-configurable pricing plans
-
-billing interval support
-
-coupon support
-
-free trial support
-
-upgrade/downgrade flow
-
-proration handling
-
-cancellation reason tracking
-
-
-Required Tables
-
-billing.plans
-billing.subscriptions
-billing.invoices
-billing.coupons
-billing.subscription_events
-
+- billing.plans
+- billing.subscriptions
+- billing.invoices
+- billing.coupons
+- billing.subscription_events
 
 ---
 
-X.6 Conversion Optimization
+## X.6 Conversion Optimization
 
-Core Funnel Stages
+### Core Funnel Stages
 
-visitor
-registered_user
-trial_user
-premium_subscriber
-retained_subscriber
-high_value_subscriber
+- visitor
+- registered_user
+- trial_user
+- premium_subscriber
+- retained_subscriber
+- high_value_subscriber
 
-Required Tracking
+### Required Tracking
 
-signup conversion
+- signup conversion
 
-paywall conversion
+- paywall conversion
 
-CTA clicks
+- CTA clicks
 
-article-to-subscription conversion
+- article-to-subscription conversion
 
-email conversion
+- email conversion
 
-churn risk indicators
-
-
+- churn risk indicators
 
 ---
 
-X.7 Retention Systems
+## X.7 Retention Systems
 
 Retention Features
 
@@ -250,11 +235,9 @@ streak engagement systems
 
 premium content recommendations
 
-
-
 ---
 
-X.8 CRM & Lifecycle
+## X.8 CRM & Lifecycle
 
 CRM Domains
 
@@ -281,11 +264,9 @@ SEO-only users
 
 newsletter-only users
 
-
-
 ---
 
-X.9 Affiliate Monetization
+## X.9 Affiliate Monetization
 
 Affiliate Categories
 
@@ -301,7 +282,6 @@ analytics software
 
 fantasy tools
 
-
 Required Features
 
 affiliate disclosure blocks
@@ -314,11 +294,9 @@ revenue reporting
 
 geo-aware affiliate display
 
-
-
 ---
 
-X.10 Sponsorship Systems
+## X.10 Sponsorship Systems
 
 Sponsorship Domains
 
@@ -332,22 +310,19 @@ article sponsors
 
 podcast/video integrations
 
+### Rules
 
-Rules
+- sponsored content disclosure
 
-sponsored content disclosure
+- editorial separation
 
-editorial separation
+- sponsor reporting metrics
 
-sponsor reporting metrics
-
-placement inventory management
-
-
+- placement inventory management
 
 ---
 
-X.11 Premium Product Expansion
+## X.11 Premium Product Expansion
 
 Future Products
 
@@ -360,10 +335,9 @@ api_subscription
 premium_newsletters
 mobile_app_access
 
-
 ---
 
-X.12 Business Analytics
+## X.12 Business Analytics
 
 Metrics Domains
 
@@ -394,11 +368,9 @@ affiliate revenue performance
 
 content monetization performance
 
-
-
 ---
 
-X.13 Experimentation Framework
+## X.13 Experimentation Framework
 
 Experiment Types
 
@@ -416,22 +388,19 @@ SEO headline tests
 
 newsletter tests
 
+### Requirements
 
-Requirements
+- feature flag integration
 
-feature flag integration
+- experiment assignment logging
 
-experiment assignment logging
+- conversion attribution
 
-conversion attribution
-
-rollback support
-
-
+- rollback support
 
 ---
 
-X.14 Email Monetization
+## X.14 Email Monetization
 
 Revenue Email Types
 
@@ -447,22 +416,19 @@ reactivation campaigns
 
 premium upsell sequences
 
+### Requirements
 
-Requirements
+- unsubscribe handling
 
-unsubscribe handling
+- engagement scoring
 
-engagement scoring
+- open/click tracking
 
-open/click tracking
-
-deliverability monitoring
-
-
+- deliverability monitoring
 
 ---
 
-X.15 API Monetization
+## X.15 API Monetization
 
 API Tiers
 
@@ -484,24 +450,21 @@ player trends
 
 historical stats
 
+### Requirements
 
-Requirements
+- quota enforcement
 
-quota enforcement
+- API key management
 
-API key management
+- request analytics
 
-request analytics
+- usage billing
 
-usage billing
-
-premium rate limits
-
-
+- premium rate limits
 
 ---
 
-X.16 Partnership Infrastructure
+## X.16 Partnership Infrastructure
 
 Partner Types
 
@@ -517,22 +480,19 @@ DFS communities
 
 golf equipment companies
 
+### Requirements
 
-Requirements
+- referral attribution
 
-referral attribution
+- partner dashboards
 
-partner dashboards
+- campaign reporting
 
-campaign reporting
-
-branded landing pages
-
-
+- branded landing pages
 
 ---
 
-X.17 Mobile Expansion Planning
+## X.17 Mobile Expansion Planning
 
 Future Mobile Features
 
@@ -546,15 +506,13 @@ saved watchlists
 
 premium mobile dashboards
 
-
 Requirement
 
 All APIs must remain mobile-consumable.
 
-
 ---
 
-X.18 Business Security
+## X.18 Business Security
 
 Required Controls
 
@@ -570,11 +528,9 @@ subscription abuse monitoring
 
 affiliate fraud monitoring
 
-
-
 ---
 
-X.19 Business Observability
+## X.19 Business Observability
 
 Required Dashboards
 
@@ -592,11 +548,9 @@ API usage dashboard
 
 sponsorship performance dashboard
 
-
-
 ---
 
-X.20 Growth SEO Expansion
+## X.20 Growth SEO Expansion
 
 Future SEO Systems
 
@@ -614,12 +568,11 @@ glossary pages
 
 evergreen statistics pages
 
-
-
 ---
 
-X.21 Monetization Testing
+## X.21 Monetization Testing
 
+```text
 tests/business/
 ├── paywall_conversion.test.ts
 ├── subscription_access.test.ts
@@ -628,12 +581,13 @@ tests/business/
 ├── api_quota.test.py
 ├── pricing_experiment.test.ts
 └── churn_prediction.test.py
-
+```
 
 ---
 
-X.22 Business Documentation
+## X.22 Business Documentation
 
+```text
 docs/business/
 ├── monetization-strategy.md
 ├── subscription-model.md
@@ -644,11 +598,20 @@ docs/business/
 ├── experimentation-framework.md
 ├── sponsorships.md
 └── growth-roadmap.md
-
+```
 
 ---
 
-Phase X Validation Checklist
+## X.16 Additional Required Tasks Identified
+
+### Tasks
+
+- Add pricing-experiment governance, hypothesis tracking, and success-metric definitions.
+- Add churn, retention, win-back, and lifecycle automation tasks tied to subscriber behavior.
+- Add revenue-attribution tasks across subscriptions, affiliates, SEO, and editorial funnels.
+- Add compliance and disclosure review tasks for affiliate, premium, and sponsor-facing monetization surfaces.
+
+## Phase X Validation Checklist
 
 Subscriptions
 
@@ -660,7 +623,6 @@ Subscriptions
 
 [ ] Billing events audited
 
-
 Revenue
 
 [ ] Revenue dashboards implemented
@@ -670,7 +632,6 @@ Revenue
 [ ] Sponsorship tracking supported
 
 [ ] API monetization planned
-
 
 Retention
 
@@ -682,7 +643,6 @@ Retention
 
 [ ] Watchlist systems planned
 
-
 Analytics
 
 [ ] Conversion funnels measurable
@@ -692,7 +652,6 @@ Analytics
 [ ] Revenue attribution tracked
 
 [ ] Experimentation framework integrated
-
 
 Growth
 
@@ -704,7 +663,6 @@ Growth
 
 [ ] Referral attribution supported
 
-
 Security
 
 [ ] Billing fraud checks planned
@@ -712,8 +670,6 @@ Security
 [ ] API abuse protections added
 
 [ ] Affiliate fraud monitoring documented
-
-
 
 ---
 
@@ -745,7 +701,6 @@ Business intelligence informs roadmap decisions
 
 Platform architecture supports long-term expansion
 
-
 Caddy Stats is now fully architected from:
 
 documentation
@@ -764,7 +719,7 @@ templates
 
 SEO
 
-AI
+### AI
 
 hosting
 
@@ -776,5 +731,5 @@ scaling
 
 monetization
 
-
 The next logical stage is implementation sequencing and execution planning against the master task index.
+---
