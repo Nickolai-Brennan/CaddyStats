@@ -1,41 +1,38 @@
-Phase 2 — Database Architecture & Implementation
+# Phase 2 — Database Architecture & Implementation
 
-Phase Objective
+## Phase Objective
 
 Implement the production-grade PostgreSQL architecture for Caddy Stats, including schemas, migrations, indexing strategy, analytics infrastructure, materialized views, security boundaries, and performance optimization.
 
 Phase 2 establishes the platform’s data foundation.
 
+---
+
+## 2.1 Database Architecture Overview
+
+### Core Objectives
+
+- High-performance analytical workloads
+
+- Scalable historical statistics storage
+
+- AI-grounded editorial data access
+
+- Betting intelligence computation
+
+- Optimized projection generation
+
+- Multi-schema isolation
+
+- Production-safe migrations
+
+- Horizontal scalability readiness
 
 ---
 
-2.1 Database Architecture Overview
+## 2.2 PostgreSQL Standards
 
-Core Objectives
-
-High-performance analytical workloads
-
-Scalable historical statistics storage
-
-AI-grounded editorial data access
-
-Betting intelligence computation
-
-Optimized projection generation
-
-Multi-schema isolation
-
-Production-safe migrations
-
-Horizontal scalability readiness
-
-
-
----
-
-2.2 PostgreSQL Standards
-
-Required PostgreSQL Features
+### Required PostgreSQL Features
 
 PostgreSQL 16+
 
@@ -55,21 +52,20 @@ Generated columns
 
 Row-level security
 
+### Extensions
 
-Extensions
-
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE EXTENSION IF NOT EXISTS btree_gin;
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
+- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+- CREATE EXTENSION IF NOT EXISTS pg_trgm;
+- CREATE EXTENSION IF NOT EXISTS btree_gin;
+- CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 ---
 
-2.3 Schema Architecture
+## 2.3 Schema Architecture
 
-Multi-Schema Structure
+### Multi-Schema Structure
 
+```text
 database/schemas/
 │
 ├── auth/
@@ -79,31 +75,29 @@ database/schemas/
 ├── ai/
 ├── system/
 └── ingestion/
-
+```
 
 ---
 
-2.4 Schema Responsibilities
+## 2.4 Schema Responsibilities
 
 auth
 
 Authentication and authorization domain.
 
-Tables
+### Tables
 
-users
+- users
 
-roles
+- roles
 
-permissions
+- permissions
 
-refresh_tokens
+- refresh_tokens
 
-api_keys
+- api_keys
 
-audit_logs
-
-
+- audit_logs
 
 ---
 
@@ -111,23 +105,21 @@ content
 
 Editorial and CMS domain.
 
-Tables
+### Tables
 
-articles
+- articles
 
-article_blocks
+- article_blocks
 
-authors
+- authors
 
-tags
+- tags
 
-categories
+- categories
 
-seo_metadata
+- seo_metadata
 
-article_versions
-
-
+- article_versions
 
 ---
 
@@ -135,25 +127,23 @@ stats
 
 Core golf statistical infrastructure.
 
-Tables
+### Tables
 
-players
+- players
 
-tournaments
+- tournaments
 
-rounds
+- rounds
 
-hole_stats
+- hole_stats
 
-strokes_gained
+- strokes_gained
 
-player_rankings
+- player_rankings
 
-course_history
+- course_history
 
-betting_lines
-
-
+- betting_lines
 
 ---
 
@@ -161,21 +151,19 @@ analytics
 
 Projection and simulation systems.
 
-Tables
+### Tables
 
-projections
+- projections
 
-simulations
+- simulations
 
-model_versions
+- model_versions
 
-betting_edges
+- betting_edges
 
-ownership_projections
+- ownership_projections
 
-trend_analysis
-
-
+- trend_analysis
 
 ---
 
@@ -183,19 +171,17 @@ ai
 
 AI grounding and observability.
 
-Tables
+### Tables
 
-ai_prompts
+- ai_prompts
 
-ai_generations
+- ai_generations
 
-grounding_sources
+- grounding_sources
 
-ai_validations
+- ai_validations
 
-hallucination_flags
-
-
+- hallucination_flags
 
 ---
 
@@ -203,19 +189,17 @@ system
 
 Operational platform services.
 
-Tables
+### Tables
 
-feature_flags
+- feature_flags
 
-jobs
+- jobs
 
-webhooks
+- webhooks
 
-notifications
+- notifications
 
-system_metrics
-
-
+- system_metrics
 
 ---
 
@@ -223,22 +207,21 @@ ingestion
 
 External data ingestion layer.
 
-Tables
+### Tables
 
-ingestion_jobs
+- ingestion_jobs
 
-source_payloads
+- source_payloads
 
-source_mappings
+- source_mappings
 
-ingestion_failures
-
-
+- ingestion_failures
 
 ---
 
-2.5 Folder Structure
+## 2.5 Folder Structure
 
+```text
 database/
 │
 ├── migrations/
@@ -250,11 +233,11 @@ database/
 ├── seeds/
 ├── backups/
 └── policies/
-
+```
 
 ---
 
-2.6 Migration Architecture
+## 2.6 Migration Architecture
 
 Migration Strategy
 
@@ -268,9 +251,9 @@ Transactional migrations
 
 Rollback support
 
-
 Migration Organization
 
+```text
 database/migrations/
 │
 ├── auth/
@@ -279,23 +262,22 @@ database/migrations/
 ├── analytics/
 ├── ai/
 └── shared/
-
+```
 
 ---
 
-2.7 Naming Standards
+## 2.7 Naming Standards
 
-Tables
+### Tables
 
-snake_case
-pluralized
+- snake_case
+- pluralized
 
-Examples
+### Examples
 
 players
 player_rankings
 betting_lines
-
 
 ---
 
@@ -303,13 +285,12 @@ Columns
 
 snake_case
 
-Examples
+### Examples
 
 created_at
 updated_at
 player_id
 tournament_id
-
 
 ---
 
@@ -320,10 +301,9 @@ fk_<table>_<reference>
 idx_<table>_<field>
 uq_<table>_<field>
 
-
 ---
 
-2.8 Primary Key Standards
+## 2.8 Primary Key Standards
 
 UUID Standard
 
@@ -334,69 +314,65 @@ Required Audit Columns
 created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 
-
 ---
 
-2.9 Core Stats Tables
+## 2.9 Core Stats Tables
 
 players
 
 CREATE TABLE stats.players (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    country TEXT,
-    birth_date DATE,
-    handedness TEXT,
-    active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL,
+country TEXT,
+birth_date DATE,
+handedness TEXT,
+active BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMPTZ DEFAULT NOW(),
+updated_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 
 ---
 
 tournaments
 
 CREATE TABLE stats.tournaments (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name TEXT NOT NULL,
-    course_name TEXT,
-    start_date DATE,
-    end_date DATE,
-    purse NUMERIC(12,2),
-    season INTEGER,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+name TEXT NOT NULL,
+course_name TEXT,
+start_date DATE,
+end_date DATE,
+purse NUMERIC(12,2),
+season INTEGER,
+created_at TIMESTAMPTZ DEFAULT NOW(),
+updated_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 
 ---
 
 rounds
 
 CREATE TABLE stats.rounds (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    player_id UUID NOT NULL,
-    tournament_id UUID NOT NULL,
-    round_number INTEGER NOT NULL,
-    score INTEGER,
-    tee_time TIMESTAMPTZ,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
+id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+player_id UUID NOT NULL,
+tournament_id UUID NOT NULL,
+round_number INTEGER NOT NULL,
+score INTEGER,
+tee_time TIMESTAMPTZ,
+created_at TIMESTAMPTZ DEFAULT NOW(),
 
-    CONSTRAINT fk_rounds_player
-        FOREIGN KEY (player_id)
-        REFERENCES stats.players(id),
+CONSTRAINT fk_rounds_player
+FOREIGN KEY (player_id)
+REFERENCES stats.players(id),
 
-    CONSTRAINT fk_rounds_tournament
-        FOREIGN KEY (tournament_id)
-        REFERENCES stats.tournaments(id)
+CONSTRAINT fk_rounds_tournament
+FOREIGN KEY (tournament_id)
+REFERENCES stats.tournaments(id)
 );
-
 
 ---
 
-2.10 JSONB Standards
+## 2.10 JSONB Standards
 
 Approved Use Cases
 
@@ -408,7 +384,6 @@ Model configuration
 
 External source payloads
 
-
 Avoid JSONB For
 
 High-read relational data
@@ -417,11 +392,9 @@ Join-heavy queries
 
 Frequently filtered dimensions
 
-
-
 ---
 
-2.11 Indexing Strategy
+## 2.11 Indexing Strategy
 
 Required Index Types
 
@@ -447,10 +420,9 @@ CREATE INDEX idx_articles_search
 ON content.articles
 USING GIN(to_tsvector('english', title || ' ' || body));
 
-
 ---
 
-2.12 Partitioning Strategy
+## 2.12 Partitioning Strategy
 
 Partition Candidates
 
@@ -464,7 +436,6 @@ simulations
 
 historical_rankings
 
-
 Partition Method
 
 Time-based partitioning by:
@@ -475,13 +446,11 @@ event_date
 
 created_at
 
-
-
 ---
 
-2.13 Materialized Views
+## 2.13 Materialized Views
 
-Purpose
+### Purpose
 
 Fast leaderboard queries
 
@@ -491,8 +460,7 @@ Betting edge calculations
 
 Course history summaries
 
-
-Folder
+### Folder
 
 database/materialized/
 
@@ -500,18 +468,17 @@ Example
 
 CREATE MATERIALIZED VIEW analytics.player_recent_form AS
 SELECT
-    player_id,
-    AVG(score) AS avg_score,
-    COUNT(*) AS rounds_played
+player_id,
+AVG(score) AS avg_score,
+COUNT(*) AS rounds_played
 FROM stats.rounds
 GROUP BY player_id;
 
-
 ---
 
-2.14 Database Functions
+## 2.14 Database Functions
 
-Folder
+### Folder
 
 database/functions/
 
@@ -525,11 +492,9 @@ rolling averages
 
 AI validation helpers
 
-
-
 ---
 
-2.15 Trigger Standards
+## 2.15 Trigger Standards
 
 Allowed Triggers
 
@@ -541,17 +506,15 @@ cache invalidation
 
 search vector updates
 
-
-Folder
+### Folder
 
 database/triggers/
 
-
 ---
 
-2.16 Row-Level Security
+## 2.16 Row-Level Security
 
-Required Domains
+### Required Domains
 
 admin access
 
@@ -561,15 +524,13 @@ premium subscriptions
 
 internal analytics
 
-
 Example
 
 ALTER TABLE content.articles ENABLE ROW LEVEL SECURITY;
 
-
 ---
 
-2.17 Audit Logging
+## 2.17 Audit Logging
 
 Audit Requirements
 
@@ -585,15 +546,13 @@ admin actions
 
 API key usage
 
-
 Table
 
 auth.audit_logs
 
-
 ---
 
-2.18 AI Grounding Database Layer
+## 2.18 AI Grounding Database Layer
 
 Objectives
 
@@ -605,20 +564,17 @@ Editorial validation
 
 Prompt observability
 
+### Tables
 
-Tables
+- ai.grounding_sources
 
-ai.grounding_sources
+- ai.ai_validations
 
-ai.ai_validations
-
-ai.hallucination_flags
-
-
+- ai.hallucination_flags
 
 ---
 
-2.19 Analytics Infrastructure
+## 2.19 Analytics Infrastructure
 
 Core Systems
 
@@ -632,15 +588,13 @@ trend analysis
 
 lineup optimization
 
-
 Data Flow
 
 ingestion → stats → analytics → API → frontend
 
-
 ---
 
-2.20 Caching Strategy
+## 2.20 Caching Strategy
 
 Cache Layers
 
@@ -649,7 +603,6 @@ PostgreSQL materialized views
 Redis query cache
 
 API response cache
-
 
 High Cache Priority
 
@@ -661,11 +614,9 @@ player trends
 
 rankings
 
-
-
 ---
 
-2.21 Backup & Recovery
+## 2.21 Backup & Recovery
 
 Backup Standards
 
@@ -677,7 +628,6 @@ point-in-time recovery
 
 encrypted storage
 
-
 Retention
 
 daily: 30 days
@@ -686,11 +636,9 @@ weekly: 12 weeks
 
 monthly: 12 months
 
-
-
 ---
 
-2.22 Security Standards
+## 2.22 Security Standards
 
 Required Protections
 
@@ -704,11 +652,9 @@ migration approval workflow
 
 read-only analytics roles
 
-
-
 ---
 
-2.23 Performance Targets
+## 2.23 Performance Targets
 
 Query Targets
 
@@ -718,7 +664,6 @@ cached response <100ms
 
 materialized query <50ms
 
-
 Database Targets
 
 zero sequential scans on hot tables
@@ -727,11 +672,9 @@ indexed joins only
 
 explain analyze validation required
 
-
-
 ---
 
-2.24 Database Roles
+## 2.24 Database Roles
 
 Roles
 
@@ -742,10 +685,9 @@ admin
 migration_role
 readonly_reporting
 
-
 ---
 
-2.25 Seed Strategy
+## 2.25 Seed Strategy
 
 Seed Categories
 
@@ -757,15 +699,13 @@ test fixtures
 
 production-safe baseline data
 
-
-Folder
+### Folder
 
 database/seeds/
 
-
 ---
 
-2.26 Observability
+## 2.26 Observability
 
 Database Monitoring
 
@@ -779,7 +719,6 @@ index usage
 
 dead tuples
 
-
 Required Dashboards
 
 PostgreSQL metrics
@@ -790,11 +729,9 @@ connection pools
 
 cache hit ratios
 
-
-
 ---
 
-2.27 Reliability Standards
+## 2.27 Reliability Standards
 
 Required Systems
 
@@ -806,11 +743,9 @@ connection retry handling
 
 replication monitoring
 
-
-
 ---
 
-2.28 Data Ingestion Standards
+## 2.28 Data Ingestion Standards
 
 Sources
 
@@ -822,25 +757,23 @@ historical archives
 
 weather APIs
 
+### Requirements
 
-Requirements
+- retry logic
 
-retry logic
+- source validation
 
-source validation
+- schema normalization
 
-schema normalization
-
-ingestion audit logs
-
-
+- ingestion audit logs
 
 ---
 
-2.29 Database Documentation Requirements
+## 2.29 Database Documentation Requirements
 
 Required Docs
 
+```text
 /docs/database/
 │
 ├── schema-strategy.md
@@ -850,22 +783,21 @@ Required Docs
 ├── backup-strategy.md
 ├── rls-policies.md
 └── analytics-architecture.md
-
+```
 
 ---
 
-2.30 Build Readiness Gates
+## 2.30 Build Readiness Gates
 
 Must Pass Before Phase 3
 
-Schema
+### Schema
 
 [ ] All schemas created
 
 [ ] Naming standards enforced
 
 [ ] UUID strategy implemented
-
 
 Performance
 
@@ -875,7 +807,6 @@ Performance
 
 [ ] Partitioning strategy finalized
 
-
 Security
 
 [ ] Roles defined
@@ -884,25 +815,30 @@ Security
 
 [ ] Audit logging enabled
 
-
-Reliability
+### Reliability
 
 [ ] Backup strategy documented
 
 [ ] Migration rollback process tested
 
-
-AI
+### AI
 
 [ ] Grounding tables implemented
 
 [ ] Validation infrastructure created
 
-
-
 ---
 
-Phase 2 Exit Condition
+## 2.18 Additional Required Tasks Identified
+
+### Tasks
+
+- Add source-provenance tables and validation rules for imported golf, odds, and model data.
+- Add partition retention, archive strategy, and materialized-view refresh ownership for high-volume analytics tables.
+- Add migration rollback testing, backup restore validation, and seed-data provenance requirements.
+- Add subscription or entitlement schema boundaries needed by later billing and premium-access phases.
+
+## Phase 2 Exit Condition
 
 Phase 2 is complete only when:
 
@@ -924,5 +860,5 @@ AI grounding tables are operational
 
 Observability standards are configured
 
-
 Only after completion may Phase 3 Backend/API Implementation begin.
+---

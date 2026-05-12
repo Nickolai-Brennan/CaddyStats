@@ -1,21 +1,24 @@
-Phase 1 — Folder Setup & Repository Structure
+# Phase 1 — Folder Setup & Repository Structure
 
-Phase Objective
+## Phase Objective
 
 Establish the production-grade repository structure, module boundaries, configuration standards, environment strategy, and workspace organization required before database or application implementation begins.
 
 Phase 1 creates the operational foundation for all future development.
 
-
 ---
 
-1.1 Monorepo Strategy
-Architecture Decision
+## 1.1 Monorepo Strategy
+
+### Architecture Decision
 
 - Use a structured monorepo with isolated application domains and shared infrastructure modules.
 
-Repository Structure
+### Repository Structure
+
 ```
+
+```text
 caddystats/
 │
 ├── apps/
@@ -30,14 +33,17 @@ caddystats/
 ├── tests/
 ├── .github/
 └── docker/
+```
 
 ```
+
 ---
 
-1.2 Root Repository Structure
+## 1.2 Root Repository Structure
 
-Master Folder Layout
+### Master Folder Layout
 
+```text
 caddystats/
 │
 ├── apps/
@@ -118,14 +124,15 @@ caddystats/
 ├── README.md
 ├── pnpm-workspace.yaml
 └── turbo.json
-
+```
 
 ---
 
-1.3 Frontend Application Structure
+## 1.3 Frontend Application Structure
 
 apps/web
 
+```text
 apps/web/
 │
 ├── public/
@@ -147,14 +154,15 @@ apps/web/
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
-
+```
 
 ---
 
-1.4 Backend Service Structure
+## 1.4 Backend Service Structure
 
 services/api
 
+```text
 services/api/
 │
 ├── app/
@@ -177,14 +185,15 @@ services/api/
 ├── requirements/
 ├── Dockerfile
 └── pyproject.toml
-
+```
 
 ---
 
-1.5 Shared Package Standards
+## 1.5 Shared Package Standards
 
 packages/ui
 
+```text
 packages/ui/
 │
 ├── src/
@@ -197,9 +206,11 @@ packages/ui/
 │
 ├── package.json
 └── tsconfig.json
+```
 
 packages/types
 
+```text
 packages/types/
 │
 ├── src/
@@ -208,14 +219,15 @@ packages/types/
 │   ├── projections/
 │   ├── editorial/
 │   └── betting/
-
+```
 
 ---
 
-1.6 Database Folder Standards
+## 1.6 Database Folder Standards
 
 Schema Separation
 
+```text
 database/schemas/
 │
 ├── content/
@@ -224,9 +236,11 @@ database/schemas/
 ├── analytics/
 ├── ai/
 └── system/
+```
 
 Migration Strategy
 
+```text
 database/migrations/
 │
 ├── content/
@@ -234,14 +248,15 @@ database/migrations/
 ├── auth/
 ├── analytics/
 └── shared/
-
+```
 
 ---
 
-1.7 Infrastructure Standards
+## 1.7 Infrastructure Standards
 
 Docker Organization
 
+```text
 infrastructure/docker/
 │
 ├── api/
@@ -250,23 +265,26 @@ infrastructure/docker/
 ├── redis/
 ├── workers/
 └── nginx/
+```
 
 Monitoring Structure
 
+```text
 infrastructure/monitoring/
 │
 ├── grafana/
 ├── prometheus/
 ├── loki/
 └── alerts/
-
+```
 
 ---
 
-1.8 AI System Organization
+## 1.8 AI System Organization
 
 Prompt Architecture
 
+```text
 ai/prompts/
 │
 ├── editorial/
@@ -274,20 +292,22 @@ ai/prompts/
 ├── projections/
 ├── summaries/
 └── betting/
+```
 
 Grounding Architecture
 
+```text
 ai/grounding/
 │
 ├── injections/
 ├── validators/
 ├── sources/
 └── observability/
-
+```
 
 ---
 
-1.9 Environment Configuration Standards
+## 1.9 Environment Configuration Standards
 
 Required Environment Files
 
@@ -309,7 +329,6 @@ REDIS_URL
 
 CDN_URL
 
-
 Security
 
 JWT_SECRET
@@ -318,13 +337,11 @@ ENCRYPTION_KEY
 
 API_KEYS
 
-
-AI
+### AI
 
 OPENAI_API_KEY
 
 MODEL_ROUTER_KEY
-
 
 Monitoring
 
@@ -332,11 +349,9 @@ SENTRY_DSN
 
 GRAFANA_URL
 
-
-
 ---
 
-1.10 Root Configuration Standards
+## 1.10 Root Configuration Standards
 
 Required Root Files
 
@@ -354,28 +369,23 @@ pnpm-workspace.yaml
 
 .python-version
 
-
 CI/CD
 
 .github/workflows/ci.yml
 
 .github/workflows/deploy.yml
 
-
 Containers
 
 docker-compose.yml
-
 
 Build
 
 Makefile
 
-
-
 ---
 
-1.11 Naming Convention Standards
+## 1.11 Naming Convention Standards
 
 Folder Naming
 
@@ -387,10 +397,9 @@ PascalCase for React components
 
 lowercase package names
 
-
 File Naming
 
-Frontend
+### Frontend
 
 PlayerCard.tsx
 TournamentTable.tsx
@@ -402,10 +411,9 @@ projection_service.py
 player_repository.py
 stats_resolver.py
 
-
 ---
 
-1.12 Git Workflow Initialization
+## 1.12 Git Workflow Initialization
 
 Branch Structure
 
@@ -426,12 +434,11 @@ test:
 infra:
 security:
 
-
 ---
 
-1.13 Build Tooling Setup
+## 1.13 Build Tooling Setup
 
-Frontend
+### Frontend
 
 Vite
 
@@ -443,7 +450,6 @@ TanStack Table
 
 React Router
 
-
 Backend
 
 FastAPI
@@ -454,18 +460,15 @@ SQLAlchemy
 
 Alembic
 
-
 Shared
 
 pnpm workspaces
 
 TurboRepo
 
-
-
 ---
 
-1.14 Initial DevOps Bootstrap
+## 1.14 Initial DevOps Bootstrap
 
 Base Services
 
@@ -490,11 +493,9 @@ Nginx reverse proxy
 
 Background workers
 
-
-
 ---
 
-1.15 Security Baseline Setup
+## 1.15 Security Baseline Setup
 
 Required Defaults
 
@@ -504,7 +505,6 @@ secret scanning
 
 branch protection
 
-
 Backend
 
 environment validation
@@ -513,18 +513,15 @@ CORS policy
 
 rate limiting prep
 
-
-Frontend
+### Frontend
 
 CSP planning
 
 secure env separation
 
-
-
 ---
 
-1.16 Documentation Initialization
+## 1.16 Documentation Initialization
 
 Required Files
 
@@ -534,10 +531,9 @@ CONTRIBUTING.md
 ARCHITECTURE.md
 SECURITY.md
 
-
 ---
 
-1.17 Repository Automation
+## 1.17 Repository Automation
 
 GitHub Actions
 
@@ -551,7 +547,6 @@ type-check
 
 security scan
 
-
 Deployment Pipeline
 
 build containers
@@ -562,11 +557,9 @@ deploy staging
 
 deploy production
 
-
-
 ---
 
-1.18 Scalability Preparation
+## 1.18 Scalability Preparation
 
 Early Structure Requirements
 
@@ -580,11 +573,19 @@ AI pipeline isolation
 
 multi-author editorial support
 
-
-
+---
 ---
 
-PHASE 1 VALIDATION CHECKLIST
+## 1.16 Additional Required Tasks Identified
+
+### Tasks
+
+- Align the target root structure with the approved `frontend/`, `backend/`, `database/`, `api/`, `tests/`, `docs/`, `config/`, `plugins/`, and `commands/` ownership model.
+- Add CODEOWNERS, issue templates, pull request templates, and baseline docs-check or architecture-drift automation placeholders.
+- Add `.env.example`, secret-handling conventions, and local bootstrap or verification script placeholders.
+- Add README or ownership stubs for each top-level domain directory so later phases inherit clear responsibilities.
+
+## PHASE 1 VALIDATION CHECKLIST
 
 Repository
 
@@ -594,13 +595,11 @@ Repository
 
 [ ] Folder structure finalized
 
-
-Frontend
+### Frontend
 
 [ ] React apps scaffolded
 
 [ ] Shared UI package initialized
-
 
 Backend
 
@@ -608,13 +607,11 @@ Backend
 
 [ ] GraphQL structure prepared
 
-
-Database
+### Database
 
 [ ] Migration folders initialized
 
 [ ] Schema separation established
-
 
 Infrastructure
 
@@ -622,13 +619,11 @@ Infrastructure
 
 [ ] Monitoring folders prepared
 
-
-AI
+### AI
 
 [ ] Prompt architecture initialized
 
 [ ] Grounding structure prepared
-
 
 DevOps
 
@@ -636,18 +631,15 @@ DevOps
 
 [ ] Environment strategy documented
 
-
 Security
 
 [ ] Security baseline established
 
 [ ] Secret handling rules defined
 
-
-
 ---
 
-PHASE 1 EXIT CONDITION
+## PHASE 1 EXIT CONDITION
 
 Phase 1 is complete only when:
 
@@ -666,6 +658,5 @@ Security baselines are initialized
 All services have defined boundaries
 
 Folder standards are enforced
-
 
 Only after completion may Phase 2 Database Implementation begin.

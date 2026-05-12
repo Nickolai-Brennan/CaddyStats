@@ -1,19 +1,18 @@
-Phase 10 — Admin Systems
+# Phase 10 — Admin Systems
 
-Phase Objective
+## Phase Objective
 
 Build the internal administration system for Caddy Stats, including user management, roles, subscriptions, content oversight, AI audit review, data operations, feature flags, system health, and platform governance controls.
 
-
 ---
 
-10.1 Admin Architecture
+## 10.1 Admin Architecture
 
-App Location
+### App Location
 
 apps/admin/
 
-Purpose
+### Purpose
 
 The admin app manages:
 
@@ -37,12 +36,11 @@ system health
 
 platform settings
 
-
-
 ---
 
-10.2 Admin Folder Structure
+## 10.2 Admin Folder Structure
 
+```text
 apps/admin/
 │
 ├── public/
@@ -63,12 +61,13 @@ apps/admin/
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
-
+```
 
 ---
 
-10.3 Admin Feature Modules
+## 10.3 Admin Feature Modules
 
+```text
 src/features/
 ├── dashboard/
 ├── users/
@@ -83,11 +82,11 @@ src/features/
 ├── audit-logs/
 ├── billing/
 └── settings/
-
+```
 
 ---
 
-10.4 Admin Routes
+## 10.4 Admin Routes
 
 /admin
 /admin/users
@@ -105,41 +104,40 @@ src/features/
 /admin/billing
 /admin/settings
 
+---
+
+## 10.5 Admin Permissions
+
+### Required Roles
+
+- super_admin
+- admin
+- editor_admin
+- data_admin
+- billing_admin
+- support_admin
+- readonly_admin
+
+### Permission Examples
+
+- admin:access
+- users:read
+- users:update
+- roles:manage
+- subscriptions:manage
+- content:review
+- ai_audit:read
+- ingestion:manage
+- models:trigger
+- feature_flags:update
+- billing:refund
+- system_health:read
 
 ---
 
-10.5 Admin Permissions
+## 10.6 User Management
 
-Required Roles
-
-super_admin
-admin
-editor_admin
-data_admin
-billing_admin
-support_admin
-readonly_admin
-
-Permission Examples
-
-admin:access
-users:read
-users:update
-roles:manage
-subscriptions:manage
-content:review
-ai_audit:read
-ingestion:manage
-models:trigger
-feature_flags:update
-billing:refund
-system_health:read
-
-
----
-
-10.6 User Management
-
+```text
 src/features/users/
 ├── UserListPage.tsx
 ├── UserDetailPage.tsx
@@ -148,56 +146,56 @@ src/features/users/
 ├── UserSubscriptionPanel.tsx
 ├── UserAuditTrail.tsx
 └── UserSearchFilters.tsx
+```
 
-Required Capabilities
+### Required Capabilities
 
-view users
+- view users
 
-search users
+- search users
 
-filter by role/status/subscription
+- filter by role/status/subscription
 
-suspend users
+- suspend users
 
-assign roles
+- assign roles
 
-reset MFA/session state
+- reset MFA/session state
 
-view audit trail
+- view audit trail
 
-view subscription status
-
-
+- view subscription status
 
 ---
 
-10.7 Role & Permission Management
+## 10.7 Role & Permission Management
 
+```text
 src/features/roles/
 ├── RoleListPage.tsx
 ├── RoleEditor.tsx
 ├── PermissionMatrix.tsx
 ├── PermissionGroup.tsx
 └── RoleAuditTrail.tsx
+```
 
-Requirements
+### Requirements
 
-role list
+- role list
 
-permission matrix
+- permission matrix
 
-role assignment history
+- role assignment history
 
-protected super_admin role
+- protected super_admin role
 
-no self-demotion without secondary admin
-
-
+- no self-demotion without secondary admin
 
 ---
 
-10.8 Subscription Admin
+## 10.8 Subscription Admin
 
+```text
 src/features/subscriptions/
 ├── SubscriptionListPage.tsx
 ├── SubscriptionDetailPage.tsx
@@ -205,29 +203,29 @@ src/features/subscriptions/
 ├── ManualAccessGrant.tsx
 ├── SubscriptionHistory.tsx
 └── CancellationReasonPanel.tsx
+```
 
-Requirements
+### Requirements
 
-view plan status
+- view plan status
 
-view payment status
+- view payment status
 
-grant temporary access
+- grant temporary access
 
-revoke access
+- revoke access
 
-inspect cancellation reasons
+- inspect cancellation reasons
 
-sync billing provider state
+- sync billing provider state
 
-audit all admin changes
-
-
+- audit all admin changes
 
 ---
 
-10.9 Billing Admin
+## 10.9 Billing Admin
 
+```text
 src/features/billing/
 ├── BillingDashboard.tsx
 ├── InvoiceList.tsx
@@ -235,23 +233,23 @@ src/features/billing/
 ├── PaymentFailurePanel.tsx
 ├── RevenueSummary.tsx
 └── BillingSyncStatus.tsx
+```
 
-Rules
+### Rules
 
-never store raw card data
+- never store raw card data
 
-billing actions require elevated permission
+- billing actions require elevated permission
 
-refunds require audit reason
+- refunds require audit reason
 
-provider webhooks are source of truth
-
-
+- provider webhooks are source of truth
 
 ---
 
-10.10 Content Oversight
+## 10.10 Content Oversight
 
+```text
 src/features/content/
 ├── ContentQueuePage.tsx
 ├── ArticleReviewPanel.tsx
@@ -259,6 +257,7 @@ src/features/content/
 ├── PublishStatusBadge.tsx
 ├── ContentAuditTrail.tsx
 └── ForceUnpublishDialog.tsx
+```
 
 Capabilities
 
@@ -276,12 +275,11 @@ lock article editing
 
 view revision history
 
-
-
 ---
 
-10.11 AI Audit Admin
+## 10.11 AI Audit Admin
 
+```text
 src/features/ai-audit/
 ├── AiGenerationList.tsx
 ├── AiGenerationDetail.tsx
@@ -290,6 +288,7 @@ src/features/ai-audit/
 ├── HallucinationFlagList.tsx
 ├── TokenUsageTable.tsx
 └── ModelCostSummary.tsx
+```
 
 Capabilities
 
@@ -307,12 +306,11 @@ monitor token cost
 
 filter by model/domain/user
 
-
-
 ---
 
-10.12 Data Ingestion Admin
+## 10.12 Data Ingestion Admin
 
+```text
 src/features/ingestion/
 ├── IngestionDashboard.tsx
 ├── IngestionJobTable.tsx
@@ -320,6 +318,7 @@ src/features/ingestion/
 ├── IngestionFailureDetail.tsx
 ├── RetryJobButton.tsx
 └── SourceMappingEditor.tsx
+```
 
 Capabilities
 
@@ -337,12 +336,11 @@ track last successful ingestion
 
 view stale data warnings
 
-
-
 ---
 
-10.13 Analytics Model Admin
+## 10.13 Analytics Model Admin
 
+```text
 src/features/analytics-models/
 ├── ModelRunDashboard.tsx
 ├── ModelVersionTable.tsx
@@ -350,6 +348,7 @@ src/features/analytics-models/
 ├── SimulationRunDetail.tsx
 ├── TriggerModelRunButton.tsx
 └── ModelPerformancePanel.tsx
+```
 
 Capabilities
 
@@ -367,18 +366,18 @@ rollback active model version
 
 view stale projection warnings
 
-
-
 ---
 
-10.14 Feature Flags Admin
+## 10.14 Feature Flags Admin
 
+```text
 src/features/feature-flags/
 ├── FeatureFlagList.tsx
 ├── FeatureFlagEditor.tsx
 ├── EnvironmentToggle.tsx
 ├── RolloutPercentageSlider.tsx
 └── FeatureFlagAuditTrail.tsx
+```
 
 Required Flags
 
@@ -394,12 +393,11 @@ new_rankings_model_enabled
 
 editor_workflow_enabled
 
-
-
 ---
 
-10.15 System Health Dashboard
+## 10.15 System Health Dashboard
 
+```text
 src/features/system-health/
 ├── SystemHealthDashboard.tsx
 ├── ApiStatusCard.tsx
@@ -409,6 +407,7 @@ src/features/system-health/
 ├── AiCostCard.tsx
 ├── CacheHitRateCard.tsx
 └── DeploymentStatusCard.tsx
+```
 
 Required Metrics
 
@@ -432,17 +431,17 @@ latest deployment
 
 backup status
 
-
-
 ---
 
-10.16 Audit Logs
+## 10.16 Audit Logs
 
+```text
 src/features/audit-logs/
 ├── AuditLogTable.tsx
 ├── AuditLogFilters.tsx
 ├── AuditLogDetailDrawer.tsx
 └── ExportAuditLogsButton.tsx
+```
 
 Required Events
 
@@ -466,11 +465,9 @@ billing action
 
 admin setting change
 
-
-
 ---
 
-10.17 Admin API Endpoints
+## 10.17 Admin API Endpoints
 
 REST
 
@@ -501,11 +498,9 @@ role/permission matrix
 
 admin dashboard composition
 
-
-
 ---
 
-10.18 Admin Table Standards
+## 10.18 Admin Table Standards
 
 Required Table Features
 
@@ -523,11 +518,9 @@ audit-safe row actions
 
 loading/empty/error states
 
-
-
 ---
 
-10.19 Admin Security
+## 10.19 Admin Security
 
 Required Controls
 
@@ -547,11 +540,9 @@ no GraphQL playground in production
 
 CSRF strategy for cookie-based auth if used
 
-
-
 ---
 
-10.20 Admin Observability
+## 10.20 Admin Observability
 
 Required Signals
 
@@ -569,12 +560,11 @@ feature flag changes
 
 high-risk mutations
 
-
-
 ---
 
-10.21 Admin Testing
+## 10.21 Admin Testing
 
+```text
 apps/admin/src/tests/
 ├── users.test.tsx
 ├── roles.test.tsx
@@ -584,9 +574,11 @@ apps/admin/src/tests/
 ├── ingestion.test.tsx
 ├── system-health.test.tsx
 └── feature-flags.test.tsx
+```
 
 Required Backend Tests
 
+```text
 services/api/tests/admin/
 ├── test_admin_users.py
 ├── test_admin_roles.py
@@ -596,12 +588,13 @@ services/api/tests/admin/
 ├── test_admin_models.py
 ├── test_admin_feature_flags.py
 └── test_admin_audit_logs.py
-
+```
 
 ---
 
-10.22 Admin Documentation
+## 10.22 Admin Documentation
 
+```text
 docs/admin/
 ├── admin-overview.md
 ├── user-management.md
@@ -613,13 +606,22 @@ docs/admin/
 ├── model-admin.md
 ├── feature-flags.md
 └── audit-logs.md
-
+```
 
 ---
 
-Phase 10 Validation Checklist
+## 10.17 Additional Required Tasks Identified
 
-Architecture
+### Tasks
+
+- Add billing dispute, refund, reconciliation, and approval-path workflows.
+- Add support tooling for entitlement overrides, access incidents, and operator notes.
+- Add admin session security requirements such as MFA enforcement, step-up auth, and impersonation auditing.
+- Add export or reporting tasks for audit logs, moderation history, and operational KPIs.
+
+## Phase 10 Validation Checklist
+
+### Architecture
 
 [ ] Admin app scaffolded
 
@@ -628,7 +630,6 @@ Architecture
 [ ] Admin routing configured
 
 [ ] Admin layout implemented
-
 
 Security
 
@@ -640,7 +641,6 @@ Security
 
 [ ] Role mutation safeguards added
 
-
 Users
 
 [ ] User list implemented
@@ -650,7 +650,6 @@ Users
 [ ] Role editor implemented
 
 [ ] Subscription panel implemented
-
 
 Content
 
@@ -662,8 +661,7 @@ Content
 
 [ ] Force unpublish flow audited
 
-
-AI
+### AI
 
 [ ] AI generation logs visible
 
@@ -672,7 +670,6 @@ AI
 [ ] Grounding sources visible
 
 [ ] Hallucination flags visible
-
 
 Data
 
@@ -684,7 +681,6 @@ Data
 
 [ ] Feature flags editable
 
-
 System
 
 [ ] Health dashboard implemented
@@ -693,11 +689,9 @@ System
 
 [ ] Admin metrics emitted
 
-
-
 ---
 
-Phase 10 Exit Condition
+## Phase 10 Exit Condition
 
 Phase 10 is complete only when:
 
@@ -721,5 +715,5 @@ All admin mutations are audited
 
 RBAC protects every admin route and endpoint
 
-
 Only after completion may Phase 11 Integrations begin.
+---

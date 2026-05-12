@@ -1,16 +1,16 @@
-Phase 6 — Templates Implementation
+# Phase 6 — Templates Implementation
 
-Phase Objective
+## Phase Objective
 
 Build reusable content, page, email, SEO, and data display templates for Caddy Stats so editorial, analytics, and premium experiences can scale without rebuilding layouts for every use case.
 
-
 ---
 
-6.1 Template Architecture
+## 6.1 Template Architecture
 
 Template Domains
 
+```text
 templates/
 ├── pages/
 ├── articles/
@@ -20,6 +20,7 @@ templates/
 ├── dashboards/
 ├── reports/
 └── exports/
+```
 
 Primary Goals
 
@@ -35,42 +36,45 @@ data-driven block rendering
 
 scalable content production
 
-
-
 ---
 
-6.2 Folder Placement
+## 6.2 Folder Placement
 
 Frontend Templates
 
+```text
 apps/web/src/templates/
 ├── pages/
 ├── articles/
 ├── dashboards/
 ├── seo/
 └── exports/
+```
 
 Editor Templates
 
+```text
 apps/editor/src/templates/
 ├── articles/
 ├── blocks/
 ├── workflows/
 └── seo/
+```
 
 Shared Templates
 
+```text
 packages/templates/
 ├── article/
 ├── seo/
 ├── email/
 ├── report/
 └── schema/
-
+```
 
 ---
 
-6.3 Article Templates
+## 6.3 Article Templates
 
 Required Article Templates
 
@@ -103,12 +107,11 @@ schema type
 
 publish checklist
 
-
-
 ---
 
-6.4 Article Template Schema
+## 6.4 Article Template Schema
 
+```ts
 export type ArticleTemplate = {
   id: string;
   name: string;
@@ -124,11 +127,11 @@ export type ArticleTemplate = {
   schemaType: "Article" | "NewsArticle" | "AnalysisNewsArticle";
   premiumEligible: boolean;
 };
-
+```
 
 ---
 
-6.5 Block Templates
+## 6.5 Block Templates
 
 Required Block Templates
 
@@ -142,14 +145,13 @@ ModelConfidenceTemplate
 PremiumCalloutTemplate
 DisclaimerTemplate
 
-Rule
+### Rule
 
 Block templates define structure only. Live stats must be injected through verified data references.
 
-
 ---
 
-6.6 Dashboard Templates
+## 6.6 Dashboard Templates
 
 Public Dashboard Templates
 
@@ -167,17 +169,18 @@ OwnershipDashboardTemplate
 PlayerComparisonDashboardTemplate
 ModelTrendDashboardTemplate
 
-
 ---
 
-6.7 SEO Templates
+## 6.7 SEO Templates
 
+```text
 packages/templates/seo/
 ├── articleSeoTemplates.ts
 ├── playerSeoTemplates.ts
 ├── tournamentSeoTemplates.ts
 ├── rankingsSeoTemplates.ts
 └── bettingSeoTemplates.ts
+```
 
 Required SEO Template Outputs
 
@@ -195,11 +198,9 @@ structured data type
 
 breadcrumb structure
 
-
-
 ---
 
-6.8 Structured Data Templates
+## 6.8 Structured Data Templates
 
 JSON-LD Templates
 
@@ -210,14 +211,13 @@ SportsEventJsonLdTemplate
 FAQJsonLdTemplate
 DatasetJsonLdTemplate
 
-Rule
+### Rule
 
 Structured data must be generated from typed entities, not freeform strings.
 
-
 ---
 
-6.9 Email Templates
+## 6.9 Email Templates
 
 Required Email Templates
 
@@ -230,14 +230,13 @@ PremiumUpgradeEmail
 EditorReviewRequestEmail
 PublishConfirmationEmail
 
-Folder
+### Folder
 
 packages/templates/email/
 
-
 ---
 
-6.10 Report Templates
+## 6.10 Report Templates
 
 Required Report Templates
 
@@ -247,7 +246,7 @@ PlayerTrendReport
 ModelPerformanceReport
 PremiumSubscriberReport
 
-Use Cases
+### Use Cases
 
 subscriber emails
 
@@ -257,11 +256,9 @@ admin review
 
 internal model audits
 
-
-
 ---
 
-6.11 Export Templates
+## 6.11 Export Templates
 
 Export Types
 
@@ -283,11 +280,9 @@ player comparison
 
 model performance
 
-
-
 ---
 
-6.12 Template Registry
+## 6.12 Template Registry
 
 Registry Location
 
@@ -295,6 +290,7 @@ packages/templates/src/registry.ts
 
 Registry Shape
 
+```ts
 export type TemplateRegistryItem = {
   id: string;
   type: "article" | "block" | "seo" | "email" | "dashboard" | "report" | "export";
@@ -303,52 +299,50 @@ export type TemplateRegistryItem = {
   requiredData: string[];
   renderTarget: "web" | "editor" | "email" | "pdf" | "api";
 };
-
-
----
-
-6.13 Template Versioning
-
-Requirements
-
-templates have version numbers
-
-article versions store template ID + version
-
-updates must not mutate historical published output
-
-breaking template changes require migration notes
-
-
+```
 
 ---
 
-6.14 Template Validation
+## 6.13 Template Versioning
 
+### Requirements
+
+- templates have version numbers
+
+- article versions store template ID + version
+
+- updates must not mutate historical published output
+
+- breaking template changes require migration notes
+
+---
+
+## 6.14 Template Validation
+
+```text
 packages/templates/src/validation/
 ├── articleTemplateSchema.ts
 ├── blockTemplateSchema.ts
 ├── seoTemplateSchema.ts
 ├── emailTemplateSchema.ts
 └── reportTemplateSchema.ts
+```
 
-Requirements
+### Requirements
 
-Zod schemas for all template definitions
+- Zod schemas for all template definitions
 
-required data validation
+- required data validation
 
-block dependency validation
+- block dependency validation
 
-SEO field validation
+- SEO field validation
 
-publish readiness validation
-
-
+- publish readiness validation
 
 ---
 
-6.15 Editor Template Integration
+## 6.15 Editor Template Integration
 
 Required Editor Features
 
@@ -364,11 +358,9 @@ show missing required data
 
 validate template before publish
 
-
-
 ---
 
-6.16 Web Template Integration
+## 6.16 Web Template Integration
 
 Required Web Features
 
@@ -384,11 +376,9 @@ consistent block rendering
 
 schema injection
 
-
-
 ---
 
-6.17 AI Template Integration
+## 6.17 AI Template Integration
 
 Required AI Controls
 
@@ -402,11 +392,9 @@ AI cannot bypass template validation
 
 AI output must map to approved block types
 
-
-
 ---
 
-6.18 Monetization Alignment
+## 6.18 Monetization Alignment
 
 Premium Template Uses
 
@@ -422,12 +410,11 @@ downloadable premium reports
 
 subscriber-only email templates
 
-
-
 ---
 
-6.19 Template Testing
+## 6.19 Template Testing
 
+```text
 packages/templates/tests/
 ├── articleTemplates.test.ts
 ├── blockTemplates.test.ts
@@ -435,6 +422,7 @@ packages/templates/tests/
 ├── emailTemplates.test.ts
 ├── reportTemplates.test.ts
 └── registry.test.ts
+```
 
 Required Tests
 
@@ -448,13 +436,11 @@ historical version compatibility
 
 premium gate compatibility
 
-
-
 ---
 
-6.20 Validation Checklist
+## 6.20 Validation Checklist
 
-Architecture
+### Architecture
 
 [ ] Template folders created
 
@@ -464,7 +450,6 @@ Architecture
 
 [ ] Versioning rules added
 
-
 Editorial
 
 [ ] Article templates defined
@@ -472,7 +457,6 @@ Editorial
 [ ] Block templates defined
 
 [ ] Editor template selection integrated
-
 
 SEO
 
@@ -482,7 +466,6 @@ SEO
 
 [ ] Breadcrumb templates implemented
 
-
 Premium
 
 [ ] Premium dashboard templates defined
@@ -491,8 +474,7 @@ Premium
 
 [ ] Export templates planned
 
-
-AI
+### AI
 
 [ ] Template-aware AI flow designed
 
@@ -500,11 +482,18 @@ AI
 
 [ ] Grounded data requirements enforced
 
-
-
 ---
 
-Phase 6 Exit Condition
+## 6.15 Additional Required Tasks Identified
+
+### Tasks
+
+- Add template versioning, rollback, and audit history requirements.
+- Add schema-driven validation for block inputs, metadata requirements, and template completeness checks.
+- Add sanitization, premium-slot, and affiliate-placement rules to template contracts.
+- Add internal-linking and schema.org support requirements directly to reusable template definitions.
+
+## Phase 6 Exit Condition
 
 Phase 6 is complete only when:
 
@@ -526,5 +515,5 @@ Editor and web rendering support templates
 
 AI generation is template-aware
 
-
 Only after completion may Phase 7 SEO Implementation begin.
+---

@@ -1,15 +1,14 @@
-Phase 3 — Backend/API Implementation
+# Phase 3 — Backend/API Implementation
 
-Phase Objective
+## Phase Objective
 
 Build the FastAPI + Strawberry GraphQL backend layer for Caddy Stats, including authentication, REST stats endpoints, GraphQL content APIs, service/repository boundaries, caching, security, and observability.
 
-
 ---
 
-3.1 Backend Architecture
+## 3.1 Backend Architecture
 
-Stack
+### Stack
 
 FastAPI
 
@@ -27,16 +26,15 @@ Pydantic
 
 JWT auth
 
-
-Backend Location
+### Backend Location
 
 services/api/
 
-
 ---
 
-3.2 Folder Structure
+## 3.2 Folder Structure
 
+```text
 services/api/
 │
 ├── app/
@@ -61,80 +59,83 @@ services/api/
 ├── requirements/
 ├── Dockerfile
 └── pyproject.toml
-
+```
 
 ---
 
-3.3 Core Backend Modules
+## 3.3 Core Backend Modules
 
 app/core
 
+```text
 app/core/
 ├── config.py
 ├── logging.py
 ├── exceptions.py
 ├── constants.py
 └── lifecycle.py
+```
 
 app/db
 
+```text
 app/db/
 ├── session.py
 ├── base.py
 ├── init.py
 └── health.py
+```
 
 app/security
 
+```text
 app/security/
 ├── jwt.py
 ├── password.py
 ├── permissions.py
 ├── dependencies.py
 └── rate_limit.py
-
-
----
-
-3.4 API Boundary Rules
-
-GraphQL Use Cases
-
-Use GraphQL for:
-
-editorial content
-
-admin dashboards
-
-article editing
-
-flexible frontend queries
-
-AI-assisted editor flows
-
-
-REST Use Cases
-
-Use REST for:
-
-stats endpoints
-
-projections
-
-betting lines
-
-leaderboards
-
-cached high-read data
-
-health checks
-
-
+```
 
 ---
 
-3.5 REST Endpoint Structure
+## 3.4 API Boundary Rules
 
+### GraphQL Use Cases
+
+- Use GraphQL for:
+
+- editorial content
+
+- admin dashboards
+
+- article editing
+
+- flexible frontend queries
+
+- AI-assisted editor flows
+
+### REST Use Cases
+
+- Use REST for:
+
+- stats endpoints
+
+- projections
+
+- betting lines
+
+- leaderboards
+
+- cached high-read data
+
+- health checks
+
+---
+
+## 3.5 REST Endpoint Structure
+
+```text
 app/api/
 ├── v1/
 │   ├── auth.py
@@ -147,27 +148,28 @@ app/api/
 │   ├── health.py
 │   └── admin.py
 └── router.py
+```
 
-Required REST Routes
+### Required REST Routes
 
-GET    /api/v1/health
-POST   /api/v1/auth/login
-POST   /api/v1/auth/refresh
-GET    /api/v1/players
-GET    /api/v1/players/{player_id}
-GET    /api/v1/tournaments
-GET    /api/v1/tournaments/{tournament_id}
-GET    /api/v1/stats/player/{player_id}
-GET    /api/v1/projections
-GET    /api/v1/projections/{player_id}
-GET    /api/v1/betting/edges
-GET    /api/v1/rankings/current
-
+- GET    /api/v1/health
+- POST   /api/v1/auth/login
+- POST   /api/v1/auth/refresh
+- GET    /api/v1/players
+- GET    /api/v1/players/{player_id}
+- GET    /api/v1/tournaments
+- GET    /api/v1/tournaments/{tournament_id}
+- GET    /api/v1/stats/player/{player_id}
+- GET    /api/v1/projections
+- GET    /api/v1/projections/{player_id}
+- GET    /api/v1/betting/edges
+- GET    /api/v1/rankings/current
 
 ---
 
-3.6 GraphQL Structure
+## 3.6 GraphQL Structure
 
+```text
 app/graphql/
 ├── schema.py
 ├── context.py
@@ -177,35 +179,35 @@ app/graphql/
 ├── inputs/
 ├── permissions/
 └── dataloaders/
+```
 
-Required GraphQL Domains
+### Required GraphQL Domains
 
-Articles
+- Articles
 
-Authors
+- Authors
 
-Tags
+- Tags
 
-Categories
+### Categories
 
-SEO metadata
+- SEO metadata
 
-Article versions
+- Article versions
 
-AI generation requests
+- AI generation requests
 
-Admin users
-
-
+- Admin users
 
 ---
 
-3.7 Repository Layer
+## 3.7 Repository Layer
 
-Purpose
+### Purpose
 
 Repositories own database access.
 
+```text
 app/repositories/
 ├── player_repository.py
 ├── tournament_repository.py
@@ -215,20 +217,21 @@ app/repositories/
 ├── article_repository.py
 ├── user_repository.py
 └── ai_repository.py
+```
 
-Rule
+### Rule
 
 No route, resolver, or service should contain raw SQL unless explicitly approved for performance-critical analytics queries.
 
-
 ---
 
-3.8 Service Layer
+## 3.8 Service Layer
 
-Purpose
+### Purpose
 
 Services own business logic.
 
+```text
 app/services/
 ├── auth_service.py
 ├── player_service.py
@@ -239,11 +242,11 @@ app/services/
 ├── seo_service.py
 ├── ai_grounding_service.py
 └── audit_service.py
-
+```
 
 ---
 
-3.9 Authentication
+## 3.9 Authentication
 
 Required Features
 
@@ -259,7 +262,6 @@ API key support
 
 Audit logging
 
-
 Roles
 
 admin
@@ -269,16 +271,15 @@ subscriber
 free_user
 service
 
-
 ---
 
-3.10 Authorization
+## 3.10 Authorization
 
 Permission Format
 
 resource:action
 
-Examples
+### Examples
 
 article:create
 article:update
@@ -288,18 +289,19 @@ projection:premium_read
 admin:manage_users
 ai:generate
 
-
 ---
 
-3.11 Caching Layer
+## 3.11 Caching Layer
 
 Redis Cache Location
 
+```text
 app/caching/
 ├── redis.py
 ├── keys.py
 ├── decorators.py
 └── invalidation.py
+```
 
 Cache Priority
 
@@ -315,11 +317,9 @@ tournament pages
 
 betting edges
 
-
-
 ---
 
-3.12 API Performance Rules
+## 3.12 API Performance Rules
 
 Targets
 
@@ -330,7 +330,6 @@ Cached endpoint: <100ms
 Materialized-view backed endpoint: <50ms
 
 GraphQL admin query: <300ms
-
 
 Required Protections
 
@@ -346,20 +345,20 @@ Redis cache TTLs
 
 database index validation
 
-
-
 ---
 
-3.13 Observability
+## 3.13 Observability
 
 Module
 
+```text
 app/observability/
 ├── metrics.py
 ├── tracing.py
 ├── logging.py
 ├── sentry.py
 └── health.py
+```
 
 Required Signals
 
@@ -377,20 +376,21 @@ failed auth attempts
 
 background job failures
 
-
-
 ---
 
-3.14 Error Handling
+## 3.14 Error Handling
 
 Standard Error Shape
 
+```ts
 {
   "error": {
     "code": "RESOURCE_NOT_FOUND",
     "message": "Player not found",
     "details": {}
   }
+```
+
 }
 
 Error Categories
@@ -409,12 +409,11 @@ rate_limited
 
 internal_error
 
-
-
 ---
 
-3.15 Middleware
+## 3.15 Middleware
 
+```text
 app/middleware/
 ├── request_id.py
 ├── timing.py
@@ -422,11 +421,11 @@ app/middleware/
 ├── security_headers.py
 ├── rate_limit.py
 └── audit.py
-
+```
 
 ---
 
-3.16 AI Grounding API
+## 3.16 AI Grounding API
 
 Required Backend Services
 
@@ -440,17 +439,15 @@ hallucination flagging
 
 editorial approval workflow
 
-
 Required Endpoints
 
 POST /api/v1/ai/editorial-assist
 POST /api/v1/ai/validate-generation
 GET  /api/v1/ai/generations/{generation_id}
 
-
 ---
 
-3.17 Background Job Hooks
+## 3.17 Background Job Hooks
 
 Worker Integration Points
 
@@ -466,12 +463,11 @@ AI validation batch jobs
 
 materialized view refresh
 
-
-
 ---
 
-3.18 Testing Strategy
+## 3.18 Testing Strategy
 
+```text
 tests/
 ├── unit/
 ├── integration/
@@ -479,6 +475,7 @@ tests/
 ├── security/
 ├── performance/
 └── fixtures/
+```
 
 Required Coverage
 
@@ -496,11 +493,9 @@ cache behavior
 
 AI grounding validation
 
-
-
 ---
 
-3.19 Docker Requirements
+## 3.19 Docker Requirements
 
 API Dockerfile Must Include
 
@@ -514,13 +509,11 @@ production-safe command
 
 no dev reload in production
 
-
-
 ---
 
-3.20 Backend Validation Checklist
+## 3.20 Backend Validation Checklist
 
-Architecture
+### Architecture
 
 [ ] FastAPI app scaffolded
 
@@ -529,7 +522,6 @@ Architecture
 [ ] Repository layer implemented
 
 [ ] Service layer implemented
-
 
 Security
 
@@ -541,7 +533,6 @@ Security
 
 [ ] GraphQL playground disabled in production
 
-
 Performance
 
 [ ] Redis caching implemented
@@ -551,7 +542,6 @@ Performance
 [ ] Query limits enforced
 
 [ ] Hot endpoints benchmarked
-
 
 Observability
 
@@ -563,7 +553,6 @@ Observability
 
 [ ] Error tracking configured
 
-
 Testing
 
 [ ] Unit tests added
@@ -574,11 +563,18 @@ Testing
 
 [ ] API contract tests added
 
-
-
 ---
 
-Phase 3 Exit Condition
+## 3.20 Additional Required Tasks Identified
+
+### Tasks
+
+- Add billing and entitlement source-of-truth APIs, including webhook handlers for subscription lifecycle events.
+- Add OpenAPI and GraphQL contract versioning or validation tasks for public and admin-facing APIs.
+- Add observability instrumentation for auth, projections, admin actions, and AI-assisted workflows.
+- Add idempotency and audit-log requirements for background jobs, webhooks, and privileged mutations.
+
+## Phase 3 Exit Condition
 
 Phase 3 is complete only when:
 
@@ -598,5 +594,5 @@ AI grounding endpoints exist
 
 Tests validate core backend behavior
 
-
 Only after completion may Phase 4 Frontend Implementation begin.
+---

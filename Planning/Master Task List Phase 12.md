@@ -1,16 +1,16 @@
-Phase 12 — Scale & Optimization
+# Phase 12 — Scale & Optimization
 
-Phase Objective
+## Phase Objective
 
 Optimize Caddy Stats for growth, traffic spikes, larger datasets, premium analytics expansion, model reliability, cost control, and long-term maintainability.
 
-
 ---
 
-12.1 Scale Architecture
+## 12.1 Scale Architecture
 
 Core Scale Domains
 
+```text
 scale/
 ├── database/
 ├── api/
@@ -22,49 +22,37 @@ scale/
 ├── data-quality/
 ├── security/
 └── monetization/
-
+```
 
 ---
 
-12.2 Scaling Priorities
+## 12.2 Scaling Priorities
 
 Priority Order
 
 1. Database query performance
 
-
 2. API latency
-
 
 3. Cache hit rate
 
-
 4. Worker throughput
-
 
 5. Frontend bundle size
 
-
 6. AI cost efficiency
-
 
 7. Ingestion reliability
 
-
 8. Premium dashboard responsiveness
-
 
 9. SEO crawl efficiency
 
-
 10. Subscription conversion performance
-
-
-
 
 ---
 
-12.3 Database Optimization
+## 12.3 Database Optimization
 
 Required Work
 
@@ -84,7 +72,6 @@ partition high-volume historical tables
 
 archive cold data
 
-
 Hot Tables
 
 stats.rounds
@@ -96,10 +83,9 @@ analytics.simulations
 content.articles
 ai.ai_generations
 
-
 ---
 
-12.4 API Optimization
+## 12.4 API Optimization
 
 Required Work
 
@@ -119,7 +105,6 @@ split heavy admin queries
 
 rate-limit expensive routes
 
-
 Targets
 
 cached endpoint: <100ms
@@ -127,10 +112,9 @@ materialized endpoint: <50ms
 standard stats endpoint: <150ms
 admin dashboard query: <300ms
 
-
 ---
 
-12.5 Redis & Cache Optimization
+## 12.5 Redis & Cache Optimization
 
 Cache Domains
 
@@ -148,7 +132,6 @@ sitemap data
 
 internal link suggestions
 
-
 Required Work
 
 define TTL by data freshness
@@ -163,11 +146,9 @@ invalidate on source updates
 
 isolate premium cache keys
 
-
-
 ---
 
-12.6 Worker Scaling
+## 12.6 Worker Scaling
 
 Worker Types
 
@@ -194,11 +175,9 @@ autoscale workers by queue pressure
 
 cap expensive model jobs
 
-
-
 ---
 
-12.7 Frontend Optimization
+## 12.7 Frontend Optimization
 
 Required Work
 
@@ -218,7 +197,6 @@ measure Core Web Vitals
 
 reduce hydration cost where applicable
 
-
 Targets
 
 Lighthouse Performance: >90
@@ -227,10 +205,9 @@ LCP: <2.5s
 INP: <200ms
 CLS: <0.1
 
-
 ---
 
-12.8 SEO Scale
+## 12.8 SEO Scale
 
 Required Work
 
@@ -250,11 +227,9 @@ noindex low-value filtered pages
 
 validate structured data at scale
 
-
-
 ---
 
-12.9 AI Cost Optimization
+## 12.9 AI Cost Optimization
 
 Required Work
 
@@ -274,7 +249,6 @@ set per-user generation limits
 
 archive historical generation logs
 
-
 Required Metrics
 
 token cost per article
@@ -287,11 +261,9 @@ grounding source size
 
 accepted generation rate
 
-
-
 ---
 
-12.10 Data Quality Scaling
+## 12.10 Data Quality Scaling
 
 Required Work
 
@@ -309,11 +281,9 @@ compare model output drift
 
 track source provider reliability
 
-
-
 ---
 
-12.11 Model Performance Scaling
+## 12.11 Model Performance Scaling
 
 Required Work
 
@@ -331,11 +301,9 @@ support A/B testing model versions
 
 expose model confidence metadata
 
-
-
 ---
 
-12.12 Security Scaling
+## 12.12 Security Scaling
 
 Required Work
 
@@ -355,11 +323,9 @@ test backup recovery
 
 run access reviews
 
-
-
 ---
 
-12.13 Reliability Scaling
+## 12.13 Reliability Scaling
 
 Required Work
 
@@ -379,11 +345,9 @@ measure worker failure rates
 
 document postmortems
 
-
-
 ---
 
-12.14 Subscription Scale
+## 12.14 Subscription Scale
 
 Required Work
 
@@ -403,11 +367,9 @@ personalize premium CTAs
 
 improve onboarding flows
 
-
-
 ---
 
-12.15 Analytics Expansion
+## 12.15 Analytics Expansion
 
 Future Premium Systems
 
@@ -427,11 +389,9 @@ email intelligence briefings
 
 API access tier
 
-
-
 ---
 
-12.16 Infrastructure Scale
+## 12.16 Infrastructure Scale
 
 Required Work
 
@@ -449,11 +409,9 @@ separate ingestion workloads
 
 add regional redundancy when justified
 
-
-
 ---
 
-12.17 Cost Control
+## 12.17 Cost Control
 
 Cost Domains
 
@@ -473,7 +431,6 @@ email
 
 data providers
 
-
 Required Work
 
 cost dashboards
@@ -488,11 +445,9 @@ archive cold storage
 
 optimize provider request volume
 
-
-
 ---
 
-12.18 Observability Maturity
+## 12.18 Observability Maturity
 
 Required Dashboards
 
@@ -514,12 +469,11 @@ ingestion freshness
 
 betting odds freshness
 
-
-
 ---
 
-12.19 Scale Testing
+## 12.19 Scale Testing
 
+```text
 tests/performance/
 ├── api_load_test.py
 ├── graphql_complexity_test.py
@@ -528,12 +482,13 @@ tests/performance/
 ├── database_query_benchmark.sql
 ├── frontend_lighthouse_test.ts
 └── ai_cost_regression_test.py
-
+```
 
 ---
 
-12.20 Scale Documentation
+## 12.20 Scale Documentation
 
+```text
 docs/scale/
 ├── database-optimization.md
 ├── api-performance.md
@@ -544,13 +499,22 @@ docs/scale/
 ├── reliability-maturity.md
 ├── security-reviews.md
 └── cost-control.md
-
+```
 
 ---
 
-Phase 12 Validation Checklist
+## 12.16 Additional Required Tasks Identified
 
-Database
+### Tasks
+
+- Add load-testing, cache-invalidation audit, and query-budget enforcement tasks.
+- Add cost-observability and optimization targets across hosting, AI, and data vendors.
+- Add resilience drills for failover, queue backpressure, and degraded-mode behavior.
+- Add throughput benchmarking for workers, materialized views, and heavy analytical endpoints.
+
+## Phase 12 Validation Checklist
+
+### Database
 
 [ ] Slow queries reviewed
 
@@ -560,8 +524,7 @@ Database
 
 [ ] Partitioning confirmed
 
-
-API
+### API
 
 [ ] Latency targets met
 
@@ -571,8 +534,7 @@ API
 
 [ ] Expensive routes rate-limited
 
-
-Cache
+### Cache
 
 [ ] Cache hit rate measured
 
@@ -582,8 +544,7 @@ Cache
 
 [ ] Premium cache isolation confirmed
 
-
-Workers
+### Workers
 
 [ ] Queue depths monitored
 
@@ -593,8 +554,7 @@ Workers
 
 [ ] Autoscaling thresholds defined
 
-
-Frontend
+### Frontend
 
 [ ] Lighthouse targets met
 
@@ -604,8 +564,7 @@ Frontend
 
 [ ] Bundle size reviewed
 
-
-AI
+### AI
 
 [ ] Token costs tracked
 
@@ -615,8 +574,7 @@ AI
 
 [ ] Validation failure rate monitored
 
-
-Reliability
+### Reliability
 
 [ ] Rollback tested
 
@@ -626,11 +584,9 @@ Reliability
 
 [ ] Incident runbook updated
 
-
-
 ---
 
-Phase 12 Exit Condition
+## Phase 12 Exit Condition
 
 Phase 12 is complete only when:
 
@@ -656,5 +612,5 @@ Reliability tests are documented
 
 Cost controls are active
 
-
 Only after completion may Phase X Business & Monetization Expansion begin.
+---

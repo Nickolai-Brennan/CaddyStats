@@ -1,17 +1,18 @@
-Phase 9 — Hosting & Infrastructure Deployment
+# Phase 9 — Hosting & Infrastructure Deployment
 
-Phase Objective
+## Phase Objective
 
 Deploy Caddy Stats into a production-ready hosting environment with secure containers, managed PostgreSQL, Redis, CDN, SSL, CI/CD, monitoring, logging, backups, and rollback procedures.
 
-
 ---
 
-9.1 Infrastructure Architecture
+## 9.1 Infrastructure Architecture
 
-Core Services
+### Core Services
 
-Production Infrastructure
+- Production Infrastructure
+
+```text
 ├── Web frontend
 ├── Editor app
 ├── Admin app
@@ -24,40 +25,38 @@ Production Infrastructure
 ├── Object storage
 ├── Monitoring
 └── CI/CD
-
-
----
-
-9.2 Environment Strategy
-
-Required Environments
-
-local
-development
-staging
-production
-
-Environment Rules
-
-production secrets isolated
-
-staging mirrors production
-
-local uses Docker Compose
-
-development supports seeded data
-
-production disables debug tooling
-
-GraphQL playground disabled outside local
-
-
+```
 
 ---
 
-9.3 Hosting Responsibilities
+## 9.2 Environment Strategy
 
-Frontend Hosting
+### Required Environments
+
+- local
+- development
+- staging
+- production
+
+### Environment Rules
+
+- production secrets isolated
+
+- staging mirrors production
+
+- local uses Docker Compose
+
+- development supports seeded data
+
+- production disables debug tooling
+
+- GraphQL playground disabled outside local
+
+---
+
+## 9.3 Hosting Responsibilities
+
+### Frontend Hosting
 
 apps/web
 
@@ -69,8 +68,7 @@ SSL enabled
 
 route fallback for React Router
 
-
-Editor Hosting
+### Editor Hosting
 
 apps/editor
 
@@ -80,8 +78,7 @@ noindex headers
 
 restricted access policy
 
-
-Admin Hosting
+### Admin Hosting
 
 apps/admin
 
@@ -91,8 +88,7 @@ noindex headers
 
 stronger RBAC enforcement
 
-
-API Hosting
+### API Hosting
 
 services/api
 
@@ -104,12 +100,11 @@ health checks
 
 rate limiting
 
-
-
 ---
 
-9.4 Docker Architecture
+## 9.4 Docker Architecture
 
+```text
 infrastructure/docker/
 ├── api/
 │   └── Dockerfile
@@ -125,107 +120,100 @@ infrastructure/docker/
 │   └── nginx.conf
 └── postgres/
     └── init.sql
-
-
----
-
-9.5 Production Docker Standards
-
-Required
-
-multi-stage builds
-
-non-root runtime users
-
-pinned dependency versions
-
-minimal base images
-
-no dev reload commands
-
-health checks
-
-explicit environment variables
-
-secrets injected at runtime
-
-no secrets baked into images
-
-
+```
 
 ---
 
-9.6 Docker Compose Local Stack
+## 9.5 Production Docker Standards
 
-File
+### Required
+
+- multi-stage builds
+
+- non-root runtime users
+
+- pinned dependency versions
+
+- minimal base images
+
+- no dev reload commands
+
+- health checks
+
+- explicit environment variables
+
+- secrets injected at runtime
+
+- no secrets baked into images
+
+---
+
+## 9.6 Docker Compose Local Stack
+
+### File
 
 docker-compose.yml
 
-Services
+### Services
 
-postgres
-redis
-api
-web
-editor
-admin
-worker
-nginx
+- postgres
+- redis
+- api
+- web
+- editor
+- admin
+- worker
+- nginx
 
-Local Requirements
+### Local Requirements
 
-seeded PostgreSQL data
+- seeded PostgreSQL data
 
-Redis cache
+- Redis cache
 
-hot reload where appropriate
+- hot reload where appropriate
 
-isolated local volumes
+- isolated local volumes
 
-health checks for all services
-
-
+- health checks for all services
 
 ---
 
-9.7 Managed PostgreSQL
+## 9.7 Managed PostgreSQL
 
-Requirements
+### Requirements
 
-automated backups
+- automated backups
 
-point-in-time recovery
+- point-in-time recovery
 
-SSL required
+- SSL required
 
-private networking preferred
+- private networking preferred
 
-read replica support
+- read replica support
 
-connection pooling
+- connection pooling
 
-monitoring enabled
+- monitoring enabled
 
-restricted roles
+- restricted roles
 
+### Production Add-ons
 
-Production Add-ons
+- pgBouncer
 
-pgBouncer
+- read replica
 
-read replica
+- WAL archiving
 
-WAL archiving
-
-slow query logging
-
-
+- slow query logging
 
 ---
 
-9.8 Redis Hosting
+## 9.8 Redis Hosting
 
-Use Cases
+### Use Cases
 
 API response cache
 
@@ -237,26 +225,23 @@ job queues
 
 materialized view refresh locks
 
+### Requirements
 
-Requirements
+- managed Redis preferred
 
-managed Redis preferred
+- TLS enabled
 
-TLS enabled
+- eviction policy documented
 
-eviction policy documented
+- persistence strategy defined
 
-persistence strategy defined
-
-restricted network access
-
-
+- restricted network access
 
 ---
 
-9.9 Object Storage
+## 9.9 Object Storage
 
-Use Cases
+### Use Cases
 
 article images
 
@@ -270,24 +255,21 @@ media uploads
 
 temporary AI artifacts
 
+### Requirements
 
-Requirements
+- private bucket by default
 
-private bucket by default
+- CDN-backed public assets
 
-CDN-backed public assets
+- signed upload URLs
 
-signed upload URLs
+- lifecycle policies
 
-lifecycle policies
-
-malware scanning hook
-
-
+- malware scanning hook
 
 ---
 
-9.10 CDN Strategy
+## 9.10 CDN Strategy
 
 CDN Responsibilities
 
@@ -303,7 +285,6 @@ cache public images
 
 protect origin
 
-
 Cache Categories
 
 static assets: 1 year immutable
@@ -312,10 +293,9 @@ sitemaps: 1 hour
 API public rankings: 1–5 minutes
 premium/API auth: no shared cache
 
-
 ---
 
-9.11 Nginx Reverse Proxy
+## 9.11 Nginx Reverse Proxy
 
 Responsibilities
 
@@ -331,7 +311,6 @@ timeout controls
 
 upstream health checks
 
-
 Routes
 
 /                  → web
@@ -340,12 +319,11 @@ Routes
 /editor/           → editor
 /admin/            → admin
 
-
 ---
 
-9.12 SSL & Domain Strategy
+## 9.12 SSL & Domain Strategy
 
-Required Domains
+### Required Domains
 
 caddystats.com
 www.caddystats.com
@@ -354,26 +332,25 @@ editor.caddystats.com
 admin.caddystats.com
 cdn.caddystats.com
 
-Requirements
+### Requirements
 
-HTTPS everywhere
+- HTTPS everywhere
 
-automatic certificate renewal
+- automatic certificate renewal
 
-HSTS enabled
+- HSTS enabled
 
-canonical domain redirect
+- canonical domain redirect
 
-www/non-www policy documented
-
-
+- www/non-www policy documented
 
 ---
 
-9.13 CI/CD Architecture
+## 9.13 CI/CD Architecture
 
 GitHub Actions
 
+```text
 .github/workflows/
 ├── ci.yml
 ├── test.yml
@@ -381,11 +358,11 @@ GitHub Actions
 ├── build-images.yml
 ├── deploy-staging.yml
 └── deploy-production.yml
-
+```
 
 ---
 
-9.14 CI Pipeline
+## 9.14 CI Pipeline
 
 Required Checks
 
@@ -407,11 +384,9 @@ dependency vulnerability scan
 
 secret scan
 
-
-
 ---
 
-9.15 Deployment Pipeline
+## 9.15 Deployment Pipeline
 
 Staging
 
@@ -428,7 +403,6 @@ validate sitemap
 validate GraphQL disabled settings
 
 notify deployment channel
-
 
 Production
 
@@ -452,45 +426,41 @@ verify monitoring
 
 record changelog entry
 
+---
 
+## 9.16 Secrets Management
+
+### Rules
+
+- no secrets in repo
+
+- no secrets in images
+
+- rotate production secrets
+
+- scoped service credentials
+
+- encrypted CI secrets
+
+- environment-specific secrets
+
+- audit secret access
+
+- Required Secrets
+
+- DATABASE_URL
+- REDIS_URL
+- JWT_SECRET
+- ENCRYPTION_KEY
+- OPENAI_API_KEY
+- SENTRY_DSN
+- OBJECT_STORAGE_KEY
+- OBJECT_STORAGE_SECRET
+- CDN_PURGE_TOKEN
 
 ---
 
-9.16 Secrets Management
-
-Rules
-
-no secrets in repo
-
-no secrets in images
-
-rotate production secrets
-
-scoped service credentials
-
-encrypted CI secrets
-
-environment-specific secrets
-
-audit secret access
-
-
-Required Secrets
-
-DATABASE_URL
-REDIS_URL
-JWT_SECRET
-ENCRYPTION_KEY
-OPENAI_API_KEY
-SENTRY_DSN
-OBJECT_STORAGE_KEY
-OBJECT_STORAGE_SECRET
-CDN_PURGE_TOKEN
-
-
----
-
-9.17 Observability Stack
+## 9.17 Observability Stack
 
 Required Tools
 
@@ -508,7 +478,6 @@ database monitoring
 
 Redis monitoring
 
-
 Suggested Stack
 
 Prometheus
@@ -517,10 +486,9 @@ Loki
 Sentry
 OpenTelemetry
 
-
 ---
 
-9.18 Monitoring Dashboards
+## 9.18 Monitoring Dashboards
 
 Required Dashboards
 
@@ -544,11 +512,9 @@ sitemap generation status
 
 subscription/payment health
 
-
-
 ---
 
-9.19 Alerting Rules
+## 9.19 Alerting Rules
 
 Critical Alerts
 
@@ -570,7 +536,6 @@ storage upload failure
 
 backup failure
 
-
 Warning Alerts
 
 high API latency
@@ -585,11 +550,9 @@ stale projections
 
 sitemap generation failure
 
-
-
 ---
 
-9.20 Logging Standards
+## 9.20 Logging Standards
 
 Required Log Fields
 
@@ -604,23 +567,21 @@ status_code
 error_code
 environment
 
-Rules
+### Rules
 
-redact secrets
+- redact secrets
 
-redact tokens
+- redact tokens
 
-redact raw payment data
+- redact raw payment data
 
-redact sensitive user fields
+- redact sensitive user fields
 
-preserve audit logs separately
-
-
+- preserve audit logs separately
 
 ---
 
-9.21 Background Worker Deployment
+## 9.21 Background Worker Deployment
 
 Worker Types
 
@@ -631,72 +592,65 @@ seo_worker
 ai_validation_worker
 email_worker
 
-Requirements
+### Requirements
 
-isolated queue names
+- isolated queue names
 
-retry policies
+- retry policies
 
-dead-letter queues
+- dead-letter queues
 
-concurrency limits
+- concurrency limits
 
-idempotent jobs
+- idempotent jobs
 
-job timeout limits
-
-
+- job timeout limits
 
 ---
 
-9.22 Database Migration Deployment
+## 9.22 Database Migration Deployment
 
-Rules
+### Rules
 
-migrations run before app rollout when backward-compatible
+- migrations run before app rollout when backward-compatible
 
-destructive migrations require two-step rollout
+- destructive migrations require two-step rollout
 
-backup before production migrations
+- backup before production migrations
 
-migration logs stored
+- migration logs stored
 
-rollback plan required
+- rollback plan required
 
-migrations executed by migration_role
-
-
+- migrations executed by migration_role
 
 ---
 
-9.23 Backup & Recovery
+## 9.23 Backup & Recovery
 
-Required
+### Required
 
-nightly PostgreSQL backups
+- nightly PostgreSQL backups
 
-point-in-time recovery
+- point-in-time recovery
 
-object storage lifecycle backups
+- object storage lifecycle backups
 
-Redis persistence policy
+- Redis persistence policy
 
-backup restore testing
+- backup restore testing
 
-disaster recovery runbook
+- disaster recovery runbook
 
+- Recovery Targets
 
-Recovery Targets
+- RPO: 15 minutes for database
 
-RPO: 15 minutes for database
-
-RTO: 2 hours for critical API recovery
-
-
+- RTO: 2 hours for critical API recovery
 
 ---
 
-9.24 Security Headers
+## 9.24 Security Headers
 
 Required Headers
 
@@ -707,10 +661,9 @@ X-Frame-Options
 Referrer-Policy
 Permissions-Policy
 
-
 ---
 
-9.25 Rate Limiting
+## 9.25 Rate Limiting
 
 API Rate Limit Categories
 
@@ -735,20 +688,18 @@ GraphQL
 
 betting edges export
 
-
-
 ---
 
-9.26 Production Health Checks
+## 9.26 Production Health Checks
 
-API
+### API
 
 GET /api/v1/health
 GET /api/v1/health/db
 GET /api/v1/health/redis
 GET /api/v1/health/workers
 
-Frontend
+### Frontend
 
 root page loads
 
@@ -758,11 +709,9 @@ rankings route loads
 
 premium gate route loads
 
-
-
 ---
 
-9.27 Rollback Strategy
+## 9.27 Rollback Strategy
 
 Required Rollback Types
 
@@ -778,15 +727,13 @@ config rollback
 
 feature flag rollback
 
-
-Rule
+### Rule
 
 Database rollback must be planned before migration, not after failure.
 
-
 ---
 
-9.28 Feature Flags
+## 9.28 Feature Flags
 
 Required Flags
 
@@ -802,12 +749,11 @@ new_rankings_model_enabled
 
 editor_workflow_enabled
 
-
-
 ---
 
-9.29 Infrastructure Documentation
+## 9.29 Infrastructure Documentation
 
+```text
 docs/devops/
 ├── environment-strategy.md
 ├── deployment-runbook.md
@@ -817,11 +763,20 @@ docs/devops/
 ├── backup-recovery.md
 ├── incident-response.md
 └── production-checklist.md
-
+```
 
 ---
 
-Phase 9 Validation Checklist
+## 9.17 Additional Required Tasks Identified
+
+### Tasks
+
+- Add explicit RTO, RPO, failover, and disaster-recovery runbook requirements.
+- Add secret rotation, container or dependency scanning, and environment-promotion control tasks.
+- Add CDN or WAF caching, origin protection, and rollout verification requirements.
+- Add deployment rollback rehearsals and restore-validation checkpoints.
+
+## Phase 9 Validation Checklist
 
 Hosting
 
@@ -833,7 +788,6 @@ Hosting
 
 [ ] CDN enabled
 
-
 Containers
 
 [ ] Dockerfiles production-safe
@@ -844,8 +798,7 @@ Containers
 
 [ ] Docker Compose works locally
 
-
-Database
+### Database
 
 [ ] Managed PostgreSQL configured
 
@@ -855,7 +808,6 @@ Database
 
 [ ] Connection pooling configured
 
-
 Redis
 
 [ ] Redis provisioned
@@ -863,7 +815,6 @@ Redis
 [ ] TLS enabled
 
 [ ] Cache policy documented
-
 
 CI/CD
 
@@ -875,7 +826,6 @@ CI/CD
 
 [ ] Production deploy gated
 
-
 Observability
 
 [ ] Metrics configured
@@ -885,7 +835,6 @@ Observability
 [ ] Error tracking enabled
 
 [ ] Alerts configured
-
 
 Security
 
@@ -897,7 +846,6 @@ Security
 
 [ ] GraphQL playground disabled in production
 
-
 Recovery
 
 [ ] Backups verified
@@ -906,11 +854,9 @@ Recovery
 
 [ ] Disaster recovery runbook created
 
-
-
 ---
 
-Phase 9 Exit Condition
+## Phase 9 Exit Condition
 
 Phase 9 is complete only when:
 
@@ -936,5 +882,5 @@ Rollback runbooks exist
 
 Production smoke tests pass
 
-
 Only after completion may Phase 10 Admin Systems begin.
+---
