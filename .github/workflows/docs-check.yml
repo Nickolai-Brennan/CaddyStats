@@ -45,6 +45,3 @@ jobs:
           echo "Code or data changes were detected, but no documentation updates were found."
           echo "Please update Support/docs and/or README.md in this pull request."
           exit 1
-
-      - name: Docs check passed
-        run: echo "Docs requirements satisfied for this pull request."
