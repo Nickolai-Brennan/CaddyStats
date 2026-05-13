@@ -1,4 +1,5 @@
 """Integration coverage for the foundational PostgreSQL migration."""
+# ruff: noqa: E501
 
 from __future__ import annotations
 
@@ -6,11 +7,11 @@ import asyncio
 import os
 from pathlib import Path
 
-from alembic import command
 from alembic.config import Config
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
+from alembic import command
 from scripts.database.seed import run_seed
 
 TEST_DATABASE_URL = os.getenv(
