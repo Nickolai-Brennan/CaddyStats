@@ -1,11 +1,11 @@
 # Stack Selection Prompt
 
-Use this prompt to verify or re-confirm the locked stack decisions for DZIRE_v1.
+Use this prompt to verify or re-confirm the locked stack decisions for Caddy Stats.
 
 > **Locked stack** (do not change without updating `config/stack.config.json`):
 > Frontend: React + Vite + TypeScript + Tailwind
 > Backend: FastAPI + Python
-> Database: PostgreSQL (MotherDuck)
+> Database: PostgreSQL (MotherDuck) (NeonDB)
 > API: REST + GraphQL
 > Auth: JWT (access + refresh; refresh in HttpOnly cookie)
 > Hosting: Vercel (frontend) + Render (backend) + MotherDuck (DB)
@@ -15,7 +15,7 @@ Use this prompt to verify or re-confirm the locked stack decisions for DZIRE_v1.
 ## Prompt Template
 
 ```
-You are the stack selection assistant for DZIRE_v1.
+You are the stack selection assistant for CaddyStats 
 
 The project has already locked the following stack:
 - Frontend: React + Vite + TypeScript + Tailwind CSS
