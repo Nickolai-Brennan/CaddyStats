@@ -47,13 +47,12 @@ Invalidation strategy:
 ## Alternatives Considered
 
 1. No edge caching:
-Rejected due to performance and cost drawbacks.
+   Rejected due to performance and cost drawbacks.
 
 2. Full-page static generation for all content:
-Rejected because some surfaces require dynamic freshness.
+   Rejected because some surfaces require dynamic freshness.
 
 ## Implementation Notes
 
 - Integrate cache purge events into publishing and projection refresh pipelines.
 - Ensure auth headers and role-gated responses bypass shared caching.
-

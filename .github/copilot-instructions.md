@@ -7,6 +7,7 @@ Caddy Stats is a production-grade full-stack golf analytics, content, and bettin
 The platform combines structured golf data, statistical models, editorial workflows, SEO content systems, admin tooling, and AI-assisted analysis into one scalable application.
 
 Primary domains:
+
 - PGA/golf statistics and player analytics
 - Tournament, course, and field intelligence
 - Betting and fantasy research tools
@@ -17,6 +18,7 @@ Primary domains:
 - Subscription, affiliate, and monetization systems
 
 Primary goals:
+
 - Build a data-first analytics platform, not a demo blog
 - Keep all statistics grounded in database-backed or fetched data
 - Maintain clean separation between content, stats, API, and UI layers
@@ -28,6 +30,7 @@ Primary goals:
 # Approved Tech Stack
 
 ## Frontend
+
 - React
 - Vite
 - TypeScript
@@ -36,6 +39,7 @@ Primary goals:
 - TanStack Table
 
 ## Backend
+
 - Python
 - FastAPI
 - Strawberry GraphQL
@@ -44,6 +48,7 @@ Primary goals:
 - SQLAlchemy or equivalent typed database access layer
 
 ## Database
+
 - PostgreSQL
 - Schemas:
   - `content` for editorial, CMS, blocks, templates, publishing metadata
@@ -52,6 +57,7 @@ Primary goals:
 - Materialized views for high-read projection and analytics queries
 
 ## Infrastructure
+
 - Docker
 - GitHub Actions
 - Managed PostgreSQL: Neon, Supabase, or equivalent
@@ -60,6 +66,7 @@ Primary goals:
 - SSL enforced in production
 
 ## AI Layer
+
 - Prompt injection layer
 - Stats grounding layer
 - Editor AI assist
@@ -67,6 +74,7 @@ Primary goals:
 - AI output logging and review controls
 
 ## Security
+
 - JWT authentication
 - Role-based permissions
 - Rate limiting
@@ -93,7 +101,7 @@ Build phases must proceed in this order unless explicitly overridden for a docum
 10. Admin
 11. Integrations
 12. Scale
-X. Business
+    X. Business
 
 If a requested change violates this order, identify the correct phase and explain the dependency before generating code.
 
@@ -102,6 +110,7 @@ If a requested change violates this order, identify the correct phase and explai
 # Architecture Rules
 
 Every implementation decision must map to at least one of the following:
+
 - A document
 - A folder
 - A database object
@@ -158,6 +167,7 @@ commands/   -> command-agent
 Caddy Stats is data-first.
 
 Always follow these rules:
+
 - Never hallucinate player stats, odds, projections, rankings, or model results
 - Only reference statistics from injected data, fetched data, database queries, or explicitly provided inputs
 - Clearly separate computed values from editorial narrative
@@ -171,6 +181,7 @@ Always follow these rules:
 Use PostgreSQL as the source of truth.
 
 Required patterns:
+
 - Use migrations for schema changes
 - Index high-read fields
 - Avoid unbounded queries
@@ -203,6 +214,7 @@ backend/app/
 ```
 
 Rules:
+
 - Routes parse requests and format responses only
 - Business logic belongs in services
 - Database access belongs in repositories/data-access layers
@@ -215,6 +227,7 @@ Rules:
 ## REST + GraphQL
 
 Use REST for:
+
 - stats endpoints
 - operational APIs
 - auth
@@ -223,6 +236,7 @@ Use REST for:
 - webhook handlers
 
 Use Strawberry GraphQL for:
+
 - flexible editorial queries
 - admin dashboard composition
 - nested content/data views where GraphQL adds clear value
@@ -253,6 +267,7 @@ frontend/src/
 ```
 
 Rules:
+
 - Use TypeScript throughout
 - Use TanStack Query for server state
 - Use TanStack Table for sortable/filterable analytics tables
@@ -266,6 +281,7 @@ Rules:
 ## UI Priorities
 
 Caddy Stats UI should support:
+
 - Public SEO pages
 - Player pages
 - Tournament pages
@@ -283,6 +299,7 @@ Caddy Stats UI should support:
 # Content + Editorial Standards
 
 Caddy Stats editorial content must be:
+
 - Structured
 - Analytical
 - Model-grounded
@@ -292,6 +309,7 @@ Caddy Stats editorial content must be:
 - Mobile-first
 
 Avoid:
+
 - Fluff betting tout language
 - Unsupported claims
 - Fabricated confidence levels
@@ -299,6 +317,7 @@ Avoid:
 - Uncited current facts
 
 When building CMS/editor features, support:
+
 - Structured blocks
 - Sanitized HTML
 - Reusable templates
@@ -314,6 +333,7 @@ When building CMS/editor features, support:
 # SEO Standards
 
 Public-facing pages should support:
+
 - Unique title tags
 - Meta descriptions
 - Canonical URLs
@@ -333,6 +353,7 @@ Do not generate SEO pages that rely on invented data.
 AI systems must be grounded and auditable.
 
 Required rules:
+
 - Prompt versions must be stored or documented
 - AI output should include input context references where possible
 - Critical betting, projection, and recommendation workflows require human review
@@ -355,6 +376,7 @@ docs/ai.md
 # Security Standards
 
 Required:
+
 - JWT auth
 - Role-based access control
 - HTTPS in production
@@ -369,6 +391,7 @@ Required:
 - No secrets in logs
 
 Roles should include, at minimum:
+
 - anonymous
 - user
 - subscriber
@@ -381,6 +404,7 @@ Roles should include, at minimum:
 # Performance Standards
 
 Targets:
+
 - Local API response time: under 150ms for common endpoints
 - Cached endpoint response time: under 100ms
 - Lighthouse score: above 90 where practical
@@ -390,6 +414,7 @@ Targets:
 - CDN-backed static assets
 
 Watch for:
+
 - N+1 queries
 - unnecessary JSONB scans
 - missing indexes
@@ -403,6 +428,7 @@ Watch for:
 # Testing Standards
 
 Required test areas:
+
 - Backend unit tests for services
 - API integration tests
 - Database migration validation
@@ -441,6 +467,7 @@ Recommended workflows:
 ```
 
 Cadence:
+
 - `ci.yml` -> every PR
 - `api-contract.yml` -> every PR
 - `docs-check.yml` -> every PR
@@ -449,6 +476,7 @@ Cadence:
 - `architecture-drift.yml` -> weekly
 
 Rule:
+
 - If it can produce deterministic pass/fail output, automate it in CI
 - If it requires judgment, keep it as an AI review prompt or scheduled report
 
@@ -476,6 +504,7 @@ Proceeding edit plan:
 ```
 
 Rules:
+
 - Inspect the target file before editing
 - Identify the relevant skill, instruction, agent, tool, and validator
 - Never overwrite originals without a backup or explicit intent
@@ -497,6 +526,7 @@ When generating implementation output, use this structure unless a smaller answe
 6. Risks & Considerations
 
 When producing code:
+
 - Include file paths
 - Include imports
 - Include typing
@@ -524,6 +554,7 @@ command: add or update command
 ```
 
 Pull requests should include:
+
 - Scope summary
 - Files changed
 - Test/validation notes
@@ -560,6 +591,7 @@ Changelog format:
 
 ```md
 ## YYYY-MM-DD — [Task ID]
+
 - Added:
 - Changed:
 - Fixed:
@@ -573,6 +605,7 @@ Changelog format:
 # Monetization Alignment
 
 Features should connect to at least one of:
+
 - Subscription value
 - Affiliate value
 - Data differentiation
@@ -587,6 +620,7 @@ If a feature does not support growth, monetization, operational quality, or data
 # Avoid
 
 Do not:
+
 - Switch frameworks casually
 - Add unnecessary dependencies
 - Generate mock stats as if real
@@ -606,6 +640,7 @@ Do not:
 For Caddy Stats, default to architecture-first, data-first, and validation-first execution.
 
 When uncertain:
+
 1. Preserve the approved stack
 2. Protect data integrity
 3. Follow the build order

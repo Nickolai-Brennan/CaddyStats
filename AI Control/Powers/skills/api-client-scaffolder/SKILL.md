@@ -88,13 +88,11 @@ const API_KEY = process.env.API_KEY;
 async function apiRequest<T>(
   method: string,
   path: string,
-  options: { body?: unknown; params?: Record<string, string> } = {},
+  options: { body?: unknown; params?: Record<string, string> } = {}
 ): Promise<T> {
   const url = new URL(path, API_BASE_URL);
   if (options.params) {
-    Object.entries(options.params).forEach(([k, v]) =>
-      url.searchParams.set(k, v),
-    );
+    Object.entries(options.params).forEach(([k, v]) => url.searchParams.set(k, v));
   }
 
   const response = await fetch(url.toString(), {
@@ -163,18 +161,13 @@ export async function createUser(data: CreateUserRequest): Promise<User> {
 ### Step 5 — Add Retry Logic (Optional)
 
 ```typescript
-async function withRetry<T>(
-  fn: () => Promise<T>,
-  maxRetries = 3,
-  backoffMs = 1000,
-): Promise<T> {
+async function withRetry<T>(fn: () => Promise<T>, maxRetries = 3, backoffMs = 1000): Promise<T> {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await fn();
     } catch (err) {
       if (attempt === maxRetries) throw err;
-      if (err instanceof ApiError && err.status >= 400 && err.status < 500)
-        throw err; // Don't retry 4xx
+      if (err instanceof ApiError && err.status >= 400 && err.status < 500) throw err; // Don't retry 4xx
       await new Promise((resolve) => setTimeout(resolve, backoffMs * attempt));
     }
   }

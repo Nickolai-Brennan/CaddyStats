@@ -2,8 +2,7 @@
 name: database-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [data_models, query_patterns, database_type, scale_requirements]
-outputs:
-  [ddl_sql, erd_description, index_plan, migration_strategy, naming_conventions]
+outputs: [ddl_sql, erd_description, index_plan, migration_strategy, naming_conventions]
 ---
 
 # Database Agent

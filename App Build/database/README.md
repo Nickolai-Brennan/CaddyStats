@@ -19,4 +19,3 @@
 - Alembic upgrade/downgrade smoke-tested in `services/api/tests/test_database_foundation.py`
 - Seed data loader refreshes the initial materialized views after inserts
 - High-read indexes verified by automated integration assertions
-

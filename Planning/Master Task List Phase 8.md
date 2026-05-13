@@ -512,8 +512,8 @@ POST /api/v1/ai/seo-suggestions
 POST /api/v1/ai/projection-summary
 POST /api/v1/ai/betting-edge-summary
 POST /api/v1/ai/validate-generation
-GET  /api/v1/ai/generations/{generation_id}
-GET  /api/v1/ai/generations/{generation_id}/validations
+GET /api/v1/ai/generations/{generation_id}
+GET /api/v1/ai/generations/{generation_id}/validations
 
 ---
 
@@ -826,5 +826,4 @@ Premium data leakage checks are active
 
 Editor can review, validate, and insert AI content safely
 
-Only after completion may Phase 9 Hosting & Infrastructure Deployment begin.
----
+## Only after completion may Phase 9 Hosting & Infrastructure Deployment begin.

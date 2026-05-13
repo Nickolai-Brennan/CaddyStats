@@ -3,9 +3,11 @@
 ## 0. Documentation
 
 ### Goal
+
 Define the platform before implementation so every later task maps to a document, folder, database object, API endpoint, UI component, or deployment step.
 
 ### Tasks
+
 - Create core product documentation:
   - product vision
   - scope and non-goals
@@ -35,6 +37,7 @@ Define the platform before implementation so every later task maps to a document
   - editorial vs computed-content separation rules
 
 ### Categories
+
 - Product docs
 - Architecture docs
 - Security docs
@@ -42,6 +45,7 @@ Define the platform before implementation so every later task maps to a document
 - Delivery docs
 
 ### Deliverables
+
 - `docs/product/vision.md`
 - `docs/architecture/system-overview.md`
 - `docs/architecture/domain-model.md`
@@ -54,9 +58,11 @@ Define the platform before implementation so every later task maps to a document
 ## 1. Folder Setup
 
 ### Goal
+
 Establish the approved root structure and ownership boundaries.
 
 ### Tasks
+
 - Create root directories:
   - `.github/`
   - `agents/`
@@ -82,12 +88,14 @@ Establish the approved root structure and ownership boundaries.
 - Add environment file templates
 
 ### Categories
+
 - Repository structure
 - Ownership boundaries
 - Developer experience
 - Configuration
 
 ### Deliverables
+
 - folder scaffold
 - `docs/repository-structure.md`
 - `config/` base configs
@@ -98,10 +106,13 @@ Establish the approved root structure and ownership boundaries.
 ## 2. Database
 
 ### Goal
+
 Design PostgreSQL as the source of truth for content and stats.
 
 ### Tasks
+
 #### Schema design
+
 - Define `stats` schema:
   - players
   - tournaments
@@ -136,11 +147,13 @@ Design PostgreSQL as the source of truth for content and stats.
   - model execution logs
 
 #### Migration system
+
 - Set up migration tooling
 - Create baseline migrations
 - Add seed scripts for local development
 
 #### Performance
+
 - Add indexes on high-read fields
 - Identify materialized views for:
   - leaderboard summaries
@@ -149,6 +162,7 @@ Design PostgreSQL as the source of truth for content and stats.
   - model performance snapshots
 
 ### Categories
+
 - Stats schema
 - Content schema
 - Auth schema
@@ -156,6 +170,7 @@ Design PostgreSQL as the source of truth for content and stats.
 - Performance/database optimization
 
 ### Deliverables
+
 - `database/migrations/`
 - `database/schema/`
 - `database/seeds/`
@@ -167,10 +182,13 @@ Design PostgreSQL as the source of truth for content and stats.
 ## 3. Backend
 
 ### Goal
+
 Build a production-grade FastAPI backend with clear service and repository separation.
 
 ### Tasks
+
 #### Core app setup
+
 - Create backend structure under:
   - `backend/app/main.py`
   - `core/`
@@ -186,6 +204,7 @@ Build a production-grade FastAPI backend with clear service and repository separ
 - Configure app startup, settings, dependency injection, logging
 
 #### Auth and security
+
 - JWT auth
 - role-based authorization
 - request validation
@@ -194,6 +213,7 @@ Build a production-grade FastAPI backend with clear service and repository separ
 - CORS and environment-based settings
 
 #### API domains
+
 - Player stats endpoints
 - Tournament endpoints
 - Course endpoints
@@ -203,11 +223,13 @@ Build a production-grade FastAPI backend with clear service and repository separ
 - Admin operational endpoints
 
 #### GraphQL
+
 - Add Strawberry GraphQL for structured analytics/content querying
 - Disable playground in production
 - Add auth guards
 
 #### Services and repositories
+
 - Repository layer for all DB access
 - Service layer for:
   - projection calculations
@@ -217,6 +239,7 @@ Build a production-grade FastAPI backend with clear service and repository separ
   - model evaluation
 
 ### Categories
+
 - Core backend infrastructure
 - Auth/security
 - REST APIs
@@ -225,6 +248,7 @@ Build a production-grade FastAPI backend with clear service and repository separ
 - Repository layer
 
 ### Deliverables
+
 - FastAPI app bootstrap
 - auth module
 - stats/content routes
@@ -236,10 +260,13 @@ Build a production-grade FastAPI backend with clear service and repository separ
 ## 4. Frontend
 
 ### Goal
+
 Build the React/Vite app for analytics, content, and user workflows.
 
 ### Tasks
+
 #### Foundation
+
 - Set up React + Vite + TypeScript
 - Add Tailwind
 - Add TanStack Query
@@ -247,6 +274,7 @@ Build the React/Vite app for analytics, content, and user workflows.
 - Configure routing, layouts, and app shell
 
 #### Public pages
+
 - homepage
 - player pages
 - tournament pages
@@ -256,6 +284,7 @@ Build the React/Vite app for analytics, content, and user workflows.
 - rankings/projections pages
 
 #### Data UI
+
 - stat tables
 - filters
 - leaderboard views
@@ -264,6 +293,7 @@ Build the React/Vite app for analytics, content, and user workflows.
 - market cards
 
 #### Shared systems
+
 - design tokens
 - reusable UI components
 - loading/error states
@@ -271,6 +301,7 @@ Build the React/Vite app for analytics, content, and user workflows.
 - SEO metadata helpers
 
 ### Categories
+
 - Frontend foundation
 - Public experience
 - Analytics UI
@@ -278,6 +309,7 @@ Build the React/Vite app for analytics, content, and user workflows.
 - Performance and SEO support
 
 ### Deliverables
+
 - `frontend/` app scaffold
 - routing system
 - page templates
@@ -289,9 +321,11 @@ Build the React/Vite app for analytics, content, and user workflows.
 ## 5. Editor
 
 ### Goal
+
 Build editorial workflows for creating, reviewing, and publishing golf content.
 
 ### Tasks
+
 - Create article editor UI
 - Support structured content blocks
 - Add draft/publish workflow
@@ -302,12 +336,14 @@ Build editorial workflows for creating, reviewing, and publishing golf content.
 - Add editorial review states
 
 ### Categories
+
 - CMS/editor
 - Workflow/state management
 - Content validation
 - Revision control
 
 ### Deliverables
+
 - editor screens
 - content block schema
 - publish workflow endpoints
@@ -318,9 +354,11 @@ Build editorial workflows for creating, reviewing, and publishing golf content.
 ## 6. Templates
 
 ### Goal
+
 Create reusable page and article templates for scalable publishing.
 
 ### Tasks
+
 - Define article templates:
   - player profile
   - tournament preview
@@ -333,12 +371,14 @@ Create reusable page and article templates for scalable publishing.
 - Add template-to-data binding rules
 
 ### Categories
+
 - Editorial templates
 - Landing page templates
 - Rendering contracts
 - Data binding rules
 
 ### Deliverables
+
 - `templates/` definitions
 - frontend renderers
 - backend template resolvers
@@ -348,9 +388,11 @@ Create reusable page and article templates for scalable publishing.
 ## 7. SEO
 
 ### Goal
+
 Ensure search-optimized, structured, scalable content and analytics pages.
 
 ### Tasks
+
 - Slug generation rules
 - Canonical URL handling
 - Meta title/meta description generation
@@ -362,12 +404,14 @@ Ensure search-optimized, structured, scalable content and analytics pages.
 - Programmatic SEO page rules for players/events/courses
 
 ### Categories
+
 - Technical SEO
 - Metadata
 - Structured data
 - Programmatic SEO
 
 ### Deliverables
+
 - SEO utilities
 - sitemap generation
 - metadata components
@@ -378,9 +422,11 @@ Ensure search-optimized, structured, scalable content and analytics pages.
 ## 8. AI
 
 ### Goal
+
 Implement AI-assisted workflows grounded in verified stats and audit controls.
 
 ### Tasks
+
 - Build prompt injection layer
 - Build stats grounding layer
 - Add source attachment requirements
@@ -391,6 +437,7 @@ Implement AI-assisted workflows grounded in verified stats and audit controls.
 - Add safeguards against unsupported betting/stat claims
 
 ### Categories
+
 - Prompt system
 - Grounding/verification
 - Editorial AI assist
@@ -398,6 +445,7 @@ Implement AI-assisted workflows grounded in verified stats and audit controls.
 - Safety controls
 
 ### Deliverables
+
 - `prompts/`
 - `instructions/`
 - AI service layer
@@ -409,9 +457,11 @@ Implement AI-assisted workflows grounded in verified stats and audit controls.
 ## 9. Hosting
 
 ### Goal
+
 Prepare secure production deployment for frontend, backend, and database.
 
 ### Tasks
+
 - Dockerize services
 - Create environment configs
 - Configure managed PostgreSQL
@@ -423,6 +473,7 @@ Prepare secure production deployment for frontend, backend, and database.
 - Add health checks and readiness checks
 
 ### Categories
+
 - Containerization
 - Infra config
 - Deploy pipelines
@@ -430,6 +481,7 @@ Prepare secure production deployment for frontend, backend, and database.
 - Runtime observability
 
 ### Deliverables
+
 - `Dockerfile`s
 - deployment configs
 - GitHub Actions workflows
@@ -440,9 +492,11 @@ Prepare secure production deployment for frontend, backend, and database.
 ## 10. Admin
 
 ### Goal
+
 Build internal tooling for operators, editors, and analysts.
 
 ### Tasks
+
 - Admin dashboard
 - user and role management
 - content moderation/publishing controls
@@ -453,6 +507,7 @@ Build internal tooling for operators, editors, and analysts.
 - audit/event viewer
 
 ### Categories
+
 - User administration
 - Editorial administration
 - AI operations
@@ -460,6 +515,7 @@ Build internal tooling for operators, editors, and analysts.
 - Monetization administration
 
 ### Deliverables
+
 - admin UI
 - admin APIs
 - RBAC-protected routes
@@ -470,9 +526,11 @@ Build internal tooling for operators, editors, and analysts.
 ## 11. Integrations
 
 ### Goal
+
 Connect external providers and internal automation systems.
 
 ### Tasks
+
 - Sports/stat data provider integration
 - odds/market provider integration
 - email/subscription integration
@@ -482,6 +540,7 @@ Connect external providers and internal automation systems.
 - external content syndication where applicable
 
 ### Categories
+
 - Sports data
 - Betting/market data
 - Subscription systems
@@ -489,6 +548,7 @@ Connect external providers and internal automation systems.
 - Analytics/events
 
 ### Deliverables
+
 - ingestion jobs
 - provider adapters
 - sync monitoring
@@ -499,9 +559,11 @@ Connect external providers and internal automation systems.
 ## 12. Scale
 
 ### Goal
+
 Prepare the system for growth, reliability, and high-read analytics workloads.
 
 ### Tasks
+
 - caching strategy
 - materialized view refresh strategy
 - background job processing
@@ -513,6 +575,7 @@ Prepare the system for growth, reliability, and high-read analytics workloads.
 - CDN strategy for public content
 
 ### Categories
+
 - Performance
 - Reliability
 - Observability
@@ -520,6 +583,7 @@ Prepare the system for growth, reliability, and high-read analytics workloads.
 - Cost control
 
 ### Deliverables
+
 - performance dashboards
 - refresh workers
 - scale runbooks
@@ -530,9 +594,11 @@ Prepare the system for growth, reliability, and high-read analytics workloads.
 ## X. Business
 
 ### Goal
+
 Support monetization, subscriptions, partnerships, and business ops.
 
 ### Tasks
+
 - subscription tiers
 - entitlement mapping
 - paywall rules
@@ -543,12 +609,14 @@ Support monetization, subscriptions, partnerships, and business ops.
 - business KPI dashboards
 
 ### Categories
+
 - Subscription monetization
 - Affiliate monetization
 - Revenue analytics
 - Product operations
 
 ### Deliverables
+
 - pricing/entitlement model
 - affiliate reporting
 - premium access controls
@@ -584,6 +652,7 @@ Here is a cleaner category map across the whole build:
 These should exist across all phases:
 
 ## Security
+
 - JWT auth
 - RBAC
 - secrets handling
@@ -593,6 +662,7 @@ These should exist across all phases:
 - audit logs
 
 ## Testing
+
 - backend unit tests
 - frontend component tests
 - integration tests
@@ -602,6 +672,7 @@ These should exist across all phases:
 - AI grounding validation tests
 
 ## Observability
+
 - structured logs
 - error monitoring
 - metrics
@@ -609,6 +680,7 @@ These should exist across all phases:
 - model run logging
 
 ## Governance
+
 - ADRs for architectural decisions
 - schema change review
 - stat provenance review
@@ -633,6 +705,7 @@ If you want the most correct start according to your rules, do these first:
 # Suggested MVP Task Breakdown
 
 ## MVP Phase 1
+
 - docs
 - folder setup
 - database schema
@@ -641,12 +714,14 @@ If you want the most correct start according to your rules, do these first:
 - basic frontend app shell
 
 ## MVP Phase 2
+
 - stats dashboards
 - article system
 - editorial workflows
 - SEO pages
 
 ## MVP Phase 3
+
 - AI editorial assist
 - betting intelligence tools
 - admin dashboards
@@ -656,6 +731,6 @@ If you want the most correct start according to your rules, do these first:
 
 If you want, I can turn this into one of these next:
 
-1. a **GitHub issue breakdown by phase**,  
-2. a **checklist-style `plan.md` rewrite**, or  
+1. a **GitHub issue breakdown by phase**,
+2. a **checklist-style `plan.md` rewrite**, or
 3. a **repo-ready folder/file blueprint** for `Nickolai-Brennan/CaddyStats`.

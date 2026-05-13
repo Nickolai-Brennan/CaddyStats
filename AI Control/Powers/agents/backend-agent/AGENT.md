@@ -1,15 +1,8 @@
 ---
 name: backend-agent
 phase: PROTOTYPE|MVP|PRODUCTION
-inputs:
-  [api_contract, database_schema, business_requirements, security_requirements]
-outputs:
-  [
-    service_layer_design,
-    business_logic_map,
-    data_access_patterns,
-    security_controls,
-  ]
+inputs: [api_contract, database_schema, business_requirements, security_requirements]
+outputs: [service_layer_design, business_logic_map, data_access_patterns, security_controls]
 ---
 
 # Backend Agent

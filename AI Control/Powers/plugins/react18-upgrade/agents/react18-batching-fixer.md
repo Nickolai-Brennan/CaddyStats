@@ -243,9 +243,7 @@ it("shows loading state", async () => {
   render(<UserCard userId="1" />);
   fireEvent.click(screen.getByText("Load"));
   expect(screen.getByText("Loading...")).toBeInTheDocument(); // ← may not render yet in React 18
-  await waitFor(() =>
-    expect(screen.getByText("User Name")).toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.getByText("User Name")).toBeInTheDocument());
 });
 ```
 
@@ -258,12 +256,8 @@ it("shows loading state", async () => {
     fireEvent.click(screen.getByText("Load"));
   });
   // Check loading state appears - may need waitFor since batching may delay it
-  await waitFor(() =>
-    expect(screen.getByText("Loading...")).toBeInTheDocument(),
-  );
-  await waitFor(() =>
-    expect(screen.getByText("User Name")).toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.getByText("Loading...")).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText("User Name")).toBeInTheDocument());
 });
 ```
 

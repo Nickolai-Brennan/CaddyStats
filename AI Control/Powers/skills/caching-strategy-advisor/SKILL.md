@@ -72,7 +72,7 @@ const redis = new Redis(process.env.REDIS_URL!, {
 export async function cacheAside<T>(
   key: string,
   fetcher: () => Promise<T>,
-  ttlSeconds: number,
+  ttlSeconds: number
 ): Promise<T> {
   // 1. Try cache
   const cached = await redis.get(key);
@@ -121,14 +121,11 @@ export async function getProduct(id: string): Promise<Product | null> {
   return cacheAside(
     buildCacheKey("product", id),
     () => db.products.findOne({ where: { id } }),
-    PRODUCT_TTL,
+    PRODUCT_TTL
   );
 }
 
-export async function updateProduct(
-  id: string,
-  data: Partial<Product>,
-): Promise<Product> {
+export async function updateProduct(id: string, data: Partial<Product>): Promise<Product> {
   const updated = await db.products.update(data, { where: { id } });
   // Invalidate cache on write
   await invalidateCache(buildCacheKey("product", id));
@@ -139,7 +136,7 @@ export async function getProductList(category: string): Promise<Product[]> {
   return cacheAside(
     buildCacheKey("products", "list", category),
     () => db.products.findAll({ where: { category } }),
-    PRODUCT_TTL,
+    PRODUCT_TTL
   );
 }
 ```
@@ -191,13 +188,10 @@ For API responses, add HTTP caching headers:
 // middleware/cacheHeaders.ts
 export function setCacheHeaders(
   maxAge: number,
-  options: { private?: boolean; revalidate?: boolean } = {},
+  options: { private?: boolean; revalidate?: boolean } = {}
 ) {
   return (req: Request, res: Response, next: NextFunction) => {
-    const directives: string[] = [
-      options.private ? "private" : "public",
-      `max-age=${maxAge}`,
-    ];
+    const directives: string[] = [options.private ? "private" : "public", `max-age=${maxAge}`];
     if (options.revalidate) {
       directives.push("must-revalidate");
     }
@@ -208,11 +202,7 @@ export function setCacheHeaders(
 
 // Route usage:
 router.get("/products", setCacheHeaders(1800), asyncHandler(getProducts));
-router.get(
-  "/profile",
-  setCacheHeaders(60, { private: true }),
-  asyncHandler(getProfile),
-);
+router.get("/profile", setCacheHeaders(60, { private: true }), asyncHandler(getProfile));
 ```
 
 ### Step 5 — Stale-While-Revalidate (Background Refresh)
@@ -224,7 +214,7 @@ export async function staleWhileRevalidate<T>(
   key: string,
   fetcher: () => Promise<T>,
   staleTTL: number,
-  revalidateTTL: number,
+  revalidateTTL: number
 ): Promise<T> {
   const cached = await redis.get(key);
   const revalidateFlagKey = `${key}:revalidating`;
@@ -234,9 +224,7 @@ export async function staleWhileRevalidate<T>(
     const ttl = await redis.ttl(key);
     if (ttl < revalidateTTL && !(await redis.get(revalidateFlagKey))) {
       await redis.setex(revalidateFlagKey, 30, "1"); // lock for 30s
-      fetcher().then((fresh) =>
-        redis.setex(key, staleTTL, JSON.stringify(fresh)),
-      );
+      fetcher().then((fresh) => redis.setex(key, staleTTL, JSON.stringify(fresh)));
     }
     return JSON.parse(cached);
   }

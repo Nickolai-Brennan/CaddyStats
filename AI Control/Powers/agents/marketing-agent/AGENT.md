@@ -2,14 +2,7 @@
 name: marketing-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [product_brief, target_audience, brand_guidelines, launch_timeline]
-outputs:
-  [
-    marketing_brief,
-    messaging_framework,
-    content_calendar,
-    campaign_plan,
-    copy_drafts,
-  ]
+outputs: [marketing_brief, messaging_framework, content_calendar, campaign_plan, copy_drafts]
 ---
 
 # Marketing Agent

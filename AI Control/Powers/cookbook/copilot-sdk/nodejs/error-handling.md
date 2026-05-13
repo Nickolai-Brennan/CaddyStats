@@ -67,7 +67,7 @@ try {
   // sendAndWait with timeout (in milliseconds)
   const response = await session.sendAndWait(
     { prompt: "Complex question..." },
-    30000, // 30 second timeout
+    30000 // 30 second timeout
   );
 
   if (response) {
@@ -120,9 +120,7 @@ process.on("SIGINT", async () => {
 ```typescript
 // If stop() takes too long, force stop
 const stopPromise = client.stop();
-const timeout = new Promise((_, reject) =>
-  setTimeout(() => reject(new Error("Timeout")), 5000),
-);
+const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 5000));
 
 try {
   await Promise.race([stopPromise, timeout]);

@@ -114,7 +114,7 @@ router.get(
     const { page, perPage } = PaginationSchema.parse(req.query);
     const result = await userService.list({ page, perPage });
     res.json(result);
-  }),
+  })
 );
 
 // ── GET /users/:id ──
@@ -125,7 +125,7 @@ router.get(
     const user = await userService.findById(req.params.id);
     if (!user) throw new NotFoundError("User");
     res.json(user);
-  }),
+  })
 );
 
 // ── POST /users ──
@@ -137,7 +137,7 @@ router.post(
     const body = CreateUserSchema.parse(req.body);
     const user = await userService.create(body);
     res.status(201).json(user);
-  }),
+  })
 );
 
 // ── PATCH /users/:id ──
@@ -155,7 +155,7 @@ router.patch(
     const body = UpdateUserSchema.parse(req.body);
     const updated = await userService.update(req.params.id, body);
     res.json(updated);
-  }),
+  })
 );
 
 // ── DELETE /users/:id ──
@@ -168,7 +168,7 @@ router.delete(
     if (!existing) throw new NotFoundError("User");
     await userService.delete(req.params.id);
     res.status(204).send();
-  }),
+  })
 );
 
 export { router as usersRouter };

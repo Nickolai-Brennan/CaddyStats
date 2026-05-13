@@ -68,9 +68,7 @@ function getGitHubRemote(): string | null {
     if (sshMatch) return sshMatch[1];
 
     // Handle HTTPS: https://github.com/owner/repo.git
-    const httpsMatch = remoteUrl.match(
-      /https:\/\/github\.com\/(.+\/.+?)(?:\.git)?$/,
-    );
+    const httpsMatch = remoteUrl.match(/https:\/\/github\.com\/(.+\/.+?)(?:\.git)?$/);
     if (httpsMatch) return httpsMatch[1];
 
     return null;
@@ -192,10 +190,7 @@ The current working directory is: ${process.cwd()}
     rl.question("You: ", async (input) => {
       const trimmed = input.trim();
 
-      if (
-        trimmed.toLowerCase() === "exit" ||
-        trimmed.toLowerCase() === "quit"
-      ) {
+      if (trimmed.toLowerCase() === "exit" || trimmed.toLowerCase() === "quit") {
         console.log("👋 Goodbye!");
         rl.close();
         await session.destroy();

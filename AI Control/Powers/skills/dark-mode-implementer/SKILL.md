@@ -139,9 +139,7 @@ export function useTheme() {
 
   useEffect(() => {
     const root = document.documentElement;
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (theme === "dark" || (theme === "system" && prefersDark)) {
       root.setAttribute("data-theme", "dark");

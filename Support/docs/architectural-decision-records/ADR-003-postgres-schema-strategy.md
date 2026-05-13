@@ -50,13 +50,12 @@ Design rules:
 ## Alternatives Considered
 
 1. Single default public schema:
-Rejected due to weak domain boundaries and scaling risks.
+   Rejected due to weak domain boundaries and scaling risks.
 
 2. Separate databases for content and stats:
-Rejected for MVP due to operational complexity and consistency overhead.
+   Rejected for MVP due to operational complexity and consistency overhead.
 
 ## Implementation Notes
 
 - Repository layer maps each aggregate root to schema-qualified tables.
 - API contracts must avoid leaking database schema internals to frontend clients.
-

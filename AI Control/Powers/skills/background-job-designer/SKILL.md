@@ -100,16 +100,13 @@ export const emailQueue = new Queue<SendEmailJobData>("email", {
   },
 });
 
-export const uploadQueue = new Queue<ProcessUploadJobData>(
-  "upload-processing",
-  {
-    ...defaultQueueOpts,
-    defaultJobOptions: {
-      attempts: 5,
-      backoff: { type: "exponential", delay: 5000 },
-    },
+export const uploadQueue = new Queue<ProcessUploadJobData>("upload-processing", {
+  ...defaultQueueOpts,
+  defaultJobOptions: {
+    attempts: 5,
+    backoff: { type: "exponential", delay: 5000 },
   },
-);
+});
 ```
 
 **Worker:**
@@ -138,7 +135,7 @@ const emailWorker = new Worker<SendEmailJobData>(
   {
     connection,
     concurrency: 5, // process 5 jobs concurrently
-  },
+  }
 );
 
 emailWorker.on("completed", (job) => {
@@ -170,7 +167,7 @@ router.post(
     });
 
     res.status(201).json(user);
-  }),
+  })
 );
 ```
 

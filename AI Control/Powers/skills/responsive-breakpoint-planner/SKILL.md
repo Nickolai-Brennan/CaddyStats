@@ -92,10 +92,7 @@ export const breakpoints = {
 
 // Usage in styled-components / Emotion:
 const mq = Object.fromEntries(
-  Object.entries(breakpoints).map(([key, val]) => [
-    key,
-    `@media (min-width: ${val})`,
-  ]),
+  Object.entries(breakpoints).map(([key, val]) => [key, `@media (min-width: ${val})`])
 );
 // mq.md = '@media (min-width: 768px)'
 ```

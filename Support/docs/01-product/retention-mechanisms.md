@@ -23,11 +23,13 @@ Trigger:
 New tournament data/projections are available.
 
 User actions:
+
 - Review updated projections
 - Use filters/comparison tools
 - Save shortlist/watchlist
 
 Reinforcement:
+
 - Alert when tracked players materially move
 - Pre-event reminder with saved context
 
@@ -37,10 +39,12 @@ Trigger:
 User interacts with explainability and retrospective model performance.
 
 User actions:
+
 - Validate assumptions
 - Compare model outputs to outcomes
 
 Reinforcement:
+
 - Confidence in process increases willingness to return weekly
 
 ### Loop C: Personalization Loop
@@ -49,10 +53,12 @@ Trigger:
 User saves preferences (markets, player types, risk profiles).
 
 User actions:
+
 - Return to tailored views
 - Adjust preferences over time
 
 Reinforcement:
+
 - Faster research and reduced decision fatigue
 
 ## Lifecycle Retention Strategy
@@ -60,10 +66,12 @@ Reinforcement:
 ### Day 0-7 (Activation Window)
 
 Goals:
+
 - Reach first high-value action quickly
 - Demonstrate clear premium value
 
 Mechanisms:
+
 - Guided first-use checklist
 - Starter watchlist creation flow
 - Contextual prompts to explainability module
@@ -71,10 +79,12 @@ Mechanisms:
 ### Day 8-30 (Habit Formation)
 
 Goals:
+
 - Establish weekly usage pattern
 - Increase depth of feature adoption
 
 Mechanisms:
+
 - Weekly tournament prep reminders
 - Personalized "what changed" summaries
 - Saved filters and one-click comparison shortcuts
@@ -82,10 +92,12 @@ Mechanisms:
 ### Day 31+ (Mature Retention)
 
 Goals:
+
 - Prevent boredom/churn
 - Expand feature surface usage
 
 Mechanisms:
+
 - Retrospective performance snapshots
 - Seasonal insights and milestone recaps
 - Power-user workflows (advanced comparisons, multi-market views)

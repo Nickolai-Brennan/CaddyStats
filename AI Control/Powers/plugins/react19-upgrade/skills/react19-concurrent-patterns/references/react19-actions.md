@@ -37,7 +37,7 @@ function Form() {
           return { ...state, loading: false, error: action.error };
       }
     },
-    { loading: false, data: null, error: null },
+    { loading: false, data: null, error: null }
   );
 
   async function handleSubmit(e) {
@@ -84,7 +84,7 @@ async function submitFormAction(prevState, formData) {
 function Form() {
   const [state, formAction, isPending] = useActionState(
     submitFormAction,
-    { data: null, error: null }, // initial state
+    { data: null, error: null } // initial state
   );
 
   return (
@@ -169,10 +169,7 @@ function TodoList({ todos, onAddTodo }) {
     try {
       const result = await addTodo(text);
       // Update with confirmed result
-      setOptimistic((prev) => [
-        ...prev.filter((t) => t.id !== newTodo.id),
-        result,
-      ]);
+      setOptimistic((prev) => [...prev.filter((t) => t.id !== newTodo.id), result]);
     } catch (err) {
       // Revert on error
       setOptimistic(optimistic);
@@ -201,10 +198,7 @@ async function addTodoAction(prevTodos, formData) {
 }
 
 function TodoList({ todos }) {
-  const [optimistic, addOptimistic] = useOptimistic(todos, (state, newTodo) => [
-    ...state,
-    newTodo,
-  ]);
+  const [optimistic, addOptimistic] = useOptimistic(todos, (state, newTodo) => [...state, newTodo]);
 
   const [, formAction] = useActionState(addTodoAction, todos);
 
@@ -257,17 +251,15 @@ async function addTodoAction(prevTodos, formData) {
 // Submit button with useFormStatus:
 function AddButton() {
   const { pending } = useFormStatus();
-  return (
-    <button disabled={pending}>{pending ? "Adding..." : "Add Todo"}</button>
-  );
+  return <button disabled={pending}>{pending ? "Adding..." : "Add Todo"}</button>;
 }
 
 // Main component:
 function TodoApp({ initialTodos }) {
-  const [optimistic, addOptimistic] = useOptimistic(
-    initialTodos,
-    (state, newTodo) => [...state, newTodo],
-  );
+  const [optimistic, addOptimistic] = useOptimistic(initialTodos, (state, newTodo) => [
+    ...state,
+    newTodo,
+  ]);
 
   const [todos, formAction] = useActionState(addTodoAction, initialTodos);
 

@@ -84,7 +84,7 @@ const results = await Promise.all(
   spans.map(async (span) => ({
     spanId: span.context.span_id,
     ...(await runEvaluators(span, [qualityEval, safetyEval])),
-  })),
+  }))
 );
 
 // 3. Upload results as annotations

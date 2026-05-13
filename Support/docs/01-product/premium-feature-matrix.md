@@ -24,26 +24,26 @@ Define clear free vs premium entitlements so pricing, UX gating, and backend aut
 
 ## Feature Matrix
 
-| Capability | Anonymous | Free User | Subscriber | Notes |
-| --- | --- | --- | --- | --- |
-| Public tournament pages | Yes | Yes | Yes | SEO/discovery surface |
-| Public player pages (core stats) | Limited | Yes | Yes | Anonymous may see reduced depth |
-| Course overview pages | Yes | Yes | Yes | Public educational content |
-| Basic rankings snapshots | Limited | Yes | Yes | Delayed/limited slices for non-paid |
-| Full projection tables | No | Limited | Yes | Premium unlocks full rows/columns |
-| Win/Top-N probabilities full set | No | Limited | Yes | Premium-only complete probability matrix |
-| Projection explainability module | No | Limited preview | Yes | Core differentiator |
-| Advanced filtering/sorting presets | No | Limited | Yes | Includes saved custom views |
-| Player-to-player comparison workflow | No | Limited | Yes | Multi-entity workflows premium |
-| Betting market overlays | No | Limited | Yes | Premium full market context |
-| DFS overlay mode | No | Limited | Yes | Premium leverage context |
-| Watchlists and alerting | No | Limited | Yes | Premium gets full rule-based alerts |
-| Personal notes/workspace | No | Limited | Yes | Retention feature |
-| Article access (free editorial) | Yes | Yes | Yes | Public funnel |
-| Premium analysis articles | No | Limited samples | Yes | Metering allowed for free |
-| Newsletter signup | Yes | Yes | Yes | Core acquisition loop |
-| Model performance dashboard | No | No | Yes | Transparency feature |
-| Export tools (CSV/API-like) | No | No | Planned | Add after abuse controls |
+| Capability                           | Anonymous | Free User       | Subscriber | Notes                                    |
+| ------------------------------------ | --------- | --------------- | ---------- | ---------------------------------------- |
+| Public tournament pages              | Yes       | Yes             | Yes        | SEO/discovery surface                    |
+| Public player pages (core stats)     | Limited   | Yes             | Yes        | Anonymous may see reduced depth          |
+| Course overview pages                | Yes       | Yes             | Yes        | Public educational content               |
+| Basic rankings snapshots             | Limited   | Yes             | Yes        | Delayed/limited slices for non-paid      |
+| Full projection tables               | No        | Limited         | Yes        | Premium unlocks full rows/columns        |
+| Win/Top-N probabilities full set     | No        | Limited         | Yes        | Premium-only complete probability matrix |
+| Projection explainability module     | No        | Limited preview | Yes        | Core differentiator                      |
+| Advanced filtering/sorting presets   | No        | Limited         | Yes        | Includes saved custom views              |
+| Player-to-player comparison workflow | No        | Limited         | Yes        | Multi-entity workflows premium           |
+| Betting market overlays              | No        | Limited         | Yes        | Premium full market context              |
+| DFS overlay mode                     | No        | Limited         | Yes        | Premium leverage context                 |
+| Watchlists and alerting              | No        | Limited         | Yes        | Premium gets full rule-based alerts      |
+| Personal notes/workspace             | No        | Limited         | Yes        | Retention feature                        |
+| Article access (free editorial)      | Yes       | Yes             | Yes        | Public funnel                            |
+| Premium analysis articles            | No        | Limited samples | Yes        | Metering allowed for free                |
+| Newsletter signup                    | Yes       | Yes             | Yes        | Core acquisition loop                    |
+| Model performance dashboard          | No        | No              | Yes        | Transparency feature                     |
+| Export tools (CSV/API-like)          | No        | No              | Planned    | Add after abuse controls                 |
 
 ## Gating Rules
 

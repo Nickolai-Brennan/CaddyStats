@@ -95,9 +95,7 @@ class AppProvider extends React.Component {
     const { theme, user, locale, notifications } = this.state;
     return (
       <ThemeContext.Provider value={theme}>
-        <AuthContext.Provider
-          value={{ user, login: this.login, logout: this.logout }}
-        >
+        <AuthContext.Provider value={{ user, login: this.login, logout: this.logout }}>
           <LocaleContext.Provider value={locale}>
             <NotificationContext.Provider value={notifications}>
               {this.props.children}

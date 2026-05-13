@@ -612,5 +612,4 @@ Reliability tests are documented
 
 Cost controls are active
 
-Only after completion may Phase X Business & Monetization Expansion begin.
----
+## Only after completion may Phase X Business & Monetization Expansion begin.

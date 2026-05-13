@@ -46,14 +46,8 @@ const NEGATIVE_LABEL = "incorrect";
 
 ```typescript
 import { createClient } from "@arizeai/phoenix-client";
-import {
-  createOrGetDataset,
-  getDatasetExamples,
-} from "@arizeai/phoenix-client/datasets";
-import {
-  asExperimentEvaluator,
-  runExperiment,
-} from "@arizeai/phoenix-client/experiments";
+import { createOrGetDataset, getDatasetExamples } from "@arizeai/phoenix-client/datasets";
+import { asExperimentEvaluator, runExperiment } from "@arizeai/phoenix-client/experiments";
 import { myEvaluator } from "./myEvaluator.js";
 
 const client = createClient();
@@ -67,9 +61,7 @@ const { examples } = await getDatasetExamples({
   client,
   dataset: { datasetId },
 });
-const groundTruth = new Map(
-  examples.map((ex) => [ex.id, ex.metadata?.groundTruthLabel as string]),
-);
+const groundTruth = new Map(examples.map((ex) => [ex.id, ex.metadata?.groundTruthLabel as string]));
 
 // Task: invoke the evaluator under test
 const task = async (example: (typeof examples)[number]) => {
@@ -109,7 +101,7 @@ const runs = Object.values(experiment.runs);
 const predicted = new Map(
   (experiment.evaluationRuns ?? [])
     .filter((e) => e.name === "exact-match")
-    .map((e) => [e.experimentRunId, e.result?.label ?? null]),
+    .map((e) => [e.experimentRunId, e.result?.label ?? null])
 );
 
 let tp = 0,
@@ -130,7 +122,7 @@ const total = tp + fp + tn + fn;
 const tpr = tp + fn > 0 ? (tp / (tp + fn)) * 100 : 0;
 const tnr = tn + fp > 0 ? (tn / (tn + fp)) * 100 : 0;
 console.log(
-  `TPR: ${tpr.toFixed(1)}%  TNR: ${tnr.toFixed(1)}%  Accuracy: ${(((tp + tn) / total) * 100).toFixed(1)}%`,
+  `TPR: ${tpr.toFixed(1)}%  TNR: ${tnr.toFixed(1)}%  Accuracy: ${(((tp + tn) / total) * 100).toFixed(1)}%`
 );
 ```
 

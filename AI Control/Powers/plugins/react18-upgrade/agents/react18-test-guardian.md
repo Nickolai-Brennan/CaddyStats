@@ -114,7 +114,7 @@ import { mount } from "enzyme";
 const wrapper = mount(
   <Provider store={store}>
     <MyComponent />
-  </Provider>,
+  </Provider>
 );
 
 // RTL equivalent:
@@ -122,7 +122,7 @@ import { render } from "@testing-library/react";
 render(
   <Provider store={store}>
     <MyComponent />
-  </Provider>,
+  </Provider>
 );
 ```
 
@@ -170,9 +170,7 @@ it("shows loading then content", async () => {
   fireEvent.click(screen.getByText("Load"));
   // Asserted immediately after click - intermediate state render was synchronous
   expect(screen.getByText("Loading...")).toBeInTheDocument();
-  await waitFor(() =>
-    expect(screen.getByText("Data Loaded")).toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.getByText("Data Loaded")).toBeInTheDocument());
 });
 ```
 
@@ -182,12 +180,8 @@ it("shows loading then content", async () => {
   render(<AsyncComponent />);
   fireEvent.click(screen.getByText("Load"));
   // Loading state now appears asynchronously
-  await waitFor(() =>
-    expect(screen.getByText("Loading...")).toBeInTheDocument(),
-  );
-  await waitFor(() =>
-    expect(screen.getByText("Data Loaded")).toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.getByText("Loading...")).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText("Data Loaded")).toBeInTheDocument());
 });
 ```
 
@@ -292,7 +286,7 @@ it("loads user data", async () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <UserCard id="1" />
-    </MockedProvider>,
+    </MockedProvider>
   );
 
   // React 18: use waitFor or findBy - act() may not be sufficient alone

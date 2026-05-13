@@ -83,17 +83,7 @@ const VARIANT_CLASSES = {
 } as const;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      label,
-      onClick,
-      variant = "primary",
-      disabled = false,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ label, onClick, variant = "primary", disabled = false, className, ...props }, ref) => {
     return (
       <button
         ref={ref}
@@ -105,14 +95,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           "focus:outline-none focus:ring-2 focus:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
           VARIANT_CLASSES[variant],
-          className,
+          className
         )}
         {...props}
       >
         {label}
       </button>
     );
-  },
+  }
 );
 Button.displayName = "Button";
 ```
@@ -129,11 +119,7 @@ export interface CollapsibleProps {
   defaultOpen?: boolean;
 }
 
-export function Collapsible({
-  title,
-  children,
-  defaultOpen = false,
-}: CollapsibleProps) {
+export function Collapsible({ title, children, defaultOpen = false }: CollapsibleProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const contentId = useId();
 
@@ -191,9 +177,7 @@ import { Button } from "./Button";
 describe("Button", () => {
   it("renders with the given label", () => {
     render(<Button label="Click me" onClick={() => {}} />);
-    expect(
-      screen.getByRole("button", { name: "Click me" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Click me" })).toBeInTheDocument();
   });
 
   it("calls onClick when clicked", async () => {

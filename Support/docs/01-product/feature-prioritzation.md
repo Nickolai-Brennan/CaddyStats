@@ -22,23 +22,23 @@ Scoring scale: 1 (low) to 5 (high).
 
 ## Prioritized Backlog (MVP to Post-MVP)
 
-| Priority | Feature | Revenue | Retention | Differentiation | Dependency | Effort Inverse | Weighted Score | Phase |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P0 | Core stats schema + projection tables | 4 | 4 | 5 | 5 | 3 | 4.30 | Database |
-| P0 | Tournament + player REST endpoints | 4 | 4 | 4 | 5 | 3 | 4.10 | Backend/API |
-| P0 | Public tournament and player pages | 4 | 3 | 4 | 4 | 3 | 3.75 | Frontend |
-| P0 | Auth + role gating (free/subscriber/admin) | 5 | 4 | 3 | 5 | 3 | 4.20 | Backend/Frontend |
-| P0 | Subscription checkout and entitlement checks | 5 | 4 | 3 | 5 | 2 | 4.10 | Business/Admin |
-| P1 | Projection explainability module | 5 | 5 | 5 | 4 | 2 | 4.65 | Frontend/Backend |
-| P1 | Premium filters and comparison workflows | 5 | 5 | 4 | 4 | 2 | 4.45 | Frontend |
-| P1 | SEO template system for tournament content | 4 | 3 | 3 | 4 | 4 | 3.75 | SEO/Editor |
-| P1 | Editorial CMS blocks with stat grounding | 4 | 4 | 4 | 4 | 3 | 3.95 | Editor |
-| P1 | Analytics instrumentation foundation | 4 | 5 | 3 | 4 | 3 | 3.95 | Analytics |
-| P2 | Personalized alerts/watchlists | 4 | 5 | 4 | 3 | 2 | 4.05 | Retention |
-| P2 | Model performance and calibration dashboard | 3 | 4 | 5 | 3 | 2 | 3.75 | Analytics/Admin |
-| P2 | DFS mode overlays and ownership context | 3 | 4 | 4 | 3 | 2 | 3.45 | Frontend |
-| P3 | Automated content assistant quality scoring | 3 | 3 | 4 | 2 | 2 | 3.00 | AI |
-| P3 | Referral and loyalty mechanics | 3 | 4 | 2 | 2 | 2 | 2.95 | Growth |
+| Priority | Feature                                      | Revenue | Retention | Differentiation | Dependency | Effort Inverse | Weighted Score | Phase            |
+| -------- | -------------------------------------------- | ------- | --------- | --------------- | ---------- | -------------- | -------------- | ---------------- |
+| P0       | Core stats schema + projection tables        | 4       | 4         | 5               | 5          | 3              | 4.30           | Database         |
+| P0       | Tournament + player REST endpoints           | 4       | 4         | 4               | 5          | 3              | 4.10           | Backend/API      |
+| P0       | Public tournament and player pages           | 4       | 3         | 4               | 4          | 3              | 3.75           | Frontend         |
+| P0       | Auth + role gating (free/subscriber/admin)   | 5       | 4         | 3               | 5          | 3              | 4.20           | Backend/Frontend |
+| P0       | Subscription checkout and entitlement checks | 5       | 4         | 3               | 5          | 2              | 4.10           | Business/Admin   |
+| P1       | Projection explainability module             | 5       | 5         | 5               | 4          | 2              | 4.65           | Frontend/Backend |
+| P1       | Premium filters and comparison workflows     | 5       | 5         | 4               | 4          | 2              | 4.45           | Frontend         |
+| P1       | SEO template system for tournament content   | 4       | 3         | 3               | 4          | 4              | 3.75           | SEO/Editor       |
+| P1       | Editorial CMS blocks with stat grounding     | 4       | 4         | 4               | 4          | 3              | 3.95           | Editor           |
+| P1       | Analytics instrumentation foundation         | 4       | 5         | 3               | 4          | 3              | 3.95           | Analytics        |
+| P2       | Personalized alerts/watchlists               | 4       | 5         | 4               | 3          | 2              | 4.05           | Retention        |
+| P2       | Model performance and calibration dashboard  | 3       | 4         | 5               | 3          | 2              | 3.75           | Analytics/Admin  |
+| P2       | DFS mode overlays and ownership context      | 3       | 4         | 4               | 3          | 2              | 3.45           | Frontend         |
+| P3       | Automated content assistant quality scoring  | 3       | 3         | 4               | 2          | 2              | 3.00           | AI               |
+| P3       | Referral and loyalty mechanics               | 3       | 4         | 2               | 2          | 2              | 2.95           | Growth           |
 
 ## Build Order Alignment
 

@@ -44,13 +44,8 @@ const { spans: allSpans } = await getSpans({
   project: { projectName: "my-app" },
   limit: 70,
 });
-const sample = [
-  ...errors,
-  ...allSpans.sort(() => Math.random() - 0.5).slice(0, 40),
-];
-const unique = [
-  ...new Map(sample.map((s) => [s.context.span_id, s])).values(),
-].slice(0, 100);
+const sample = [...errors, ...allSpans.sort(() => Math.random() - 0.5).slice(0, 40)];
+const unique = [...new Map(sample.map((s) => [s.context.span_id, s])).values()].slice(0, 100);
 ```
 
 ### Trace-level sampling (Python)
@@ -166,9 +161,7 @@ const { annotations } = await getSpanAnnotations({
 });
 
 for (const ann of annotations) {
-  console.log(
-    `${ann.span_id}: ${ann.name} = ${ann.result?.label} (${ann.result?.score})`,
-  );
+  console.log(`${ann.span_id}: ${ann.name} = ${ann.result?.label} (${ann.result?.score})`);
 }
 ```
 

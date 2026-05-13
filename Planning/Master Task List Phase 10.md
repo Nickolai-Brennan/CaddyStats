@@ -471,18 +471,18 @@ admin setting change
 
 REST
 
-GET    /api/v1/admin/health
-GET    /api/v1/admin/users
-GET    /api/v1/admin/users/{user_id}
-PATCH  /api/v1/admin/users/{user_id}
-GET    /api/v1/admin/subscriptions
-PATCH  /api/v1/admin/subscriptions/{subscription_id}
-GET    /api/v1/admin/ingestion/jobs
-POST   /api/v1/admin/ingestion/jobs/{job_id}/retry
-GET    /api/v1/admin/models/runs
-POST   /api/v1/admin/models/run
-GET    /api/v1/admin/audit-logs
-GET    /api/v1/admin/system-health
+GET /api/v1/admin/health
+GET /api/v1/admin/users
+GET /api/v1/admin/users/{user_id}
+PATCH /api/v1/admin/users/{user_id}
+GET /api/v1/admin/subscriptions
+PATCH /api/v1/admin/subscriptions/{subscription_id}
+GET /api/v1/admin/ingestion/jobs
+POST /api/v1/admin/ingestion/jobs/{job_id}/retry
+GET /api/v1/admin/models/runs
+POST /api/v1/admin/models/run
+GET /api/v1/admin/audit-logs
+GET /api/v1/admin/system-health
 
 GraphQL
 
@@ -715,5 +715,4 @@ All admin mutations are audited
 
 RBAC protects every admin route and endpoint
 
-Only after completion may Phase 11 Integrations begin.
----
+## Only after completion may Phase 11 Integrations begin.

@@ -132,11 +132,7 @@ export const expensiveLimiter = rateLimit({
 
 ```typescript
 // app.ts
-import {
-  apiLimiter,
-  authLimiter,
-  expensiveLimiter,
-} from "./middleware/rateLimiter";
+import { apiLimiter, authLimiter, expensiveLimiter } from "./middleware/rateLimiter";
 
 // Apply broadly
 app.use("/api/", apiLimiter);
@@ -162,11 +158,7 @@ interface RateLimitOptions {
   maxRequests: number; // max requests per window
 }
 
-export async function checkRateLimit({
-  key,
-  windowMs,
-  maxRequests,
-}: RateLimitOptions): Promise<{
+export async function checkRateLimit({ key, windowMs, maxRequests }: RateLimitOptions): Promise<{
   allowed: boolean;
   remaining: number;
   resetAt: Date;

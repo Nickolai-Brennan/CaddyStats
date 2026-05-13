@@ -671,5 +671,4 @@ Integration health checks are visible
 
 Provider failures degrade safely
 
-Only after completion may Phase 12 Scale & Optimization begin.
----
+## Only after completion may Phase 12 Scale & Optimization begin.

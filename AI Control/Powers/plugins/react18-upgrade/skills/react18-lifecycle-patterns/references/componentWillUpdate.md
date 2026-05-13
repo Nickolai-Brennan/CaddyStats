@@ -27,8 +27,7 @@ class MessageList extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.messages.length < this.props.messages.length) {
-      const scrollDelta =
-        this.listRef.current.scrollHeight - this.savedScrollHeight;
+      const scrollDelta = this.listRef.current.scrollHeight - this.savedScrollHeight;
       this.listRef.current.scrollTop = this.savedScrollTop + scrollDelta;
     }
   }
@@ -53,8 +52,7 @@ class MessageList extends React.Component {
   // Receives the snapshot as the third argument
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (snapshot !== null) {
-      const scrollDelta =
-        this.listRef.current.scrollHeight - snapshot.scrollHeight;
+      const scrollDelta = this.listRef.current.scrollHeight - snapshot.scrollHeight;
       this.listRef.current.scrollTop = snapshot.scrollTop + scrollDelta;
     }
   }
@@ -100,7 +98,7 @@ class SearchResults extends React.Component {
       // Start the new request for the updated query
       this.setState({ loading: true, results: [] });
       this.currentRequest = searchAPI(this.props.query).then((results) =>
-        this.setState({ results, loading: false }),
+        this.setState({ results, loading: false })
       );
     }
   }

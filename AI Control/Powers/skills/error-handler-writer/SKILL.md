@@ -57,7 +57,7 @@ export class AppError extends Error {
     public readonly message: string,
     public readonly statusCode: number,
     public readonly code: string,
-    public readonly isOperational: boolean = true,
+    public readonly isOperational: boolean = true
   ) {
     super(message);
     this.name = this.constructor.name;
@@ -69,7 +69,7 @@ export class AppError extends Error {
 export class ValidationError extends AppError {
   constructor(
     message: string,
-    public readonly fields?: Record<string, string>,
+    public readonly fields?: Record<string, string>
   ) {
     super(message, 400, "VALIDATION_ERROR");
   }
@@ -122,12 +122,7 @@ class NotFoundError(AppError):
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "./errors";
 
-export function errorHandler(
-  err: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void {
+export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction): void {
   // Known operational error
   if (err instanceof AppError) {
     res.status(err.statusCode).json({
@@ -192,18 +187,17 @@ router.get(
     const user = await userService.findById(req.params.id);
     if (!user) throw new NotFoundError("User");
     res.json(user);
-  }),
+  })
 );
 
 router.post(
   "/users",
   asyncHandler(async (req, res) => {
     const { email, name } = req.body;
-    if (!email)
-      throw new ValidationError("Missing fields", { email: "required" });
+    if (!email) throw new ValidationError("Missing fields", { email: "required" });
     const user = await userService.create({ email, name });
     res.status(201).json(user);
-  }),
+  })
 );
 ```
 

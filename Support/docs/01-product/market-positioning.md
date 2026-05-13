@@ -35,16 +35,16 @@ Users currently stitch together fragmented tools and low-trust content to make w
 ## Differentiation Pillars
 
 1. Explainable projections:
-Recommendations are accompanied by model context, not just rankings.
+   Recommendations are accompanied by model context, not just rankings.
 
 2. Unified decision workflow:
-Users can move across outrights, placements, matchups, and DFS in one system.
+   Users can move across outrights, placements, matchups, and DFS in one system.
 
 3. Grounded editorial engine:
-Content scales without abandoning data quality or trust.
+   Content scales without abandoning data quality or trust.
 
 4. Transparent quality posture:
-Model versioning and retrospective performance reporting are first-class.
+   Model versioning and retrospective performance reporting are first-class.
 
 ## Messaging Framework
 
@@ -74,6 +74,7 @@ Message:
 Get structured, readable golf analytics without paywall friction.
 
 Surface:
+
 - Tournament preview pages
 - Course fit explainers
 - Player profile basics
@@ -84,6 +85,7 @@ Message:
 Compare options with clear projection context and workflow tools.
 
 Surface:
+
 - Limited projection previews
 - Comparison tables
 - Value narratives with transparent assumptions
@@ -94,6 +96,7 @@ Message:
 Unlock full model depth, advanced filters, and decision acceleration.
 
 Surface:
+
 - Premium gating prompts
 - Feature comparison and ROI framing
 - Annual value anchor

@@ -537,7 +537,7 @@ VITE_SENTRY_DSN=
 
 ### Rule
 
-Only expose public-safe values through VITE_.
+Only expose public-safe values through VITE\_.
 
 ---
 
@@ -638,5 +638,4 @@ Performance standards are measurable
 
 Core frontend tests pass
 
-Only after completion may Phase 5 Editor Implementation begin.
----
+## Only after completion may Phase 5 Editor Implementation begin.

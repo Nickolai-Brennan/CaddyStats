@@ -2,8 +2,7 @@
 name: frontend-dashboard-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [visualization_specs, api_contract, ux_requirements, brand_guidelines]
-outputs:
-  [component_plan, page_layout, state_management_design, data_binding_map]
+outputs: [component_plan, page_layout, state_management_design, data_binding_map]
 ---
 
 # Frontend Dashboard Agent

@@ -152,18 +152,18 @@ app/api/
 
 ### Required REST Routes
 
-- GET    /api/v1/health
-- POST   /api/v1/auth/login
-- POST   /api/v1/auth/refresh
-- GET    /api/v1/players
-- GET    /api/v1/players/{player_id}
-- GET    /api/v1/tournaments
-- GET    /api/v1/tournaments/{tournament_id}
-- GET    /api/v1/stats/player/{player_id}
-- GET    /api/v1/projections
-- GET    /api/v1/projections/{player_id}
-- GET    /api/v1/betting/edges
-- GET    /api/v1/rankings/current
+- GET /api/v1/health
+- POST /api/v1/auth/login
+- POST /api/v1/auth/refresh
+- GET /api/v1/players
+- GET /api/v1/players/{player_id}
+- GET /api/v1/tournaments
+- GET /api/v1/tournaments/{tournament_id}
+- GET /api/v1/stats/player/{player_id}
+- GET /api/v1/projections
+- GET /api/v1/projections/{player_id}
+- GET /api/v1/betting/edges
+- GET /api/v1/rankings/current
 
 ---
 
@@ -443,7 +443,7 @@ Required Endpoints
 
 POST /api/v1/ai/editorial-assist
 POST /api/v1/ai/validate-generation
-GET  /api/v1/ai/generations/{generation_id}
+GET /api/v1/ai/generations/{generation_id}
 
 ---
 
@@ -594,5 +594,4 @@ AI grounding endpoints exist
 
 Tests validate core backend behavior
 
-Only after completion may Phase 4 Frontend Implementation begin.
----
+## Only after completion may Phase 4 Frontend Implementation begin.

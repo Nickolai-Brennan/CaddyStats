@@ -16,7 +16,7 @@ Phase 1 creates the operational foundation for all future development.
 
 ### Repository Structure
 
-```
+````
 
 ```text
 caddystats/
@@ -33,9 +33,9 @@ caddystats/
 ├── tests/
 ├── .github/
 └── docker/
-```
+````
 
-```
+````
 
 ---
 
@@ -124,7 +124,7 @@ caddystats/
 ├── README.md
 ├── pnpm-workspace.yaml
 └── turbo.json
-```
+````
 
 ---
 
@@ -420,8 +420,8 @@ Branch Structure
 main
 develop
 staging
-feature/*
-hotfix/*
+feature/_
+hotfix/_
 
 Commit Standard
 
@@ -574,6 +574,7 @@ AI pipeline isolation
 multi-author editorial support
 
 ---
+
 ---
 
 ## 1.16 Additional Required Tasks Identified

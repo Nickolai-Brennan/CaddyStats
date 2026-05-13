@@ -52,51 +52,51 @@ Universal AI Control Layer
 
 ## Frontend
 
-* React
-* Vite
-* TypeScript
-* TailwindCSS
-* TanStack Query
-* TanStack Table
-* React Router
-* Framer Motion
+- React
+- Vite
+- TypeScript
+- TailwindCSS
+- TanStack Query
+- TanStack Table
+- React Router
+- Framer Motion
 
 ## Backend
 
-* FastAPI
-* Strawberry GraphQL
-* Python 3.12+
-* Pydantic
-* SQLAlchemy
-* Alembic
+- FastAPI
+- Strawberry GraphQL
+- Python 3.12+
+- Pydantic
+- SQLAlchemy
+- Alembic
 
 ## Database
 
-* PostgreSQL
-* Two schemas:
+- PostgreSQL
+- Two schemas:
+  - `content`
+  - `stats`
 
-  * `content`
-  * `stats`
-* Materialized views
-* Indexed analytics tables
-* JSONB blocks for flexible editorial structures
+- Materialized views
+- Indexed analytics tables
+- JSONB blocks for flexible editorial structures
 
 ## AI Layer
 
-* OpenAI APIs
-* Prompt injection layer
-* AI-assisted editorial workflows
-* Projection analysis pipelines
-* Stats grounding layer
+- OpenAI APIs
+- Prompt injection layer
+- AI-assisted editorial workflows
+- Projection analysis pipelines
+- Stats grounding layer
 
 ## Infrastructure
 
-* Docker
-* GitHub Actions
-* Vercel frontend hosting
-* Railway/Render backend hosting
-* Neon PostgreSQL
-* CDN delivery
+- Docker
+- GitHub Actions
+- Vercel frontend hosting
+- Railway/Render backend hosting
+- Neon PostgreSQL
+- CDN delivery
 
 ---
 
@@ -148,12 +148,12 @@ commands/
 
 Purpose:
 
-* Controls AI behavior
-* Routes project workflows
-* Executes plugin orchestration
-* Generates reusable commands
-* Maintains architecture standards
-* Runs evaluations and QA loops
+- Controls AI behavior
+- Routes project workflows
+- Executes plugin orchestration
+- Generates reusable commands
+- Maintains architecture standards
+- Runs evaluations and QA loops
 
 ---
 
@@ -171,10 +171,10 @@ tests/
 
 Purpose:
 
-* Stores production application code
-* Separates frontend/backend/database responsibilities
-* Supports modular scaling
-* Supports production deployment
+- Stores production application code
+- Separates frontend/backend/database responsibilities
+- Supports modular scaling
+- Supports production deployment
 
 ---
 
@@ -191,10 +191,10 @@ automation/
 
 Purpose:
 
-* Stores automation scripts
-* Maintains project documentation
-* Maintains stack configs
-* Handles recurring review workflows
+- Stores automation scripts
+- Maintains project documentation
+- Maintains stack configs
+- Handles recurring review workflows
 
 ---
 
@@ -208,11 +208,11 @@ Purpose:
 
 Purpose:
 
-* Enforce architecture rules
-* Enforce database-first development
-* Prevent stack drift
-* Maintain documentation standards
-* Route tasks to correct domain agents
+- Enforce architecture rules
+- Enforce database-first development
+- Prevent stack drift
+- Maintain documentation standards
+- Route tasks to correct domain agents
 
 ---
 
@@ -362,20 +362,20 @@ stats
 
 ## Core Database Responsibilities
 
-* PGA stats ingestion
-* Tournament modeling
-* Editorial content blocks
-* Betting odds storage
-* Projection materialized views
-* Historical trend analytics
+- PGA stats ingestion
+- Tournament modeling
+- Editorial content blocks
+- Betting odds storage
+- Projection materialized views
+- Historical trend analytics
 
 ## Standards
 
-* Migration-based changes only
-* Indexed high-read tables
-* JSONB only where flexibility is required
-* Materialized views for projections
-* Audit logging enabled
+- Migration-based changes only
+- Indexed high-read tables
+- JSONB only where flexibility is required
+- Materialized views for projections
+- Audit logging enabled
 
 ---
 
@@ -383,16 +383,16 @@ stats
 
 ## REST Responsibilities
 
-* Stats endpoints
-* Odds endpoints
-* Public editorial APIs
-* SEO payloads
+- Stats endpoints
+- Odds endpoints
+- Public editorial APIs
+- SEO payloads
 
 ## GraphQL Responsibilities
 
-* Dashboard aggregation
-* Admin/editorial workflows
-* Flexible analytics queries
+- Dashboard aggregation
+- Admin/editorial workflows
+- Flexible analytics queries
 
 ---
 
@@ -400,35 +400,35 @@ stats
 
 ## Primary Views
 
-* Homepage
-* Tournament hub
-* Player profile pages
-* Betting tools
-* DFS dashboards
-* Editorial article pages
-* Premium dashboards
-* Admin CMS
+- Homepage
+- Tournament hub
+- Player profile pages
+- Betting tools
+- DFS dashboards
+- Editorial article pages
+- Premium dashboards
+- Admin CMS
 
 ## Frontend Standards
 
-* Mobile-first UI
-* Typed API clients
-* TanStack Query for server state
-* Reusable UI primitives
-* Lighthouse score >90
+- Mobile-first UI
+- Typed API clients
+- TanStack Query for server state
+- Reusable UI primitives
+- Lighthouse score >90
 
 ---
 
 # SECURITY STANDARDS
 
-* JWT authentication
-* Role-based access control
-* Rate limiting
-* CSP headers
-* Sanitized HTML blocks
-* Secrets managed via environment variables
-* Production-safe Docker images
-* No GraphQL playground in production
+- JWT authentication
+- Role-based access control
+- Rate limiting
+- CSP headers
+- Sanitized HTML blocks
+- Secrets managed via environment variables
+- Production-safe Docker images
+- No GraphQL playground in production
 
 ---
 
@@ -504,24 +504,24 @@ Proceeding edit plan:
 
 ## Structural Validation
 
-* File integrity
-* Dependency validation
-* Schema validation
-* API contract validation
+- File integrity
+- Dependency validation
+- Schema validation
+- API contract validation
 
 ## Semantic Validation
 
-* Requested edits completed
-* No unrelated changes introduced
-* Meaning preserved
+- Requested edits completed
+- No unrelated changes introduced
+- Meaning preserved
 
 ## Functional Validation
 
-* Code compiles
-* APIs validate
-* Database migrations succeed
-* Frontend builds
-* Tests pass
+- Code compiles
+- APIs validate
+- Database migrations succeed
+- Frontend builds
+- Tests pass
 
 ---
 
@@ -529,12 +529,12 @@ Proceeding edit plan:
 
 Caddy Stats Step 2 is complete when:
 
-* AI orchestration layer is connected to the stack
-* Agents are mapped to domains
-* Skills are mapped to workflows
-* Plugins are mapped to systems
-* Commands are mapped to execution paths
-* Database-first build order is enforced
-* CI/CD and automation layers exist
-* Documentation standards are enforced
-* Security and performance rules are embedded into workflows
+- AI orchestration layer is connected to the stack
+- Agents are mapped to domains
+- Skills are mapped to workflows
+- Plugins are mapped to systems
+- Commands are mapped to execution paths
+- Database-first build order is enforced
+- CI/CD and automation layers exist
+- Documentation standards are enforced
+- Security and performance rules are embedded into workflows

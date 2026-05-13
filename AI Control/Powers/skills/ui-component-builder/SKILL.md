@@ -67,11 +67,7 @@ export const Example: React.FC<ExampleProps> = ({
   variant = "default",
   children,
   className = "",
-}) => (
-  <div className={`rounded-xl ${variantClasses[variant]} ${className}`}>
-    {children}
-  </div>
-);
+}) => <div className={`rounded-xl ${variantClasses[variant]} ${className}`}>{children}</div>;
 ```
 
 ## Quality Checklist

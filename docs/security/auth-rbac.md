@@ -48,19 +48,19 @@ Rules:
 
 ## Baseline RBAC Matrix
 
-| Capability | Public | Member | Subscriber | Analyst | Editor | Admin | Owner |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| View public pages | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Save account preferences | No | Yes | Yes | Yes | Yes | Yes | Yes |
-| View premium projections | No | Limited/No | Yes | Yes | As needed | Yes | Yes |
-| View model-performance dashboards | No | No | Limited summary only if productized | Yes | Limited | Yes | Yes |
-| Create article drafts | No | No | No | No | Yes | Yes | Yes |
-| Review/publish articles | No | No | No | No | Yes, by workflow policy | Yes | Yes |
-| Use AI editorial assist | No | No | No | Optional product feature only | Yes | Yes | Yes |
-| Manage users and roles | No | No | No | No | No | Yes | Yes |
-| Manage subscriptions and overrides | No | No | No | No | No | Yes | Yes |
-| Manage provider/admin settings | No | No | No | Limited diagnostics only | No | Yes | Yes |
-| View audit logs | No | No | No | Scoped | Scoped | Yes | Yes |
+| Capability                         | Public | Member     | Subscriber                          | Analyst                       | Editor                  | Admin | Owner |
+| ---------------------------------- | ------ | ---------- | ----------------------------------- | ----------------------------- | ----------------------- | ----- | ----- |
+| View public pages                  | Yes    | Yes        | Yes                                 | Yes                           | Yes                     | Yes   | Yes   |
+| Save account preferences           | No     | Yes        | Yes                                 | Yes                           | Yes                     | Yes   | Yes   |
+| View premium projections           | No     | Limited/No | Yes                                 | Yes                           | As needed               | Yes   | Yes   |
+| View model-performance dashboards  | No     | No         | Limited summary only if productized | Yes                           | Limited                 | Yes   | Yes   |
+| Create article drafts              | No     | No         | No                                  | No                            | Yes                     | Yes   | Yes   |
+| Review/publish articles            | No     | No         | No                                  | No                            | Yes, by workflow policy | Yes   | Yes   |
+| Use AI editorial assist            | No     | No         | No                                  | Optional product feature only | Yes                     | Yes   | Yes   |
+| Manage users and roles             | No     | No         | No                                  | No                            | No                      | Yes   | Yes   |
+| Manage subscriptions and overrides | No     | No         | No                                  | No                            | No                      | Yes   | Yes   |
+| Manage provider/admin settings     | No     | No         | No                                  | Limited diagnostics only      | No                      | Yes   | Yes   |
+| View audit logs                    | No     | No         | No                                  | Scoped                        | Scoped                  | Yes   | Yes   |
 
 ## Permission Families
 

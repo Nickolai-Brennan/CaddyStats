@@ -48,13 +48,12 @@ Safety controls:
 ## Alternatives Considered
 
 1. Direct model calls without grounding:
-Rejected due to high trust and compliance risk.
+   Rejected due to high trust and compliance risk.
 
 2. Manual-only editorial workflow:
-Rejected because it limits scale and operational efficiency.
+   Rejected because it limits scale and operational efficiency.
 
 ## Implementation Notes
 
 - Grounding services live under backend/app/services/grounding and backend/app/services/ai.
 - Prompt templates are versioned and referenced by workflow IDs.
-

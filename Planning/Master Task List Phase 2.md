@@ -296,10 +296,10 @@ tournament_id
 
 Constraints
 
-pk_<table>
-fk_<table>_<reference>
+pk*<table>
+fk*<table>_<reference>
 idx_<table>_<field>
-uq_<table>_<field>
+uq_<table>\_<field>
 
 ---
 
@@ -470,7 +470,7 @@ CREATE MATERIALIZED VIEW analytics.player_recent_form AS
 SELECT
 player_id,
 AVG(score) AS avg_score,
-COUNT(*) AS rounds_played
+COUNT(\*) AS rounds_played
 FROM stats.rounds
 GROUP BY player_id;
 
@@ -860,5 +860,4 @@ AI grounding tables are operational
 
 Observability standards are configured
 
-Only after completion may Phase 3 Backend/API Implementation begin.
----
+## Only after completion may Phase 3 Backend/API Implementation begin.

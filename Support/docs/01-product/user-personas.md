@@ -187,14 +187,14 @@ The first three personas are most likely to monetize quickly through premium uti
 
 ## Persona-to-Feature Mapping
 
-| Feature | P1 Bettor | P2 DFS | P3 Research Fan | P4 Time-Constrained | P5 Editor/Admin |
-| --- | --- | --- | --- | --- | --- |
-| Full projections | High | High | Medium | High | Medium |
-| Explainability module | High | Medium | High | Medium | High |
-| Advanced filters/comparison | High | High | Low | High | Medium |
-| Watchlists/alerts | High | Medium | Medium | High | Low |
-| Premium editorial | Medium | Medium | High | Medium | High |
-| CMS templates | Low | Low | Low | Low | High |
+| Feature                     | P1 Bettor | P2 DFS | P3 Research Fan | P4 Time-Constrained | P5 Editor/Admin |
+| --------------------------- | --------- | ------ | --------------- | ------------------- | --------------- |
+| Full projections            | High      | High   | Medium          | High                | Medium          |
+| Explainability module       | High      | Medium | High            | Medium              | High            |
+| Advanced filters/comparison | High      | High   | Low             | High                | Medium          |
+| Watchlists/alerts           | High      | Medium | Medium          | High                | Low             |
+| Premium editorial           | Medium    | Medium | High            | Medium              | High            |
+| CMS templates               | Low       | Low    | Low             | Low                 | High            |
 
 ## Research Gaps to Validate
 

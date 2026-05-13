@@ -576,5 +576,4 @@ Publishing checklist blocks invalid content
 
 Role-based permissions are enforced
 
-Only after completion may Phase 6 Templates Implementation begin.
----
+## Only after completion may Phase 6 Templates Implementation begin.

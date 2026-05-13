@@ -51,13 +51,12 @@ Operational controls:
 ## Alternatives Considered
 
 1. On-demand query computation only:
-Rejected due to latency and cost risk.
+   Rejected due to latency and cost risk.
 
 2. External OLAP warehouse for MVP:
-Deferred; valuable later for scale but unnecessary for initial phase.
+   Deferred; valuable later for scale but unnecessary for initial phase.
 
 ## Implementation Notes
 
 - Keep view definitions in database/migrations with deterministic naming.
 - Use dedicated worker jobs for refresh orchestration and monitoring.
-

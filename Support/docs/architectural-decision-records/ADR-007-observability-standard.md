@@ -59,13 +59,12 @@ Operational policy:
 ## Alternatives Considered
 
 1. Logs-only approach:
-Rejected due to limited ability to detect latency and dependency bottlenecks quickly.
+   Rejected due to limited ability to detect latency and dependency bottlenecks quickly.
 
 2. Ad hoc team-specific observability patterns:
-Rejected because inconsistent data hinders incident coordination.
+   Rejected because inconsistent data hinders incident coordination.
 
 ## Implementation Notes
 
 - Inject correlation IDs from edge/API layer through worker context.
 - Add dashboard packs for API, worker, database, and AI workflow health.
-

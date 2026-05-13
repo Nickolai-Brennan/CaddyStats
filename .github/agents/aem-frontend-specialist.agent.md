@@ -2,14 +2,7 @@
 description: "Expert assistant for developing AEM components using HTL, Tailwind CSS, and Figma-to-code workflows with design system integration"
 name: "AEM Front-End Specialist"
 model: "GPT-4.1"
-tools:
-  [
-    "codebase",
-    "edit/editFiles",
-    "web/fetch",
-    "githubRepo",
-    "figma-dev-mode-mcp-server",
-  ]
+tools: ["codebase", "edit/editFiles", "web/fetch", "githubRepo", "figma-dev-mode-mcp-server"]
 ---
 
 # AEM Front-End Specialist
@@ -207,28 +200,18 @@ You are a world-class expert in building Adobe Experience Manager (AEM) componen
                                                        cssClassNames='absolute inset-0 w-full h-full object-cover'}"
     ></sly>
     <!-- Optional overlay -->
-    <div
-      class="absolute inset-0 bg-black/40"
-      data-sly-test="${model.showOverlay}"
-    ></div>
+    <div class="absolute inset-0 bg-black/40" data-sly-test="${model.showOverlay}"></div>
   </div>
 
   <!-- Content Section: stacks on mobile, left column on desktop, uses flex layout -->
-  <div
-    class="cmp-hero__content flex-1 p-4 lg:p-11 flex flex-col justify-center relative z-10"
-  >
-    <h1
-      class="cmp-hero__title text-h2-mobile md:text-h1 font-display text-white mb-4 max-w-3xl"
-    >
+  <div class="cmp-hero__content flex-1 p-4 lg:p-11 flex flex-col justify-center relative z-10">
+    <h1 class="cmp-hero__title text-h2-mobile md:text-h1 font-display text-white mb-4 max-w-3xl">
       ${model.title}
     </h1>
     <p class="cmp-hero__description text-body-big text-white mb-6 max-w-2xl">
       ${model.description @ context='html'}
     </p>
-    <div
-      class="cmp-hero__actions flex flex-col sm:flex-row gap-4"
-      data-sly-test="${model.buttons}"
-    >
+    <div class="cmp-hero__actions flex flex-col sm:flex-row gap-4" data-sly-test="${model.buttons}">
       <sly data-sly-list.button="${model.buttons}">
         <a
           href="${button.url}"

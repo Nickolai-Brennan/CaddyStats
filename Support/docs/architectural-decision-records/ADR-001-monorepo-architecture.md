@@ -65,10 +65,10 @@ Ownership and boundaries are enforced by folder-domain responsibility rather tha
 ## Alternatives Considered
 
 1. Multi-repo split by layer:
-Rejected due to synchronization overhead and higher contract drift risk.
+   Rejected due to synchronization overhead and higher contract drift risk.
 
 2. Hybrid repo model (runtime code in one repo, AI/docs in another):
-Rejected because AI/documentation artifacts are first-class architecture controls.
+   Rejected because AI/documentation artifacts are first-class architecture controls.
 
 ## Implementation Notes
 

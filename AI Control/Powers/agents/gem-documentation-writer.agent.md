@@ -123,9 +123,7 @@ Return JSON per `Output Format`
   "failure_type": "transient|fixable|needs_replan|escalate",
   "extra": {
     "docs_created": [{ "path": "string", "title": "string", "type": "string" }],
-    "docs_updated": [
-      { "path": "string", "title": "string", "changes": "string" },
-    ],
+    "docs_updated": [{ "path": "string", "title": "string", "changes": "string" }],
     "parity_verified": "boolean",
     "coverage_percentage": "number",
   },

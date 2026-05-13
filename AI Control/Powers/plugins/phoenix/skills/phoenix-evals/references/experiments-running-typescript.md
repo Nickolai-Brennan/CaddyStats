@@ -6,10 +6,7 @@ Execute experiments with `runExperiment`.
 
 ```typescript
 import { createClient } from "@arizeai/phoenix-client";
-import {
-  runExperiment,
-  asExperimentEvaluator,
-} from "@arizeai/phoenix-client/experiments";
+import { runExperiment, asExperimentEvaluator } from "@arizeai/phoenix-client/experiments";
 
 const client = createClient();
 

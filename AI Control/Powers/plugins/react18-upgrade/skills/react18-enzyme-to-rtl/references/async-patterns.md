@@ -112,7 +112,7 @@ it("renders user from query", async () => {
   const wrapper = mount(
     <MockedProvider mocks={mocks} addTypename={false}>
       <UserProfile id="1" />
-    </MockedProvider>,
+    </MockedProvider>
   );
   await new Promise((resolve) => setTimeout(resolve, 0)); // flush Apollo queue
   wrapper.update();
@@ -129,7 +129,7 @@ it("renders user from query", async () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <UserProfile id="1" />
-    </MockedProvider>,
+    </MockedProvider>
   );
 
   // Wait for Apollo to resolve the query
@@ -148,7 +148,7 @@ it("shows loading then data", async () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <UserProfile id="1" />
-    </MockedProvider>,
+    </MockedProvider>
   );
   // Apollo loading state - check immediately after render
   expect(screen.getByText(/loading/i)).toBeInTheDocument();
@@ -169,9 +169,7 @@ it("shows error on failed fetch", async () => {
   wrapper.find("button").simulate("click");
   await new Promise((resolve) => setTimeout(resolve, 0));
   wrapper.update();
-  expect(wrapper.find(".error-message").text()).toContain(
-    "Something went wrong",
-  );
+  expect(wrapper.find(".error-message").text()).toContain("Something went wrong");
 });
 ```
 

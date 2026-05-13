@@ -16,6 +16,7 @@ Purpose:
 SEO discovery and trust-building entry point.
 
 Access:
+
 - Public pages
 - Limited previews of rankings and projections
 
@@ -25,6 +26,7 @@ Purpose:
 Activation and onboarding into recurring behavior.
 
 Access:
+
 - Full basic public content
 - Limited projection depth
 - Limited comparison/filter interactions
@@ -36,6 +38,7 @@ Purpose:
 Full decision workflow access for serious weekly users.
 
 Access:
+
 - Full projections and probabilities
 - Explainability modules
 - Advanced filters and comparison workflows
@@ -68,15 +71,15 @@ Final pricing must be validated through conversion and churn testing.
 
 ## Entitlement Summary
 
-| Capability Area | Free User | Premium Subscriber |
-| --- | --- | --- |
-| Core public analytics | Yes | Yes |
-| Full projection depth | Limited | Yes |
-| Explainability | Preview | Yes |
-| Advanced research workflows | Limited | Yes |
-| Watchlists and alerts | Limited | Yes |
-| Premium editorial | Metered | Yes |
-| Model performance dashboard | No | Yes |
+| Capability Area             | Free User | Premium Subscriber |
+| --------------------------- | --------- | ------------------ |
+| Core public analytics       | Yes       | Yes                |
+| Full projection depth       | Limited   | Yes                |
+| Explainability              | Preview   | Yes                |
+| Advanced research workflows | Limited   | Yes                |
+| Watchlists and alerts       | Limited   | Yes                |
+| Premium editorial           | Metered   | Yes                |
+| Model performance dashboard | No        | Yes                |
 
 Detailed mapping is maintained in premium-feature-matrix.md.
 

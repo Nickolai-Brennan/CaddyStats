@@ -5,7 +5,8 @@
 ## Changes
 
 <!-- List the files/areas changed -->
-- 
+
+-
 
 ## Type of Change
 
@@ -25,6 +26,7 @@
 ## Migration Notes
 
 <!-- If this includes a DB migration, describe what it does and any rollback steps -->
+
 N/A
 
 ## Documentation Updates

@@ -109,10 +109,7 @@ function App() {
 ```jsx
 function DataComponent({ id }) {
   // Only create promise once per id:
-  const dataPromise = useMemo(
-    () => fetch(`/api/data/${id}`).then((r) => r.json()),
-    [id],
-  );
+  const dataPromise = useMemo(() => fetch(`/api/data/${id}`).then((r) => r.json()), [id]);
 
   const data = use(dataPromise);
   return <pre>{JSON.stringify(data, null, 2)}</pre>;

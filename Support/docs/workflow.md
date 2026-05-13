@@ -33,12 +33,14 @@ All work follows an architecture-first and data-first delivery model:
 ## 3. Documentation Workflow
 
 For every major task:
+
 - verify whether existing docs already cover the decision
 - update the closest relevant document first
 - add/update ADRs for architectural-level choices
 - add a changelog entry with date and summary
 
 Core locations:
+
 - root product docs: `Support/docs/00-root/`
 - product strategy docs: `Support/docs/01-product/`
 - architecture decisions: `Support/docs/architectural-decision-records/`
@@ -47,6 +49,7 @@ Core locations:
 ## 4. Delivery Workflow by Phase
 
 Each phase should define:
+
 - objective
 - scoped deliverables
 - acceptance criteria
@@ -58,6 +61,7 @@ No dependent phase should proceed without required upstream outputs.
 ## 5. Quality and Governance Checks
 
 Before considering work complete:
+
 - scope matches product and architecture constraints
 - no unsupported data claims are introduced
 - security expectations are preserved (auth, RBAC, sanitization, secret handling)
@@ -67,6 +71,7 @@ Before considering work complete:
 ## 6. Escalation Rule
 
 If a task appears to violate build order or architecture constraints:
+
 1. stop implementation,
 2. document the dependency conflict,
 3. resolve ordering or architecture decision first.

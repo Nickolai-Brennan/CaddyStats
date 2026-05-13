@@ -54,11 +54,7 @@ Always verify signatures before processing:
 // webhooks/stripe.ts
 import crypto from "crypto";
 
-export function verifyStripeSignature(
-  payload: Buffer,
-  signature: string,
-  secret: string,
-): boolean {
+export function verifyStripeSignature(payload: Buffer, signature: string, secret: string): boolean {
   const [, timestampPart, signaturePart] = signature.split(",");
   const timestamp = timestampPart?.split("=")[1];
   const expectedSig = signaturePart?.split("=")[1];
@@ -70,29 +66,17 @@ export function verifyStripeSignature(
   if (webhookAge > 300) return false;
 
   const signedPayload = `${timestamp}.${payload.toString()}`;
-  const expectedHash = crypto
-    .createHmac("sha256", secret)
-    .update(signedPayload)
-    .digest("hex");
+  const expectedHash = crypto.createHmac("sha256", secret).update(signedPayload).digest("hex");
 
-  return crypto.timingSafeEqual(
-    Buffer.from(expectedHash, "hex"),
-    Buffer.from(expectedSig, "hex"),
-  );
+  return crypto.timingSafeEqual(Buffer.from(expectedHash, "hex"), Buffer.from(expectedSig, "hex"));
 }
 ```
 
 **GitHub (HMAC-SHA256):**
 
 ```typescript
-export function verifyGitHubSignature(
-  payload: Buffer,
-  signature: string,
-  secret: string,
-): boolean {
-  const expected =
-    "sha256=" +
-    crypto.createHmac("sha256", secret).update(payload).digest("hex");
+export function verifyGitHubSignature(payload: Buffer, signature: string, secret: string): boolean {
+  const expected = "sha256=" + crypto.createHmac("sha256", secret).update(payload).digest("hex");
   return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
 }
 ```
@@ -139,7 +123,7 @@ router.post(
     handleStripeEvent(event).catch((err) => {
       console.error("[webhook] Processing error:", err);
     });
-  },
+  }
 );
 ```
 

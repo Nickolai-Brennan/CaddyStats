@@ -50,14 +50,13 @@ Workloads are grouped by domain queues (ingest, projections, editorial-ai, index
 ## Alternatives Considered
 
 1. Cron-only scripts:
-Rejected because event-driven workflows and near-real-time updates are required.
+   Rejected because event-driven workflows and near-real-time updates are required.
 
 2. API-inline processing:
-Rejected due to latency and reliability risks.
+   Rejected due to latency and reliability risks.
 
 ## Implementation Notes
 
 - Worker entry points live under backend/app/workers.
 - Job handlers call service/repository layers; no direct route logic.
 - Critical workflows should include manual replay tooling for operations.
-

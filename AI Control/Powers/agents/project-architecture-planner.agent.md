@@ -322,9 +322,7 @@ Generate a self-contained HTML file at `docs/{app}-architecture-diagrams.html` t
         padding: 0;
       }
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-          sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
         background: var(--bg);
         color: var(--text);
         line-height: 1.6;
@@ -411,9 +409,7 @@ Generate a self-contained HTML file at `docs/{app}-architecture-diagrams.html` t
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
       mermaid.initialize({
         startOnLoad: true,
-        theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "default",
+        theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default",
         securityLevel: "strict",
         flowchart: { useMaxWidth: true, htmlLabels: true },
       });

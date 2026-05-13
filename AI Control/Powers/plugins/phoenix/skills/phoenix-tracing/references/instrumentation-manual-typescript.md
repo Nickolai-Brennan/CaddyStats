@@ -38,7 +38,7 @@ const pipeline = traceChain(
     const docs = await retrieve(query);
     return await generate(docs, query);
   },
-  { name: "rag-pipeline" },
+  { name: "rag-pipeline" }
 );
 
 // AGENT - reasoning
@@ -47,24 +47,20 @@ const agent = traceAgent(
     const thought = await llm.generate(`Think: ${question}`);
     return await processThought(thought);
   },
-  { name: "my-agent" },
+  { name: "my-agent" }
 );
 
 // TOOL - function calls
 const getWeather = traceTool(
   async (city: string) => fetch(`/api/weather/${city}`).then((r) => r.json()),
-  { name: "get-weather" },
+  { name: "get-weather" }
 );
 ```
 
 ## withSpan for Other Kinds
 
 ```typescript
-import {
-  withSpan,
-  getInputAttributes,
-  getRetrieverAttributes,
-} from "@arizeai/openinference-core";
+import { withSpan, getInputAttributes, getRetrieverAttributes } from "@arizeai/openinference-core";
 
 // RETRIEVER with custom attributes
 const retrieve = withSpan(
@@ -77,7 +73,7 @@ const retrieve = withSpan(
     name: "vector-search",
     processInput: (query) => getInputAttributes(query),
     processOutput: (docs) => getRetrieverAttributes({ documents: docs }),
-  },
+  }
 );
 ```
 
@@ -98,11 +94,7 @@ withSpan(fn, {
 **Always capture I/O for evaluation-ready spans.** Use `getInputAttributes` and `getOutputAttributes` helpers for automatic MIME type detection:
 
 ```typescript
-import {
-  getInputAttributes,
-  getOutputAttributes,
-  withSpan,
-} from "@arizeai/openinference-core";
+import { getInputAttributes, getOutputAttributes, withSpan } from "@arizeai/openinference-core";
 
 const handleQuery = withSpan(
   async (userInput: string) => {
@@ -115,7 +107,7 @@ const handleQuery = withSpan(
     // Use helpers - automatic MIME type detection
     processInput: (input) => getInputAttributes(input),
     processOutput: (result) => getOutputAttributes(result.text),
-  },
+  }
 );
 
 await handleQuery("What is 2+2?");
@@ -167,7 +159,7 @@ const processWithMetadata = withSpan(
       "output.mime_type": "text/plain",
       "output.tokens": result.usage?.totalTokens, // Custom attribute
     }),
-  },
+  }
 );
 ```
 

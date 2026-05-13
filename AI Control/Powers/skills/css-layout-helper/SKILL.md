@@ -157,9 +157,7 @@ Identify the appropriate CSS strategy:
 ```html
 <div class="flex h-screen overflow-hidden">
   <!-- Sidebar -->
-  <aside
-    class="w-64 shrink-0 overflow-y-auto border-r bg-white lg:block hidden"
-  >
+  <aside class="w-64 shrink-0 overflow-y-auto border-r bg-white lg:block hidden">
     <!-- nav items -->
   </aside>
   <!-- Main -->
@@ -172,9 +170,7 @@ Identify the appropriate CSS strategy:
 **Responsive Card Grid:**
 
 ```html
-<div
-  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6"
->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
   <!-- cards -->
 </div>
 ```
@@ -190,9 +186,7 @@ Identify the appropriate CSS strategy:
 **Holy Grail Layout:**
 
 ```html
-<div
-  class="grid min-h-screen grid-rows-[auto_1fr_auto] grid-cols-[auto_1fr_auto]"
->
+<div class="grid min-h-screen grid-rows-[auto_1fr_auto] grid-cols-[auto_1fr_auto]">
   <header class="col-span-3 ...">Header</header>
   <nav class="row-start-2 w-48 ...">Left Nav</nav>
   <main class="row-start-2 min-w-0 p-6">Main Content</main>

@@ -189,9 +189,7 @@ class Dashboard extends React.Component {
       <ThemeContext.Consumer>
         {({ theme }) => (
           <AuthContext.Consumer>
-            {({ user }) => (
-              <div className={`dashboard-${theme}`}>Welcome, {user.name}</div>
-            )}
+            {({ user }) => <div className={`dashboard-${theme}`}>Welcome, {user.name}</div>}
           </AuthContext.Consumer>
         )}
       </ThemeContext.Consumer>

@@ -121,10 +121,7 @@ export function createUser(overrides: Partial<User> = {}): User {
   };
 }
 
-export function createUsers(
-  count: number,
-  overrides: Partial<User> = {},
-): User[] {
+export function createUsers(count: number, overrides: Partial<User> = {}): User[] {
   return Array.from({ length: count }, () => createUser(overrides));
 }
 
@@ -137,9 +134,7 @@ export function createOrder(overrides: Partial<Order> = {}): Order {
     status: faker.helpers.arrayElement(["pending", "completed", "cancelled"]),
     totalCents: faker.number.int({ min: 999, max: 99999 }),
     createdAt: createdAt.toISOString(),
-    updatedAt: faker.date
-      .between({ from: createdAt, to: new Date() })
-      .toISOString(),
+    updatedAt: faker.date.between({ from: createdAt, to: new Date() }).toISOString(),
     ...overrides,
   };
 }

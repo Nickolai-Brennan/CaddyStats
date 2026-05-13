@@ -48,7 +48,7 @@ const handleInteraction = withSpan(
     name: "cli.interaction",
     kind: "CHAIN",
     attributes: { "session.id": SESSION_ID },
-  },
+  }
 );
 
 // Call it
@@ -66,7 +66,7 @@ const processQuery = withSpan(
     name: "process.query",
     kind: "CHAIN",
     attributes: { "session.id": SESSION_ID },
-  },
+  }
 );
 
 await processQuery("What is 2+2?");
@@ -144,7 +144,7 @@ const handleWithContext = withSpan(
       "user.id": userId, // Track user
       "metadata.environment": "prod", // Custom metadata
     },
-  },
+  }
 );
 ```
 
@@ -179,12 +179,9 @@ For web servers or complex async flows where you need to propagate session IDs t
 import { context } from "@opentelemetry/api";
 import { setSession } from "@arizeai/openinference-core";
 
-await context.with(
-  setSession(context.active(), { sessionId: "user_123_conv_456" }),
-  async () => {
-    const response = await llm.invoke(prompt);
-  },
-);
+await context.with(setSession(context.active(), { sessionId: "user_123_conv_456" }), async () => {
+  const response = await llm.invoke(prompt);
+});
 ```
 
 **Use Context API when:**

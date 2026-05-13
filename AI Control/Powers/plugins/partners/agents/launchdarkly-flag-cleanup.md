@@ -158,11 +158,7 @@ Search the codebase for all references to the flag key and remove them:
 
 ```typescript
 // Before
-const showNewCheckout = await ldClient.variation(
-  "new-checkout-flow",
-  user,
-  false,
-);
+const showNewCheckout = await ldClient.variation("new-checkout-flow", user, false);
 if (showNewCheckout) {
   return renderNewCheckout();
 } else {

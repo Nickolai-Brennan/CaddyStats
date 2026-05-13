@@ -87,9 +87,7 @@ For each field, define:
       minlength="8"
       aria-describedby="password-hint password-error"
     />
-    <p id="password-hint" class="field-hint">
-      At least 8 characters with 1 uppercase and 1 number
-    </p>
+    <p id="password-hint" class="field-hint">At least 8 characters with 1 uppercase and 1 number</p>
     <span id="password-error" class="field-error" role="alert" hidden></span>
   </div>
 

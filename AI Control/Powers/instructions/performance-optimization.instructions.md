@@ -130,9 +130,7 @@ function Page() {
 
 // GOOD — Server Component fetches data before HTML is sent
 async function Page() {
-  const data = await fetch("https://api.example.com/data").then((r) =>
-    r.json(),
-  );
+  const data = await fetch("https://api.example.com/data").then((r) => r.json());
   return <div>{data.title}</div>;
 }
 ```
@@ -288,8 +286,7 @@ Never use array index as key if list can reorder.
 // GOOD — yield to browser
 async function handleClick() {
   setLoading(true);
-  await (globalThis.scheduler?.yield?.() ??
-    new Promise((r) => setTimeout(r, 0)));
+  await (globalThis.scheduler?.yield?.() ?? new Promise((r) => setTimeout(r, 0)));
   const result = expensiveComputation(data);
   setResult(result);
 }
@@ -549,13 +546,7 @@ Always set `width` and `height` on images, or use `aspect-ratio` in CSS.
 - **CWV**: LCP + CLS
 
 ```html
-<link
-  rel="preload"
-  href="/fonts/main.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin
-/>
+<link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin />
 ```
 
 ### I7: Full Font Loaded When Subset Suffices

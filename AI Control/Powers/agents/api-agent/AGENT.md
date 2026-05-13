@@ -2,8 +2,7 @@
 name: api-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [project_context, current_phase, requirements, data_models]
-outputs:
-  [openapi_spec, endpoint_summary, auth_design, error_catalog, handoff_notes]
+outputs: [openapi_spec, endpoint_summary, auth_design, error_catalog, handoff_notes]
 ---
 
 # API Agent

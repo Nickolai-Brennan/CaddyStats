@@ -141,12 +141,7 @@ type Query {
   user(id: ID!): User
   users(limit: Int = 20, offset: Int = 0): [User!]!
   post(id: ID!): Post
-  posts(
-    authorId: ID
-    status: PostStatus
-    limit: Int = 20
-    offset: Int = 0
-  ): PostConnection!
+  posts(authorId: ID, status: PostStatus, limit: Int = 20, offset: Int = 0): PostConnection!
 }
 
 type Mutation {
@@ -169,11 +164,7 @@ type Subscription {
 ```typescript
 // resolvers/index.ts
 import { Resolvers } from "../generated/graphql";
-import {
-  AuthenticationError,
-  ForbiddenError,
-  UserInputError,
-} from "apollo-server-core";
+import { AuthenticationError, ForbiddenError, UserInputError } from "apollo-server-core";
 
 export const resolvers: Resolvers = {
   Query: {
@@ -228,8 +219,7 @@ export const resolvers: Resolvers = {
 
   Subscription: {
     postPublished: {
-      subscribe: (_parent, _args, ctx) =>
-        ctx.pubsub.asyncIterator("POST_PUBLISHED"),
+      subscribe: (_parent, _args, ctx) => ctx.pubsub.asyncIterator("POST_PUBLISHED"),
     },
   },
 

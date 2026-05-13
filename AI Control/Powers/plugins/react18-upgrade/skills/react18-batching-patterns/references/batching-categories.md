@@ -202,9 +202,7 @@ it("shows saving indicator", () => {
 it("shows saving indicator", async () => {
   render(<AutoSaveForm />);
   fireEvent.change(input, { target: { value: "new text" } });
-  await waitFor(() =>
-    expect(screen.getByText("Saving...")).toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.getByText("Saving...")).toBeInTheDocument());
   await waitFor(() => expect(screen.getByText("Saved")).toBeInTheDocument());
 });
 ```

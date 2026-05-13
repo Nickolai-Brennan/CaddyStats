@@ -40,10 +40,12 @@ Number of weekly subscriber sessions where a user completes at least one high-va
 ### Stage 1: Acquisition
 
 Questions:
+
 - Which page templates attract qualified traffic?
 - Which channels produce users who later subscribe?
 
 Events:
+
 - page_view
 - landing_template_view
 - source_attribution_captured
@@ -51,9 +53,11 @@ Events:
 ### Stage 2: Activation
 
 Questions:
+
 - What first actions predict premium conversion?
 
 Events:
+
 - account_created
 - onboarding_completed
 - first_projection_view
@@ -62,9 +66,11 @@ Events:
 ### Stage 3: Conversion
 
 Questions:
+
 - Which gates and value messages convert best?
 
 Events:
+
 - paywall_viewed
 - paywall_cta_clicked
 - checkout_started
@@ -74,9 +80,11 @@ Events:
 ### Stage 4: Retention
 
 Questions:
+
 - Which recurring behaviors reduce churn?
 
 Events:
+
 - watchlist_saved
 - alert_created
 - explainability_opened
@@ -105,18 +113,18 @@ Required common properties:
 
 ## Key Product Events (Initial Set)
 
-| Event Name | Trigger | Core Properties | Owner |
-| --- | --- | --- | --- |
-| page_view | Any page rendered | page_type, referrer, source_channel | Frontend |
-| projection_table_viewed | Projection table becomes visible | tournament_id, column_set, plan_tier | Frontend |
-| projection_filter_applied | User applies filter | filter_name, filter_value_group, plan_tier | Frontend |
-| explainability_opened | User opens "why" module | model_version, projection_context, plan_tier | Frontend |
-| player_comparison_started | Comparison workflow initiated | player_count, context_market | Frontend |
-| paywall_viewed | Any premium gate shown | gate_type, feature_name, source_surface | Frontend |
-| checkout_started | Checkout flow begins | offer_id, billing_cycle | Backend |
-| subscription_completed | Payment success | plan_id, billing_cycle, promo_code_used | Backend |
-| watchlist_saved | User saves tracking set | watchlist_size, watchlist_type | Backend |
-| cancellation_requested | User initiates cancellation | tenure_days, stated_reason | Backend |
+| Event Name                | Trigger                          | Core Properties                              | Owner    |
+| ------------------------- | -------------------------------- | -------------------------------------------- | -------- |
+| page_view                 | Any page rendered                | page_type, referrer, source_channel          | Frontend |
+| projection_table_viewed   | Projection table becomes visible | tournament_id, column_set, plan_tier         | Frontend |
+| projection_filter_applied | User applies filter              | filter_name, filter_value_group, plan_tier   | Frontend |
+| explainability_opened     | User opens "why" module          | model_version, projection_context, plan_tier | Frontend |
+| player_comparison_started | Comparison workflow initiated    | player_count, context_market                 | Frontend |
+| paywall_viewed            | Any premium gate shown           | gate_type, feature_name, source_surface      | Frontend |
+| checkout_started          | Checkout flow begins             | offer_id, billing_cycle                      | Backend  |
+| subscription_completed    | Payment success                  | plan_id, billing_cycle, promo_code_used      | Backend  |
+| watchlist_saved           | User saves tracking set          | watchlist_size, watchlist_type               | Backend  |
+| cancellation_requested    | User initiates cancellation      | tenure_days, stated_reason                   | Backend  |
 
 ## Data Model Notes
 

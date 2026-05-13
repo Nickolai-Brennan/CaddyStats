@@ -1,6 +1,7 @@
 # Caddy Stats — Stack Environments & Connectivity
 
 ## Document Purpose
+
 Define the required stack environments for Caddy Stats and ensure the frontend, backend, API, databases, Redis, workers, and supporting services are connected, active, observable, and production-ready.
 
 ---

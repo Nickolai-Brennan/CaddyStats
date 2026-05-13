@@ -229,9 +229,7 @@ Custom discount function in JavaScript:
 ```javascript
 // extensions/custom-discount/src/index.js
 export default (input) => {
-  const configuration = JSON.parse(
-    input?.discountNode?.metafield?.value ?? "{}",
-  );
+  const configuration = JSON.parse(input?.discountNode?.metafield?.value ?? "{}");
 
   // Apply discount logic based on cart contents
   const targets = input.cart.lines
@@ -477,14 +475,12 @@ class CartManager {
           >
         </div>
       </div>
-    `,
+    `
       )
       .join("");
 
     container.querySelector(".cart-items").innerHTML = itemsHTML;
-    container.querySelector(".cart-total").textContent = this.formatMoney(
-      this.cart.total_price,
-    );
+    container.querySelector(".cart-total").textContent = this.formatMoney(this.cart.total_price);
   }
 
   formatMoney(cents) {

@@ -2,8 +2,7 @@
 name: model-development-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [cleaned_dataset, analysis_report, model_objectives, success_metrics]
-outputs:
-  [model_spec, feature_definitions, evaluation_plan, training_data_requirements]
+outputs: [model_spec, feature_definitions, evaluation_plan, training_data_requirements]
 ---
 
 # Model Development Agent

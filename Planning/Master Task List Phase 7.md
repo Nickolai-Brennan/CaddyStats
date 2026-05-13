@@ -118,10 +118,10 @@ export type SeoMetadata = {
 
 ### Exclusions
 
-- /editor/*
-- /admin/*
-- /preview/*
-- /premium/internal/*
+- /editor/\*
+- /admin/\*
+- /preview/\*
+- /premium/internal/\*
 
 ### Required Utility
 
@@ -295,7 +295,7 @@ apps/web/public/robots.txt
 
 - include sitemap index URL
 
-- User-agent: *
+- User-agent: \*
 - Disallow: /admin/
 - Disallow: /editor/
 - Disallow: /preview/
@@ -659,5 +659,4 @@ Core Web Vitals targets are measurable
 
 SEO tests pass
 
-Only after completion may Phase 8 AI Implementation begin.
----
+## Only after completion may Phase 8 AI Implementation begin.

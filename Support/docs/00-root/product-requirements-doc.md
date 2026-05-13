@@ -24,12 +24,12 @@ Caddy Stats is a production-grade golf analytics and betting intelligence platfo
 
 The platform combines:
 
-* structured golf statistics
-* projection modeling
-* betting intelligence
-* AI-assisted editorial workflows
-* premium subscriber tools
-* SEO-focused publishing
+- structured golf statistics
+- projection modeling
+- betting intelligence
+- AI-assisted editorial workflows
+- premium subscriber tools
+- SEO-focused publishing
 
 into a unified scalable analytics system.
 
@@ -43,28 +43,28 @@ Convert golf search traffic and betting interest into recurring subscription rev
 
 Golf bettors, DFS players, and fantasy golf users currently rely on fragmented information spread across:
 
-* sportsbook apps
-* spreadsheets
-* stat providers
-* social media threads
-* shallow betting blogs
-* disconnected research tools
+- sportsbook apps
+- spreadsheets
+- stat providers
+- social media threads
+- shallow betting blogs
+- disconnected research tools
 
 Current market gaps:
 
-* Lack of transparent golf-specific projection systems
-* Poor explainability for betting recommendations
-* Weak integration between analytics and editorial workflows
-* Generic betting content without structured data grounding
-* Limited golf-specific premium intelligence products
+- Lack of transparent golf-specific projection systems
+- Poor explainability for betting recommendations
+- Weak integration between analytics and editorial workflows
+- Generic betting content without structured data grounding
+- Limited golf-specific premium intelligence products
 
 Caddy Stats solves these problems through:
 
-* centralized golf analytics
-* explainable projections
-* stat-grounded editorial systems
-* premium betting intelligence tools
-* scalable SEO architecture
+- centralized golf analytics
+- explainable projections
+- stat-grounded editorial systems
+- premium betting intelligence tools
+- scalable SEO architecture
 
 ---
 
@@ -72,27 +72,27 @@ Caddy Stats solves these problems through:
 
 ## Core Product Goals
 
-* Build a trusted golf analytics platform
-* Deliver transparent projection-based betting intelligence
-* Publish scalable SEO content
-* Support premium subscriptions
-* Create reusable sports analytics infrastructure
+- Build a trusted golf analytics platform
+- Deliver transparent projection-based betting intelligence
+- Publish scalable SEO content
+- Support premium subscriptions
+- Create reusable sports analytics infrastructure
 
 ## Business Goals
 
-* Generate organic traffic through SEO
-* Convert anonymous visitors into free users
-* Convert free users into paid subscribers
-* Generate sportsbook and DFS affiliate revenue
-* Build proprietary long-term sports data assets
+- Generate organic traffic through SEO
+- Convert anonymous visitors into free users
+- Convert free users into paid subscribers
+- Generate sportsbook and DFS affiliate revenue
+- Build proprietary long-term sports data assets
 
 ## Technical Goals
 
-* API-first architecture
-* Database-first system design
-* Scalable analytics infrastructure
-* AI-assisted editorial workflows
-* High-performance caching and projections
+- API-first architecture
+- Database-first system design
+- Scalable analytics infrastructure
+- AI-assisted editorial workflows
+- High-performance caching and projections
 
 ---
 
@@ -102,11 +102,11 @@ Caddy Stats solves these problems through:
 
 ### Needs
 
-* Tournament previews
-* Course guides
-* Betting articles
-* Golfer rankings
-* Search-accessible analytics
+- Tournament previews
+- Course guides
+- Betting articles
+- Golfer rankings
+- Search-accessible analytics
 
 ### Monetization Path
 
@@ -118,12 +118,12 @@ SEO → newsletter signup → account creation → premium trial
 
 ### Needs
 
-* Projection-driven betting models
-* Matchup analysis
-* Value ratings
-* Outright rankings
-* Top-10/Top-20 probabilities
-* Explainable betting edges
+- Projection-driven betting models
+- Matchup analysis
+- Value ratings
+- Outright rankings
+- Top-10/Top-20 probabilities
+- Explainable betting edges
 
 ### Monetization Path
 
@@ -135,11 +135,11 @@ Free stats → premium projections → subscription
 
 ### Needs
 
-* Salary-adjusted projections
-* Ownership leverage
-* Course fit metrics
-* Recent form weighting
-* Lineup research tools
+- Salary-adjusted projections
+- Ownership leverage
+- Course fit metrics
+- Recent form weighting
+- Lineup research tools
 
 ### Monetization Path
 
@@ -151,12 +151,12 @@ Free rankings → advanced projections → subscription
 
 ### Needs
 
-* CMS workflows
-* AI-assisted drafting
-* SEO controls
-* Publishing tools
-* Stat injection systems
-* Projection embedding
+- CMS workflows
+- AI-assisted drafting
+- SEO controls
+- Publishing tools
+- Stat injection systems
+- Projection embedding
 
 ### Business Value
 
@@ -168,28 +168,28 @@ Increase publishing speed while maintaining data integrity.
 
 ## Included in MVP
 
-* Public marketing site
-* Tournament pages
-* Golfer profile pages
-* Course pages
-* Projection tables
-* Betting intelligence tools
-* Structured editorial CMS
-* Admin dashboard
-* Authentication
-* Stripe subscriptions
-* SEO metadata system
-* AI-assisted editorial workflows
-* Docker deployment pipeline
+- Public marketing site
+- Tournament pages
+- Golfer profile pages
+- Course pages
+- Projection tables
+- Betting intelligence tools
+- Structured editorial CMS
+- Admin dashboard
+- Authentication
+- Stripe subscriptions
+- SEO metadata system
+- AI-assisted editorial workflows
+- Docker deployment pipeline
 
 ## Excluded From MVP
 
-* Native mobile applications
-* Automated sportsbook bet placement
-* Live odds engine
-* Community/social systems
-* Multi-sport expansion
-* Real-time streaming architecture
+- Native mobile applications
+- Automated sportsbook bet placement
+- Live odds engine
+- Community/social systems
+- Multi-sport expansion
+- Real-time streaming architecture
 
 ---
 
@@ -203,21 +203,21 @@ SEO-optimized frontend delivering golf analytics, editorial content, rankings, a
 
 ## Requirements
 
-* Homepage
-* Tournament hub
-* Golfer index
-* Course index
-* Articles index
-* Pricing page
-* Login/register
-* Premium upgrade flow
+- Homepage
+- Tournament hub
+- Golfer index
+- Course index
+- Articles index
+- Pricing page
+- Login/register
+- Premium upgrade flow
 
 ## Success Criteria
 
-* Lighthouse score >90
-* Mobile-first rendering
-* Dynamic metadata for all public pages
-* Indexed by search engines
+- Lighthouse score >90
+- Mobile-first rendering
+- Dynamic metadata for all public pages
+- Indexed by search engines
 
 ---
 
@@ -227,11 +227,11 @@ SEO-optimized frontend delivering golf analytics, editorial content, rankings, a
 
 Dedicated tournament hubs with:
 
-* field analysis
-* projections
-* betting rankings
-* course fit metrics
-* editorial previews
+- field analysis
+- projections
+- betting rankings
+- course fit metrics
+- editorial previews
 
 ## API Endpoints
 
@@ -254,9 +254,9 @@ content.articles
 
 ## Success Criteria
 
-* Generated fully from database records
-* Premium projections gated server-side
-* SEO schema implemented
+- Generated fully from database records
+- Premium projections gated server-side
+- SEO schema implemented
 
 ---
 
@@ -266,17 +266,17 @@ content.articles
 
 Stat-grounded golfer profiles with:
 
-* recent form
-* strokes gained metrics
-* course history
-* projections
-* betting indicators
+- recent form
+- strokes gained metrics
+- course history
+- projections
+- betting indicators
 
 ## Success Criteria
 
-* All statistics sourced from structured data
-* Search-indexable profile pages
-* No hallucinated analytics
+- All statistics sourced from structured data
+- Search-indexable profile pages
+- No hallucinated analytics
 
 ---
 
@@ -286,11 +286,11 @@ Stat-grounded golfer profiles with:
 
 Projection engine generating tournament expectations using:
 
-* course fit
-* historical performance
-* recent form
-* weighted strokes gained metrics
-* betting value calculations
+- course fit
+- historical performance
+- recent form
+- weighted strokes gained metrics
+- betting value calculations
 
 ## Core Metrics
 
@@ -309,9 +309,9 @@ value_rating
 
 ## Success Criteria
 
-* Projection versioning required
-* Auditable model runs
-* Explainability fields supported
+- Projection versioning required
+- Auditable model runs
+- Explainability fields supported
 
 ---
 
@@ -323,18 +323,18 @@ Model-grounded betting tools and rankings.
 
 ## Features
 
-* Outright rankings
-* Top-10 rankings
-* Top-20 rankings
-* Matchup analysis
-* Betting edge explanations
-* Value ratings
+- Outright rankings
+- Top-10 rankings
+- Top-20 rankings
+- Matchup analysis
+- Betting edge explanations
+- Value ratings
 
 ## Compliance Rules
 
-* No guarantee language
-* Responsible gambling disclaimers required
-* Analytics separated from financial advice
+- No guarantee language
+- Responsible gambling disclaimers required
+- Analytics separated from financial advice
 
 ---
 
@@ -346,20 +346,20 @@ Structured editorial system for scalable SEO publishing.
 
 ## Features
 
-* Rich article editor
-* Structured content blocks
-* Stat blocks
-* Projection blocks
-* SEO metadata
-* Publishing workflow
-* Author system
-* Draft/published states
+- Rich article editor
+- Structured content blocks
+- Stat blocks
+- Projection blocks
+- SEO metadata
+- Publishing workflow
+- Author system
+- Draft/published states
 
 ## Success Criteria
 
-* AI content limited to injected stats
-* Structured reusable blocks
-* Scalable article templates
+- AI content limited to injected stats
+- Structured reusable blocks
+- Scalable article templates
 
 ---
 
@@ -371,19 +371,19 @@ Internal admin/editor interface.
 
 ## Features
 
-* Article management
-* Projection embedding
-* SEO controls
-* AI assist panel
-* User management
-* Subscription management
-* Audit logging
+- Article management
+- Projection embedding
+- SEO controls
+- AI assist panel
+- User management
+- Subscription management
+- Audit logging
 
 ## Security Requirements
 
-* Admin-only access
-* Role-based permissions
-* Server-side route protection
+- Admin-only access
+- Role-based permissions
+- Server-side route protection
 
 ---
 
@@ -401,17 +401,17 @@ admin
 
 ## Requirements
 
-* JWT authentication
-* Refresh tokens
-* Password hashing
-* Premium route protection
-* Admin route protection
+- JWT authentication
+- Refresh tokens
+- Password hashing
+- Premium route protection
+- Admin route protection
 
 ## Success Criteria
 
-* Server-side access enforcement
-* Secure token handling
-* No secrets exposed to frontend
+- Server-side access enforcement
+- Secure token handling
+- No secrets exposed to frontend
 
 ---
 
@@ -423,22 +423,22 @@ Premium subscription system powered by Stripe.
 
 ## Plans
 
-* Free tier
-* Monthly premium
-* Annual premium
+- Free tier
+- Monthly premium
+- Annual premium
 
 ## Features
 
-* Stripe checkout
-* Webhook synchronization
-* Subscription status sync
-* Premium gating
+- Stripe checkout
+- Webhook synchronization
+- Subscription status sync
+- Premium gating
 
 ## Success Criteria
 
-* Stripe events logged
-* Failed payments downgrade safely
-* Premium access validated server-side
+- Stripe events logged
+- Failed payments downgrade safely
+- Premium access validated server-side
 
 ---
 
@@ -489,11 +489,11 @@ stats.payment_events
 
 ## Database Standards
 
-* Migration-driven schema management
-* Indexed high-read tables
-* JSONB only when flexibility is required
-* Materialized views for projections
-* Audit logging enabled
+- Migration-driven schema management
+- Indexed high-read tables
+- JSONB only when flexibility is required
+- Materialized views for projections
+- Audit logging enabled
 
 ---
 
@@ -501,39 +501,39 @@ stats.payment_events
 
 ## Frontend
 
-* React
-* Vite
-* TypeScript
-* Tailwind CSS
-* TanStack Query
-* TanStack Table
-* React Router
-* Framer Motion
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- TanStack Query
+- TanStack Table
+- React Router
+- Framer Motion
 
 ## Backend
 
-* FastAPI
-* Strawberry GraphQL
-* Python 3.12+
-* Pydantic
-* SQLAlchemy
-* Alembic
+- FastAPI
+- Strawberry GraphQL
+- Python 3.12+
+- Pydantic
+- SQLAlchemy
+- Alembic
 
 ## Database
 
-* PostgreSQL
-* Materialized views
-* JSONB blocks
-* Indexed analytics tables
+- PostgreSQL
+- Materialized views
+- JSONB blocks
+- Indexed analytics tables
 
 ## Infrastructure
 
-* Docker
-* GitHub Actions
-* Vercel frontend hosting
-* Railway/Render backend hosting
-* Neon PostgreSQL
-* CDN + SSL
+- Docker
+- GitHub Actions
+- Vercel frontend hosting
+- Railway/Render backend hosting
+- Neon PostgreSQL
+- CDN + SSL
 
 ---
 
@@ -555,15 +555,15 @@ High-read cacheable endpoints.
 
 Used for:
 
-* admin workflows
-* nested dashboard queries
-* editorial systems
+- admin workflows
+- nested dashboard queries
+- editorial systems
 
 ### Production Rules
 
-* Playground disabled in production
-* Rate limiting required
-* Admin mutations require auth
+- Playground disabled in production
+- Rate limiting required
+- Admin mutations require auth
 
 ---
 
@@ -575,19 +575,19 @@ AI may never invent statistics.
 
 ## Requirements
 
-* AI receives injected stats only
-* Generated content requires review
-* AI outputs separated from computed values
-* Prompt injection protection required
-* AI cannot auto-publish
+- AI receives injected stats only
+- Generated content requires review
+- AI outputs separated from computed values
+- Prompt injection protection required
+- AI cannot auto-publish
 
 ## Use Cases
 
-* Tournament outline generation
-* Betting article drafting
-* Projection explanations
-* Meta description generation
-* Internal linking suggestions
+- Tournament outline generation
+- Betting article drafting
+- Projection explanations
+- Meta description generation
+- Internal linking suggestions
 
 ---
 
@@ -595,28 +595,28 @@ AI may never invent statistics.
 
 ## Page Types
 
-* Tournament pages
-* Golfer pages
-* Course pages
-* Betting previews
-* DFS articles
-* Evergreen strategy pages
+- Tournament pages
+- Golfer pages
+- Course pages
+- Betting previews
+- DFS articles
+- Evergreen strategy pages
 
 ## SEO Systems
 
-* Dynamic metadata
-* Open Graph tags
-* Canonical URLs
-* XML sitemap
-* Robots.txt
-* Internal linking engine
-* Structured schema markup
+- Dynamic metadata
+- Open Graph tags
+- Canonical URLs
+- XML sitemap
+- Robots.txt
+- Internal linking engine
+- Structured schema markup
 
 ## Success Criteria
 
-* Metadata exists on all indexable pages
-* Sitemap auto-updates
-* Pages optimized for mobile search
+- Metadata exists on all indexable pages
+- Sitemap auto-updates
+- Pages optimized for mobile search
 
 ---
 
@@ -633,11 +633,11 @@ AI may never invent statistics.
 
 ## Premium Value Drivers
 
-* Projection engine
-* Betting edge tables
-* Advanced comparison tools
-* Explainable analytics
-* Subscriber-only articles
+- Projection engine
+- Betting edge tables
+- Advanced comparison tools
+- Explainable analytics
+- Subscriber-only articles
 
 ---
 
@@ -654,20 +654,20 @@ AI may never invent statistics.
 
 ## Security Requirements
 
-* JWT auth
-* RBAC permissions
-* Password hashing
-* Rate limiting
-* CSP headers
-* Sanitized content blocks
-* Secrets never logged
+- JWT auth
+- RBAC permissions
+- Password hashing
+- Rate limiting
+- CSP headers
+- Sanitized content blocks
+- Secrets never logged
 
 ## Reliability Requirements
 
-* Schema migrations required
-* Projection runs versioned
-* Payment events logged
-* Audit logging enabled
+- Schema migrations required
+- Projection runs versioned
+- Payment events logged
+- Audit logging enabled
 
 ---
 
@@ -697,12 +697,12 @@ caddy-stats/
 
 Deliverables:
 
-* PRD
-* Architecture docs
-* Database plan
-* API contracts
-* SEO strategy
-* AI safety plan
+- PRD
+- Architecture docs
+- Database plan
+- API contracts
+- SEO strategy
+- AI safety plan
 
 ---
 
@@ -710,11 +710,11 @@ Deliverables:
 
 Deliverables:
 
-* Monorepo structure
-* Frontend scaffold
-* Backend scaffold
-* Docker setup
-* Environment config
+- Monorepo structure
+- Frontend scaffold
+- Backend scaffold
+- Docker setup
+- Environment config
 
 ---
 
@@ -722,11 +722,11 @@ Deliverables:
 
 Deliverables:
 
-* PostgreSQL schemas
-* Core tables
-* Indexes
-* Alembic migrations
-* Seed data
+- PostgreSQL schemas
+- Core tables
+- Indexes
+- Alembic migrations
+- Seed data
 
 ---
 
@@ -734,11 +734,11 @@ Deliverables:
 
 Deliverables:
 
-* FastAPI services
-* Auth endpoints
-* Stats APIs
-* Billing APIs
-* GraphQL admin schema
+- FastAPI services
+- Auth endpoints
+- Stats APIs
+- Billing APIs
+- GraphQL admin schema
 
 ---
 
@@ -746,11 +746,11 @@ Deliverables:
 
 Deliverables:
 
-* Public pages
-* Tournament pages
-* Golfer pages
-* Auth flows
-* Premium gating
+- Public pages
+- Tournament pages
+- Golfer pages
+- Auth flows
+- Premium gating
 
 ---
 
@@ -758,10 +758,10 @@ Deliverables:
 
 Deliverables:
 
-* Admin dashboard
-* Article editor
-* SEO panel
-* Projection block tools
+- Admin dashboard
+- Article editor
+- SEO panel
+- Projection block tools
 
 ---
 
@@ -769,10 +769,10 @@ Deliverables:
 
 Deliverables:
 
-* Metadata engine
-* Schema markup
-* Sitemap generation
-* Internal linking system
+- Metadata engine
+- Schema markup
+- Sitemap generation
+- Internal linking system
 
 ---
 
@@ -780,10 +780,10 @@ Deliverables:
 
 Deliverables:
 
-* AI assist workflows
-* Grounding layer
-* Prompt templates
-* Validation rules
+- AI assist workflows
+- Grounding layer
+- Prompt templates
+- Validation rules
 
 ---
 
@@ -791,11 +791,11 @@ Deliverables:
 
 Deliverables:
 
-* Docker production builds
-* Managed Postgres
-* SSL
-* CDN
-* CI/CD
+- Docker production builds
+- Managed Postgres
+- SSL
+- CDN
+- CI/CD
 
 ---
 
@@ -809,10 +809,10 @@ Inconsistent golf stat sourcing.
 
 ### Mitigation
 
-* Source metadata tracking
-* Versioned imports
-* Validation rules
-* Projection auditing
+- Source metadata tracking
+- Versioned imports
+- Validation rules
+- Projection auditing
 
 ---
 
@@ -824,9 +824,9 @@ Regulatory and trust concerns.
 
 ### Mitigation
 
-* Responsible gambling messaging
-* Affiliate disclosure systems
-* No misleading claims
+- Responsible gambling messaging
+- Affiliate disclosure systems
+- No misleading claims
 
 ---
 
@@ -838,10 +838,10 @@ Thin commodity content.
 
 ### Mitigation
 
-* Structured data
-* Model-grounded insights
-* Evergreen SEO pages
-* Strong internal linking
+- Structured data
+- Model-grounded insights
+- Evergreen SEO pages
+- Strong internal linking
 
 ---
 
@@ -853,10 +853,10 @@ Hallucinated analytics.
 
 ### Mitigation
 
-* Strict grounding layer
-* Human review required
-* Prompt validation
-* Output logging
+- Strict grounding layer
+- Human review required
+- Prompt validation
+- Output logging
 
 ---
 
@@ -864,26 +864,26 @@ Hallucinated analytics.
 
 ## Product Metrics
 
-* 100+ public pages launched
-* 80+ indexed pages
-* 3+ premium tools launched
-* 4+ editorial templates
-* 1+ production projection model
+- 100+ public pages launched
+- 80+ indexed pages
+- 3+ premium tools launched
+- 4+ editorial templates
+- 1+ production projection model
 
 ## Performance Metrics
 
-* Lighthouse >90
-* Cached API response <100ms
-* Local API response <150ms
-* 100% migration success
+- Lighthouse >90
+- Cached API response <100ms
+- Local API response <150ms
+- 100% migration success
 
 ## Business Metrics
 
-* Subscriber conversion rate
-* Affiliate click-through rate
-* Email signup rate
-* Organic impressions growth
-* Premium trial starts
+- Subscriber conversion rate
+- Affiliate click-through rate
+- Email signup rate
+- Organic impressions growth
+- Premium trial starts
 
 ---
 
@@ -891,38 +891,38 @@ Hallucinated analytics.
 
 Caddy Stats MVP launches when:
 
-* Public site deployed
-* Database migrated
-* Tournament pages functional
-* Golfer pages functional
-* Projection tables operational
-* Auth + subscriptions operational
-* Admin editor operational
-* SEO systems implemented
-* AI grounding enforced
-* Secrets secured
-* Performance targets met
+- Public site deployed
+- Database migrated
+- Tournament pages functional
+- Golfer pages functional
+- Projection tables operational
+- Auth + subscriptions operational
+- Admin editor operational
+- SEO systems implemented
+- AI grounding enforced
+- Secrets secured
+- Performance targets met
 
 ---
 
 # 19. Validation Checklist
 
-* [ ] PRD approved
-* [ ] Architecture document completed
-* [ ] Folder structure created
-* [ ] PostgreSQL schemas created
-* [ ] Migrations tested
-* [ ] Backend API implemented
-* [ ] Frontend pages implemented
-* [ ] Admin editor implemented
-* [ ] Auth and roles implemented
-* [ ] Stripe billing implemented
-* [ ] SEO system implemented
-* [ ] AI grounding implemented
-* [ ] Docker production build works
-* [ ] Deployment pipeline configured
-* [ ] Monitoring enabled
-* [ ] Launch checklist completed
+- [ ] PRD approved
+- [ ] Architecture document completed
+- [ ] Folder structure created
+- [ ] PostgreSQL schemas created
+- [ ] Migrations tested
+- [ ] Backend API implemented
+- [ ] Frontend pages implemented
+- [ ] Admin editor implemented
+- [ ] Auth and roles implemented
+- [ ] Stripe billing implemented
+- [ ] SEO system implemented
+- [ ] AI grounding implemented
+- [ ] Docker production build works
+- [ ] Deployment pipeline configured
+- [ ] Monitoring enabled
+- [ ] Launch checklist completed
 
 ---
 

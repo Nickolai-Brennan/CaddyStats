@@ -515,5 +515,4 @@ Editor and web rendering support templates
 
 AI generation is template-aware
 
-Only after completion may Phase 7 SEO Implementation begin.
----
+## Only after completion may Phase 7 SEO Implementation begin.

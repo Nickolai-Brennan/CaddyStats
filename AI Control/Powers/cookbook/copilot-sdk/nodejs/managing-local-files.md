@@ -38,9 +38,7 @@ session.on((event) => {
       console.log(`\nCopilot: ${event.data.content}`);
       break;
     case "tool.execution_start":
-      console.log(
-        `  → Running: ${event.data.toolName} ${event.data.toolCallId}`,
-      );
+      console.log(`  → Running: ${event.data.toolName} ${event.data.toolCallId}`);
       break;
     case "tool.execution_complete":
       console.log(`  ✓ Completed: ${event.data.toolCallId}`);

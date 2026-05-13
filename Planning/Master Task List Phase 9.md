@@ -313,11 +313,11 @@ upstream health checks
 
 Routes
 
-/                  → web
-/api/              → api
-/graphql           → api
-/editor/           → editor
-/admin/            → admin
+/ → web
+/api/ → api
+/graphql → api
+/editor/ → editor
+/admin/ → admin
 
 ---
 
@@ -882,5 +882,4 @@ Rollback runbooks exist
 
 Production smoke tests pass
 
-Only after completion may Phase 10 Admin Systems begin.
----
+## Only after completion may Phase 10 Admin Systems begin.

@@ -19,8 +19,8 @@ labels: ["enhancement"]
 
 ## Acceptance Criteria
 
-- [ ] 
-- [ ] 
+- [ ]
+- [ ]
 
 ## Phase / Stage
 

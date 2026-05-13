@@ -18,7 +18,7 @@ context.with(
     // All spans created within this block will have:
     // "metadata" = '{"experiment_id": "exp_123", ...}'
     await myApp.run(query);
-  },
+  }
 );
 ```
 
@@ -38,12 +38,12 @@ const myFunction = traceChain(
         experiment_id: "exp_123",
         model_version: "gpt-4-1106-preview",
         environment: "production",
-      }),
+      })
     );
 
     return result;
   },
-  { name: "my-function" },
+  { name: "my-function" }
 );
 
 await myFunction("hello");

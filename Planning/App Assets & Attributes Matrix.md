@@ -6,7 +6,6 @@ Overview
 
 This document defines the primary application assets for Caddy Stats as product-facing modules. Each asset maps to a buildable system: database objects, backend services, admin workflows, frontend components, AI layers, SEO functions, or monetization hooks.
 
-
 ---
 
 1. Content Blogs
@@ -37,7 +36,6 @@ Draft, review, published, archived states
 
 Revision history
 
-
 Database Objects
 
 content.posts
@@ -56,7 +54,6 @@ content.post_revisions
 
 content.seo_metadata
 
-
 Backend/API Assets
 
 POST /admin/posts
@@ -73,7 +70,6 @@ GraphQL type: Post
 
 GraphQL type: PostBlock
 
-
 Frontend Components
 
 BlogIndexPage
@@ -88,7 +84,6 @@ RelatedArticlesRail
 
 AuthorBioCard
 
-
 Monetization Hooks
 
 Affiliate CTA blocks
@@ -100,8 +95,6 @@ Newsletter capture
 Internal links to projections dashboards
 
 Sportsbook comparison modules
-
-
 
 ---
 
@@ -133,7 +126,6 @@ Transparent calculation outputs
 
 AI-readable model summaries
 
-
 Database Objects
 
 stats.model_definitions
@@ -152,7 +144,6 @@ stats.betting_edge_scores
 
 stats.model_run_logs
 
-
 Backend/API Assets
 
 POST /admin/models/run
@@ -167,7 +158,6 @@ GraphQL type: ModelDefinition
 
 GraphQL type: PlayerProjection
 
-
 Frontend Components
 
 ModelScoreCard
@@ -180,7 +170,6 @@ ConfidenceScoreIndicator
 
 ProjectionExplainerPanel
 
-
 AI/RAG Integration
 
 Model outputs become retrieval context
@@ -191,7 +180,6 @@ Calculated values separated from generated narrative
 
 Prompt layer receives only validated model data
 
-
 Monetization Hooks
 
 Premium model access
@@ -201,8 +189,6 @@ Advanced projection filters
 Fantasy optimizer upgrades
 
 Betting edge dashboards
-
-
 
 ---
 
@@ -234,7 +220,6 @@ Export-ready premium data
 
 Mobile-first table layouts
 
-
 Database Objects
 
 stats.players
@@ -257,7 +242,6 @@ stats.mv_tournament_projections
 
 stats.mv_betting_edges
 
-
 Backend/API Assets
 
 GET /stats/players
@@ -271,7 +255,6 @@ GET /stats/dashboards/recent-form
 GET /stats/dashboards/betting-edges
 
 GET /stats/dashboards/fantasy-values
-
 
 Frontend Components
 
@@ -291,7 +274,6 @@ CourseFitDashboard
 
 MetricTrendChart
 
-
 Performance Requirements
 
 Cached dashboard endpoints under 100ms target
@@ -302,7 +284,6 @@ Materialized views for projection-heavy queries
 
 TanStack Table virtualization for large datasets
 
-
 Monetization Hooks
 
 Free limited stat views
@@ -312,8 +293,6 @@ Premium advanced filters
 Premium downloadable data
 
 Subscriber-only betting/fantasy dashboards
-
-
 
 ---
 
@@ -345,7 +324,6 @@ Audit logging
 
 Editorial workflow states
 
-
 Database Objects
 
 content.admin_users
@@ -364,7 +342,6 @@ content.seo_checks
 
 content.metric_snapshots
 
-
 Backend/API Assets
 
 POST /admin/login
@@ -380,7 +357,6 @@ POST /admin/templates
 POST /admin/seo/check
 
 POST /admin/metrics/snapshot
-
 
 Frontend Components
 
@@ -399,8 +375,6 @@ SEOAuditPanel
 MetricsOverviewPanel
 
 UserRoleManager
-
-
 
 ---
 
@@ -432,7 +406,6 @@ SEO preview panel
 
 Revision control
 
-
 Template Types
 
 Tournament Preview
@@ -451,7 +424,6 @@ Model Results Explainer
 
 Weekly Recap
 
-
 Database Objects
 
 content.editor_templates
@@ -461,7 +433,6 @@ content.template_blocks
 content.post_blocks
 
 content.editor_assets
-
 
 Frontend Components
 
@@ -481,7 +452,6 @@ SEOPreviewPanel
 
 RevisionHistoryDrawer
 
-
 Monetization Hooks
 
 Faster content production
@@ -491,8 +461,6 @@ Affiliate block standardization
 Premium article templates
 
 AI-assisted editorial scale
-
-
 
 ---
 
@@ -524,7 +492,6 @@ Affiliate click tracking
 
 Content decay monitoring
 
-
 Database Objects
 
 content.seo_metadata
@@ -541,7 +508,6 @@ content.affiliate_clicks
 
 content.conversion_events
 
-
 Backend/API Assets
 
 POST /admin/seo/analyze
@@ -553,7 +519,6 @@ GET /admin/metrics/content
 GET /admin/metrics/affiliate-clicks
 
 GET /admin/metrics/conversions
-
 
 Frontend Components
 
@@ -569,7 +534,6 @@ ContentPerformanceDashboard
 
 AffiliateMetricsTable
 
-
 Monetization Hooks
 
 Affiliate click optimization
@@ -579,8 +543,6 @@ Higher organic traffic capture
 Content refresh prioritization
 
 Premium landing page optimization
-
-
 
 ---
 
@@ -612,7 +574,6 @@ Editorial approval controls
 
 Social proof integration
 
-
 Database Objects
 
 content.social_embeds
@@ -621,7 +582,6 @@ content.embed_providers
 
 content.post_embeds
 
-
 Backend/API Assets
 
 POST /admin/embeds/validate
@@ -629,7 +589,6 @@ POST /admin/embeds/validate
 POST /admin/posts/{id}/embeds
 
 GET /embeds/{id}
-
 
 Frontend Components
 
@@ -645,7 +604,6 @@ TikTokEmbedRenderer
 
 EmbedFallbackCard
 
-
 Security Requirements
 
 Sanitize all embed HTML
@@ -656,7 +614,6 @@ No arbitrary script execution
 
 Lazy-load third-party embeds
 
-
 Monetization Hooks
 
 Increased time on page
@@ -666,8 +623,6 @@ Social distribution flywheel
 Creator partnership support
 
 Newsletter conversion support
-
-
 
 ---
 
@@ -695,7 +650,6 @@ Mobile-friendly rendering
 
 Admin-managed tag controls
 
-
 Database Objects
 
 content.tags
@@ -706,7 +660,6 @@ content.tag_metrics
 
 content.tag_aliases
 
-
 Backend/API Assets
 
 GET /tags/cloud
@@ -716,7 +669,6 @@ GET /tags/{slug}
 GET /admin/tags/metrics
 
 PATCH /admin/tags/{id}
-
 
 Frontend Components
 
@@ -730,7 +682,6 @@ TrendingTagsPanel
 
 AdminTagManager
 
-
 SEO Attributes
 
 Tag landing pages
@@ -743,7 +694,6 @@ Topic cluster reinforcement
 
 Search crawl depth improvement
 
-
 Monetization Hooks
 
 Topic-based funneling
@@ -753,8 +703,6 @@ Player-specific affiliate content
 Premium dashboard deep links
 
 Trend-based article planning
-
-
 
 ---
 
@@ -782,7 +730,6 @@ Surface relevant posts and dashboards
 
 Assist editors inside the admin panel
 
-
 Core Attributes
 
 Retrieval-augmented generation
@@ -804,7 +751,6 @@ Conversation logging
 Prompt injection defense
 
 Hallucination safeguards
-
 
 Database Objects
 
@@ -828,7 +774,6 @@ stats.player_model_scores
 
 stats.betting_edge_scores
 
-
 Backend/API Assets
 
 POST /ai/chat
@@ -840,7 +785,6 @@ GET /ai/chat/sessions/{id}
 POST /admin/ai/reindex
 
 GET /admin/ai/retrieval-logs
-
 
 Frontend Components
 
@@ -857,7 +801,6 @@ FantasyPlayRecommendationCard
 BettingEdgeAnswerCard
 
 AdminAIPromptManager
-
 
 RAG Sources
 
@@ -877,7 +820,6 @@ Course-fit models
 
 Internal editorial notes, admin-only
 
-
 Guardrails
 
 Never invent player statistics
@@ -894,7 +836,6 @@ Respect premium/free user access levels
 
 Log retrieval context and model version
 
-
 Monetization Hooks
 
 Free limited chatbot usage
@@ -907,25 +848,21 @@ Affiliate sportsbook CTA integration
 
 Personalized premium dashboards
 
-
-
 ---
 
 8. Strategic App Asset Map
 
-App Asset	Primary Value	Revenue Link
+App Asset Primary Value Revenue Link
 
-Content Blogs	Organic acquisition	Affiliate + newsletter + premium funnels
-Custom Data Models	Proprietary differentiation	Premium subscriptions
-Stats Tables & Dashboards	User retention and utility	Premium analytics tiers
-Backend Admin	Operational control	Editorial and monetization scale
-Templates & Text Editor	Content production speed	SEO + affiliate scale
-SEO & Metric Tools	Traffic growth	Conversion optimization
-Embedded Social Platforms	Engagement and distribution	Audience growth
-Tag WordCloud	Discovery and internal linking	Topic-based funnels
-AI RAG Chatbot	Personalized intelligence	Premium AI subscriptions
-
-
+Content Blogs Organic acquisition Affiliate + newsletter + premium funnels
+Custom Data Models Proprietary differentiation Premium subscriptions
+Stats Tables & Dashboards User retention and utility Premium analytics tiers
+Backend Admin Operational control Editorial and monetization scale
+Templates & Text Editor Content production speed SEO + affiliate scale
+SEO & Metric Tools Traffic growth Conversion optimization
+Embedded Social Platforms Engagement and distribution Audience growth
+Tag WordCloud Discovery and internal linking Topic-based funnels
+AI RAG Chatbot Personalized intelligence Premium AI subscriptions
 
 ---
 
@@ -935,65 +872,43 @@ Phase 1 — Core Publishing Foundation
 
 1. Content Blogs
 
-
 2. Backend Admin
-
 
 3. Content Templates & Text Editor
 
-
 4. SEO Metadata Tools
-
-
 
 Phase 2 — Data Product Foundation
 
 1. Data Stats Tables
 
-
 2. Custom Data Models
-
 
 3. Tournament Dashboards
 
-
 4. Player Projection Tables
-
-
 
 Phase 3 — Growth & Discovery
 
 1. Tag WordCloud
 
-
 2. Embedded Social Media Blocks
-
 
 3. Content Metrics Dashboard
 
-
 4. Internal Linking Tools
-
-
 
 Phase 4 — AI Intelligence Layer
 
 1. Knowledge indexing
 
-
 2. RAG chatbot
-
 
 3. Projection answer cards
 
-
 4. Fantasy/betting recommendation flows
 
-
 5. Premium AI access controls
-
-
-
 
 ---
 
@@ -1007,7 +922,6 @@ Product
 
 [ ] Free vs premium access levels are defined
 
-
 Engineering
 
 [ ] Each asset maps to database objects
@@ -1017,7 +931,6 @@ Engineering
 [ ] Each asset maps to frontend components
 
 [ ] Security requirements are documented
-
 
 Data Integrity
 
@@ -1029,7 +942,6 @@ Data Integrity
 
 [ ] Betting and fantasy outputs are traceable
 
-
 SEO
 
 [ ] Blogs support metadata and schema
@@ -1040,7 +952,6 @@ SEO
 
 [ ] Performance targets remain protected
 
-
 Monetization
 
 [ ] Premium dashboards are gated
@@ -1050,8 +961,6 @@ Monetization
 [ ] Affiliate CTAs are trackable
 
 [ ] Content metrics inform revenue decisions
-
-
 
 ---
 

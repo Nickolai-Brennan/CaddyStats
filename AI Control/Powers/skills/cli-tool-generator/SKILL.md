@@ -105,9 +105,7 @@ program
     if (options.json) {
       console.log(JSON.stringify(items, null, 2));
     } else {
-      items.forEach((item) =>
-        console.log(`  ${chalk.cyan(item.id)}  ${item.name}`),
-      );
+      items.forEach((item) => console.log(`  ${chalk.cyan(item.id)}  ${item.name}`));
     }
   });
 

@@ -50,14 +50,13 @@ Security and quality rules:
 ## Alternatives Considered
 
 1. Unstructured WYSIWYG HTML storage:
-Rejected due to security, consistency, and reuse limitations.
+   Rejected due to security, consistency, and reuse limitations.
 
 2. Markdown-only rendering:
-Rejected because advanced embedded analytics modules require richer structured blocks.
+   Rejected because advanced embedded analytics modules require richer structured blocks.
 
 ## Implementation Notes
 
 - Content schema stores block JSONB where flexibility is required.
 - Frontend renderer maps block type to versioned component implementations.
 - SEO metadata is managed alongside, but separate from, block body content.
-

@@ -52,13 +52,12 @@ Search behavior requirements:
 ## Alternatives Considered
 
 1. PostgreSQL-only full text for all search:
-Partially viable but rejected for richer multi-entity relevance needs.
+   Partially viable but rejected for richer multi-entity relevance needs.
 
 2. Client-side filtering only:
-Rejected due to scalability and relevance limitations.
+   Rejected due to scalability and relevance limitations.
 
 ## Implementation Notes
 
 - Store index job handlers in worker orchestration layer.
 - Include publish-state filters so unpublished content is never discoverable publicly.
-

@@ -78,7 +78,7 @@ const wrapper = mount(
     <ThemeProvider theme={theme}>
       <MyComponent />
     </ThemeProvider>
-  </ApolloProvider>,
+  </ApolloProvider>
 );
 
 // RTL equivalent (use your project's customRender or wrap inline):
@@ -88,7 +88,7 @@ render(
     <ThemeProvider theme={theme}>
       <MyComponent />
     </ThemeProvider>
-  </MockedProvider>,
+  </MockedProvider>
 );
 // Or use the project's customRender helper if it wraps providers
 ```

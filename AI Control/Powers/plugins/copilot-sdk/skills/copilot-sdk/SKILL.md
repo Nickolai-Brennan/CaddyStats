@@ -264,12 +264,7 @@ Define tools that Copilot can invoke during reasoning. When you define a tool, y
 ### TypeScript (JSON Schema)
 
 ```typescript
-import {
-  CopilotClient,
-  approveAll,
-  defineTool,
-  SessionEvent,
-} from "@github/copilot-sdk";
+import { CopilotClient, approveAll, defineTool, SessionEvent } from "@github/copilot-sdk";
 
 const getWeather = defineTool("get_weather", {
   description: "Get the current weather for a city",
@@ -443,12 +438,7 @@ Build a complete interactive assistant:
 ### TypeScript
 
 ```typescript
-import {
-  CopilotClient,
-  approveAll,
-  defineTool,
-  SessionEvent,
-} from "@github/copilot-sdk";
+import { CopilotClient, approveAll, defineTool, SessionEvent } from "@github/copilot-sdk";
 import * as readline from "readline";
 
 const getWeather = defineTool("get_weather", {
@@ -683,8 +673,7 @@ const session = await client.createSession({
   onPermissionRequest: approveAll,
   model: "gpt-4.1",
   systemMessage: {
-    content:
-      "You are a helpful assistant for our engineering team. Always be concise.",
+    content: "You are a helpful assistant for our engineering team. Always be concise.",
   },
 });
 ```
@@ -856,7 +845,7 @@ try {
   });
   const response = await session.sendAndWait(
     { prompt: "Hello!" },
-    30000, // timeout in ms
+    30000 // timeout in ms
   );
 } catch (error) {
   if (error.code === "ENOENT") {

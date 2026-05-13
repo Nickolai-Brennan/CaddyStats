@@ -1,18 +1,7 @@
 ---
 description: "Provide expert Salesforce Platform guidance, including Apex Enterprise Patterns, LWC, integration, and Aura-to-LWC migration."
 name: "Salesforce Expert Agent"
-tools:
-  [
-    "vscode",
-    "execute",
-    "read",
-    "edit",
-    "search",
-    "web",
-    "sfdx-mcp/*",
-    "agent",
-    "todo",
-  ]
+tools: ["vscode", "execute", "read", "edit", "search", "web", "sfdx-mcp/*", "agent", "todo"]
 model: GPT-4.1
 ---
 
@@ -115,19 +104,12 @@ When asked to generate solutions:
 <template>
   <lightning-card title="Create Contact" icon-name="standard:contact">
     <div class="slds-var-m-around_medium">
-      <lightning-record-edit-form
-        object-api-name="Contact"
-        onsuccess="{handleSuccess}"
-      >
+      <lightning-record-edit-form object-api-name="Contact" onsuccess="{handleSuccess}">
         <lightning-input-field field-name="FirstName"></lightning-input-field>
         <lightning-input-field field-name="LastName"></lightning-input-field>
         <lightning-input-field field-name="Email"></lightning-input-field>
         <div class="slds-var-m-top_medium">
-          <lightning-button
-            type="submit"
-            label="Save"
-            variant="brand"
-          ></lightning-button>
+          <lightning-button type="submit" label="Save" variant="brand"></lightning-button>
         </div>
       </lightning-record-edit-form>
     </div>

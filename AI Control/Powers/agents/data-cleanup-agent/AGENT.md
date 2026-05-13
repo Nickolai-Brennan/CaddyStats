@@ -2,8 +2,7 @@
 name: data-cleanup-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [raw_data, data_schema, cleaning_rules]
-outputs:
-  [cleaned_dataset, cleaning_report, validation_summary, rejected_records]
+outputs: [cleaned_dataset, cleaning_report, validation_summary, rejected_records]
 ---
 
 # Data Cleanup Agent

@@ -49,13 +49,12 @@ Gateway rules:
 ## Alternatives Considered
 
 1. REST-only:
-Rejected because nested editorial/dashboard composition becomes cumbersome.
+   Rejected because nested editorial/dashboard composition becomes cumbersome.
 
 2. GraphQL-only:
-Rejected due to operational endpoint clarity and security concerns.
+   Rejected due to operational endpoint clarity and security concerns.
 
 ## Implementation Notes
 
 - Backend folder mapping: backend/app/routes for REST, backend/app/graphql for GraphQL.
 - Authorization must remain explicit and role-based in both models.
-

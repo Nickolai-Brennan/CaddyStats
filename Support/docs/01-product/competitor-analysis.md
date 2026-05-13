@@ -26,31 +26,34 @@ Define the competitive landscape for Caddy Stats, identify whitespace, and trans
 
 Each competitor category is scored from 1 (weak) to 5 (strong) using the same rubric.
 
-| Capability | Why it matters | Typical competitor level | Caddy Stats target |
-| --- | --- | --- | --- |
-| Data depth | Drives trust and repeat usage | 2-4 | 5 |
-| Projection transparency | Increases willingness to pay | 1-3 | 5 |
-| Betting workflow quality | Converts research into action | 2-4 | 5 |
-| DFS utility | Captures serious fantasy users | 2-5 | 4 |
-| Editorial scalability | Supports SEO growth | 2-4 | 5 |
-| Personalization | Improves retention | 1-3 | 4 |
-| Mobile UX | Impacts weekly active usage | 2-4 | 5 |
-| Pricing clarity | Reduces conversion friction | 2-4 | 5 |
+| Capability               | Why it matters                 | Typical competitor level | Caddy Stats target |
+| ------------------------ | ------------------------------ | ------------------------ | ------------------ |
+| Data depth               | Drives trust and repeat usage  | 2-4                      | 5                  |
+| Projection transparency  | Increases willingness to pay   | 1-3                      | 5                  |
+| Betting workflow quality | Converts research into action  | 2-4                      | 5                  |
+| DFS utility              | Captures serious fantasy users | 2-5                      | 4                  |
+| Editorial scalability    | Supports SEO growth            | 2-4                      | 5                  |
+| Personalization          | Improves retention             | 1-3                      | 4                  |
+| Mobile UX                | Impacts weekly active usage    | 2-4                      | 5                  |
+| Pricing clarity          | Reduces conversion friction    | 2-4                      | 5                  |
 
 ## Category-Level Findings
 
 ### 1) Pick-Centric Betting Content Sites
 
 Strengths:
+
 - High publishing frequency
 - Simple narratives users can consume quickly
 
 Weaknesses:
+
 - Limited model explainability
 - Low signal-to-noise and frequent generic claims
 - Weak separation between opinion and data
 
 Opportunity for Caddy Stats:
+
 - Publish recommendation context with explicit model factors
 - Show confidence bands and uncertainty ranges
 - Make all premium recommendations auditable by data source and model version
@@ -58,14 +61,17 @@ Opportunity for Caddy Stats:
 ### 2) DFS Research Platforms
 
 Strengths:
+
 - Strong data tooling and filters
 - Better power-user retention than generic betting blogs
 
 Weaknesses:
+
 - Often optimized for DFS power users, less usable for golf bettors
 - Paywalls can be broad, making free discovery weak
 
 Opportunity for Caddy Stats:
+
 - Unify betting and DFS in one player/tournament workflow
 - Provide dual views: bettor-first and DFS-first
 - Use course-fit + form + market context in one screen
@@ -73,28 +79,34 @@ Opportunity for Caddy Stats:
 ### 3) Sportsbook Native Research Surfaces
 
 Strengths:
+
 - Transaction proximity (users can bet immediately)
 - Strong mobile presence
 
 Weaknesses:
+
 - Limited explanatory analytics
 - Incentivized to maximize handle, not user decision quality
 
 Opportunity for Caddy Stats:
+
 - Position as independent decision support before users place bets
 - Emphasize transparent assumptions and non-promissory language
 
 ### 4) Legacy Golf Statistics Portals
 
 Strengths:
+
 - Long historical archives
 - Established search presence
 
 Weaknesses:
+
 - Fragmented UX
 - Weak workflow for converting stats into actionable betting/DFS decisions
 
 Opportunity for Caddy Stats:
+
 - Build guided workflows from data to actionable rankings
 - Package advanced metrics into understandable composites
 
@@ -103,19 +115,19 @@ Opportunity for Caddy Stats:
 Priority whitespace where Caddy Stats can lead:
 
 1. Explainable golf projections:
-Publish model component contributions and confidence ranges, not just a rank.
+   Publish model component contributions and confidence ranges, not just a rank.
 
 2. Unified workflow:
-One research path for outrights, placement markets, matchups, and DFS decisions.
+   One research path for outrights, placement markets, matchups, and DFS decisions.
 
 3. Editorial + analytics coupling:
-Auto-ground AI/editorial workflows to verified stats and model outputs.
+   Auto-ground AI/editorial workflows to verified stats and model outputs.
 
 4. Decision velocity:
-Reduce time from page open to shortlist with clear filters, saved presets, and comparison views.
+   Reduce time from page open to shortlist with clear filters, saved presets, and comparison views.
 
 5. Trust instrumentation:
-Track hit quality, calibration, and retrospective performance by model version.
+   Track hit quality, calibration, and retrospective performance by model version.
 
 ## Strategic Implications
 

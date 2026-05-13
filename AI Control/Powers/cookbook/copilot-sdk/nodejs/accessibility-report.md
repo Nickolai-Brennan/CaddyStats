@@ -51,9 +51,7 @@ async function main() {
   });
 
   const askQuestion = (query: string): Promise<string> =>
-    new Promise((resolve) =>
-      rl.question(query, (answer) => resolve(answer.trim())),
-    );
+    new Promise((resolve) => rl.question(query, (answer) => resolve(answer.trim())));
 
   let url = await askQuestion("Enter URL to analyze: ");
 
@@ -134,13 +132,10 @@ async function main() {
 
   // Prompt user for test generation
   const generateTests = await askQuestion(
-    "Would you like to generate Playwright accessibility tests? (y/n): ",
+    "Would you like to generate Playwright accessibility tests? (y/n): "
   );
 
-  if (
-    generateTests.toLowerCase() === "y" ||
-    generateTests.toLowerCase() === "yes"
-  ) {
+  if (generateTests.toLowerCase() === "y" || generateTests.toLowerCase() === "yes") {
     const detectLanguagePrompt = `
         Analyze the current working directory to detect the primary programming language.
         Respond with ONLY the detected language name and a brief explanation.
@@ -152,9 +147,7 @@ async function main() {
     await session.send({ prompt: detectLanguagePrompt });
     await idle;
 
-    let language = await askQuestion(
-      "\n\nConfirm language for tests (or enter a different one): ",
-    );
+    let language = await askQuestion("\n\nConfirm language for tests (or enter a different one): ");
     if (!language) language = "TypeScript";
 
     const testGenerationPrompt = `

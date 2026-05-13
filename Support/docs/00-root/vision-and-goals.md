@@ -21,18 +21,21 @@ Turn fragmented golf research into a unified, auditable, and monetizable product
 ## 3. Product Goals
 
 ### 3.1 User Value Goals
+
 - Deliver reliable player, course, and tournament insights
 - Make projection logic understandable and inspectable
 - Provide practical research workflows for betting and fantasy prep
 - Maintain strong readability for public and premium content
 
 ### 3.2 Platform Goals
+
 - Keep PostgreSQL as source of truth
 - Maintain clean `content` and `stats` boundaries
 - Ship API contracts before deep UI coupling
 - Keep AI features grounded, reviewable, and logged
 
 ### 3.3 Business Goals
+
 - Grow qualified organic traffic via SEO content systems
 - Convert users from anonymous to registered to paid
 - Increase recurring subscription revenue

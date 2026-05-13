@@ -8,15 +8,7 @@ mcp-servers:
   DiffblueCover:
     type: "local"
     command: "uv"
-    args:
-      [
-        "run",
-        "--with",
-        "fastmcp",
-        "fastmcp",
-        "run",
-        "/placeholder/path/to/cover-mcp/main.py",
-      ]
+    args: ["run", "--with", "fastmcp", "fastmcp", "run", "/placeholder/path/to/cover-mcp/main.py"]
     env:
       # You will need a valid license for Diffblue Cover to use this tool, you can get a trial
       # license from https://www.diffblue.com/try-cover/.

@@ -97,7 +97,7 @@ export const Icon = forwardRef<SVGSVGElement, IconWrapperProps>(
       strokeWidth = 2,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <svg
@@ -120,7 +120,7 @@ export const Icon = forwardRef<SVGSVGElement, IconWrapperProps>(
         {children}
       </svg>
     );
-  },
+  }
 );
 Icon.displayName = "Icon";
 ```
@@ -159,13 +159,8 @@ import { lazy, Suspense } from "react";
 import type { IconProps } from "./types";
 import type { IconName } from "./index";
 
-const iconMap: Record<
-  IconName,
-  React.LazyExoticComponent<React.FC<IconProps>>
-> = {
-  "chevron-down": lazy(() =>
-    import("./ChevronDown").then((m) => ({ default: m.ChevronDownIcon })),
-  ),
+const iconMap: Record<IconName, React.LazyExoticComponent<React.FC<IconProps>>> = {
+  "chevron-down": lazy(() => import("./ChevronDown").then((m) => ({ default: m.ChevronDownIcon }))),
   check: lazy(() => import("./Check").then((m) => ({ default: m.CheckIcon }))),
   // ...
 };

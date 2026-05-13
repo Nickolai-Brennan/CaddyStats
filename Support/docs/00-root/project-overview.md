@@ -33,6 +33,7 @@ It is built as a data-first system where product claims, projections, and editor
 ## 3. Platform Scope
 
 ### Included
+
 - Golf player/tournament/course analytics
 - Betting and fantasy support tooling
 - Public content and premium subscriber dashboards
@@ -41,6 +42,7 @@ It is built as a data-first system where product claims, projections, and editor
 - AI-assisted content and analysis with grounding controls
 
 ### Excluded (Current Scope)
+
 - Generic multi-sport expansion
 - Unverified betting recommendation automation
 - Narrative-only content not supported by data
@@ -56,6 +58,7 @@ It is built as a data-first system where product claims, projections, and editor
 - **AI Layer:** Prompting, grounding, review, and logging controls
 
 See:
+
 - `Support/docs/build-system.md`
 - `Support/docs/architectural-decision-records/`
 - `Support/docs/caddy-stats-building-plan.md`
@@ -75,6 +78,7 @@ No phase should skip required dependencies from earlier phases unless a document
 ## 6. Success Conditions
 
 Caddy Stats succeeds when it consistently delivers:
+
 - trustworthy data-backed golf intelligence
 - repeatable subscriber value
 - scalable SEO growth

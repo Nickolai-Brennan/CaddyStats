@@ -286,9 +286,7 @@ export const ThemeContext = React.createContext({
 class ThemeProvider extends React.Component {
   render() {
     return (
-      <ThemeContext
-        value={{ theme: this.state.theme, toggleTheme: this.toggleTheme }}
-      >
+      <ThemeContext value={{ theme: this.state.theme, toggleTheme: this.toggleTheme }}>
         {this.props.children}
       </ThemeContext>
     );

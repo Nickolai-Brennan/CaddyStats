@@ -6,7 +6,6 @@ You now transition from:
 
 architecture planning → implementation execution
 
-
 The platform should now be built in vertical slices with dependency-aware sequencing.
 
 The implementation order below minimizes:
@@ -20,8 +19,6 @@ frontend blocking
 AI instability
 
 deployment risks
-
-
 
 ---
 
@@ -67,7 +64,7 @@ Deliverables
 docker-compose.yml
 turbo.json
 pnpm-workspace.yaml
-.github/workflows/*
+.github/workflows/\*
 
 Validation Gate
 
@@ -76,8 +73,6 @@ local stack boots successfully
 containers communicate correctly
 
 CI passes
-
-
 
 ---
 
@@ -141,8 +136,6 @@ indexes verified
 
 sample seed data loads
 
-
-
 ---
 
 Stage 3 — Backend Core
@@ -189,8 +182,6 @@ RBAC enforced
 
 health checks operational
 
-
-
 ---
 
 Stage 4 — Data Ingestion System
@@ -234,8 +225,6 @@ odds normalize correctly
 
 stale feeds detectable
 
-
-
 ---
 
 Stage 5 — Analytics Engine
@@ -272,8 +261,6 @@ projections generate successfully
 simulations complete reliably
 
 historical comparisons validate
-
-
 
 ---
 
@@ -321,8 +308,6 @@ routes hydrate correctly
 
 metadata validates
 
-
-
 ---
 
 Stage 7 — Editorial System
@@ -363,8 +348,6 @@ article publishing operational
 revision restore works
 
 SEO validation enforced
-
-
 
 ---
 
@@ -408,8 +391,6 @@ unsupported claims blocked
 
 audit trail complete
 
-
-
 ---
 
 Stage 9 — Premium Systems
@@ -446,8 +427,6 @@ premium content protected
 
 billing sync stable
 
-
-
 ---
 
 Stage 10 — Admin Platform
@@ -480,8 +459,6 @@ admin RBAC works
 audit logs persist
 
 operational dashboards accurate
-
-
 
 ---
 
@@ -523,8 +500,6 @@ production deployment stable
 rollback tested
 
 alerts functioning
-
-
 
 ---
 
@@ -569,8 +544,6 @@ AI costs controlled
 
 revenue funnels measurable
 
-
-
 ---
 
 Parallelization Strategy
@@ -601,7 +574,6 @@ After:
 
 subscription models finalize
 
-
 ---
 
 Critical Dependency Chain
@@ -618,7 +590,6 @@ Infrastructure
 → Admin
 → Production
 → Optimization
-
 
 ---
 
@@ -658,7 +629,6 @@ SEO systems
 metadata
 automation
 
-
 ---
 
 MVP Launch Recommendation
@@ -682,7 +652,6 @@ advanced simulations
 mobile apps
 multi-seat enterprise
 deep experimentation systems
-
 
 ---
 
@@ -716,7 +685,6 @@ Milestone 7
 
 Operational scaling complete
 
-
 ---
 
 Final Execution Directive
@@ -725,22 +693,15 @@ Build order must prioritize:
 
 1. Data integrity
 
-
 2. Operational reliability
-
 
 3. Monetization readiness
 
-
 4. SEO scalability
-
 
 5. AI safety
 
-
 6. Performance optimization
-
-
 
 Avoid:
 
@@ -751,6 +712,5 @@ overbuilding dashboards before ingestion stability
 exposing premium systems before entitlement enforcement
 
 scaling before observability exists
-
 
 The platform is now fully specified for implementation execution.

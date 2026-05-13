@@ -2,13 +2,7 @@
 name: data-analysis-agent
 phase: PROTOTYPE|MVP|PRODUCTION
 inputs: [cleaned_dataset, analysis_objectives, metrics_definition]
-outputs:
-  [
-    analysis_report,
-    statistical_summary,
-    key_insights,
-    recommended_visualizations,
-  ]
+outputs: [analysis_report, statistical_summary, key_insights, recommended_visualizations]
 ---
 
 # Data Analysis Agent
