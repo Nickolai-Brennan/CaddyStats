@@ -1,3 +1,20 @@
+## 2026-05-13 — ADR Governance and System Blueprint
+
+- Added:
+  - `Support/docs/architectural-decision-records/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers table, and a full index of ADR-001 through ADR-010
+  - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability architecture, worker architecture, and AI injection architecture
+- Changed:
+  - N/A
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - The ADR README formalizes the process described informally in engineering-standards-and-governance.md section 4.4 and provides a single navigable index of all accepted ADRs
+  - The system blueprint consolidates decisions from ADR-001 through ADR-010 into one comprehensive architectural reference; the existing system-overview.md remains the entry-level introduction
+
 ## 2026-05-13 — Engineering Standards and Governance
 
 - Added:
