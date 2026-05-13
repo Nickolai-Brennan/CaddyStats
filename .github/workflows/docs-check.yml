@@ -1,0 +1,51 @@
+name: Docs Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  docs-required:
+    name: Require Docs Updates
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect changed paths
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            docs:
+              - 'Support/docs/**'
+              - 'README.md'
+              - '.github/PULL_REQUEST_TEMPLATE/**'
+              - '.github/copilot-instructions.md'
+            code_or_data:
+              - 'apps/**'
+              - 'services/**'
+              - 'packages/**'
+              - 'workers/**'
+              - 'database/**'
+              - 'api/**'
+              - 'infrastructure/**'
+              - 'scripts/**'
+              - 'config/**'
+              - '.github/workflows/**'
+
+      - name: Enforce docs updates for code/data PRs
+        if: steps.changes.outputs.code_or_data == 'true' && steps.changes.outputs.docs != 'true'
+        run: |
+          echo "Code or data changes were detected, but no documentation updates were found."
+          echo "Please update Support/docs and/or README.md in this pull request."
+          exit 1
+
+      - name: Docs check passed
+        run: echo "Docs requirements satisfied for this pull request."
