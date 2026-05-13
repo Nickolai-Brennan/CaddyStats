@@ -38,7 +38,6 @@ jobs:
               - 'infrastructure/**'
               - 'scripts/**'
               - 'config/**'
-              - '.github/workflows/**'
 
       - name: Enforce docs updates for code/data PRs
         if: steps.changes.outputs.code_or_data == 'true' && steps.changes.outputs.docs != 'true'
