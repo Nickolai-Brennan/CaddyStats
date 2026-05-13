@@ -54,7 +54,7 @@ services:
   # ---------------------------------------------------------------------------
   api:
     build:
-      context: ./services/api
+      context: ./backend
       dockerfile: Dockerfile
       target: development
     container_name: caddystats-api
@@ -67,7 +67,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./services/api:/app
+      - ./backend:/app
     depends_on:
       postgres:
         condition: service_healthy
@@ -87,7 +87,7 @@ services:
   # ---------------------------------------------------------------------------
   web:
     build:
-      context: ./apps/web
+      context: ./frontend
       dockerfile: Dockerfile
       target: development
     container_name: caddystats-web
@@ -99,7 +99,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./apps/web:/app
+      - ./frontend:/app
       - /app/node_modules
     depends_on:
       - api

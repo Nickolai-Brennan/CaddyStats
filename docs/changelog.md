@@ -1,0 +1,104 @@
+## 2026-05-13 — Folder Hierarchy Realignment
+- Added:
+  - Root architecture folders for `agents/`, `api/`, `automation/`, `commands/`, `evals/`, `instructions/`, `plugins/`, `prompts/`, `skills/`, `templates/`, and `workflows/`
+- Changed:
+  - Moved the FastAPI service from `services/api/` into `backend/`
+  - Moved the React app from `apps/web/` into `frontend/`
+  - Moved project documentation from `Support/docs/` into `docs/`
+  - Moved planning docs from `Planning/` into `docs/planning/`
+  - Moved agent definitions from `AI Control/Powers/Agents/` into `agents/`
+- Fixed:
+  - Updated Makefile, Docker, pnpm workspace, CI workflows, and documentation references to the new folder hierarchy
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Baseline validation still depends on local Python tooling being installed (`ruff` and `pytest` were unavailable in this environment)
+
+## 2026-05-13 — Stage 1: Repository & Infrastructure Bootstrap
+- Added:
+  - Monorepo root folder scaffold (frontend/, backend/, packages/, workers/, database/, infrastructure/, ai/, docs/, scripts/, tests/, config/)
+  - `pnpm-workspace.yaml` — pnpm monorepo workspace configuration
+  - `turbo.json` — TurboRepo pipeline configuration (build, dev, lint, typecheck, test)
+  - `package.json` — root workspace package with turbo + prettier + typescript
+  - `tsconfig.base.json` — shared TypeScript base config
+  - `.prettierrc` — shared formatting config
+  - `.env.example` — complete environment variable template with all required variables
+  - `.gitignore` — comprehensive root gitignore
+  - `docker-compose.yml` — full dev stack (postgres, redis, api, web, nginx)
+  - `docker-compose.test.yml` — isolated test stack
+  - `backend/Dockerfile` — multi-stage FastAPI Dockerfile (dev + prod)
+  - `frontend/Dockerfile` — multi-stage React/Vite Dockerfile (dev + prod)
+  - `infrastructure/nginx/nginx.conf` + `conf.d/default.conf` — reverse proxy config
+  - `backend/app/` — FastAPI app bootstrap (main.py, config, logging, health endpoints, request ID middleware)
+  - `backend/requirements/` — base, prod, dev requirements
+  - `backend/pyproject.toml` — ruff, mypy, pytest configuration
+  - `frontend/` — React/Vite/TypeScript/Tailwind app scaffold
+  - `.github/workflows/ci.yml` — full CI pipeline (lint, typecheck, test, docker build, CI gate)
+  - `.github/workflows/dependency-review.yml` — daily dependency audit
+  - `.github/workflows/code-cleanup.yml` — weekly formatting/lint sweep
+  - `.github/PULL_REQUEST_TEMPLATE/` — PR template
+  - `.github/ISSUE_TEMPLATE/` — bug and feature request templates
+  - `Makefile` — local dev commands (dev, test, lint, format, db-migrate, db-shell, etc.)
+  - `scripts/setup/bootstrap.sh` — local environment bootstrap script
+- Changed:
+  - Repository structure transitioned from documentation-only to active monorepo implementation
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Stage 1 complete. Validation gate: local stack can boot with `make dev`. CI pipeline operational on push/PR.
+
+## 2026-05-12 — Master Task List Audit
+- Added:
+  - Additional required task coverage across `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md` and `docs/planning/Master Task List Phase X.md`
+- Changed:
+  - Standardized markdown structure in the phase master task lists with consistent headings and checklist-style task blocks
+- Fixed:
+  - Filled cross-phase planning gaps around governance, observability, compliance, validation, monetization, and recovery planning
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This pass focused on documentation quality and planning completeness; no application code or build tooling changed
+
+## 2026-05-12 — Documentation Foundation
+- Added:
+  - Initial product requirements documentation in `docs/00-root/product-requirements-doc.md`
+  - Product strategy documents under `docs/01-product/`
+  - Core ADR set under `docs/architectural-decision-records/`
+  - Build and implementation planning docs (`build-system.md`, `caddy-stats-building-plan.md`)
+- Changed:
+  - Established build-order-first project direction across docs
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Repository entered architecture-first documentation phase
+
+## 2026-05-12 — Documentation Expansion Pass
+- Added:
+  - New foundational docs for project overview, vision/goals, and roadmap:
+    - `docs/00-root/project-overview.md`
+    - `docs/00-root/vision-and-goals.md`
+    - `docs/00-root/roadmap.md`
+  - Full workflow guidance in `docs/workflow.md`
+- Changed:
+  - Expanded root `README.md` with project summary and documentation index
+  - Standardized documentation navigation references across root docs
+- Fixed:
+  - Filled previously empty or placeholder documentation files
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Documentation coverage now includes core strategic, operational, and roadmap context

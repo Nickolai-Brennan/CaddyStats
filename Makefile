@@ -38,28 +38,28 @@ restart: ## Restart a specific service (e.g. make restart service=api)
 # ---------------------------------------------------------------------------
 test: ## Run all tests
 	docker compose -f docker-compose.test.yml up -d
-	cd services/api && pytest
+	cd backend && pytest
 	docker compose -f docker-compose.test.yml down
 
 test-api: ## Run API tests only
-	cd services/api && pytest
+	cd backend && pytest
 
 test-watch: ## Run API tests in watch mode
-	cd services/api && pytest --watch
+	cd backend && pytest --watch
 
 # ---------------------------------------------------------------------------
 # Linting & Formatting
 # ---------------------------------------------------------------------------
 lint: ## Run all linters
-	cd services/api && ruff check .
+	cd backend && ruff check .
 	pnpm lint
 
 format: ## Auto-format all code
-	cd services/api && ruff format .
+	cd backend && ruff format .
 	pnpm format
 
 typecheck: ## Run type checkers
-	cd services/api && mypy app/
+	cd backend && mypy app/
 	pnpm typecheck
 
 # ---------------------------------------------------------------------------
