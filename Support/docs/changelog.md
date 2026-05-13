@@ -149,7 +149,7 @@
   - Expanded root `README.md` with project summary and documentation index
   - Standardized documentation navigation references across root docs
 - Fixed:
-  - Filled previously empty or placeholder documentation files
+  - Filled previously empty or CONTENT_CHECK documentation files
 - Plugins:
   - N/A
 - Commands:
