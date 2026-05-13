@@ -18,7 +18,9 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 
 ### Phase 0 — Documentation & Foundational Architecture
 - [ ] Finalize vision, personas, monetization model, subscription tiers, editorial philosophy, analytics differentiation, sportsbook positioning, AI workflow strategy, and long-term scalability objectives.
-- [ ] Define engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flow.
+- [X] Define engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flo
+[[Changelog]]
+
 - [ ] Establish ADR format, numbering, review process, mandatory triggers, and seed initial ADRs for stack, database, AI grounding, materialized views, and worker orchestration.
 - [ ] Publish the system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching, CDN, observability, worker architecture, and AI injection architecture.
 - [ ] Document authentication, RBAC, secrets handling, security governance, and logging/redaction standards.
