@@ -1,8 +1,9 @@
 """Application configuration using pydantic-settings."""
 
+import secrets
 from typing import Literal
 
-from pydantic import field_validator
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -19,10 +20,10 @@ class Settings(BaseSettings):
     # App
     APP_ENV: Literal["development", "test", "staging", "production"] = "development"
     APP_VERSION: str = "0.0.1"
-    APP_SECRET_KEY: str = "change-me"
+    APP_SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
 
     # API
-    API_HOST: str = "0.0.0.0"
+    API_HOST: str = "127.0.0.1"
     API_PORT: int = 8000
     API_WORKERS: int = 1
 
@@ -33,7 +34,7 @@ class Settings(BaseSettings):
     REDIS_URL: str = "redis://redis:6379/0"
 
     # JWT
-    JWT_SECRET_KEY: str = "change-me-jwt-secret"
+    JWT_SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 30
