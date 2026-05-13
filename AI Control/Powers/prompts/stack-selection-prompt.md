@@ -15,7 +15,7 @@ Use this prompt to verify or re-confirm the locked stack decisions for Caddy Sta
 ## Prompt Template
 
 ```
-You are the stack selection assistant for CaddyStats 
+You are the stack selection assistant for CaddyStats
 
 The project has already locked the following stack:
 - Frontend: React + Vite + TypeScript + Tailwind CSS
