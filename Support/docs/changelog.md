@@ -1,3 +1,18 @@
+## 2026-05-13 — Engineering Standards and Governance
+- Added:
+  - `Support/docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flow
+- Changed:
+  - Governance coverage now formalizes architecture-first delivery controls, documentation update requirements, ADR triggers, release readiness expectations, and production approval checkpoints
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This update establishes the baseline repository governance policy for engineering execution, review, and release management
+
+
 ## 2026-05-13 — Consolidated Master Task List
 - Added:
   - `Planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md`
