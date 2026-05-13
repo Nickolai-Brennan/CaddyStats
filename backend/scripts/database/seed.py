@@ -6,6 +6,7 @@ from __future__ import annotations
 import asyncio
 from typing import Final
 
+from passlib.context import CryptContext
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
@@ -41,6 +42,9 @@ PROJECTION_COLLIN_ID: Final[str] = "77777777-7777-7777-7777-777777777773"
 BETTING_LINE_SCOTTIE_ID: Final[str] = "88888888-8888-8888-8888-888888888881"
 BETTING_LINE_RORY_ID: Final[str] = "88888888-8888-8888-8888-888888888882"
 BETTING_LINE_COLLIN_ID: Final[str] = "88888888-8888-8888-8888-888888888883"
+
+PASSWORD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
+SEEDED_PASSWORD_HASH: Final[str] = PASSWORD_CONTEXT.hash("caddystats-local-dev-password")
 
 
 def create_seed_engine(database_url: str | None = None) -> AsyncEngine:
@@ -122,9 +126,9 @@ async def seed_database(engine: AsyncEngine) -> None:
                 """
                 INSERT INTO auth.users (id, email, password_hash, display_name, status, is_superuser)
                 VALUES
-                    (:admin_user_id, 'admin@caddystats.local', 'seeded-password-hash', 'Platform Admin', 'active', true),
-                    (:editor_user_id, 'editor@caddystats.local', 'seeded-password-hash', 'Feature Editor', 'active', false),
-                    (:subscriber_user_id, 'subscriber@caddystats.local', 'seeded-password-hash', 'Research Subscriber', 'active', false)
+                    (:admin_user_id, 'admin@caddystats.local', :seeded_password_hash, 'Platform Admin', 'active', true),
+                    (:editor_user_id, 'editor@caddystats.local', :seeded_password_hash, 'Feature Editor', 'active', false),
+                    (:subscriber_user_id, 'subscriber@caddystats.local', :seeded_password_hash, 'Research Subscriber', 'active', false)
                 ON CONFLICT (id) DO NOTHING;
                 """
             ),
@@ -132,6 +136,7 @@ async def seed_database(engine: AsyncEngine) -> None:
                 "admin_user_id": ADMIN_USER_ID,
                 "editor_user_id": EDITOR_USER_ID,
                 "subscriber_user_id": SUBSCRIBER_USER_ID,
+                "seeded_password_hash": SEEDED_PASSWORD_HASH,
             },
         )
         await connection.execute(

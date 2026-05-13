@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     APP_SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
 
     # API
-    API_HOST: str = "127.0.0.1"
+    API_HOST: str = "0.0.0.0"
     API_PORT: int = 8000
     API_WORKERS: int = 1
 
