@@ -1,8 +1,23 @@
+## 2026-05-13 — Security Standards Documentation Expansion
+
+- Added:
+  - `docs/security/auth-rbac.md` expanded into a broader security standards reference covering authentication, authorization, RBAC, secrets handling, logging/redaction requirements, security governance, and incident expectations
+- Changed:
+  - Consolidated previously partial auth/RBAC guidance into a more complete Phase 0 policy document aligned with runtime config, database RBAC/RLS assumptions, and structured logging expectations
+- Fixed:
+  - Filled the documentation gap for authentication, RBAC, secrets handling, security governance, and logging/redaction standards called out in the consolidated master task list
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This update is documentation-only and establishes the canonical baseline security policy pending future implementation ADRs and operational runbooks
+
 ## 2026-05-13 — ADR Governance and System Blueprint
 
 - Added:
-  - `Support/docs/architectural-decision-records/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers table, and a full index of ADR-001 through ADR-010
-  - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability architecture, worker architecture, and AI injection architecture
+  - `Support/docs/architectural-decision-records/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
+  - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability, workers, and AI injection architecture
 - Changed:
   - N/A
 - Fixed:
@@ -18,7 +33,7 @@
 ## 2026-05-13 — Engineering Standards and Governance
 
 - Added:
-  - `Support/docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flow
+  - `Support/docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
 - Changed:
   - Governance coverage now formalizes architecture-first delivery controls, documentation update requirements, ADR triggers, release readiness expectations, and production approval checkpoints
 - Fixed:
@@ -33,7 +48,7 @@
 ## 2026-05-13 — Consolidated Master Task List
 
 - Added:
-  - `Planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md`
+  - `Planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase X.md`
 - Changed:
   - Consolidated planning now includes phase-derived implementation scope callouts to complement the master matrix
 - Fixed:
