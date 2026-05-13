@@ -16,6 +16,20 @@
 - Notes:
   - Baseline validation still depends on local Python tooling being installed (`ruff` and `pytest` were unavailable in this environment)
 
+## 2026-05-13 — Consolidated Master Task List
+- Added:
+  - `docs/planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md`
+- Changed:
+  - Consolidated planning now includes phase-derived implementation scope callouts to complement the master matrix
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This pass focused on planning artifact consolidation and scope completeness; no application runtime code changed
+
 ## 2026-05-13 — Stage 1: Repository & Infrastructure Bootstrap
 - Added:
   - Monorepo root folder scaffold (frontend/, backend/, packages/, workers/, database/, infrastructure/, ai/, docs/, scripts/, tests/, config/)
