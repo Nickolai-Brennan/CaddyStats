@@ -120,16 +120,16 @@ con.sql("SELECT * FROM player_stats LIMIT 10").show()
 
 ## Schema Architecture
 
-| Schema      | Purpose                                                      |
-|-------------|--------------------------------------------------------------|
-| `auth`      | Users, roles, permissions, RBAC join tables                  |
-| `content`   | Articles, article blocks, editorial CMS data                 |
-| `stats`     | Players, tournaments, rounds, betting lines                  |
-| `analytics` | Projections, materialized views (form, leaderboard, models)  |
-| `ai`        | AI prompt logs, grounding records, output audit trails       |
-| `system`    | Shared utility functions (`set_updated_at`, RLS helpers)     |
-| `ingestion` | Raw inbound data from external APIs before transformation    |
-| `billing`   | Subscriptions, Stripe events, payment records                |
+| Schema      | Purpose                                                     |
+| ----------- | ----------------------------------------------------------- |
+| `auth`      | Users, roles, permissions, RBAC join tables                 |
+| `content`   | Articles, article blocks, editorial CMS data                |
+| `stats`     | Players, tournaments, rounds, betting lines                 |
+| `analytics` | Projections, materialized views (form, leaderboard, models) |
+| `ai`        | AI prompt logs, grounding records, output audit trails      |
+| `system`    | Shared utility functions (`set_updated_at`, RLS helpers)    |
+| `ingestion` | Raw inbound data from external APIs before transformation   |
+| `billing`   | Subscriptions, Stripe events, payment records               |
 
 ---
 
@@ -137,35 +137,35 @@ con.sql("SELECT * FROM player_stats LIMIT 10").show()
 
 ### `auth` Schema
 
-| Table              | Description                             |
-|--------------------|-----------------------------------------|
-| `auth.users`       | Platform user accounts                  |
-| `auth.roles`       | Role definitions (admin, editor, etc.)  |
-| `auth.permissions` | Granular permission keys                |
-| `auth.user_roles`  | User ↔ role join table                  |
-| `auth.role_permissions` | Role ↔ permission join table       |
+| Table                   | Description                            |
+| ----------------------- | -------------------------------------- |
+| `auth.users`            | Platform user accounts                 |
+| `auth.roles`            | Role definitions (admin, editor, etc.) |
+| `auth.permissions`      | Granular permission keys               |
+| `auth.user_roles`       | User ↔ role join table                 |
+| `auth.role_permissions` | Role ↔ permission join table           |
 
 ### `content` Schema
 
-| Table                   | Description                              |
-|-------------------------|------------------------------------------|
-| `content.articles`      | Editorial articles (slug, status, author)|
-| `content.article_blocks`| Structured content blocks (JSONB)        |
+| Table                    | Description                               |
+| ------------------------ | ----------------------------------------- |
+| `content.articles`       | Editorial articles (slug, status, author) |
+| `content.article_blocks` | Structured content blocks (JSONB)         |
 
 ### `stats` Schema
 
-| Table                 | Description                                        |
-|-----------------------|----------------------------------------------------|
-| `stats.players`       | PGA player registry                                |
-| `stats.tournaments`   | Tournament calendar                                |
-| `stats.rounds`        | Per-round scorecards with strokes gained           |
-| `stats.betting_lines` | Sportsbook odds by market type and sportsbook      |
+| Table                 | Description                                   |
+| --------------------- | --------------------------------------------- |
+| `stats.players`       | PGA player registry                           |
+| `stats.tournaments`   | Tournament calendar                           |
+| `stats.rounds`        | Per-round scorecards with strokes gained      |
+| `stats.betting_lines` | Sportsbook odds by market type and sportsbook |
 
 ### `analytics` Schema
 
-| Table                    | Description                                      |
-|--------------------------|--------------------------------------------------|
-| `analytics.projections`  | Model-generated player projections per tournament|
+| Table                   | Description                                       |
+| ----------------------- | ------------------------------------------------- |
+| `analytics.projections` | Model-generated player projections per tournament |
 
 ---
 
@@ -173,11 +173,11 @@ con.sql("SELECT * FROM player_stats LIMIT 10").show()
 
 Materialized views power high-read analytics dashboards and leaderboard queries. They must be refreshed after data loads.
 
-| View                               | Description                                         |
-|------------------------------------|-----------------------------------------------------|
-| `analytics.player_recent_form`     | Last 8 rounds scored and strokes gained per player  |
-| `analytics.leaderboard_summary`    | Cumulative tournament scores and strokes gained     |
-| `analytics.projection_overview`    | Denormalized projection rows joined to player/tournament names |
+| View                            | Description                                                    |
+| ------------------------------- | -------------------------------------------------------------- |
+| `analytics.player_recent_form`  | Last 8 rounds scored and strokes gained per player             |
+| `analytics.leaderboard_summary` | Cumulative tournament scores and strokes gained                |
+| `analytics.projection_overview` | Denormalized projection rows joined to player/tournament names |
 
 **Refresh a materialized view:**
 
@@ -193,21 +193,21 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY analytics.projection_overview;
 
 RLS is enabled on sensitive tables. Access is controlled by two session-level settings:
 
-| Setting               | Usage                          |
-|-----------------------|--------------------------------|
-| `app.current_user_id` | UUID of the authenticated user |
+| Setting               | Usage                                               |
+| --------------------- | --------------------------------------------------- |
+| `app.current_user_id` | UUID of the authenticated user                      |
 | `app.current_role`    | Role string (`admin`, `editor`, `subscriber`, etc.) |
 
 **Roles recognized by RLS policies:**
 
-| Role         | Access Level                                          |
-|--------------|-------------------------------------------------------|
-| `anonymous`  | Public published articles only                        |
-| `user`       | Own account data                                      |
-| `subscriber` | Betting lines + standard analytics                    |
-| `editor`     | Read/write editorial content                          |
-| `admin`      | Full write access to all non-system tables            |
-| `owner`      | Unrestricted access                                   |
+| Role         | Access Level                               |
+| ------------ | ------------------------------------------ |
+| `anonymous`  | Public published articles only             |
+| `user`       | Own account data                           |
+| `subscriber` | Betting lines + standard analytics         |
+| `editor`     | Read/write editorial content               |
+| `admin`      | Full write access to all non-system tables |
+| `owner`      | Unrestricted access                        |
 
 ---
 
@@ -269,14 +269,14 @@ Seed script: `services/api/scripts/database/seed.py`
 
 ## Make Commands
 
-| Command         | Description                                  |
-|-----------------|----------------------------------------------|
-| `make dev`      | Start the full stack including PostgreSQL     |
-| `make db-migrate` | Apply all pending Alembic migrations        |
-| `make db-rollback` | Roll back the last migration               |
-| `make db-seed`  | Seed development data                        |
-| `make db-shell` | Open a `psql` shell inside the container     |
-| `make db-reset` | Drop and recreate the database (destructive) |
+| Command            | Description                                  |
+| ------------------ | -------------------------------------------- |
+| `make dev`         | Start the full stack including PostgreSQL    |
+| `make db-migrate`  | Apply all pending Alembic migrations         |
+| `make db-rollback` | Roll back the last migration                 |
+| `make db-seed`     | Seed development data                        |
+| `make db-shell`    | Open a `psql` shell inside the container     |
+| `make db-reset`    | Drop and recreate the database (destructive) |
 
 ---
 
@@ -284,14 +284,14 @@ Seed script: `services/api/scripts/database/seed.py`
 
 Copy `.env.example` to `.env` and set these database variables:
 
-| Variable            | Description                                    | Example                                                |
-|---------------------|------------------------------------------------|--------------------------------------------------------|
+| Variable            | Description                                    | Example                                               |
+| ------------------- | ---------------------------------------------- | ----------------------------------------------------- |
 | `POSTGRES_HOST`     | PostgreSQL host                                | `postgres` (Docker) or Neon hostname                  |
-| `POSTGRES_PORT`     | PostgreSQL port                                | `5432`                                                 |
-| `POSTGRES_DB`       | Database name                                  | `caddystats`                                           |
-| `POSTGRES_USER`     | Database user                                  | `caddystats`                                           |
-| `POSTGRES_PASSWORD` | Database password                              | `change-me`                                            |
-| `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://user:pass@host:5432/caddystats`  |
+| `POSTGRES_PORT`     | PostgreSQL port                                | `5432`                                                |
+| `POSTGRES_DB`       | Database name                                  | `caddystats`                                          |
+| `POSTGRES_USER`     | Database user                                  | `caddystats`                                          |
+| `POSTGRES_PASSWORD` | Database password                              | `change-me`                                           |
+| `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://user:pass@host:5432/caddystats` |
 
 For Neon, append `?sslmode=require` to `DATABASE_URL`.
 
