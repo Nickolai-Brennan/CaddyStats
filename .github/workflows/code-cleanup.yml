@@ -2,7 +2,8 @@ name: Code Cleanup
 
 on:
   schedule:
-    - cron: "0 6 * * 1"
+    # Daily run for Prettier + Ruff formatting/lint checks across web and API codebases.
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
