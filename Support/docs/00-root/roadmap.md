@@ -1,8 +1,8 @@
 # Caddy Stats — Roadmap
 
-Version: 1.0
+Version: 1.1
 Status: Planning + Active Foundations
-Last Updated: 2026-05-12
+Last Updated: 2026-05-13
 
 ---
 
@@ -19,6 +19,7 @@ Each phase must produce concrete deliverables before dependent phases scale.
 
 - Core product requirements and scope established
 - Build system and architecture constraints documented
+- Vision foundation expanded across personas, monetization, subscription tiers, editorial philosophy, analytics differentiation, sportsbook positioning, AI workflow strategy, and long-term scalability
 - ADR process seeded with foundational decisions
 
 ### Status
