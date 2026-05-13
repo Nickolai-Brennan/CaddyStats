@@ -26,6 +26,12 @@ header "Checking prerequisites..."
 
 command -v docker   >/dev/null 2>&1 || error "Docker is required. Install from https://docs.docker.com/get-docker/"
 command -v node     >/dev/null 2>&1 || error "Node.js >=20 is required."
+
+# Verify Node.js version
+NODE_VERSION=$(node -v | sed 's/v//' | cut -d. -f1)
+if [[ "$NODE_VERSION" -lt 20 ]]; then
+  error "Node.js >=20 is required. Found: $(node -v)"
+fi
 command -v pnpm     >/dev/null 2>&1 || warn  "pnpm not found — installing via corepack..."
 command -v python3  >/dev/null 2>&1 || error "Python 3.12+ is required."
 
