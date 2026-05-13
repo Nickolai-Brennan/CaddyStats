@@ -321,6 +321,53 @@ Refine monetization and growth systems after the platform foundation is dependab
 - ADRs should be added before or alongside implementation, not after widespread adoption
 - decisions around schema boundaries, GraphQL scope, caching, provider precedence, AI review, and deployment topology should always be documented
 
+## Milestone Framework
+
+Roadmap execution should be tracked through milestone checkpoints that match dependency order:
+
+- **M0 Foundation Governance**: Phase 0 documentation and policy baseline complete
+- **M1 Structural Readiness**: Phase 1 folder and ownership boundaries stable
+- **M2 Data Contract Readiness**: Phase 2 schema and migration contract stabilized
+- **M3 Service Contract Readiness**: Phase 3 API/auth/service boundaries validated
+- **M4 Product Surface Readiness**: Phases 4 through 6 core UX/editor/template flows validated
+- **M5 Growth and Intelligence Readiness**: Phases 7 through 9 SEO, AI, and hosting controls validated
+- **M6 Operational Scale Readiness**: Phases 10 through 12 admin, integrations, and scale hardening complete
+- **MX Business Optimization**: Phase X optimization loops running against stable platform signals
+
+Milestones should not be marked complete if predecessor phases are materially incomplete.
+
+## Validation Gates
+
+Every phase should define and run validation gates before handoff:
+
+- **Documentation gate**: policy/docs updated for changed scope
+- **Contract gate**: API/schema/interface contracts are explicit and reviewed
+- **Quality gate**: lint, test, and type checks pass for affected systems
+- **Security gate**: auth/RBAC, secret handling, and abuse controls preserved
+- **Operational gate**: deploy/rollback and observability expectations documented
+
+High-risk domains (auth, billing, AI, compliance, migrations, infrastructure) require stricter approval thresholds and staging validation.
+
+## Changelog Flow
+
+Material phase work must be logged in:
+
+- `Support/docs/changelog.md`
+
+Expected flow:
+
+1. create or update docs/policies before implementation scale
+2. record milestone and phase impact in the changelog
+3. include added, changed, fixed, and policy/operational notes
+4. ensure changelog references key files for auditability
+
+## Dependency-Aware Sequencing Rules
+
+- do not advance to a downstream phase when an upstream dependency remains unresolved
+- treat unresolved governance, provenance, or compliance gaps as blocking dependencies
+- prioritize remediation of dependency breaks before adding net-new scope
+- require explicit exception documentation when sequence must be temporarily bypassed
+
 ## Environment and Deployment References
 
 - local development should remain reproducible through documented setup steps and containerized dependencies where practical

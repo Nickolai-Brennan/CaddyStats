@@ -23,6 +23,13 @@ Every canonical stat or market record used in product surfaces should be traceab
 - normalization version or import job reference
 - record status such as current, stale, partial, conflicting, or rejected
 
+Required provenance fields for canonical records:
+
+- canonical entity key (player, tournament, course, market, round, event)
+- record effective-from and effective-to window where relevant
+- ingestion batch identifier
+- validation gate result and reviewer status when manual review is required
+
 Minimum provenance expectation:
 
 - raw provider data may be ingested into staging tables or jobs
@@ -85,6 +92,13 @@ Required controls:
 - AI must not invent odds, tee times, field changes, model confidence, or source citations
 - sensitive betting recommendations require human review before publication
 
+Grounding decision states should be explicit and queryable:
+
+- grounded and publish-eligible
+- grounded but requires review
+- partially grounded and blocked for sensitive publication
+- ungrounded and blocked
+
 ## Handling Stale Data
 
 Data should be marked stale when:
@@ -138,6 +152,19 @@ Conflict resolution policy should be deterministic, documented, and revisitable 
 - internal review tools should expose freshness, lineage, and conflict states
 - templates and editorial blocks should prefer structured stat references over pasted numbers
 - audits should sample public pages and premium tools for unsupported quantitative claims
+
+## Data Retention Alignment
+
+Grounding, provenance, and model audit records must follow the canonical retention requirements in:
+
+- `docs/compliance/data-retention-policy.md`
+
+Retention baseline:
+
+- retain provenance metadata long enough to reproduce material published claims
+- retain model and AI audit records long enough to support quality, compliance, and dispute review
+- do not delete records that are under active legal hold, incident review, or regulatory inquiry
+- apply documented purge workflows after retention windows expire
 
 ## Acceptance Standard
 
