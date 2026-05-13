@@ -49,6 +49,26 @@
 - Notes:
   - Stage 1 complete. Validation gate: local stack can boot with `make dev`. CI pipeline operational on push/PR.
 
+## 2026-05-13 — Database Foundation
+- Added:
+  - Alembic configuration under `services/api/alembic*` with an initial baseline migration for core schemas, tables, indexes, triggers, RLS scaffolding, and materialized views
+  - SQLAlchemy database scaffolding under `services/api/app/db/`
+  - Seed framework at `services/api/scripts/database/seed.py` with sample auth, content, stats, analytics, and betting records
+  - Database validation coverage in `services/api/tests/test_database_foundation.py`
+  - Bootstrap SQL in `database/schemas/001-bootstrap.sql`
+- Changed:
+  - `services/api/app/core/config.py` defaults now avoid hardcoded secret literals while keeping local development safe
+  - `App Build/database/README.md` now documents the active database foundation
+- Fixed:
+  - Existing API lint issues in `services/api/app/main.py`
+- Plugins:
+  - N/A
+- Commands:
+  - `make db-migrate`
+  - `make db-seed`
+- Notes:
+  - Validation gate now covers migration upgrade/downgrade, index presence, materialized views, and seed-data loading against PostgreSQL
+
 ## 2026-05-12 — Master Task List Audit
 - Added:
   - Additional required task coverage across `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md` and `Planning/Master Task List Phase X.md`
