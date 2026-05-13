@@ -1,0 +1,284 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project Schema",
+  "description": "Question model that captures the full identity, purpose, and structure of any project type.",
+  "type": "object",
+  "required": ["id", "name", "primaryType", "status", "phase", "purpose"],
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "description": "Unique project identifier (slug format, e.g. 'my-api-service')"
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Human-readable project name"
+    },
+
+    "tagline": {
+      "type": "string",
+      "description": "One-sentence description of what the project does"
+    },
+
+    "primaryType": {
+      "type": "string",
+      "description": "The main category this project belongs to",
+      "enum": [
+        "api-microservice",
+        "web-app",
+        "mobile-app",
+        "desktop-app",
+        "static-site",
+        "dashboard-analytics",
+        "database-data-warehouse",
+        "data-pipeline-etl",
+        "ai-llm-rag-chatbot",
+        "cli-tool",
+        "library-sdk-package",
+        "devops-infrastructure",
+        "documentation-site",
+        "automation-workflow-script",
+        "other"
+      ]
+    },
+
+    "secondaryTypes": {
+      "type": "array",
+      "description": "Additional applicable project types",
+      "items": {
+        "type": "string",
+        "enum": [
+          "api-microservice",
+          "web-app",
+          "mobile-app",
+          "desktop-app",
+          "static-site",
+          "dashboard-analytics",
+          "database-data-warehouse",
+          "data-pipeline-etl",
+          "ai-llm-rag-chatbot",
+          "cli-tool",
+          "library-sdk-package",
+          "devops-infrastructure",
+          "documentation-site",
+          "automation-workflow-script",
+          "other"
+        ]
+      }
+    },
+
+    "phase": {
+      "type": "string",
+      "description": "Current development phase",
+      "enum": ["prototype", "mvp", "production"]
+    },
+
+    "status": {
+      "type": "string",
+      "description": "Current project status",
+      "enum": ["active", "on-hold", "archived"]
+    },
+
+    "owner": {
+      "type": "string",
+      "description": "Project owner or team name"
+    },
+
+    "createdAt": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the project was created (YYYY-MM-DD)"
+    },
+
+    "updatedAt": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this file was last updated (YYYY-MM-DD)"
+    },
+
+    "purpose": {
+      "type": "object",
+      "description": "Why this project exists and what it must accomplish",
+      "required": ["problemStatement", "primaryGoal"],
+      "properties": {
+        "problemStatement": {
+          "type": "string",
+          "description": "The problem or pain point this project solves"
+        },
+        "primaryGoal": {
+          "type": "string",
+          "description": "The single most important outcome this project must deliver"
+        },
+        "secondaryGoals": {
+          "type": "array",
+          "description": "Supporting goals",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "audience": {
+      "type": "object",
+      "description": "Who this project serves",
+      "properties": {
+        "primaryUsers": {
+          "type": "string",
+          "description": "Who directly uses this project"
+        },
+        "secondaryUsers": {
+          "type": "string",
+          "description": "Who benefits indirectly"
+        },
+        "stakeholders": {
+          "type": "string",
+          "description": "Who owns or sponsors the project"
+        },
+        "expectedScale": {
+          "type": "string",
+          "description": "Expected number of users, requests, or records (e.g. '10k DAU', '1M rows/day')"
+        }
+      }
+    },
+
+    "techStack": {
+      "type": "object",
+      "description": "Technologies used in this project",
+      "properties": {
+        "languages": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Programming languages (e.g. TypeScript, Python)"
+        },
+        "frameworks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Frameworks and runtimes (e.g. Next.js, FastAPI)"
+        },
+        "database": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Databases and storage (e.g. PostgreSQL, Redis, S3)"
+        },
+        "aiModels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "AI/ML models used (e.g. GPT-4o, Llama 3, custom embedding model)"
+        },
+        "infrastructure": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Cloud/infra platforms (e.g. AWS, GCP, Vercel, Docker, Kubernetes)"
+        },
+        "cicd": {
+          "type": "string",
+          "description": "CI/CD tooling (e.g. GitHub Actions, CircleCI)"
+        },
+        "auth": {
+          "type": "string",
+          "description": "Authentication/authorization approach (e.g. OAuth2 + JWT, Auth0)"
+        },
+        "integrations": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "External APIs and services (e.g. Stripe, Twilio, OpenAI)"
+        }
+      }
+    },
+
+    "dataProfile": {
+      "type": "object",
+      "description": "Characterizes the data this project handles",
+      "properties": {
+        "inputs": {
+          "type": "string",
+          "description": "What data flows into the system"
+        },
+        "outputs": {
+          "type": "string",
+          "description": "What data flows out of the system"
+        },
+        "sensitivity": {
+          "type": "string",
+          "description": "Data sensitivity classification",
+          "enum": ["public", "internal", "confidential", "restricted"]
+        },
+        "piiOrPhi": {
+          "type": "boolean",
+          "description": "Does the project handle Personally Identifiable Information or Protected Health Information?"
+        },
+        "retentionPolicy": {
+          "type": "string",
+          "description": "How long data is retained (e.g. '90 days', 'indefinite')"
+        }
+      }
+    },
+
+    "architecture": {
+      "type": "object",
+      "description": "High-level architectural description",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "2–5 sentence description of the system design"
+        },
+        "diagramUrl": {
+          "type": "string",
+          "description": "URL or relative path to an architecture diagram"
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Architectural pattern (e.g. monolith, microservices, serverless, event-driven, MVC, RAG pipeline)"
+        }
+      }
+    },
+
+    "constraints": {
+      "type": "object",
+      "description": "Project limitations and non-functional requirements",
+      "properties": {
+        "budget": {
+          "type": "string",
+          "description": "Budget cap or cost target"
+        },
+        "timeline": {
+          "type": "string",
+          "description": "Target delivery date or sprint length"
+        },
+        "compliance": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Regulatory or compliance requirements (e.g. GDPR, HIPAA, SOC 2)"
+        },
+        "performanceSla": {
+          "type": "string",
+          "description": "Latency or throughput SLA (e.g. 'p99 < 200ms')"
+        },
+        "availabilitySla": {
+          "type": "string",
+          "description": "Uptime target (e.g. '99.9%')"
+        }
+      }
+    },
+
+    "successCriteria": {
+      "type": "array",
+      "description": "Measurable conditions that define project success",
+      "items": { "type": "string" }
+    },
+
+    "relatedFiles": {
+      "type": "array",
+      "description": "Key files and docs for this project",
+      "items": {
+        "type": "object",
+        "required": ["path", "purpose"],
+        "properties": {
+          "path": { "type": "string" },
+          "purpose": { "type": "string" }
+        }
+      }
+    }
+
+  }
+}

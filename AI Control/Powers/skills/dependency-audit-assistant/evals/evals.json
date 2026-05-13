@@ -1,0 +1,23 @@
+{
+  "skill_name": "dependency-audit-assistant",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Please audit this package.json dependencies section:\n{\n  \"dependencies\": {\n    \"express\": \"^3.21.2\",\n    \"lodash\": \"^4.17.4\",\n    \"moment\": \"^2.29.1\",\n    \"left-pad\": \"^1.3.0\",\n    \"axios\": \"^0.19.0\"\n  }\n}",
+      "expected_output": "An audit report with: Critical/High CVEs for lodash 4.17.4 (CVE-2021-23337, prototype pollution) and axios 0.19.0 (SSRF vulnerability); Outdated section flagging express 3.x (very old, major API changes) and moment 2.29.1 (EOL, should migrate to date-fns or dayjs); License flags for left-pad (historically removed from npm, unreliable); Cleanup suggestions for moment and left-pad. Update commands for npm showing the patched versions. Action order prioritizing CVE patches first.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a Python requirements.txt. Can you check for any security or licensing issues?\n\nDjango==3.2.12\nnumpy==1.21.0\npillow==8.3.1\nrequests==2.25.1\ncryptography==3.3.1",
+      "expected_output": "Audit covering: Django 3.2.12 may have CVEs — recommend updating to latest 3.2.x LTS patch; Pillow 8.3.1 has known CVEs (multiple image parsing vulnerabilities) — update to 10.x; cryptography 3.3.1 is significantly outdated (current is 42.x) with multiple CVEs. License summary: all packages are permissive (MIT/Apache/BSD) — no license flags. Pip update commands for each vulnerable package.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What license risks should I watch out for when using open source packages in a proprietary SaaS product?",
+      "expected_output": "An explanation of the main license categories and their risks for proprietary SaaS: GPL v2/v3 (copyleft — if you distribute the software, you may need to open-source your code; for server-side SaaS this is debated), AGPL (more restrictive — network use triggers copyleft), LGPL (generally OK for dynamic linking), MIT/Apache 2.0/BSD (generally safe, just keep attribution). Concrete recommendations: always audit licenses before adding dependencies, avoid AGPL in SaaS without legal review, use tools like license-checker (npm) or pip-licenses (Python) to automate this.",
+      "files": []
+    }
+  ]
+}

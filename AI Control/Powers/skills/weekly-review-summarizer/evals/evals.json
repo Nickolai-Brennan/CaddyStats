@@ -1,0 +1,23 @@
+{
+  "skill_name": "weekly-review-summarizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here are my 5 standups for the week. Can you write a weekly review for my manager?\n\nMon: Fixed auth bug, reviewed 2 PRs\nTue: Finished auth fix, started CSV export feature\nWed: CSV export 60% done, team planning meeting\nThu: CSV export done and merged, wrote tests\nFri: Fixed a regression in CSV export found by QA, PR review for Bob's feature\n\nMetrics: 4 PRs merged, 3 issues closed, 1 deployment.",
+      "expected_output": "A structured weekly review with sections: Shipped This Week (auth bug fix, CSV export feature including the regression fix), In Progress (nothing major pending), Blockers (none noted), Metrics (4 PRs merged, 3 issues closed, 1 deployment), Next Week (not specified — should prompt or leave placeholder). Manager-facing tone: outcome-focused, clear impact.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a weekly review email to send to our stakeholders. This week: launched the new onboarding flow to 20% of users (conversion up 12%), fixed two critical bugs in the payment system, started building the team workspaces feature, and had a strategy meeting about Q3 roadmap. Blocked: waiting on legal review for the data export compliance feature.",
+      "expected_output": "A prose email format weekly review with a subject line suggestion. Lead with the onboarding launch and 12% conversion improvement (the key outcome). Mention payment bugs fixed. Note team workspaces is in progress. Include the legal review blocker clearly. Tone: professional and stakeholder-appropriate. Should be 150-250 words in email body.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a personal weekly review for my productivity journal. This week I worked on: refactored the data pipeline (took way longer than expected), learned about dbt for the first time, helped 3 colleagues debug their code, and didn't make progress on my side project due to context switching.",
+      "expected_output": "A personal journal-style weekly review including shipped items (pipeline refactor, dbt learning), collaboration (3 colleague debugging sessions), and honest reflection on the side project lack of progress due to context switching. Should include an Insights/Learnings section noting the time estimation miss on the refactor and suggesting a possible improvement. Tone: reflective and first-person.",
+      "files": []
+    }
+  ]
+}

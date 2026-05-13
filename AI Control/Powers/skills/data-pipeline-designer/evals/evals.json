@@ -1,0 +1,17 @@
+{
+  "skill_name": "data-pipeline-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design and scaffold a daily data pipeline that: extracts new/updated orders from a PostgreSQL source database (incremental by updated_at), transforms them (normalize status values, calculate line totals, add a _loaded_at timestamp), and loads them into BigQuery. The pipeline should persist a watermark so each daily run only processes new data.",
+      "expected_output": "Should produce: (1) An architecture diagram showing source → extract → transform → load → destination flow. (2) A Python extract function using `pd.read_sql` with an `updated_at >= %(since)s` incremental query. (3) A transform function that handles status normalization, null dropping, and `_loaded_at` metadata column. (4) A BigQuery load function using `google-cloud-bigquery`. (5) A main `run_pipeline()` function that reads a watermark from state, runs E→T→L, and saves the new watermark. (6) A note that the state file should be stored in GCS or a DB table for production (not local filesystem).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to sync data from the Shopify REST API to my PostgreSQL data warehouse every hour. Products and orders. The Shopify API is paginated with `link` headers. Design the extraction layer.",
+      "expected_output": "Should produce: (1) A Python extraction function that follows Shopify's pagination using `Link` response headers (not page numbers — Shopify uses cursor-based pagination). (2) The function should respect Shopify's rate limit (handle 429 responses with exponential backoff). (3) Incremental support using `updated_at_min` parameter. (4) Separate extract functions for products and orders. (5) Returns a `pd.DataFrame` or list of dicts. Should note: Shopify API credentials should come from environment variables, never hardcoded. Should also mention that Shopify's GraphQL API is more efficient for bulk operations.",
+      "files": []
+    }
+  ]
+}

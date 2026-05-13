@@ -1,0 +1,23 @@
+{
+  "skill_name": "error-handler-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a centralized error handling system for an Express.js + TypeScript API. I need: custom error classes (NotFoundError, ValidationError, UnauthorizedError), an Express error middleware that returns consistent JSON error responses, and an asyncHandler wrapper to avoid try/catch in every route.",
+      "expected_output": "Three deliverables: (1) A custom error class hierarchy with AppError as base and at least NotFoundError, ValidationError, UnauthorizedError as subclasses with correct HTTP status codes. (2) An Express errorHandler middleware that sends consistent `{ error: { code, message } }` JSON, handles AppError instances differently from unexpected errors, and never exposes stack traces in 500 responses. (3) An asyncHandler wrapper function. Usage examples for at least 2 routes should be included.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have this Python FastAPI endpoint that has no error handling:\n```python\n@app.get('/users/{user_id}')\nasync def get_user(user_id: str):\n    user = await db.users.find_one({'_id': user_id})\n    return user\n```\nAdd proper error handling: a 404 if the user isn't found, a custom AppError class, and a global exception handler registered with FastAPI.",
+      "expected_output": "Should produce: (1) An AppError base class and NotFoundError subclass for Python, (2) the updated endpoint with a proper not-found check raising NotFoundError, (3) a @app.exception_handler registered for AppError returning structured JSON with status_code and error code/message, (4) a generic unhandled exception handler returning 500 with a safe message. The endpoint code should be clean without bare try/except.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What's the difference between operational errors and programmer errors in Node.js, and how should each be handled in a production API?",
+      "expected_output": "A clear explanation distinguishing: (1) Operational errors — expected failures like DB connection timeout, user not found, invalid input — these are predictable and safe to show the user a friendly message. (2) Programmer errors — bugs like TypeError, reading undefined property, logic errors — these should be logged fully server-side, the user should see only a generic 500 message, and the process may need to restart. The response should include code examples showing how to classify errors using an `isOperational` flag on a custom error class, and recommend a global `process.on('uncaughtException')` handler.",
+      "files": []
+    }
+  ]
+}

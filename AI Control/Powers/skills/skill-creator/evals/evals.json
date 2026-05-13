@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to create a skill that helps me write structured meeting notes. It should extract action items, decisions made, and attendees from a rough transcript I paste in. I'm not sure how to structure the SKILL.md — can you help me build it from scratch?",
+      "expected_output": "A complete SKILL.md with YAML frontmatter (name, description), Overview, When to Use/When NOT to Use, Inputs, Outputs, Workflow, Edge Cases, Safety, and Examples sections. The description should be 100–150 words and include trigger phrasings. The skill should also produce a draft evals/evals.json with 2–3 realistic prompts for the meeting-notes skill.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have an existing skill for generating SQL queries but it never seems to trigger — even when I ask things like 'write me a SQL query to find all users who signed up last month'. The description currently says: 'Writes SQL queries.' Can you help me fix the description and test whether it's better?",
+      "expected_output": "An improved SKILL.md description (~100–150 words) that includes specific trigger phrasings, context cues, and exclusions. The agent should explain what makes a good triggering description, propose 2–3 alternatives, and offer to run a description optimization eval loop. The before/after comparison should be clearly shown.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I already have a draft SKILL.md for a 'data-pipeline-skill'. I'd like to run evals on it with 3 test prompts and see how well it performs. The skill is supposed to help users design ETL pipelines — extracting from APIs, transforming with Python, loading into Postgres.",
+      "expected_output": "The agent should ask for or generate 3 realistic eval prompts for the data-pipeline-skill, run them (or outline how to run them), and produce an evals/evals.json with prompts and expected_output descriptions. It should also explain how to interpret the results and iterate on the skill based on feedback.",
+      "files": []
+    }
+  ]
+}

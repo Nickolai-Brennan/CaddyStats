@@ -1,0 +1,23 @@
+{
+  "skill_name": "prompt-optimizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My prompt 'Write a summary of this article' keeps giving me summaries that are too long and include opinions I didn't ask for. Can you improve it?",
+      "expected_output": "A prompt optimization report with: Diagnosis (too vague — no length constraint, no format, no instruction to be objective), Improved Prompt (e.g., 'Summarize the following article in exactly 3 bullet points. Each bullet point must be under 20 words. Report only the facts from the article — do not include opinions, analysis, or content not in the original text.'), Changes Made section explaining each addition. An alternative variant with slightly different wording.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here's a prompt I use to extract data from contracts: 'Find the important dates and parties in this contract.' The AI gives different formats every time and sometimes misses things. How do I fix it?",
+      "expected_output": "A prompt optimization report identifying: no output format specified (causes format variation), no complete list of what to extract (causes misses), no handling for missing fields. Improved prompt should include: a JSON schema with fields like parties (array), effective_date, expiration_date, payment_terms, governing_law — each with null as default for missing values. Instruction to return ONLY the JSON. A note that few-shot examples would further improve consistency for complex contracts.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "My coding assistant prompt is: 'You are a helpful coding assistant. Help me with my code.' This is my system prompt and I feel like the AI isn't helpful enough — it's too generic. How should I improve it?",
+      "expected_output": "A diagnosis identifying: no domain/language specified, no output format for code, no constraints on explanation length, no indication of user's skill level. Improved system prompt that includes: a specific role (e.g., 'You are a senior software engineer specializing in [language/framework]'), behavior instructions (always show complete working code, explain changes inline as comments, point out bugs even if not asked, prefer simplicity over cleverness), format instructions (use code blocks for all code, keep explanations brief unless asked for more detail). Ask the user to fill in their preferred language and experience level.",
+      "files": []
+    }
+  ]
+}

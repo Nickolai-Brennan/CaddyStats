@@ -1,0 +1,23 @@
+{
+  "skill_name": "regex-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a regex that matches a US phone number in these formats:\n- (555) 867-5309\n- 555-867-5309\n- 555.867.5309\n- 5558675309\n- +1 555 867 5309\n\nBut should NOT match:\n- 55-55-55 (too short)\n- 123 (just a number)\n- 555-1234 (7 digit only)\n\nI need this in JavaScript.",
+      "expected_output": "A JavaScript regex that accepts all 5 formats and rejects the 3 non-matches. Must include: (1) the regex pattern in a code block, (2) a test results table showing ✓/✗ for each example, (3) a component-by-component breakdown table, and (4) a ready-to-use JavaScript function. Should note that this validates format only, not whether the number is a real/active number.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to extract the semantic version from strings like these:\n- 'Version 2.14.3'\n- 'v1.0.0-beta.1'\n- 'release-3.2.1'\n- 'app@4.0.0'\n\nI need to capture the major, minor, and patch versions as separate groups. Python re module.",
+      "expected_output": "A Python regex with 3 named capture groups (major, minor, patch) that handles all optional prefixes (v, Version, release-, @). Should include: (1) the pattern with re.compile(), (2) test showing all 4 examples matching with correct captured groups, (3) a Python code snippet using match.group('major') etc., and (4) a note about optional pre-release suffixes like -beta.1.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Explain what this regex does, step by step:\n```\n^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$\n```",
+      "expected_output": "A detailed breakdown explaining: (1) `^` and `$` anchors, (2) each lookahead `(?=...)` and what it requires (uppercase, lowercase, digit, special char), (3) the character class `[A-Za-z\\d@$!%*?&]` for allowed characters, (4) `{8,}` minimum length, (5) a plain-English summary 'This validates that a password is at least 8 characters and contains at least one uppercase letter, one lowercase letter, one digit, and one special character from @$!%*?&'. Should also show 3 example matches and 3 non-matches.",
+      "files": []
+    }
+  ]
+}

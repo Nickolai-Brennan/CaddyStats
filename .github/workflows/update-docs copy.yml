@@ -1,0 +1,277 @@
+name: Update Docs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-docs:
+    name: Review and Update Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Detect which files changed on this PR ─────────────────────────────
+
+      - name: Get changed files
+        id: changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 100,
+            });
+
+            const paths  = files.map(f => f.filename);
+            const skills = paths.filter(p => p.startsWith('skills/') && p.endsWith('SKILL.md'));
+            const docs   = paths.filter(p => p.endsWith('.md'));
+
+            core.setOutput('skill_files', skills.join('\n'));
+            core.setOutput('doc_files',   docs.join('\n'));
+            core.setOutput('all_files',   paths.join('\n'));
+
+            console.log('Changed skills:', skills);
+            console.log('Changed docs:',  docs);
+
+      # ── Validate SKILL.md docs completeness ──────────────────────────────
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Audit SKILL.md documentation completeness
+        id: skill_audit
+        run: |
+          echo "=== Auditing SKILL.md files ==="
+          python - <<'PYEOF'
+          import sys, re, glob, json, textwrap
+
+          REQUIRED_SECTIONS = ["## ", "# "]   # at least one heading beyond frontmatter
+          RECOMMENDED_SECTIONS = [
+              "example", "usage", "input", "output", "when to use",
+          ]
+
+          results = []
+
+          for path in glob.glob("skills/**/SKILL.md", recursive=True):
+              with open(path) as f:
+                  content = f.read()
+
+              skill = {"path": path, "warnings": [], "ok": True}
+
+              # frontmatter check
+              fm_match = re.match(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
+              if not fm_match:
+                  skill["warnings"].append("No YAML frontmatter found.")
+                  skill["ok"] = False
+              else:
+                  fm = fm_match.group(1)
+                  if not re.search(r'^name:\s*\S', fm, re.MULTILINE):
+                      skill["warnings"].append("Frontmatter missing `name` field.")
+                  if not re.search(r'^description:\s*\S', fm, re.MULTILINE):
+                      skill["warnings"].append("Frontmatter missing `description` field.")
+                  desc_match = re.search(r'^description:\s*(.+)', fm, re.MULTILINE)
+                  if desc_match and len(desc_match.group(1).strip()) < 20:
+                      skill["warnings"].append("Description is very short (< 20 chars). Consider expanding.")
+
+              # body length
+              body = content[fm_match.end():] if fm_match else content
+              word_count = len(body.split())
+              if word_count < 30:
+                  skill["warnings"].append(f"Skill body is very short ({word_count} words). Consider adding more detail.")
+
+              # recommended sections (case-insensitive)
+              lower = content.lower()
+              missing_recs = [s for s in RECOMMENDED_SECTIONS if s not in lower]
+              if missing_recs:
+                  skill["warnings"].append(f"Consider adding sections for: {', '.join(missing_recs)}")
+
+              results.append(skill)
+
+          # Write summary for next step
+          with open("/tmp/skill_audit.json", "w") as f:
+              json.dump(results, f, indent=2)
+
+          any_issues = any(r["warnings"] for r in results)
+          if any_issues:
+              print("⚠️  Documentation audit found suggestions:")
+              for r in results:
+                  if r["warnings"]:
+                      print(f"\n  {r['path']}:")
+                      for w in r["warnings"]:
+                          print(f"    • {w}")
+          else:
+              print("✅ All SKILL.md files look well-documented.")
+          PYEOF
+
+      # ── Auto-update README table of skills ───────────────────────────────
+
+      - name: Rebuild skills index in README
+        id: readme_update
+        run: |
+          python - <<'PYEOF'
+          import re, glob, os
+
+          README = "README.md"
+          if not os.path.exists(README):
+              print("No README.md found, skipping index rebuild.")
+              exit(0)
+
+          # Gather all skills with their metadata
+          skills = []
+          for path in sorted(glob.glob("skills/**/SKILL.md", recursive=True)):
+              with open(path) as f:
+                  content = f.read()
+              fm_match = re.match(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
+              if not fm_match:
+                  continue
+              fm = fm_match.group(1)
+
+              name_m = re.search(r'^name:\s*(.+)', fm, re.MULTILINE)
+              desc_m = re.search(r'^description:\s*(.+)', fm, re.MULTILINE)
+
+              name = name_m.group(1).strip() if name_m else os.path.dirname(path).split("/")[-1]
+              desc = desc_m.group(1).strip() if desc_m else "_No description_"
+              # Truncate long descriptions
+              if len(desc) > 120:
+                  desc = desc[:117] + "..."
+
+              skills.append((name, path, desc))
+
+          if not skills:
+              print("No skills found, skipping README update.")
+              exit(0)
+
+          # Build new index block
+          rows = ["| Skill | Description |", "|-------|-------------|"]
+          for name, path, desc in skills:
+              rows.append(f"| [{name}]({path}) | {desc} |")
+          table = "\n".join(rows)
+
+          block_start = "<!-- SKILLS-INDEX-START -->"
+          block_end   = "<!-- SKILLS-INDEX-END -->"
+          new_block   = f"{block_start}\n## Skills Index\n\n{table}\n{block_end}"
+
+          with open(README) as f:
+              readme = f.read()
+
+          # Replace existing block or append at end
+          pattern = re.compile(
+              re.escape(block_start) + r".*?" + re.escape(block_end),
+              re.DOTALL,
+          )
+          if pattern.search(readme):
+              new_readme = pattern.sub(new_block, readme)
+          else:
+              new_readme = readme.rstrip() + "\n\n" + new_block + "\n"
+
+          if new_readme == readme:
+              print("✅ README skills index is already up to date.")
+              exit(0)
+
+          with open(README, "w") as f:
+              f.write(new_readme)
+
+          print("✅ README skills index updated.")
+          PYEOF
+
+      # ── Commit any doc changes back to the PR branch ─────────────────────
+
+      - name: Commit documentation updates
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add README.md 2>/dev/null || true
+          if [ -d skills ]; then
+            git add skills/ 2>/dev/null || true
+          fi
+
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No documentation changes to commit."
+          else
+            git commit -m "docs: auto-update skills index and documentation [skip ci]"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── Post audit summary comment ───────────────────────────────────────
+
+      - name: Post documentation review comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs   = require('fs');
+            const path = '/tmp/skill_audit.json';
+
+            let auditResults = [];
+            try { auditResults = JSON.parse(fs.readFileSync(path, 'utf8')); } catch (_) {}
+
+            const committed = '${{ steps.commit.outputs.changed }}' === 'true';
+
+            let body = '<!-- update-docs-bot -->\n## 📚 Documentation Review\n\n';
+
+            if (committed) {
+              body += '> ℹ️ The skills index in `README.md` was automatically updated and committed to this branch.\n\n';
+            }
+
+            const withWarnings = auditResults.filter(r => r.warnings && r.warnings.length > 0);
+            if (withWarnings.length === 0 && auditResults.length > 0) {
+              body += '✅ All `SKILL.md` files meet documentation standards.\n';
+            } else if (auditResults.length === 0) {
+              body += '_No skill files were found in this PR._\n';
+            } else {
+              body += '### ⚠️ Documentation Suggestions\n\n';
+              body += 'The following files could benefit from additional documentation:\n\n';
+              for (const r of withWarnings) {
+                body += `**\`${r.path}\`**\n`;
+                for (const w of r.warnings) {
+                  body += `- ${w}\n`;
+                }
+                body += '\n';
+              }
+            }
+
+            body += `\n_Reviewed commit: \`${context.sha.slice(0, 7)}\` · ${new Date().toUTCString()}_`;
+
+            // Upsert comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const tag      = '<!-- update-docs-bot -->';
+            const existing = comments.find(c => c.body.includes(tag));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

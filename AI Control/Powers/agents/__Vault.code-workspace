@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"folder-color.pathColors": [
+			{
+				"folderPath": "__Vault\\.vscode\\",
+				"badge": "🟦"
+			},
+			{
+				"folderPath": "__Vault\\.github\\",
+				"badge": "⬛"
+			},
+			{
+				"folderPath": "__Vault\\super-powers",
+				"badge": "⚡"
+			},
+			{
+				"folderPath": "__Vault\\mods\\hooks\\",
+				"badge": "🪝"
+			},
+			{
+				"folderPath": "__Vault\\super-powers\\",
+				"isFolderOnly": true,
+				"color": "foldercolorizer.color_5fafff"
+			}
+		]
+	}
+}

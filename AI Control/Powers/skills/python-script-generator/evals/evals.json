@@ -1,0 +1,23 @@
+{
+  "skill_name": "python-script-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a Python script that reads a CSV file, removes any rows where the 'email' column is empty or doesn't contain an '@' sign, and writes the cleaned result to a new CSV file. It should print how many rows were removed.",
+      "expected_output": "A complete Python script with: argparse for input/output file paths, pathlib.Path for file handling, csv module or pandas for CSV reading, filter logic checking for empty email and missing '@', output to a new file (not overwriting input), logging the count of removed rows, and a --dry-run flag that shows the count without writing. Type hints on all functions, docstring on main function, if __name__ == '__main__' guard.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a Python CLI script that takes a directory path as input and deletes all files older than 30 days. It should support a --dry-run flag and ask for confirmation before deleting.",
+      "expected_output": "A complete Python script with: argparse with required directory argument and optional --days (default 30) and --dry-run flags, pathlib.Path for directory traversal, datetime comparison for file age, a list of files to be deleted shown before any action, a confirm_action() function prompting 'y/N', actual deletion only if --dry-run is not set AND user confirms, logging of each deleted file, and a summary of files deleted/skipped. Error handling for permission errors.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Generate a Python script that polls a REST API endpoint every 60 seconds and logs the response status and a specific JSON field ('status') to a file. It should stop after N minutes (configurable) or if the status field equals 'complete'.",
+      "expected_output": "A Python script with: argparse for URL, field name, timeout minutes, output log file, and optional --interval flag; requests library with timeout parameter; a polling loop using time.sleep; JSON parsing with error handling for malformed responses; logging to both stdout and file using logging handlers; clean exit conditions (status == 'complete' or timeout reached); environment variable or argument for any auth tokens (not hardcoded). Requirements comment at top: 'pip install requests'.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "dark-mode-implementer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add dark mode to my Next.js 14 app. I'm using Tailwind CSS with the `class` strategy. I need: CSS custom property tokens for light and dark mode, a `useTheme` hook that persists the user's preference to localStorage, a `ThemeToggle` button component, and a script to prevent the flash of unstyled content (FOUC). The app uses `app/` directory.",
+      "expected_output": "Should produce: (1) `tailwind.config.js` with `darkMode: 'class'`. (2) A CSS tokens file with `:root` (light) and `.dark` overrides for bg, text, border, and brand colors. (3) A `useTheme` hook with localStorage persistence and `system` as default option. (4) An accessible `ThemeToggle` button component with `aria-label`. (5) An inline `<script>` for FOUC prevention that reads localStorage and sets the class before first paint, placed in `app/layout.tsx` before stylesheets. The script must handle SSR (check for `typeof window !== 'undefined'`).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a bunch of hardcoded colors in my CSS like `background: #ffffff`, `color: #1a1a1a`, `border: 1px solid #e5e5e5`. How do I systematically convert these to support dark mode using CSS custom properties?",
+      "expected_output": "Should provide a step-by-step migration guide: (1) Group all hard-coded colors by semantic role (backgrounds, text, borders). (2) Define CSS custom properties in `:root` for light mode. (3) Define `[data-theme='dark']` or `@media (prefers-color-scheme: dark)` overrides. (4) Replace each hard-coded color with `var(--token-name)`. (5) Show before/after CSS examples for at least 3 selectors. (6) A bash grep command to find remaining hard-coded colors. Should advise testing with DevTools forced dark mode before deploying.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "prompt-library-curator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have 6 prompts saved and they're a mess. Can you tag them, identify duplicates, and suggest improvements?\n\n1. 'Summarize this article'\n2. 'Summarize the following article in 3 bullet points for a non-technical reader'\n3. 'Write a cold email'\n4. 'Write a professional cold outreach email for a SaaS product. Target audience: startup founders. Keep it under 100 words. End with a clear CTA.'\n5. 'Fix my code'\n6. 'Review the following code for bugs, performance issues, and style problems. List each issue with a severity (low/medium/high) and a suggested fix.'",
+      "expected_output": "Identified duplicates: prompts 1 and 2 (same intent, #2 is stronger); prompts 3 and 4 (same intent, #4 is stronger); prompts 5 and 6 (same intent, #6 is stronger). Recommended keeping the stronger version in each pair. Each retained prompt should receive tags (category, output format, status). Prompt 1 and 5 flagged as too vague. Suggested improvements for the weaker versions shown.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here are 4 prompts I use for data work. Please add proper output format instructions and role/persona openers to each:\n\n1. 'Clean this CSV data'\n2. 'Find outliers in this dataset'\n3. 'Write a Python script to process data'\n4. 'Explain this SQL query'",
+      "expected_output": "Four improved prompts, each with: a role opener (e.g., 'You are an expert data engineer...'), specific output format instructions (e.g., 'Return the cleaned CSV as a code block', 'List outliers as a JSON array with column name, row index, and value'), and constraints (e.g., 'Python 3.10+, use pandas'). Original prompts shown alongside improved versions for comparison.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Export my prompt library to a JSON format. I have 3 prompts: 'Draft a LinkedIn post about my recent project launch' (category: marketing, output: social post), 'Translate this text to Spanish' (category: language, output: prose), 'Generate a unit test for this function' (category: coding, output: code).",
+      "expected_output": "A valid JSON array with 3 objects, each containing: id (1-3), title (descriptive), tags (array including category and output-format tags), prompt (the full prompt text), and notes (any usage tips). The JSON should be valid and copyable. An additional 'status: reviewed' tag should be added. Any improvements to the prompt text itself should be noted.",
+      "files": []
+    }
+  ]
+}

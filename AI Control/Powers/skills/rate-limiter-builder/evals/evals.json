@@ -1,0 +1,17 @@
+{
+  "skill_name": "rate-limiter-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add rate limiting to my Express API. I need: a general limit of 200 requests per 15 minutes per user (or IP for anonymous), a strict limit of 10 requests per 15 minutes on /auth/login and /auth/forgot-password, and a per-user limit of 5 AI requests per minute on /api/generate. Use Redis for distributed limiting. Return proper 429 responses with Retry-After headers.",
+      "expected_output": "Should produce: (1) Three separate rate limiter configurations using `express-rate-limit` + `rate-limit-redis`. (2) General limiter keyed on user ID || IP. (3) Auth limiter keyed on IP only (since users aren't logged in yet) with strict 10/15min limit. (4) AI limiter keyed on user ID with 5/min limit. (5) A custom `handler` for each that returns `{ error: { code: 'RATE_LIMIT_EXCEEDED', message: '...', retryAfter: ... } }`. (6) `standardHeaders: 'draft-7'` on all limiters. (7) Route registration order showing auth limiter applied before general limiter on auth routes. Redis connection from environment variable.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Implement plan-based rate limits for a SaaS API. Free tier: 60 req/min. Pro tier: 600 req/min. Enterprise tier: 6000 req/min. The user's plan is available on `req.user.plan`. Return plan info and remaining quota in response headers.",
+      "expected_output": "Should produce: (1) A `PLAN_LIMITS` map object with windowMs and limit for each tier. (2) A middleware function that reads `req.user.plan`, looks up the limits, checks against Redis using a sliding window implementation, and sets `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers on every response. (3) Returns 429 with plan upgrade suggestion message for free/pro users who hit limits. (4) A custom sliding window check using Redis sorted sets (or ioredis `pipeline`). (5) Note about what happens if `req.user` is null (anonymous users get free-tier limits). Should not use `express-rate-limit` for this — the plan-based logic requires a custom implementation.",
+      "files": []
+    }
+  ]
+}

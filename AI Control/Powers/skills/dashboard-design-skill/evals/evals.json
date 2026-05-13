@@ -1,0 +1,23 @@
+{
+  "skill_name": "dashboard-design-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to design a sales performance dashboard for a B2B sales team. They care about quota attainment, pipeline coverage, win rate, and deal velocity. What should it look like?",
+      "expected_output": "Layout with hero KPI row (quota attainment %, pipeline coverage ratio, win rate, avg deal velocity in days). Trend charts for each over time. Pipeline funnel visualization by stage. Rep leaderboard or comparison view. Filters for time period, sales region, rep. KPI definitions for each metric. Chart type rationale (e.g., funnel for pipeline stages, line for trends, gauge for quota %). Notes on data freshness requirements (daily CRM sync).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What chart type should I use to show the distribution of customer support ticket resolution times? I have thousands of tickets with resolution time in hours.",
+      "expected_output": "Recommendation: histogram (primary) to show the distribution shape and identify clusters/outliers. Box plot as alternative for showing median, quartiles, and outliers side-by-side for multiple categories (e.g., by priority or team). CDF (cumulative distribution) chart for SLA compliance view (what % resolved within N hours). Avoid: pie chart (wrong for distributions), simple average (hides shape). Configuration notes: bin size selection, log scale consideration for long-tail data.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Design a content marketing dashboard. I want to track blog traffic, social media performance, email newsletter metrics, and lead conversion from content.",
+      "expected_output": "Four-section layout: (1) Traffic — page views, unique visitors, organic vs direct vs social (stacked area chart), top pages table. (2) Social — follower growth, engagement rate, reach per post by platform (grouped bars). (3) Email — open rate, CTR, unsubscribe rate, list growth trend. (4) Conversion — content-attributed leads, MQL rate from content, top converting assets. Unified date filter. Attribution model note (first touch vs multi-touch). KPI definitions for each metric.",
+      "files": []
+    }
+  ]
+}

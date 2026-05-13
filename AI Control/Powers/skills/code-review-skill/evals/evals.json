@@ -1,0 +1,23 @@
+{
+  "skill_name": "code-review-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this Node.js function:\n```js\nasync function deleteUser(userId) {\n  const user = await db.query(`DELETE FROM users WHERE id = ${userId}`);\n  fs.unlinkSync(`/uploads/${userId}`);\n  return user;\n}\n```",
+      "expected_output": "Critical finding: SQL injection via template literal interpolation — use parameterized query. Critical finding: path traversal risk in fs.unlinkSync (userId could be '../etc/passwd') — sanitize and validate path. High finding: synchronous fs.unlinkSync in async function blocks event loop — use fs.promises.unlink. Medium: no error handling — if DB delete fails, file is still deleted. Medium: no authorization check shown. Positive: function has a clear single purpose.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Can you do a code review of this Python password hashing code?\n```python\nimport hashlib\ndef hash_password(password):\n    return hashlib.md5(password.encode()).hexdigest()\n```",
+      "expected_output": "Critical security finding: MD5 is cryptographically broken and must not be used for passwords. It is fast (facilitates brute force) and has known collision attacks. Recommendation: use bcrypt, scrypt, or argon2 via appropriate Python library (e.g., bcrypt or passlib). Show corrected example with bcrypt. Note: no salt is applied, compounding the issue. Overall verdict: do not ship — replace before any production use.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Please review this TypeScript class for any issues:\n```ts\nclass ApiClient {\n  private apiKey = 'sk-prod-abc123xyz';\n  async fetch(endpoint: string) {\n    return fetch(endpoint, { headers: { Authorization: this.apiKey } });\n  }\n}\n```",
+      "expected_output": "Critical: hardcoded API key 'sk-prod-...' in source code — mask the value in the output, do not reproduce it. Instruct user to rotate the key immediately if this code is in a repo. Recommend reading from environment variable (process.env.API_KEY). High: fetch() result not awaited for error handling — no response status check. Medium: class has no base URL, allowing arbitrary endpoint URLs. Medium: no timeout on fetch. Positive: clean class structure and correct use of TypeScript private modifier.",
+      "files": []
+    }
+  ]
+}

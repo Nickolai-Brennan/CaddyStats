@@ -1,0 +1,17 @@
+{
+  "skill_name": "css-layout-helper",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a CSS layout for an app shell with: a fixed top header (64px), a left sidebar (250px wide, scrollable), and a main content area that fills remaining space and is independently scrollable. The sidebar should collapse on mobile (hidden below 768px). Use plain CSS.",
+      "expected_output": "Should produce: (1) CSS using Grid with grid-template-areas for header/sidebar/main. (2) Header fixed at 64px height. (3) Sidebar with `position: sticky` or the grid row filling `1fr`. (4) Main content area with `overflow-y: auto`. (5) A media query at 768px that hides the sidebar and makes the grid single-column. (6) Semantic HTML structure with correct classes. Notes should explain why min-height:0 may be needed on grid children and why `overflow: hidden` on parent would break sticky.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write Tailwind CSS classes for a responsive product card grid: 1 column on mobile, 2 columns on tablet (768px), 3 columns on desktop (1024px), 4 columns on wide (1280px). Cards should have equal height. Include the HTML structure for one card with an image, title, price, and a 'Add to cart' button at the bottom.",
+      "expected_output": "Should show: (1) The grid container with `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`. (2) A card structure using flex-col with the button at the bottom via `mt-auto`. (3) Image with correct aspect ratio using `aspect-video` or `aspect-square`. (4) Semantic HTML with article or li elements. (5) Note about `items-stretch` being the default so cards are equal height automatically in grid.",
+      "files": []
+    }
+  ]
+}

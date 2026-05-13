@@ -1,0 +1,17 @@
+{
+  "skill_name": "caching-strategy-advisor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My Express API has a `/products` endpoint that's slow because it runs a complex DB aggregation. Products change maybe once a day. I have Redis available. Recommend a caching strategy and implement it using a cache-aside pattern.",
+      "expected_output": "Should recommend: shared cache with a 30-minute to 2-hour TTL (since products change daily), cache-aside pattern. Should produce: (1) A `cacheAside<T>(key, fetcher, ttlSeconds)` helper using ioredis. (2) The cache key as `products:list` or similar. (3) The endpoint refactored to use `cacheAside()`. (4) Cache invalidation call in the product update/create handler. (5) HTTP Cache-Control header `public, max-age=1800` added to the route. Note that the in-memory `node-cache` alternative exists for single-server setups. A circuit breaker note: if Redis is unavailable, the app should fall through to the DB gracefully.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What caching strategy should I use for a user's own profile data that they can update at any time? It's fetched on every page load. I'm on a multi-server deployment with a load balancer.",
+      "expected_output": "Should recommend: per-user cache key (e.g., `user:profile:{userId}`) with a short TTL (2–5 minutes), Redis-backed (not in-memory because of multi-server). Should explain: (1) Why in-memory cache won't work with load balancer (requests hit different servers). (2) How to invalidate the cache immediately on profile update. (3) HTTP Cache-Control should be `private, max-age=120` since this is user-specific data. (4) A note that financial or security-sensitive fields (e.g., balance, 2FA status) should not be cached or have TTL of < 30 seconds. Should show a code example for both cache read and cache invalidation on write.",
+      "files": []
+    }
+  ]
+}

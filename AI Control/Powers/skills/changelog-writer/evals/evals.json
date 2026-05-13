@@ -1,0 +1,23 @@
+{
+  "skill_name": "changelog-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's the git log for our v1.5.0 release. Please write a CHANGELOG.md entry for it.\n\n```\nabc1234 Fix login redirect loop on Safari\ndef5678 Add CSV export to reports table\nghi9012 Remove deprecated /api/v1/users endpoint\njkl3456 Bump lodash to 4.17.21\nmno7890 Add rate limiting to public API endpoints\npqr2345 Update README setup instructions\nstu6789 Fix null pointer in user profile fetch\n```",
+      "expected_output": "A CHANGELOG.md entry formatted as '## [1.5.0] — YYYY-MM-DD' with categorized sections: Added (CSV export, rate limiting), Fixed (login redirect, null pointer), Removed (deprecated endpoint). The lodash bump and README update should either be omitted or placed in a minimal 'Changed' section. The output should be copyable Markdown.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to backfill changelog entries for versions 1.0.0, 1.1.0, and 1.2.0. I can describe what changed: v1.0.0 was the initial launch with user auth and dashboards. v1.1.0 added team collaboration and email notifications. v1.2.0 fixed a critical bug where deleting a team removed all its users' data.",
+      "expected_output": "Three changelog sections (newest first: 1.2.0, 1.1.0, 1.0.0), each formatted per Keep a Changelog convention. 1.2.0 should have a Security or Fixed section noting the critical data loss bug. 1.1.0 should have Added entries for team collaboration and email notifications. 1.0.0 should have Added entries for auth and dashboards.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a developer-facing and a user-facing version of the changelog for this sprint's changes: added two-factor authentication, fixed slow dashboard load times (was 8s, now 1.2s), deprecated the mobile API v1 in favor of v2, and improved error messages throughout the app.",
+      "expected_output": "Two distinct changelog sections: (1) Developer-facing: technical specifics like 'Added TOTP-based 2FA via authenticator apps', 'Deprecated /api/mobile/v1', performance numbers, and specific error-handling changes. (2) User-facing: plain language like 'Added two-factor authentication to keep your account secure', 'Pages load much faster', 'Clearer error messages when something goes wrong'. Both should use proper Keep a Changelog formatting.",
+      "files": []
+    }
+  ]
+}

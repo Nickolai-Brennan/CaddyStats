@@ -1,0 +1,23 @@
+{
+  "skill_name": "code-refactoring-assistant",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Refactor this Python function — it's too long and does too many things:\n\n```python\ndef process_order(order_id, user_id, items, coupon_code=None):\n    db = get_db()\n    user = db.query('SELECT * FROM users WHERE id = ?', user_id)\n    if not user:\n        raise Exception('User not found')\n    total = 0\n    for item in items:\n        product = db.query('SELECT * FROM products WHERE id = ?', item['product_id'])\n        if not product:\n            raise Exception(f'Product {item[\"product_id\"]} not found')\n        if product['stock'] < item['qty']:\n            raise Exception(f'Insufficient stock for {product[\"name\"]}')\n        total += product['price'] * item['qty']\n    if coupon_code:\n        coupon = db.query('SELECT * FROM coupons WHERE code = ?', coupon_code)\n        if coupon and coupon['expires_at'] > datetime.now():\n            if coupon['type'] == 'percent':\n                total = total * (1 - coupon['discount'] / 100)\n            else:\n                total = total - coupon['discount']\n    tax = total * 0.08\n    total_with_tax = total + tax\n    order = db.insert('orders', {'id': order_id, 'user_id': user_id, 'total': total_with_tax, 'status': 'pending'})\n    for item in items:\n        db.insert('order_items', {'order_id': order_id, 'product_id': item['product_id'], 'qty': item['qty']})\n    send_email(user['email'], 'Order Confirmation', f'Your order {order_id} totals ${total_with_tax:.2f}')\n    return order\n```",
+      "expected_output": "The refactored code should extract at least 3–4 helper functions: one for user/product validation, one for calculating order total, one for applying coupons, and one for persisting the order. Each extracted function should have a clear, descriptive name. The main `process_order` function should be no more than 15–20 lines. A before→after comparison should be shown, with a summary of each change made.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This JavaScript has deeply nested conditionals. Refactor it to use guard clauses:\n\n```javascript\nfunction getUserDashboardData(user) {\n  if (user) {\n    if (user.isActive) {\n      if (user.subscription) {\n        if (user.subscription.status === 'active') {\n          return {\n            plan: user.subscription.plan,\n            features: getFeatures(user.subscription.plan),\n            usage: getUserUsage(user.id)\n          };\n        } else {\n          return { expired: true, plan: user.subscription.plan };\n        }\n      } else {\n        return { free: true };\n      }\n    } else {\n      return { inactive: true };\n    }\n  } else {\n    return null;\n  }\n}\n```",
+      "expected_output": "The function should be rewritten using early returns / guard clauses, reducing nesting from 4 levels to 1 level. Each condition should return early at the top. The final return should handle the happy path. The refactored code should be around 10–12 lines, with a before/after comparison and a summary noting that nesting went from 4 to 1 level.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I have this duplicated code in three places in my TypeScript codebase. Extract it into a shared helper:\n\n```typescript\n// In userController.ts\nconst page = parseInt(req.query.page as string) || 1;\nconst limit = parseInt(req.query.limit as string) || 20;\nconst offset = (page - 1) * limit;\n\n// In productController.ts\nconst page = parseInt(req.query.page as string) || 1;\nconst limit = parseInt(req.query.limit as string) || 20;\nconst offset = (page - 1) * limit;\n\n// In orderController.ts\nconst page = parseInt(req.query.page as string) || 1;\nconst limit = Math.min(parseInt(req.query.limit as string) || 20, 100);\nconst offset = (page - 1) * limit;\n```",
+      "expected_output": "A shared `parsePaginationParams(query, options?)` helper function should be extracted to a utility file (e.g., `utils/pagination.ts`) with a TypeScript interface for its return type. The function should accept optional config for default and max limits. Usage examples showing how to replace all three call sites should be shown. A risk flag should note that `orderController.ts` had a `Math.min(100)` cap that the others didn't — the extracted function should handle this consistently.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "graphql-schema-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a GraphQL schema SDL for a blog API with: User, Post, and Comment types. Users can have many posts. Posts can have many comments. I need queries to get a single post, list posts with pagination, and get a user's profile. Mutations to create a post, publish a post (change status), and add a comment. Include proper error union types for mutations.",
+      "expected_output": "Should produce a complete SDL with: (1) `User`, `Post`, `Comment` types with all relevant fields. (2) `PostStatus` enum (DRAFT, PUBLISHED, ARCHIVED). (3) Relay-style connection types OR simple list with totalCount for pagination. (4) Input types `CreatePostInput`, `AddCommentInput`. (5) Union result types like `CreatePostResult = Post | ValidationError`. (6) `Query` type with `post(id: ID!)`, `posts(...)`, `user(id: ID!)`. (7) `Mutation` type with all three mutations. (8) `PageInfo` type for pagination. No resolver code needed — SDL only.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write Apollo Server resolvers for these GraphQL operations: a `users` query that returns all users from a database, a `createUser` mutation with validation, and a `User.posts` field resolver that loads posts for a user. Include context typing and handle unauthorized errors for the mutation.",
+      "expected_output": "Should produce: (1) A typed `Resolvers` object with `Query.users`, `Mutation.createUser`, and `User.posts` field resolvers. (2) Context type with `user`, `userService`, and `postService`. (3) Auth check in `createUser` throwing `AuthenticationError` if no user in context. (4) Input validation with a user-friendly error response using the union type pattern (not throwing for expected validation errors). (5) `User.posts` field resolver calling `ctx.postService.listByAuthor(user.id)` — demonstrating lazy resolution. An `asyncHandler` pattern or direct async/await in resolvers.",
+      "files": []
+    }
+  ]
+}

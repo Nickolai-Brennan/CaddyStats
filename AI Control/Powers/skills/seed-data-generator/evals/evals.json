@@ -1,0 +1,17 @@
+{
+  "skill_name": "seed-data-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate SQL seed data for a PostgreSQL e-commerce database with users, products, and orders tables. I need: 5 users (mix of admin and regular), 10 products across 3 categories with realistic names and prices, and 8 orders with order_items linking to users and products. Maintain all foreign key constraints.",
+      "expected_output": "Should produce a complete SQL file wrapped in `BEGIN; ... COMMIT;`. Insertion order must respect FK constraints: users first, then products, then orders, then order_items. Should use consistent IDs (e.g., 'usr_01', 'prd_01') that are referenced correctly in child tables. Prices should be stored in cents (integer), not as decimals. At least 1 admin user. product categories should be varied (electronics, clothing, accessories, etc.). Order statuses should include variety (pending, completed, cancelled). All timestamps should use `NOW() - INTERVAL` for realistic historical dates.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write TypeScript factory functions for my User and BlogPost models using Faker.js. I need: `createUser(overrides?)` and `createPost(overrides?)` factories, a `createPostWithAuthor()` helper that creates both, and the factories should be deterministic (seeded) for test stability. Include the Jest usage example.",
+      "expected_output": "Should produce: (1) `createUser(overrides?: Partial<User>): User` factory using `faker` with `faker.seed(42)` at module level. (2) `createPost(overrides?: Partial<Post>): Post` factory. (3) `createPostWithAuthor()` helper that creates a user with `createUser()`, then creates a post with `authorId: user.id`. (4) A Jest test showing usage: `const user = createUser({ role: 'admin' })` and assertions. Should use `@faker-js/faker` import. Should note that `faker.seed()` must be called before tests, not inside each factory call, for true determinism. All types should match the model interfaces.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "release-notes-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write user-facing release notes for our SaaS app, version 2.4.0. Changes: added Slack integration, fixed a bug where reports showed wrong date ranges, improved CSV export speed by 4x, and we're deprecating the old API key format (users have 90 days to migrate). Audience: B2B customers. Tone: professional but friendly.",
+      "expected_output": "Structured release notes with sections for New Features (Slack integration with a 1-2 sentence benefit description), Bug Fixes (reports date range fix), Performance (4x faster CSV exports), and a Migration Notice for the API key deprecation with the 90-day deadline prominently called out. Tone should be professional-friendly. Emoji optional. Should be 150-300 words.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need Apple App Store release notes for my fitness app. Changes: new workout timer with audio cues, fixed Apple Watch sync delay, dark mode now supports OLED displays, minor bug fixes. Keep it under 500 characters.",
+      "expected_output": "Plain-text app store release notes under 500 characters with bullet points for each feature/fix, no markdown formatting, benefit-oriented language (e.g., 'Stay on pace with audio cues during workouts'), and ending with 'Bug fixes and performance improvements.'",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a 'what's new' email announcement for our v3.0 major release. It includes: a completely redesigned dashboard, a new AI-powered insights feature, team workspaces (paid plans), and we've sunset the legacy mobile app. Our brand tone is enthusiastic and startup-y.",
+      "expected_output": "An email with a compelling subject line (e.g., 'v3.0 is here — meet your new dashboard 🚀'), a 1-2 sentence intro, feature highlights with benefit-focused descriptions, a callout for the team workspaces upsell, and a clear notice about the legacy mobile app sunset with next steps. Tone should be enthusiastic. Should include a CTA button placeholder.",
+      "files": []
+    }
+  ]
+}

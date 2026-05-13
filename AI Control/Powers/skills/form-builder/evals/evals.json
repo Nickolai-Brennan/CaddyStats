@@ -1,0 +1,17 @@
+{
+  "skill_name": "form-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a React registration form with React Hook Form + Zod validation. Fields: email (required, valid email format), password (required, min 8 chars, must contain uppercase + number), confirm password (must match password), full name (required, 2–50 chars). Show inline validation errors, disable all inputs while submitting, and show a success message after submission.",
+      "expected_output": "Should produce: (1) A Zod schema with all four fields and a `.refine()` for password confirmation match. (2) A React component using `useForm` with `zodResolver`. (3) All inputs using `register()` with `aria-invalid` and `aria-describedby` for error messages. (4) Error spans with `role='alert'`. (5) `<fieldset disabled={isSubmitting}>` wrapping inputs. (6) A success state rendered conditionally. (7) The submit button showing a loading state text. CSS for field error styling included.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a plain HTML contact form (no framework) with: name (required), email (required, email format), message (required, textarea, max 500 chars), and a honeypot field for bot protection. Add JavaScript validation on submit that shows inline error messages. Make it accessible.",
+      "expected_output": "Should produce: (1) Semantic HTML form with `<label>` elements properly associated via `for`/`id`. (2) A hidden honeypot `<input>` with `aria-hidden='true'` and `tabindex='-1'` (not just CSS hidden). (3) `novalidate` on the form to prevent browser native validation. (4) JavaScript `submit` handler that validates fields and shows errors in `<span role='alert'>` elements. (5) `aria-invalid='true'` set on invalid fields. (6) Character counter for the textarea. (7) Successful submission clears the form.",
+      "files": []
+    }
+  ]
+}

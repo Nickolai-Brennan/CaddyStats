@@ -1,0 +1,17 @@
+{
+  "skill_name": "accessibility-checker",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this HTML form for accessibility issues:\n```html\n<div class='form'>\n  <div>\n    <input type='text' placeholder='Enter your name'>\n  </div>\n  <div>\n    <input type='email' placeholder='Email'>\n  </div>\n  <div>\n    <input type='password' placeholder='Password'>\n  </div>\n  <div onclick='submitForm()' style='background:red;color:white;padding:10px'>Submit</div>\n</div>\n```",
+      "expected_output": "Audit report identifying: (1) Critical: all three inputs are missing associated `<label>` elements — WCAG 1.3.1, 3.3.2. (2) Critical: `<div onclick>` for submit button — should be `<button type='submit'>` for keyboard access and screen reader semantics — WCAG 2.1.1, 4.1.2. (3) Critical: `<form>` element missing (just a div). (4) High: red background (`#FF0000`) with white text should be checked for contrast (red/white is typically fine at ~4.0:1 — may pass for large text but should verify). (5) Medium: placeholder text is not a substitute for labels. Remediated HTML should be shown.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Check these color combinations for WCAG 2.1 AA compliance:\n1. Text: #9CA3AF on Background: #FFFFFF\n2. Text: #374151 on Background: #F9FAFB\n3. Text: #FFFFFF on Background: #2563EB (blue button)\n4. Text: #6B7280 on Background: #FFFFFF",
+      "expected_output": "A table showing each combination with: calculated contrast ratio, whether it passes/fails AA (4.5:1 for normal text, 3:1 for large text), and whether it passes AAA (7:1). Expected results: #9CA3AF on white ≈ 2.85:1 ❌ FAIL; #374151 on #F9FAFB ≈ 9.2:1 ✅ PASS; white on #2563EB ≈ 5.9:1 ✅ PASS; #6B7280 on white ≈ 4.6:1 ✅ AA PASS (borderline). For failing combos, suggest a darker alternative that passes.",
+      "files": []
+    }
+  ]
+}

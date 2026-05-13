@@ -1,0 +1,17 @@
+{
+  "skill_name": "cli-tool-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a Node.js CLI tool called `vaultctl` using Commander.js + TypeScript. It needs three commands:\n1. `vaultctl secret get <name>` — prints a secret value from an env var or config file\n2. `vaultctl secret list` — lists all secret names (not values)\n3. `vaultctl config set <key> <value>` — stores a config key/value to a JSON config file\n\nAdd `--json` flag to list and `--config <path>` global flag to override config file location.",
+      "expected_output": "Should produce: (1) A CLI design overview showing the command tree with all flags, (2) a main entry file with Commander.js program setup and subcommand structure, (3) at least one command handler module, (4) a package.json snippet with bin entry and Commander.js dependency. Sensitive values should never be logged — the `get` command should print to stdout only, not log. Config path should default to `~/.vaultctl.json` or similar. A --dry-run or confirmation step for destructive operations if applicable.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a Python CLI using Click called `dbmigrate` with:\n- `dbmigrate run` — runs all pending migrations\n- `dbmigrate rollback <steps>` — rolls back N migration steps (defaults to 1)\n- `dbmigrate status` — shows which migrations have been applied\n\nGlobal options: `--db-url` (required, or from env `DATABASE_URL`), `--verbose`.",
+      "expected_output": "A Click CLI with: (1) a group with `--db-url` option (pulls from DATABASE_URL env var if not provided), (2) three commands with correct argument/option definitions, (3) the `rollback` command has a `--yes/-y` confirmation flag before executing (since it's destructive), (4) `status` supports `--json` output, (5) a `pyproject.toml` snippet showing the entry point. Error handling should exit with code 1 on database errors.",
+      "files": []
+    }
+  ]
+}

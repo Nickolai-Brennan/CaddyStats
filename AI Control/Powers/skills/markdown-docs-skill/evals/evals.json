@@ -1,0 +1,23 @@
+{
+  "skill_name": "markdown-docs-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a README for a Node.js Express REST API starter kit that includes JWT auth, rate limiting, and PostgreSQL. It's open source on GitHub.",
+      "expected_output": "Complete README with: project title and one-line description, badges (CI, license, Node version), features list (JWT auth, rate limiting, PostgreSQL, etc.), prerequisites section, installation steps (clone, npm install, env setup with .env.example reference using placeholder values), quick start commands, environment variables table (name, description, required/optional — NO real values), API endpoints table or link to docs, project structure overview, contributing section, license. All credentials use placeholder values.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Turn these rough notes into a proper getting-started guide for new developers joining our team:\n- Clone the repo\n- Run npm install\n- Copy .env.example to .env and fill it in\n- Ask John for the Postgres password\n- Run npm run dev\n- Read the wiki for more",
+      "expected_output": "A polished Getting Started guide in Markdown: numbered prerequisites section, step-by-step setup with code blocks for each command, .env.example walkthrough (with placeholder values replacing 'ask John for password'), local development server instructions, links to further documentation. Note flagging that asking John for a password is an insecure practice — recommend documenting secrets in a secrets manager or 1Password vault instead. Verify each step is actionable without tribal knowledge.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a CHANGELOG entry for a release that adds dark mode support, fixes a login bug, improves search performance by 40%, and deprecates the v1 API endpoints.",
+      "expected_output": "Properly formatted Keep a Changelog entry: ## [X.Y.Z] - YYYY-MM-DD with subsections Added (dark mode support), Fixed (login bug with brief description), Changed (search performance improvement with 40% note), Deprecated (v1 API endpoints with migration path or sunset date). Follows keepachangelog.com conventions. Reminds user to fill in version number and date.",
+      "files": []
+    }
+  ]
+}

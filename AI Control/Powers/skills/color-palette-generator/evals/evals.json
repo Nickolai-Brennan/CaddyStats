@@ -1,0 +1,17 @@
+{
+  "skill_name": "color-palette-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a complete color palette for a fintech SaaS app. The brand color is a deep teal (#0D9488). I need a full 10-step scale for teal, semantic tokens (primary, success, warning, error, neutral), CSS custom properties for light and dark mode, and a contrast verification table for key text/background pairs.",
+      "expected_output": "Should produce: (1) A 10-step teal scale from 50 (near-white tint) to 900 (near-black shade). (2) Semantic token table mapping brand, success (green), warning (amber), error (red), and neutral (gray) to specific scale values. (3) A complete CSS `:root` block with custom properties for light mode. (4) A `@media (prefers-color-scheme: dark)` block with adjusted semantic tokens. (5) A contrast table checking at least 4 combinations with pass/fail indication. Warning that yellow/amber fails 4.5:1 for normal text should be noted.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Check these colors for WCAG accessibility and suggest fixes where needed:\n- Primary button: background #4F46E5 (indigo), text white\n- Secondary button: background #E5E7EB (light gray), text #374151\n- Warning badge: background #FEF3C7, text #D97706\n- Disabled text: #9CA3AF on white background",
+      "expected_output": "For each combination: calculated contrast ratio + WCAG AA/AAA pass/fail. Expected: #4F46E5/white ≈ 7.0:1 ✅ AAA; #E5E7EB/#374151 ≈ 8.3:1 ✅ AAA; #FEF3C7/#D97706 ≈ 2.2:1 ❌ FAIL (suggest darkening text to #92400E ≈ 7.1:1); #9CA3AF/white ≈ 2.85:1 ❌ FAIL (suggest #6B7280 ≈ 4.6:1 or note it's intentionally low-contrast for disabled state which WCAG exempts). Each failing pair should include a specific fixed color value.",
+      "files": []
+    }
+  ]
+}

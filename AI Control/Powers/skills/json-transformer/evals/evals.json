@@ -1,0 +1,17 @@
+{
+  "skill_name": "json-transformer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a TypeScript transformer to convert this Stripe PaymentIntent webhook payload to my internal `Payment` model:\n\nSource (Stripe):\n```json\n{\n  \"id\": \"pi_3abc\",\n  \"amount\": 4900,\n  \"currency\": \"usd\",\n  \"status\": \"succeeded\",\n  \"customer\": \"cus_xyz\",\n  \"metadata\": { \"order_id\": \"ord_123\", \"user_id\": \"usr_456\" },\n  \"created\": 1700000000\n}\n```\n\nTarget (my model):\n```json\n{\n  \"paymentId\": \"pi_3abc\",\n  \"amountCents\": 4900,\n  \"currency\": \"USD\",\n  \"status\": \"completed\",\n  \"stripeCustomerId\": \"cus_xyz\",\n  \"orderId\": \"ord_123\",\n  \"userId\": \"usr_456\",\n  \"paidAt\": \"2023-11-14T22:13:20.000Z\"\n}\n```",
+      "expected_output": "Should produce: (1) TypeScript interfaces for both `StripePaymentIntent` and `InternalPayment`. (2) A field mapping table showing each source→target transformation. (3) A `transformStripePayment(source: StripePaymentIntent): InternalPayment` function that: maps `id → paymentId`, keeps `amount → amountCents` (no conversion needed, both in cents), uppercases `currency`, maps `status: 'succeeded' → 'completed'`, extracts `metadata.order_id` and `metadata.user_id`, converts Unix timestamp to ISO string. (4) An `assertNonNull` or optional chaining approach for the `metadata` fields in case they're missing.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have an array of nested order objects and need to flatten them into rows suitable for a CSV/spreadsheet. Each order has multiple line items. Write a JavaScript function that produces one row per line item.\n\nInput:\n```json\n[{ \"orderId\": \"ord_1\", \"customerName\": \"Alice\", \"items\": [{\"sku\": \"A\", \"qty\": 2, \"price\": 10}, {\"sku\": \"B\", \"qty\": 1, \"price\": 25}] }]\n```\n\nOutput row: `orderId, customerName, sku, qty, price, lineTotal`",
+      "expected_output": "A JavaScript/TypeScript `flattenOrdersToRows(orders)` function that uses `flatMap` to produce one flat object per line item, including all order-level fields on each row, a computed `lineTotal: qty * price`, and correct TypeScript types for both input and output. Should also show a jq one-liner equivalent. Result should be ready to pass to a CSV serializer like `papaparse.unparse()`.",
+      "files": []
+    }
+  ]
+}

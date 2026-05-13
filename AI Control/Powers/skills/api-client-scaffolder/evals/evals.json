@@ -1,0 +1,23 @@
+{
+  "skill_name": "api-client-scaffolder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scaffold a TypeScript API client for a REST API with these endpoints: GET /users/:id, POST /users, DELETE /users/:id, GET /users/:id/orders. Auth is via Bearer token from environment variable. Include TypeScript types for User (id, email, name, createdAt) and Order (id, userId, amount, status).",
+      "expected_output": "A TypeScript client with: types.ts defining User and Order interfaces, client.ts with a base apiRequest function using fetch with Bearer auth from process.env.API_KEY, endpoints/users.ts with getUser(), createUser(), deleteUser() and getUserOrders() functions, each typed with return type. All API keys from environment variables. A deleteUser function should have a comment flagging it as destructive. An index.ts barrel export.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a Python API client class for the GitHub API. I need to be able to: list issues for a repo, create a comment on an issue, and close an issue. Auth is via personal access token. Include retry logic for rate limiting (429 responses).",
+      "expected_output": "A Python APIClient class with: GitHub base URL (https://api.github.com), auth header using 'Authorization: Bearer TOKEN' from os.environ, list_issues(owner, repo) method returning a list of dicts, create_issue_comment(owner, repo, issue_number, body) method, close_issue(owner, repo, issue_number) method (flagged as destructive), and retry logic that checks for 429 status and reads the Retry-After header before sleeping. All methods have type hints and docstrings.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Generate a simple JavaScript API client for a weather API with one endpoint: GET /weather?city=X&units=metric. The API requires an API key as a query parameter (not a header). Show me how to use it.",
+      "expected_output": "A JavaScript module exporting a getWeather(city, units='metric') async function that constructs the URL with city, units, and API key (from process.env.WEATHER_API_KEY) as query params. Uses fetch with a timeout. Error handling for non-OK responses. A usage example showing: import { getWeather } from './client'; const weather = await getWeather('London'); console.log(weather). Note that the API key should never be exposed in frontend code.",
+      "files": []
+    }
+  ]
+}

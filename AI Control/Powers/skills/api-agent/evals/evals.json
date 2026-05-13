@@ -1,0 +1,23 @@
+{
+  "skill_name": "api-agent",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design a REST API for a blogging platform. Users can create posts, add comments, and follow other users. We need authentication. Give me an OpenAPI spec.",
+      "expected_output": "An OpenAPI 3.x YAML spec with paths for /users, /posts, /posts/{id}, /posts/{id}/comments, /users/{id}/follow. Components/schemas for User, Post, Comment, Error. Bearer JWT auth defined in securitySchemes. Standard HTTP status codes. Pagination on list endpoints. A decisions log noting URL versioning, JWT auth, and cursor or offset pagination choice.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I'm building a microservice that handles payments. What endpoints do I need and how should I design the API contract so other services can integrate with it?",
+      "expected_output": "An endpoint surface covering payment initiation, status check, refund, and webhook registration. Request/response schemas for PaymentRequest, PaymentResponse, RefundRequest, WebhookEvent. Integration contract section describing the service boundary, async vs sync patterns, idempotency key pattern, and error handling. Notes on avoiding exposing raw card data (PCI concern flagged).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a GraphQL schema for a project management tool with projects, tasks, and team members. Tasks can be assigned to members and belong to projects.",
+      "expected_output": "GraphQL SDL with types Project, Task, TeamMember. Queries: projects, project(id), tasks, task(id). Mutations: createProject, createTask, assignTask, updateTaskStatus. Relationships: Task.project (Project), Task.assignee (TeamMember), Project.members ([TeamMember]). Notes on N+1 and DataLoader. Auth directive suggestion. Input types for mutations.",
+      "files": []
+    }
+  ]
+}

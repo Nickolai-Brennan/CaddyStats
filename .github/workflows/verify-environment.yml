@@ -1,0 +1,250 @@
+name: Verify Environment
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  verify:
+    name: Verify Environment Is Up and Running
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ── Repository structure checks ─────────────────────────────────────────
+
+      - name: Verify required top-level files exist
+        run: |
+          echo "=== Checking required files ==="
+          required_files=("README.md")
+          missing=()
+          for f in "${required_files[@]}"; do
+            if [ ! -f "$f" ]; then
+              missing+=("$f")
+              echo "❌ Missing: $f"
+            else
+              echo "✅ Found:   $f"
+            fi
+          done
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error::One or more required files are missing: ${missing[*]}"
+            exit 1
+          fi
+
+      - name: Verify skills directory structure
+        run: |
+          echo "=== Checking skills directory ==="
+          if [ ! -d "skills" ]; then
+            echo "::warning::No 'skills' directory found – skipping skill checks."
+            exit 0
+          fi
+
+          errors=0
+          while IFS= read -r skill_dir; do
+            skill_name=$(basename "$skill_dir")
+            skill_md="$skill_dir/SKILL.md"
+            if [ ! -f "$skill_md" ]; then
+              echo "❌ Skill '$skill_name' is missing SKILL.md"
+              errors=$((errors + 1))
+            else
+              echo "✅ $skill_name/SKILL.md present"
+              # Verify YAML frontmatter exists (trim leading whitespace before checking)
+              if ! head -5 "$skill_md" | grep -qE '^\s*---\s*$'; then
+                echo "::warning::$skill_md does not appear to have YAML frontmatter."
+              else
+                echo "  ✅ YAML frontmatter detected"
+              fi
+            fi
+          done < <(find skills -mindepth 1 -maxdepth 1 -type d)
+
+          if [ "$errors" -gt 0 ]; then
+            echo "::error::$errors skill(s) have structural issues."
+            exit 1
+          fi
+
+      # ── Markdown lint ────────────────────────────────────────────────────────
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: |
+          echo "=== Linting Markdown files ==="
+          mapfile -t md_files < <(find . -name "*.md" \
+            -not -path "./.git/*" \
+            -not -path "./node_modules/*")
+
+          if [ ${#md_files[@]} -eq 0 ]; then
+            echo "No Markdown files found."
+            exit 0
+          fi
+
+          markdownlint --config .markdownlint.json "${md_files[@]}" 2>/dev/null \
+            || markdownlint --disable MD013 MD033 MD041 -- "${md_files[@]}"
+
+      # ── YAML / JSON syntax checks ─────────────────────────────────────────────
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate YAML and JSON files
+        run: |
+          echo "=== Validating YAML files ==="
+          python - <<'EOF'
+          import sys, json, glob, pathlib
+
+          try:
+              import yaml
+          except ImportError:
+              import subprocess
+              subprocess.check_call([sys.executable, "-m", "pip", "install", "pyyaml", "-q"])
+              import yaml
+
+          errors = []
+
+          for path in glob.glob("**/*.yml", recursive=True) + glob.glob("**/*.yaml", recursive=True):
+              p = pathlib.Path(path)
+              if ".git" in p.parts or "node_modules" in p.parts:
+                  continue
+              try:
+                  with open(p) as f:
+                      list(yaml.safe_load_all(f))
+                  print(f"✅ {path}")
+              except yaml.YAMLError as e:
+                  print(f"❌ {path}: {e}")
+                  errors.append(path)
+
+          for path in glob.glob("**/*.json", recursive=True):
+              p = pathlib.Path(path)
+              if ".git" in p.parts or "node_modules" in p.parts:
+                  continue
+              try:
+                  with open(p) as f:
+                      json.load(f)
+                  print(f"✅ {path}")
+              except json.JSONDecodeError as e:
+                  print(f"❌ {path}: {e}")
+                  errors.append(path)
+
+          if errors:
+              print(f"\n::error::Syntax errors found in: {', '.join(errors)}")
+              sys.exit(1)
+          EOF
+
+      # ── SKILL.md frontmatter validation ─────────────────────────────────────
+
+      - name: Validate SKILL.md frontmatter fields
+        run: |
+          echo "=== Validating SKILL.md frontmatter ==="
+          python - <<'EOF'
+          import sys, glob, re
+
+          errors = []
+
+          for path in glob.glob("**/SKILL.md", recursive=True):
+              with open(path) as f:
+                  content = f.read()
+
+              # Extract YAML frontmatter
+              match = re.match(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
+              if not match:
+                  print(f"❌ {path}: missing or malformed YAML frontmatter")
+                  errors.append(path)
+                  continue
+
+              fm = match.group(1)
+              missing = []
+              if 'name:' not in fm:
+                  missing.append('name')
+              if 'description:' not in fm:
+                  missing.append('description')
+
+              if missing:
+                  print(f"❌ {path}: frontmatter is missing required fields: {missing}")
+                  errors.append(path)
+              else:
+                  print(f"✅ {path}")
+
+          if errors:
+              print(f"\n::error::{len(errors)} SKILL.md file(s) have frontmatter issues.")
+              sys.exit(1)
+          EOF
+
+      # ── Summary comment ──────────────────────────────────────────────────────
+
+      - name: Post success comment
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const tag = '<!-- verify-environment-bot -->';
+            const existing = comments.find(c => c.body.includes(tag));
+            const body = `${tag}\n## ✅ Environment Verified\n\nAll checks passed on commit \`${context.sha.slice(0, 7)}\`:\n- Repository structure is valid\n- All Markdown files pass linting\n- All YAML / JSON files are syntactically correct\n- All \`SKILL.md\` files have required frontmatter\n\n_Updated: ${new Date().toUTCString()}_`;
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Post failure comment
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const tag = '<!-- verify-environment-bot -->';
+            const existing = comments.find(c => c.body.includes(tag));
+            const body = `${tag}\n## ❌ Environment Verification Failed\n\nOne or more checks failed on commit \`${context.sha.slice(0, 7)}\`. Please review the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.\n\n_Updated: ${new Date().toUTCString()}_`;
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

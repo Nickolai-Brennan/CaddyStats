@@ -1,0 +1,23 @@
+{
+  "skill_name": "meeting-notes-to-actions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here are my notes from our product sync:\n\nAttended: Alice (PM), Bob (eng lead), Carol (design), Dave (QA)\nWe talked about the new onboarding flow. Alice said the designs look good but Carol needs to finalize the mobile screens by Friday. Bob mentioned the backend API for step 3 is blocked on the auth service — Dave is going to check with the infra team. We decided to delay launch by 1 week to May 20th. Alice will update the stakeholder doc. Still not sure who's writing the release notes.\n\nCan you extract action items and decisions?",
+      "expected_output": "A structured meeting summary with: Action Items table (Carol: finalize mobile screens by Friday; Dave: check with infra team re auth service blocker; Alice: update stakeholder doc; TBD: write release notes — flagged as unassigned), Decisions section (launch delayed to May 20th), Blockers section (backend API step 3 blocked on auth service), and Open Questions (who writes release notes). All inferred owners should be marked as such if not explicitly stated.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a Zoom transcript from a retro. Can you turn it into action items for our Slack channel?\n\n[Alice]: The deployment pipeline keeps timing out on step 4. It cost us 3 hours last sprint.\n[Bob]: I can look into that. Maybe we need to parallelize the test step.\n[Alice]: Yes, please do that. Target next sprint.\n[Carol]: Also, our PR review time is too long — averaging 4 days.\n[Bob]: We could set a 24-hour SLA for reviews.\n[Alice]: Agreed, let's do that starting Monday.\n[Dave]: I'll document the new SLA in our team wiki.",
+      "expected_output": "A Slack-formatted compact summary with action items: Bob to investigate and parallelize the deployment pipeline test step (target: next sprint); Dave to document the 24-hour PR review SLA in team wiki (due: Monday). Decisions: 24-hour SLA for PR reviews starting Monday. Blockers: deployment pipeline timing out on step 4. Output should use emoji bullets and Slack-friendly plain text with bold markers.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Summarize this voice memo into a Notion-ready format: 'Okay so the meeting today with the client was pretty good. They want us to add a bulk export feature — something that lets them download all their data as a zip file. They mentioned the deadline is end of Q2. We also talked about pricing and they'd like a discount for annual plans — I need to check with finance. Oh and they complained about the onboarding email being confusing — I'll rewrite that this week. Nothing was decided on the API integration question.'",
+      "expected_output": "A Notion-ready Markdown summary with: Action Items (check with finance about annual plan discount — owner: narrator; rewrite onboarding email — owner: narrator, due this week), Open Questions (API integration — not resolved), Key Notes (client wants bulk zip export by end of Q2). The meeting date should be marked as unknown and the client name as unknown, with a note to fill them in.",
+      "files": []
+    }
+  ]
+}

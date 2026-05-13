@@ -1,0 +1,23 @@
+{
+  "skill_name": "security-review-checklist-runner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Please do a security review of this Express.js route handler:\n\n```javascript\napp.get('/user', (req, res) => {\n  const id = req.query.id;\n  const query = `SELECT * FROM users WHERE id=${id}`;\n  db.query(query, (err, result) => {\n    if (err) res.json({ error: err.message });\n    else res.json(result.rows);\n  });\n});\n```",
+      "expected_output": "A security review report identifying at minimum: (1) Critical: SQL injection via string interpolation — provide fix using parameterized query; (2) High: no authentication on this endpoint; (3) Medium: error message leaks internal DB error details to client; (4) Medium: no input validation on 'id' parameter. Report should include code-level fixes for each finding, severity ratings, and a prioritized remediation plan.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Run a security checklist on this user authentication design: Users sign up with email/password. Passwords are stored as MD5 hashes. Login issues a JWT signed with HS256 with no expiry. Sessions are stored in localStorage on the frontend. There's no rate limiting on the login endpoint.",
+      "expected_output": "Multiple critical and high findings: (1) Critical: MD5 is not a password hashing algorithm — must use bcrypt or argon2; (2) High: JWT with no expiry means tokens are valid forever — add expiry (e.g., 15-minute access tokens); (3) High: localStorage is vulnerable to XSS — use httpOnly cookies; (4) High: no rate limiting on login enables brute force attacks. Each finding should include a specific, actionable fix.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm adding a file upload feature that accepts PDF and image files from users. What security controls do I need to implement?",
+      "expected_output": "A security checklist covering: file type validation beyond extension (check MIME type with a library like file-type, not just .pdf extension); file size limits (define max bytes, enforce server-side); store files outside the webroot or in object storage (not as directly accessible URLs); sanitize filenames before storage (strip path traversal characters, normalize); consider malware scanning for uploaded files; serve files through an authenticated endpoint not a direct URL. Concrete code examples or library recommendations for Node.js/Python should be included.",
+      "files": []
+    }
+  ]
+}

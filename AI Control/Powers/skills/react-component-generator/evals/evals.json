@@ -1,0 +1,23 @@
+{
+  "skill_name": "react-component-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a React component for a Toast notification system. It should: show a message with type (success/error/warning/info), auto-dismiss after a configurable duration (default 4 seconds), support a manual dismiss button, stack multiple toasts, and be accessible. Use TypeScript + Tailwind CSS.",
+      "expected_output": "Should produce: (1) A `Toast` component with props for message, type, duration, and onDismiss. (2) A `ToastContainer` component that stacks toasts. (3) A `useToast` hook with `show()`, `success()`, `error()`, `warning()` methods. (4) Correct ARIA attributes: `role='alert'` for errors, `role='status'` for others, `aria-live` region. (5) Auto-dismiss using `useEffect` with a timeout that gets cleared on unmount. (6) A test stub with at least render and dismiss tests. Tailwind classes used for type-based coloring.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a reusable DataTable React component with TypeScript that: accepts a generic type for row data, takes `columns` config array with key, header, and optional render function, supports sorting by clicking column headers, shows a loading skeleton when isLoading is true, and shows an empty state when data is empty.",
+      "expected_output": "Should produce: (1) A generic `DataTable<T>` component with `columns: Column<T>[]` and `data: T[]` props plus `isLoading` and `emptyMessage` optional props. (2) A `Column<T>` interface with `key: keyof T`, `header: string`, optional `render: (value, row) => ReactNode`. (3) Sort state managed with `useState` for `sortKey` and `sortDirection`. (4) A skeleton loading state showing the correct number of columns and 5 placeholder rows. (5) A barrel `index.ts` export. TypeScript should be strict with no `any`.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a custom React hook `useFetch<T>` that: fetches data from a URL, returns `{ data, loading, error }`, automatically refetches when the URL changes, supports an `enabled` option to disable fetching, and handles component unmounting (abort controller).",
+      "expected_output": "A `useFetch<T>` hook with proper TypeScript generics returning `{ data: T | null, loading: boolean, error: Error | null }`. Should use `AbortController` in `useEffect` cleanup to prevent state updates after unmount. The `enabled` option should prevent fetching when `false`. URL changes should trigger a re-fetch via the `useEffect` dependency array. A usage example showing it with a typed API response should be included.",
+      "files": []
+    }
+  ]
+}

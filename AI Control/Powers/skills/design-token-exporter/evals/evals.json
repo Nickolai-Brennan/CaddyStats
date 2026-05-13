@@ -1,0 +1,17 @@
+{
+  "skill_name": "design-token-exporter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have these design decisions I want to turn into tokens: brand blue is #2563EB, spacing uses a 4px base scale up to 96px, body font is Inter, headings use Fraunces, border radii are 4px/8px/16px/full, and box shadows are sm/md/lg/xl. Generate: CSS custom properties, a TypeScript constants file, and a Tailwind config extension.",
+      "expected_output": "Should produce three complete files: (1) A `tokens.css` `:root` block with all color, spacing, typography, radius, and shadow tokens using the naming convention `--color-*`, `--space-*`, `--font-*`, `--radius-*`, `--shadow-*`. (2) A `tokens.ts` TypeScript file with `as const` objects for each category. (3) A `tailwind.config.js` theme extension that references the token values. All files should have 'DO NOT EDIT MANUALLY' header comments. Token names should be kebab-case in CSS and camelCase in TypeScript.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Convert this Figma Design Tokens (W3C format) JSON to CSS custom properties and a Tailwind config:\n```json\n{\n  \"colors\": {\n    \"brand\": { \"$value\": \"#7C3AED\", \"$type\": \"color\" },\n    \"surface\": { \"$value\": \"#F5F3FF\", \"$type\": \"color\" },\n    \"text-primary\": { \"$value\": \"#1C1917\", \"$type\": \"color\" }\n  },\n  \"spacing\": {\n    \"base\": { \"$value\": \"1rem\", \"$type\": \"dimension\" },\n    \"lg\": { \"$value\": \"1.5rem\", \"$type\": \"dimension\" }\n  }\n}\n```",
+      "expected_output": "Should produce: (1) CSS `:root` with `--color-brand: #7C3AED`, `--color-surface: #F5F3FF`, `--color-text-primary: #1C1919`, `--spacing-base: 1rem`, `--spacing-lg: 1.5rem`. (2) A `tailwind.config.js` extending theme with these values. (3) A note that the W3C format uses `$value` and `$type` as the canonical keys, and that a production setup would use `style-dictionary` or `token-transformer` to generate these outputs automatically from the JSON source of truth.",
+      "files": []
+    }
+  ]
+}

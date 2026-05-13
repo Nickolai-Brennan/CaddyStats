@@ -1,0 +1,23 @@
+{
+  "skill_name": "project-intake-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to rebuild our company's employee onboarding process. Right now new hires get an email with a PDF and it's a mess. I want something better but I'm not sure what exactly.",
+      "expected_output": "Project brief with: goal (modernize employee onboarding from PDF email to structured digital experience), scope section with in-scope items (onboarding portal/checklist, document collection, manager tasks, integrations with HRIS) and out-of-scope, stakeholder table (HR, IT, manager role, new hire as user). Asks clarifying questions: what tech stack/tools are in use? Is this a web app, Slack bot, or HR platform config? Budget? Timeline? Success criteria suggested: time-to-productivity reduction, task completion rate. Open questions log for unanswered items.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here are my requirements: build a mobile app for restaurant reservations. Customers can book tables, restaurants can manage availability, and there's a waitlist feature. Launch in Q3.",
+      "expected_output": "Structured project brief: goal (reservation and waitlist management app for restaurants and diners), scope (customer booking flow, restaurant availability management, waitlist — out of scope: payment processing, reviews/ratings unless specified). Stakeholders: restaurant owners (primary users), diners (end users), product team. Q3 deadline parsed into milestone suggestions. Risks: two-sided marketplace cold start problem flagged, mobile platform (iOS/Android/both?) as open question, P0 risk. Success criteria: bookings per day target, waitlist conversion rate. Open questions: platforms, auth, notification system, existing POS integration.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We need to migrate our monolith to microservices. The CEO just said to do it. Help me define this project properly.",
+      "expected_output": "Brief that surfaces the complexity and risk of this request. Goal (decompose monolith into microservices to improve scalability and team autonomy). Important: flags that 'CEO said to do it' without defined scope is a P0 risk — pushes back with questions: which services first? Timeline? Budget? Team size? Scope: recommends starting with strangler fig pattern for one bounded context rather than full rewrite. Risks: extensive list — distributed systems complexity, data consistency, operational overhead, team skill gaps. Success criteria: must be measurable per service decomposed, not 'monolith is gone'. Recommends a discovery/architecture spike before committing to full project scope.",
+      "files": []
+    }
+  ]
+}
