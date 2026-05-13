@@ -24,11 +24,14 @@ jobs:
         with:
           filters: |
             docs:
+              - 'docs/**'
               - 'Support/docs/**'
               - 'README.md'
               - '.github/PULL_REQUEST_TEMPLATE/**'
               - '.github/copilot-instructions.md'
             code_or_data:
+              - 'frontend/**'
+              - 'backend/**'
               - 'apps/**'
               - 'services/**'
               - 'packages/**'
@@ -36,6 +39,16 @@ jobs:
               - 'database/**'
               - 'api/**'
               - 'infrastructure/**'
+              - 'tests/**'
+              - 'agents/**'
+              - 'skills/**'
+              - 'instructions/**'
+              - 'workflows/**'
+              - 'prompts/**'
+              - 'templates/**'
+              - 'evals/**'
+              - 'plugins/**'
+              - 'commands/**'
               - 'scripts/**'
               - 'config/**'
 
