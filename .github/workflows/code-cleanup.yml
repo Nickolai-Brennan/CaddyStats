@@ -2,7 +2,7 @@ name: Code Cleanup
 
 on:
   schedule:
-    # Daily run to catch formatting/lint drift quickly across the active web and API codebases.
+    # Daily run for Prettier + Ruff formatting/lint checks across the active web and API codebases.
     - cron: "0 6 * * *"
   workflow_dispatch:
 

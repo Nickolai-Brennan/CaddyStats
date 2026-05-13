@@ -7,6 +7,7 @@ Provide a single master planning artifact that combines:
 1. The cross-phase consolidated roadmap task matrix
 2. Missing-but-critical tasks identified in planning review
 3. Additional tasks sourced directly from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md`
+4. Additional task-bearing planning artifacts found throughout the repository
 
 ---
 
@@ -173,6 +174,236 @@ The following additions are sourced directly from `docs/planning/Master Task Lis
 
 ---
 
-## D. Tracking Rule
+## D. Additional Task Sources Across the Repository
+
+The following task sets were identified in other planning and support artifacts across the repo and consolidated here so this file can serve as the single master task tracker.
+
+### D1. docs/planning/Master Implementation Sequencing Plan.md
+
+#### Stage 1 — Repository & Infrastructure Bootstrap
+- Initialize monorepo.
+- Configure pnpm workspaces.
+- Configure TurboRepo.
+- Create root configs.
+- Initialize git hooks.
+- Bootstrap PostgreSQL container.
+- Bootstrap Redis container.
+- Bootstrap API container.
+- Bootstrap web container.
+- Bootstrap Nginx container.
+- Add GitHub Actions.
+- Add lint pipeline.
+- Add test pipeline.
+- Add Docker build validation.
+- Define `.env` strategy.
+- Add secret validation.
+- Add local development bootstrap.
+
+#### Stage 2 — Database Foundation
+- Implement `auth` schema.
+- Implement `content` schema.
+- Implement `stats` schema.
+- Implement `analytics` schema.
+- Implement `ai` schema.
+- Implement `system` schema.
+- Implement `ingestion` schema.
+- Implement `billing` schema.
+- Build priority core tables: users, roles, permissions, players, tournaments, rounds, articles, article_blocks, projections, betting_lines.
+- Add Alembic setup.
+- Add migration tooling.
+- Add seed framework.
+- Add indexing standards.
+- Add RLS scaffolding.
+- Build initial materialized views: `player_recent_form`, `leaderboard_summary`, `projection_overview`.
+
+#### Stage 3 — Backend Core
+- Add app lifecycle.
+- Add config system.
+- Add DB sessions.
+- Add logging.
+- Add error handling.
+- Implement JWT auth.
+- Implement refresh tokens.
+- Implement RBAC.
+- Implement permission middleware.
+- Add repositories layer.
+- Add services layer.
+- Add REST routes.
+- Add GraphQL schema.
+- Add request logging.
+- Add tracing.
+- Add health endpoints.
+
+#### Stage 4 — Data Ingestion System
+- Build provider clients for PGA Tour, DataGolf, odds providers, and weather providers.
+- Implement player identity mapping.
+- Implement tournament mapping.
+- Implement odds normalization.
+- Build ingestion queues.
+- Add retry logic.
+- Add stale detection.
+- Add raw payload storage.
+- Add source mappings.
+- Add ingestion logs.
+
+#### Stage 5 — Analytics Engine
+- Implement scoring projections.
+- Implement strokes gained models.
+- Implement course fit models.
+- Implement ownership projections.
+- Build tournament simulations.
+- Build betting edge calculations.
+- Build ranking generation.
+- Add materialized views for trend summaries, edge summaries, and projection rankings.
+
+#### Stage 6 — Frontend Public Site
+- Build homepage.
+- Build articles pages.
+- Build players pages.
+- Build tournaments pages.
+- Build rankings pages.
+- Build betting pages.
+- Build shared tables.
+- Build shared charts.
+- Build shared cards.
+- Build SEO components.
+- Integrate TanStack Query.
+- Add typed API hooks.
+- Add frontend error handling.
+- Implement metadata.
+- Implement schema.
+- Implement canonical handling.
+
+#### Stage 7 — Editorial System
+- Build article CRUD.
+- Build block editor.
+- Build SEO controls.
+- Build revision history.
+- Build workflow states.
+- Build stat blocks.
+- Build projection blocks.
+- Build betting blocks.
+- Build chart blocks.
+- Implement draft, review, publish, schedule, and archive pipeline.
+
+#### Stage 8 — AI Grounding System
+- Add prompt versioning.
+- Add model routing.
+- Add source injection.
+- Add claim validation.
+- Add hallucination checks.
+- Add freshness checks.
+- Build outline generation.
+- Build projection summaries.
+- Build SEO suggestions.
+- Add token tracking.
+- Add generation audit logs.
+- Add validation metrics.
+
+#### Stage 9 — Premium Systems
+- Integrate Stripe.
+- Implement subscription lifecycle.
+- Implement billing webhooks.
+- Implement partial gates.
+- Implement hard gates.
+- Build premium dashboards.
+- Enforce API access entitlements.
+- Enforce dashboard access entitlements.
+- Enforce report access entitlements.
+
+#### Stage 10 — Admin Platform
+- Build user management.
+- Build subscription management.
+- Build AI audit.
+- Build system health.
+- Build feature flags.
+- Add ingestion monitoring.
+- Add worker monitoring.
+- Add AI monitoring.
+- Add revenue monitoring.
+
+#### Stage 11 — Production Deployment
+- Configure frontend hosting.
+- Configure API hosting.
+- Configure managed Postgres.
+- Configure managed Redis.
+- Configure CDN.
+- Configure SSL.
+- Add security headers.
+- Add rate limiting.
+- Add secret isolation.
+- Add backup systems.
+- Configure Grafana.
+- Configure Prometheus.
+- Configure Sentry.
+- Configure OpenTelemetry.
+
+#### Stage 12 — Scale & Optimization
+- Optimize query performance.
+- Tune cache behavior.
+- Scale workers.
+- Optimize frontend performance.
+- Optimize model routing.
+- Add prompt caching.
+- Add token budgeting.
+- Build programmatic pages.
+- Build historical archives.
+- Build landing pages.
+- Run pricing tests.
+- Optimize conversion funnels.
+- Build retention flows.
+
+### D2. docs/planning/App Assets & Attributes Matrix.md
+- Build content blogs system.
+- Add SEO-first content publishing.
+- Add structured content blocks.
+- Add author and editor workflows.
+- Add player, tournament, course, and betting-market tagging.
+- Add internal linking support.
+- Add AI-assisted drafting with stats grounding.
+- Add featured image and social preview support.
+- Add scheduled publishing.
+- Add draft, review, published, and archived states.
+- Add revision history.
+- Build backend/API assets for posts and publishing workflows.
+- Build frontend components for blog index, blog post pages, featured post cards, article content rendering, related article rails, and author bio cards.
+- Add monetization hooks for affiliate CTA blocks, premium content gates, newsletter capture, internal links to projections dashboards, and sportsbook comparison modules.
+- Build custom data models for projections, betting intelligence, fantasy plays, rankings, and course-fit scores.
+- Add model versioning and transparent calculation outputs.
+- Add AI-readable model summaries.
+- Build model run and projection APIs.
+- Build frontend components for model score cards, projection tables, model version badges, confidence indicators, and explainers.
+- Ensure AI responses cite model version and keep calculated values separate from generated narrative.
+- Build stats tables and dashboards for sortable/filterable player, tournament, course, and betting analytics.
+
+### D3. docs/planning/Documentation System Foundation.md
+- Formalize governed documentation architecture.
+- Add execution sequencing, ownership boundaries, and dependency mapping.
+- Create immediate priority docs before implementation begins: `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, `TARGET_AUDIENCE.md`, `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`.
+- Add missing architecture governance docs: `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, `EVENT_DRIVEN_ARCHITECTURE.md`.
+- Add missing data engineering docs: `MATERIALIZED_VIEW_STRATEGY.md`, `CACHING_STRATEGY.md`, `DATA_RETENTION_POLICY.md`, `STATS_COMPUTATION_ENGINE.md`.
+- Add missing AI systems docs: `AI_GROUNDING_LAYER.md`, `AI_OBSERVABILITY.md`, `MODEL_EVALUATION.md`, `PROMPT_INJECTION_ARCHITECTURE.md`.
+- Add missing SEO engineering docs: `PROGRAMMATIC_SEO.md`, `SCHEMA_MARKUP_STRATEGY.md`, `INTERNAL_LINKING_STRATEGY.md`, `CONTENT_CLUSTER_STRATEGY.md`.
+- Add missing editorial intelligence docs: `CONTENT_SCORING_SYSTEM.md`, `ARTICLE_GENERATION_PIPELINE.md`, `HUMAN_EDITOR_REVIEW_PROCESS.md`.
+- Add missing reliability docs: `SLO_SLA_DEFINITIONS.md`, `FAILURE_RECOVERY_MATRIX.md`, `INCIDENT_SEVERITY_MATRIX.md`.
+- Add missing monetization docs: `SUBSCRIPTION_ARCHITECTURE.md`, `AFFILIATE_TRACKING_SYSTEM.md`, `PAYWALL_STRATEGY.md`.
+- Add missing platform scale docs: `MULTI_TENANCY_STRATEGY.md`, `HORIZONTAL_SCALING_PLAN.md`.
+
+### D4. docs/planning/build-system.md
+- Define and connect the universal AI orchestration layer to the Caddy Stats production platform.
+- Map universal AI control layer to project stack, app build layer, domain agents, domain skills, domain plugins, domain commands, and project workflows.
+- Confirm and track project intake fields covering stack, hosting, integrations, commands, plugins, admin needs, analytics, CMS, payments, and AI tooling.
+- Establish the planned project root structure under `.github/`, `agents/`, `skills/`, `instructions/`, `workflows/`, `prompts/`, `templates/`, `evals/`, `plugins/`, `commands/`, `frontend/`, `backend/`, `database/`, `api/`, `tests/`, and `automation/`.
+
+### D5. docs/00-root/roadmap.md
+- Track roadmap status by phase.
+- Maintain phase outcomes and planning status for Documentation, Folder Setup, Database, Backend, Frontend, Editor, Templates, SEO, AI, Hosting, Admin, Integrations, Scale, and Business.
+- Ensure each phase produces concrete deliverables before dependent phases scale.
+
+---
+
+## E. Tracking Rule
 
 When a task appears in both the consolidated matrix and a phase source list, treat the matrix row as the canonical tracker and the phase-sourced addition as implementation detail scope.
+
+When a task also appears in other planning artifacts across the repo, keep this file as the single canonical roll-up and treat the source artifact as supporting detail unless a more specific implementation breakdown is needed.
