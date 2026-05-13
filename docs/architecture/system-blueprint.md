@@ -8,7 +8,7 @@ Last Updated: 2026-05-13
 
 This document is the authoritative engineering reference for the Caddy Stats platform architecture. It describes service boundaries, API strategy, schema separation, analytics pipeline, caching and CDN topology, observability model, worker architecture, and AI injection architecture.
 
-The system overview at `docs/architecture/system-overview.md` describes the *what*. This blueprint describes the *how* — the structural decisions, integration contracts, and operational constraints that govern each layer.
+The system overview at `docs/architecture/system-overview.md` describes the _what_. This blueprint describes the _how_ — the structural decisions, integration contracts, and operational constraints that govern each layer.
 
 ---
 
@@ -118,13 +118,13 @@ PostgreSQL is partitioned into named schemas with strict ownership boundaries.
 
 ### 3.1 Schema Definitions
 
-| Schema | Responsibility |
-|---|---|
-| `stats` | golfers, tournaments, courses, rounds, tournament entries, markets, market selections, projections, model runs, model metrics |
-| `content` | articles, article versions, article blocks, templates, tags, authors, publishing metadata |
-| `auth` | users, roles, permissions, role assignments |
-| `billing` | subscriptions, entitlements, billing events, invoice records |
-| `audit` | AI output logs, editorial review logs, operational audit events |
+| Schema    | Responsibility                                                                                                                |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `stats`   | golfers, tournaments, courses, rounds, tournament entries, markets, market selections, projections, model runs, model metrics |
+| `content` | articles, article versions, article blocks, templates, tags, authors, publishing metadata                                     |
+| `auth`    | users, roles, permissions, role assignments                                                                                   |
+| `billing` | subscriptions, entitlements, billing events, invoice records                                                                  |
+| `audit`   | AI output logs, editorial review logs, operational audit events                                                               |
 
 ### 3.2 Cross-Schema Rules
 
@@ -197,22 +197,22 @@ Provider / External Source
 
 ### 5.1 Cache Layers
 
-| Layer | Technology | Scope |
-|---|---|---|
-| Application cache | Redis or equivalent | API response cache, session store, queue broker |
-| Edge cache | CDN (Vercel, Cloudflare, or equivalent) | Public HTML pages and public REST responses |
-| Database cache | PostgreSQL materialized views | High-read analytics surfaces |
+| Layer             | Technology                              | Scope                                           |
+| ----------------- | --------------------------------------- | ----------------------------------------------- |
+| Application cache | Redis or equivalent                     | API response cache, session store, queue broker |
+| Edge cache        | CDN (Vercel, Cloudflare, or equivalent) | Public HTML pages and public REST responses     |
+| Database cache    | PostgreSQL materialized views           | High-read analytics surfaces                    |
 
 ### 5.2 Caching Policy by Surface
 
-| Surface | Cache Type | TTL Strategy |
-|---|---|---|
-| Static assets (JS, CSS, images) | Edge (CDN) | Long TTL with content-hash immutability |
-| Public player/tournament/course pages | Edge (CDN) | Short-to-medium TTL, stale-while-revalidate |
-| Public editorial articles | Edge (CDN) | Short-to-medium TTL, purge on publish |
-| Public REST APIs (non-authenticated) | Edge + application cache | Short TTL, stale-while-revalidate |
-| Premium authenticated APIs | Application cache only | No shared edge caching |
-| Admin and internal APIs | No caching | Always fresh |
+| Surface                               | Cache Type               | TTL Strategy                                |
+| ------------------------------------- | ------------------------ | ------------------------------------------- |
+| Static assets (JS, CSS, images)       | Edge (CDN)               | Long TTL with content-hash immutability     |
+| Public player/tournament/course pages | Edge (CDN)               | Short-to-medium TTL, stale-while-revalidate |
+| Public editorial articles             | Edge (CDN)               | Short-to-medium TTL, purge on publish       |
+| Public REST APIs (non-authenticated)  | Edge + application cache | Short TTL, stale-while-revalidate           |
+| Premium authenticated APIs            | Application cache only   | No shared edge caching                      |
+| Admin and internal APIs               | No caching               | Always fresh                                |
 
 ### 5.3 Invalidation Strategy
 
@@ -235,14 +235,14 @@ All runtime components emit structured telemetry. The observability model follow
 
 ### 6.1 Telemetry Layers
 
-| Layer | Signal Type | Examples |
-|---|---|---|
-| API service | Logs, Metrics, Traces | request count, latency, error count, auth failures |
-| Worker service | Logs, Metrics | queue depth, job duration, retry count, dead-letter count |
-| Database | Slow query logs, connection metrics | query latency, connection pool usage |
-| Cache layer | Metrics | hit rate, eviction rate, miss count |
-| AI workflows | Logs, Audit records | grounding status, review state, output disposition |
-| Ingestion | Metrics, Logs | provider health, normalization failures, batch durations |
+| Layer          | Signal Type                         | Examples                                                  |
+| -------------- | ----------------------------------- | --------------------------------------------------------- |
+| API service    | Logs, Metrics, Traces               | request count, latency, error count, auth failures        |
+| Worker service | Logs, Metrics                       | queue depth, job duration, retry count, dead-letter count |
+| Database       | Slow query logs, connection metrics | query latency, connection pool usage                      |
+| Cache layer    | Metrics                             | hit rate, eviction rate, miss count                       |
+| AI workflows   | Logs, Audit records                 | grounding status, review state, output disposition        |
+| Ingestion      | Metrics, Logs                       | provider health, normalization failures, batch durations  |
 
 ### 6.2 Structured Log Format
 
@@ -259,13 +259,13 @@ Secrets, tokens, and PII must never appear in logs.
 
 ### 6.3 SLO Targets
 
-| Surface | Target |
-|---|---|
-| Core public API endpoints | p99 < 300ms |
-| Premium analytics endpoints | p99 < 500ms |
-| Materialized view freshness | ≤ configured refresh cadence |
-| Ingestion pipeline success rate | ≥ 99% |
-| Worker dead-letter rate | alert threshold per domain queue |
+| Surface                         | Target                           |
+| ------------------------------- | -------------------------------- |
+| Core public API endpoints       | p99 < 300ms                      |
+| Premium analytics endpoints     | p99 < 500ms                      |
+| Materialized view freshness     | ≤ configured refresh cadence     |
+| Ingestion pipeline success rate | ≥ 99%                            |
+| Worker dead-letter rate         | alert threshold per domain queue |
 
 ### 6.4 Alerting Policy
 
@@ -282,13 +282,13 @@ All asynchronous and scheduled workloads run in dedicated worker processes, sepa
 
 ### 7.1 Domain Queues
 
-| Queue | Workloads |
-|---|---|
-| `ingest` | provider data fetching, normalization, conflict resolution |
-| `projections` | model run triggers, projection computation, model metric capture |
-| `editorial-ai` | AI assist generation, review queue processing, output logging |
-| `indexing` | search index sync, reindex jobs, index health checks |
-| `maintenance` | materialized view refresh, cache warming, analytics backfills |
+| Queue          | Workloads                                                        |
+| -------------- | ---------------------------------------------------------------- |
+| `ingest`       | provider data fetching, normalization, conflict resolution       |
+| `projections`  | model run triggers, projection computation, model metric capture |
+| `editorial-ai` | AI assist generation, review queue processing, output logging    |
+| `indexing`     | search index sync, reindex jobs, index health checks             |
+| `maintenance`  | materialized view refresh, cache warming, analytics backfills    |
 
 ### 7.2 Worker Execution Rules
 
@@ -389,22 +389,22 @@ Every AI workflow must log:
 
 ### 9.1 Environment Structure
 
-| Environment | Purpose |
-|---|---|
-| `local` | Developer setup and integration work (Docker Compose) |
-| `staging` | Pre-production validation with production-like services |
-| `production` | Live public traffic and active subscriptions |
+| Environment  | Purpose                                                 |
+| ------------ | ------------------------------------------------------- |
+| `local`      | Developer setup and integration work (Docker Compose)   |
+| `staging`    | Pre-production validation with production-like services |
+| `production` | Live public traffic and active subscriptions            |
 
 ### 9.2 Service Hosting Targets
 
-| Component | Hosting |
-|---|---|
-| Frontend (React/Vite) | Vercel or equivalent CDN-backed host |
-| API service (FastAPI) | Render, Railway, Fly.io, or equivalent |
-| Worker service | Same host as API or dedicated worker tier |
-| PostgreSQL | Neon, Supabase, or equivalent managed service |
-| Redis / cache / queue | Managed Redis or equivalent |
-| CI/CD | GitHub Actions |
+| Component             | Hosting                                       |
+| --------------------- | --------------------------------------------- |
+| Frontend (React/Vite) | Vercel or equivalent CDN-backed host          |
+| API service (FastAPI) | Render, Railway, Fly.io, or equivalent        |
+| Worker service        | Same host as API or dedicated worker tier     |
+| PostgreSQL            | Neon, Supabase, or equivalent managed service |
+| Redis / cache / queue | Managed Redis or equivalent                   |
+| CI/CD                 | GitHub Actions                                |
 
 ### 9.3 Deployment Rules
 
@@ -417,21 +417,21 @@ Every AI workflow must log:
 
 ## 10. Cross-Cutting Concerns Summary
 
-| Concern | Governing Document |
-|---|---|
-| Service boundaries | This document, ADR-001 |
-| API strategy | This document, ADR-002 |
-| Schema separation | This document, ADR-003 |
-| Materialized views | ADR-004 |
-| Worker orchestration | ADR-005 |
-| AI grounding and safety | ADR-006 |
-| Observability | ADR-007 |
-| Edge caching and CDN | ADR-008 |
-| Search indexing | ADR-009 |
-| Editorial rendering | ADR-010 |
-| Engineering governance | `Support/docs/00-root/engineering-standards-and-governance.md` |
-| Domain model | `docs/architecture/domain-model.md` |
-| ADR process | `Support/docs/architectural-decision-records/README.md` |
+| Concern                 | Governing Document                                             |
+| ----------------------- | -------------------------------------------------------------- |
+| Service boundaries      | This document, ADR-001                                         |
+| API strategy            | This document, ADR-002                                         |
+| Schema separation       | This document, ADR-003                                         |
+| Materialized views      | ADR-004                                                        |
+| Worker orchestration    | ADR-005                                                        |
+| AI grounding and safety | ADR-006                                                        |
+| Observability           | ADR-007                                                        |
+| Edge caching and CDN    | ADR-008                                                        |
+| Search indexing         | ADR-009                                                        |
+| Editorial rendering     | ADR-010                                                        |
+| Engineering governance  | `Support/docs/00-root/engineering-standards-and-governance.md` |
+| Domain model            | `docs/architecture/domain-model.md`                            |
+| ADR process             | `Support/docs/architectural-decision-records/README.md`        |
 
 ---
 

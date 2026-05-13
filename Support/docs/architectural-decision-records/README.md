@@ -63,12 +63,12 @@ Where does this land in the codebase? What are the key integration points?
 
 ## Status Lifecycle
 
-| Status | Meaning |
-|---|---|
-| **Draft** | In progress; not yet ready for review |
-| **Proposed** | Ready for team review and feedback |
-| **Accepted** | Reviewed and adopted as the governing decision |
-| **Deprecated** | No longer applicable; no replacement required |
+| Status         | Meaning                                                |
+| -------------- | ------------------------------------------------------ |
+| **Draft**      | In progress; not yet ready for review                  |
+| **Proposed**   | Ready for team review and feedback                     |
+| **Accepted**   | Reviewed and adopted as the governing decision         |
+| **Deprecated** | No longer applicable; no replacement required          |
 | **Superseded** | Replaced by a later ADR (reference the new ADR number) |
 
 Once an ADR is **Accepted**, its content must not be retroactively edited to change the original decision. Write a new ADR if the decision changes.
@@ -93,22 +93,22 @@ Once an ADR is **Accepted**, its content must not be retroactively edited to cha
 
 An ADR **must** be written when a change introduces or materially revises any of the following:
 
-| Trigger Category | Examples |
-|---|---|
-| Service boundaries | adding a new service, splitting or merging existing services |
-| Architectural patterns | adopting a new framework, design pattern, or request model |
+| Trigger Category                 | Examples                                                      |
+| -------------------------------- | ------------------------------------------------------------- |
+| Service boundaries               | adding a new service, splitting or merging existing services  |
+| Architectural patterns           | adopting a new framework, design pattern, or request model    |
 | Platform-wide technology choices | language runtime, database engine, message queue, cache layer |
-| Database strategy | schema organization, ORM, migration tooling, access patterns |
-| API strategy | REST vs. GraphQL scope, versioning policy, gateway changes |
-| Caching strategy | edge cache policy, TTL strategy, invalidation model |
-| Observability standards | logging format, metric taxonomy, tracing adoption |
-| AI grounding or safety controls | prompt engineering rules, review gates, output policy |
-| Rendering model | SSR, CSR, static generation, or hybrid changes |
-| Search and indexing strategy | search engine choice, index schema, sync model |
-| Worker orchestration model | queue technology, retry policy, domain queue segmentation |
-| Production deployment topology | hosting provider, deployment method, environment structure |
-| Security architecture | auth model, RBAC structure, token strategy |
-| Monetization infrastructure | subscription billing integration, entitlement model |
+| Database strategy                | schema organization, ORM, migration tooling, access patterns  |
+| API strategy                     | REST vs. GraphQL scope, versioning policy, gateway changes    |
+| Caching strategy                 | edge cache policy, TTL strategy, invalidation model           |
+| Observability standards          | logging format, metric taxonomy, tracing adoption             |
+| AI grounding or safety controls  | prompt engineering rules, review gates, output policy         |
+| Rendering model                  | SSR, CSR, static generation, or hybrid changes                |
+| Search and indexing strategy     | search engine choice, index schema, sync model                |
+| Worker orchestration model       | queue technology, retry policy, domain queue segmentation     |
+| Production deployment topology   | hosting provider, deployment method, environment structure    |
+| Security architecture            | auth model, RBAC structure, token strategy                    |
+| Monetization infrastructure      | subscription billing integration, entitlement model           |
 
 If uncertain whether a decision warrants an ADR, default to writing one. A short ADR is always preferable to an undocumented decision.
 
@@ -116,18 +116,18 @@ If uncertain whether a decision warrants an ADR, default to writing one. A short
 
 ## ADR Index
 
-| Number | Title | Status | Date | Owners |
-|---|---|---|---|---|
-| [ADR-001](./ADR-001-monorepo-architecture.md) | Monorepo Architecture | Accepted | 2026-05-12 | System Architect, Platform Engineering |
-| [ADR-002](./ADR-002-graphql-gateway.md) | GraphQL Gateway Scope and Boundaries | Accepted | 2026-05-12 | API Engineering, Backend Engineering |
-| [ADR-003](./ADR-003-postgres-schema-strategy.md) | PostgreSQL Schema Strategy (content + stats) | Accepted | 2026-05-12 | Database Engineering, Backend Engineering |
-| [ADR-004](./ADR-004-materialized-view-engine.md) | Materialized View Engine for High-Read Analytics | Accepted | 2026-05-12 | Database Engineering, Analytics Engineering |
-| [ADR-005](./ADR-005-worker-orchestration.md) | Worker Orchestration for Asynchronous Workloads | Accepted | 2026-05-12 | Backend Engineering, Platform Engineering |
-| [ADR-006](./ADR-006-ai-grounding-layer.md) | AI Grounding Layer and Safety Controls | Accepted | 2026-05-12 | AI Engineering, Editorial Platform |
-| [ADR-007](./ADR-007-observability-standard.md) | Observability Standard (Logs, Metrics, Traces) | Accepted | 2026-05-12 | Platform Engineering, SRE |
-| [ADR-008](./ADR-008-edge-cache-strategy.md) | Edge Cache Strategy for Public Read Paths | Accepted | 2026-05-12 | Frontend Engineering, Platform Engineering |
-| [ADR-009](./ADR-009-search-index-strategy.md) | Search Index Strategy for Content and Entities | Accepted | 2026-05-12 | Search Engineering, Backend Engineering |
-| [ADR-010](./ADR-010-editorial-rendering-engine.md) | Editorial Rendering Engine (Structured Blocks + Sanitization) | Accepted | 2026-05-12 | Frontend Engineering, Editorial Platform |
+| Number                                             | Title                                                         | Status   | Date       | Owners                                      |
+| -------------------------------------------------- | ------------------------------------------------------------- | -------- | ---------- | ------------------------------------------- |
+| [ADR-001](./ADR-001-monorepo-architecture.md)      | Monorepo Architecture                                         | Accepted | 2026-05-12 | System Architect, Platform Engineering      |
+| [ADR-002](./ADR-002-graphql-gateway.md)            | GraphQL Gateway Scope and Boundaries                          | Accepted | 2026-05-12 | API Engineering, Backend Engineering        |
+| [ADR-003](./ADR-003-postgres-schema-strategy.md)   | PostgreSQL Schema Strategy (content + stats)                  | Accepted | 2026-05-12 | Database Engineering, Backend Engineering   |
+| [ADR-004](./ADR-004-materialized-view-engine.md)   | Materialized View Engine for High-Read Analytics              | Accepted | 2026-05-12 | Database Engineering, Analytics Engineering |
+| [ADR-005](./ADR-005-worker-orchestration.md)       | Worker Orchestration for Asynchronous Workloads               | Accepted | 2026-05-12 | Backend Engineering, Platform Engineering   |
+| [ADR-006](./ADR-006-ai-grounding-layer.md)         | AI Grounding Layer and Safety Controls                        | Accepted | 2026-05-12 | AI Engineering, Editorial Platform          |
+| [ADR-007](./ADR-007-observability-standard.md)     | Observability Standard (Logs, Metrics, Traces)                | Accepted | 2026-05-12 | Platform Engineering, SRE                   |
+| [ADR-008](./ADR-008-edge-cache-strategy.md)        | Edge Cache Strategy for Public Read Paths                     | Accepted | 2026-05-12 | Frontend Engineering, Platform Engineering  |
+| [ADR-009](./ADR-009-search-index-strategy.md)      | Search Index Strategy for Content and Entities                | Accepted | 2026-05-12 | Search Engineering, Backend Engineering     |
+| [ADR-010](./ADR-010-editorial-rendering-engine.md) | Editorial Rendering Engine (Structured Blocks + Sanitization) | Accepted | 2026-05-12 | Frontend Engineering, Editorial Platform    |
 
 ---
 
