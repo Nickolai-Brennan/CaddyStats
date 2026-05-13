@@ -1,0 +1,31 @@
+name: caddystats-test
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: caddystats-test-postgres
+    environment:
+      POSTGRES_DB: caddystats_test
+      POSTGRES_USER: caddystats
+      POSTGRES_PASSWORD: caddystats_test
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U caddystats -d caddystats_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - caddystats-test
+
+  redis:
+    image: redis:7-alpine
+    container_name: caddystats-test-redis
+    ports:
+      - "6380:6379"
+    networks:
+      - caddystats-test
+
+networks:
+  caddystats-test:
+    driver: bridge

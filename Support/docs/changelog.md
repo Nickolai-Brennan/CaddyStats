@@ -1,3 +1,40 @@
+## 2026-05-13 — Stage 1: Repository & Infrastructure Bootstrap
+- Added:
+  - Monorepo root folder scaffold (apps/, services/, packages/, workers/, database/, infrastructure/, ai/, docs/, scripts/, tests/, config/)
+  - `pnpm-workspace.yaml` — pnpm monorepo workspace configuration
+  - `turbo.json` — TurboRepo pipeline configuration (build, dev, lint, typecheck, test)
+  - `package.json` — root workspace package with turbo + prettier + typescript
+  - `tsconfig.base.json` — shared TypeScript base config
+  - `.prettierrc` — shared formatting config
+  - `.env.example` — complete environment variable template with all required variables
+  - `.gitignore` — comprehensive root gitignore
+  - `docker-compose.yml` — full dev stack (postgres, redis, api, web, nginx)
+  - `docker-compose.test.yml` — isolated test stack
+  - `services/api/Dockerfile` — multi-stage FastAPI Dockerfile (dev + prod)
+  - `apps/web/Dockerfile` — multi-stage React/Vite Dockerfile (dev + prod)
+  - `infrastructure/nginx/nginx.conf` + `conf.d/default.conf` — reverse proxy config
+  - `services/api/` — FastAPI app bootstrap (main.py, config, logging, health endpoints, request ID middleware)
+  - `services/api/requirements/` — base, prod, dev requirements
+  - `services/api/pyproject.toml` — ruff, mypy, pytest configuration
+  - `apps/web/` — React/Vite/TypeScript/Tailwind app scaffold
+  - `.github/workflows/ci.yml` — full CI pipeline (lint, typecheck, test, docker build, CI gate)
+  - `.github/workflows/dependency-review.yml` — daily dependency audit
+  - `.github/workflows/code-cleanup.yml` — weekly formatting/lint sweep
+  - `.github/PULL_REQUEST_TEMPLATE/` — PR template
+  - `.github/ISSUE_TEMPLATE/` — bug and feature request templates
+  - `Makefile` — local dev commands (dev, test, lint, format, db-migrate, db-shell, etc.)
+  - `scripts/setup/bootstrap.sh` — local environment bootstrap script
+- Changed:
+  - Repository structure transitioned from documentation-only to active monorepo implementation
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Stage 1 complete. Validation gate: local stack can boot with `make dev`. CI pipeline operational on push/PR.
+
 ## 2026-05-12 — Master Task List Audit
 - Added:
   - Additional required task coverage across `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md` and `Planning/Master Task List Phase X.md`
