@@ -45,7 +45,18 @@ test-api: ## Run API tests only
 	cd backend && pytest
 
 test-watch: ## Run API tests in watch mode
-	cd backend && pytest --watch
+	@echo "Watching backend Python files for changes. Press Ctrl+C to stop."
+	@checksum=$$(find backend -type f \( -name "*.py" -o -path "backend/tests/*" \) -print | sort | xargs cat 2>/dev/null | cksum); \
+	cd backend && pytest; \
+	while true; do \
+		sleep 1; \
+		new_checksum=$$(find . -type f \( -name "*.py" -o -path "./tests/*" \) -print | sort | xargs cat 2>/dev/null | cksum); \
+		if [ "$$checksum" != "$$new_checksum" ]; then \
+			echo "Changes detected. Re-running tests..."; \
+			checksum=$$new_checksum; \
+			pytest; \
+		fi; \
+	done
 
 # ---------------------------------------------------------------------------
 # Linting & Formatting
