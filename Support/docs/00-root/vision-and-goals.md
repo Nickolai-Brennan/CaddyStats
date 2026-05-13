@@ -1,8 +1,8 @@
 # Caddy Stats — Vision and Goals
 
-Version: 1.0
+Version: 1.1
 Status: Active
-Last Updated: 2026-05-12
+Last Updated: 2026-05-13
 
 ---
 
@@ -69,3 +69,26 @@ Turn fragmented golf research into a unified, auditable, and monetizable product
 3. **Transparency First** — distinguish model output from verified source data.
 4. **Security First** — protect access, sanitize content, and avoid secret leakage.
 5. **Monetization Alignment** — prioritize work that improves revenue, retention, or operational leverage.
+
+---
+
+## 7. Strategy Document Map
+
+This document remains the summary-level strategy anchor for Caddy Stats.
+Detailed planning for the first Phase 0 strategy set lives in dedicated supporting documents under `Support/docs/00-root/`.
+
+### Supporting Strategy Documents
+
+- `personas.md` — audience definitions, workflows, trust needs, and monetization paths
+- `monetization-strategy.md` — revenue model, monetization principles, and value packaging
+- `subscription-tiers.md` — free, monthly premium, and annual premium tier positioning and boundaries
+- `editorial-philosophy.md` — voice, rigor, content boundaries, and editorial principles
+- `analytics-differentiation.md` — product differentiation and explainability posture
+- `sportsbook-positioning.md` — public positioning, affiliate posture, and compliance-aware language rules
+- `ai-workflow-strategy.md` — approved AI use cases, human review controls, and grounding requirements
+- `long-term-scalability.md` — long-horizon product, platform, operations, and monetization scale objectives
+
+### Summary Role of This Document
+
+Use this file for high-level vision, mission, goals, and strategic principles.
+Use the supporting strategy documents for policy-level detail that should guide later architecture, implementation, publishing, and monetization phases.
