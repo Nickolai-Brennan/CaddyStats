@@ -8,402 +8,184 @@ Provide a single master planning artifact that combines:
 2. Missing-but-critical tasks identified in planning review
 3. Additional tasks sourced directly from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md`
 4. Additional task-bearing planning artifacts found throughout the repository
+5. A deduplicated checkbox-based tracker for execution
 
 ---
 
-## A. Consolidated Cross-Phase Task Matrix
+## A. Canonical Cross-Phase Master Tracker
 
-| ID | Phase | Category | Task | Attached agent/skill |
-|---|---|---|---|---|
-| 0.1 | 0 Documentation | Product | Finalize vision, personas, monetization, subscription tiers | project-startup-agent |
-| 0.2 | 0 Documentation | Governance | Define engineering standards, branching, review, release policy | documentation-agent |
-| 0.3 | 0 Documentation | Architecture | Formalize ADR system and seed foundational ADRs | documentation-generator |
-| 0.4 | 0 Documentation | Architecture | Publish system blueprint, service map, data flow, cache/worker strategy | system-architect-agent |
-| 0.5 | 0 Documentation | Security | Document auth, RBAC, secrets handling, logging/redaction | documentation-agent |
-| 0.6 | 0 Documentation | Data governance | Define stat provenance, AI grounding, editorial-vs-computed rules | documentation-agent |
-| 0.7 | 0 Documentation | Delivery | Maintain roadmap, milestones, validation gates, changelog flow | project-planner |
-| 0.8 | 0 Documentation | Missing: compliance | Add privacy, terms, affiliate disclosure, data retention requirements | documentation-agent |
-| 1.1 | 1 Folder Setup | Repository structure | Lock canonical monorepo structure and ownership boundaries | project-startup-agent |
-| 1.2 | 1 Folder Setup | Configuration | Standardize root configs, env templates, workspace tooling | stack-verifier-agent |
-| 1.3 | 1 Folder Setup | DX | Add setup/bootstrap, lint/test entrypoints, contributor workflow | stack-verifier |
-| 1.4 | 1 Folder Setup | CI | Establish baseline PR checks and deterministic automation | workflow-builder-agent |
-| 1.5 | 1 Folder Setup | Missing: design system foundation | Define shared UI package and naming/token conventions | frontend-agent |
-| 2.1 | 2 Database | Schema | Build `stats` schema: players, tournaments, rounds, courses, odds, projections | database-agent |
-| 2.2 | 2 Database | Schema | Build `content` schema: articles, blocks, templates, metadata, slugs | database-designer |
-| 2.3 | 2 Database | Auth/Billing | Build users, roles, permissions, subscriptions, entitlements | database-agent |
-| 2.4 | 2 Database | Audit | Add AI output logs, editorial review logs, model execution logs | database-agent |
-| 2.5 | 2 Database | Performance | Add indexes, partitions, materialized views, query standards | database-designer |
-| 2.6 | 2 Database | Operations | Baseline migrations, seeds, rollback validation, backup strategy | database-agent |
-| 2.7 | 2 Database | Missing: disaster recovery | Document restore testing and backup verification cadence | deployment-planner |
-| 3.1 | 3 Backend | Core backend | Bootstrap FastAPI app, settings, DI, logging, errors | backend-agent |
-| 3.2 | 3 Backend | Security | Implement JWT, RBAC, rate limiting, sanitized responses | backend-builder |
-| 3.3 | 3 Backend | REST API | Build stats, tournaments, courses, projections, content, admin endpoints | api-agent |
-| 3.4 | 3 Backend | GraphQL | Add selective Strawberry GraphQL for dashboards/editorial composition | api-designer |
-| 3.5 | 3 Backend | Services | Implement business logic in services and DB access in repositories | backend-agent |
-| 3.6 | 3 Backend | Observability | Health checks, structured logs, tracing, error reporting | backend-agent |
-| 3.7 | 3 Backend | Missing: background job contracts | Define worker APIs, retry rules, idempotency, queue contracts | workflow-builder-agent |
-| 4.1 | 4 Frontend | App shell | Set up routing, layouts, auth/session plumbing, query client | frontend-builder |
-| 4.2 | 4 Frontend | Public pages | Build home, player, tournament, course, rankings, article pages | frontend-agent |
-| 4.3 | 4 Frontend | Analytics UI | Build tables, filters, dashboards, premium research views | frontend-builder |
-| 4.4 | 4 Frontend | Shared UI | Create reusable primitives, charts, tables, forms, empty/loading states | frontend-agent |
-| 4.5 | 4 Frontend | Accessibility | Ensure semantic HTML, keyboard flow, labels, focus states | frontend-agent |
-| 4.6 | 4 Frontend | Missing: error/performance UX | Add error boundaries, skeletons, latency and caching UX patterns | frontend-builder |
-| 5.1 | 5 Editor | CMS | Build editor UI, structured blocks, save/preview/publish workflow | frontend-agent |
-| 5.2 | 5 Editor | Roles | Add author/editor/admin review states and approval flow | backend-agent |
-| 5.3 | 5 Editor | Safety | Sanitize content, preserve metadata, log editorial actions | backend-builder |
-| 5.4 | 5 Editor | Missing: content operations | Add content calendar, assignment workflow, revision compare/restore | workflow-builder-agent |
-| 6.1 | 6 Templates | Content templates | Define reusable article and page templates backed by data | documentation-generator |
-| 6.2 | 6 Templates | Programmatic pages | Create player/course/tournament template systems | frontend-builder |
-| 6.3 | 6 Templates | Metadata | Standardize schema fields, internal linking blocks, affiliate placements | plugin-agent |
-| 6.4 | 6 Templates | Missing: template governance | Version templates and approval rules for editorial changes | documentation-agent |
-| 7.1 | 7 SEO | Metadata | Titles, descriptions, canonicals, OG, Schema.org | seo-agent / plugin-agent |
-| 7.2 | 7 SEO | Programmatic SEO | Build indexable data-backed landing pages | frontend-agent |
-| 7.3 | 7 SEO | Performance | Rendering/cache strategy for crawlability and speed | deployment-planner |
-| 7.4 | 7 SEO | Internal linking | Related players/events/articles modules | seo-engine / plugin-agent |
-| 7.5 | 7 SEO | Missing: search console workflow | Add sitemap, indexing, SEO monitoring and regression checks | workflow-builder-agent |
-| 8.1 | 8 AI | Grounding | Implement prompt injection + stats grounding layer | backend-agent |
-| 8.2 | 8 AI | Editorial assist | Drafting, summarization, QA assist with review visibility | ai-editorial / plugin-agent |
-| 8.3 | 8 AI | Governance | Prompt versioning, AI logs, reviewer controls | documentation-agent |
-| 8.4 | 8 AI | Evaluation | Grounding tests, hallucination checks, model-performance review | eval-runner |
-| 8.5 | 8 AI | Missing: prompt security | Add prompt-injection abuse cases and red-team evals | testing-agent |
-| 9.1 | 9 Hosting | Infra | Finalize Docker, environment topology, secrets strategy | deployment-agent |
-| 9.2 | 9 Hosting | CI/CD | PR CI, contract checks, deploy workflows, rollback path | deployment-planner |
-| 9.3 | 9 Hosting | Runtime | Frontend hosting, API hosting, DB connectivity, CDN/SSL | deployment-agent |
-| 9.4 | 9 Hosting | Missing: incident readiness | Add runbooks, on-call basics, outage recovery checklist | documentation-agent |
-| 10.1 | 10 Admin | Admin tools | Build admin dashboards for content, users, analytics, ops | frontend-agent |
-| 10.2 | 10 Admin | Permissions | Enforce admin/editor/owner scopes and audit logging | backend-agent |
-| 10.3 | 10 Admin | Moderation | Review queues, publishing overrides, AI content review | workflow-builder-agent |
-| 10.4 | 10 Admin | Missing: revenue/admin reporting | Add subscription, affiliate, funnel, and churn dashboards | frontend-builder |
-| 11.1 | 11 Integrations | Sports data | Integrate stats, odds, weather, schedule providers | backend-agent |
-| 11.2 | 11 Integrations | Payments | Integrate Stripe subscriptions, entitlements, webhook handling | backend-builder |
-| 11.3 | 11 Integrations | Analytics | Integrate GA/Search Console/product analytics | plugin-agent |
-| 11.4 | 11 Integrations | Publishing | Add social publishing and outbound content workflows | plugin-builder |
-| 11.5 | 11 Integrations | Missing: identity resolution | Add provider mapping, duplicate resolution, source QA tooling | database-agent |
-| 12.1 | 12 Scale | Performance | Tune queries, caching, bundles, render paths, workers | stack-verifier-agent |
-| 12.2 | 12 Scale | Reliability | Load tests, queue resilience, timeout/retry hardening | testing-agent |
-| 12.3 | 12 Scale | Cost | Optimize infra, storage, model usage, refresh cadence | deployment-agent |
-| 12.4 | 12 Scale | Missing: feature flags | Add controlled rollout and experiment toggles | workflow-builder-agent |
-| X.1 | X Business | Monetization | Refine pricing, premium packaging, affiliate placements | project-startup-agent |
-| X.2 | X Business | Growth | Funnel optimization, retention loops, conversion experiments | project-planner |
-| X.3 | X Business | Content strategy | Editorial expansion tied to SEO and premium value | documentation-agent |
-| X.4 | X Business | Missing: partner operations | Add sponsor/partner workflow, reporting, and offer governance | project-planner |
-
----
-
-## B. Pulled-Forward Missing-but-Important Priorities
-
-1. Compliance/privacy/disclosure docs
-2. Disaster recovery and restore testing
-3. Background job/idempotency contracts
-4. Design system foundation
-5. Prompt-security/red-team AI evals
-6. Incident runbooks
-7. Revenue/admin reporting
-8. Feature flags/experimentation
-
----
-
-## C. Phase 0–12 Source-Synced Additions
-
-The following additions are sourced directly from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md` and should be tracked alongside Section A.
+Use this section as the primary execution checklist. Tasks here are deduplicated and normalized from the phase master lists, sequencing plan, roadmap, documentation foundation, build-system notes, and app asset planning.
 
 ### Phase 0 — Documentation & Foundational Architecture
-- Add explicit standards docs for API conventions, frontend architecture, SEO/content engineering, security architecture, and DevOps planning.
-- Include database architecture planning deliverables (schema strategy, indexing, partitioning, materialized views, backup strategy).
-- Track validation gates for governance approvals and architecture sign-off.
+- [ ] Finalize vision, personas, monetization model, subscription tiers, editorial philosophy, analytics differentiation, sportsbook positioning, AI workflow strategy, and long-term scalability objectives.
+- [ ] Define engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flow.
+- [ ] Establish ADR format, numbering, review process, mandatory triggers, and seed initial ADRs for stack, database, AI grounding, materialized views, and worker orchestration.
+- [ ] Publish the system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching, CDN, observability, worker architecture, and AI injection architecture.
+- [ ] Document authentication, RBAC, secrets handling, security governance, and logging/redaction standards.
+- [ ] Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy.
+- [ ] Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing.
+- [ ] Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs.
+- [ ] Create foundational core and product docs including `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, and `TARGET_AUDIENCE.md`.
+- [ ] Create documentation governance and standards docs including `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`, `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, and `EVENT_DRIVEN_ARCHITECTURE.md`.
+- [ ] Create missing strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning.
 
-### Phase 1 — Folder Setup
-- Finalize monorepo boundaries, root repository layout, and domain ownership stubs.
-- Add naming conventions, git workflow initialization, and build tooling bootstrap standards.
-- Include baseline automation artifacts: CODEOWNERS, issue/PR templates, docs-check/architecture-drift placeholders, and env/bootstrap placeholders.
+### Phase 1 — Folder Setup, Repository Structure & Tooling
+- [ ] Lock the canonical monorepo structure and ownership boundaries across apps, services, packages, infrastructure, database, workers, AI, docs, scripts, tests, and automation domains.
+- [ ] Align the approved target structure with the ownership model covering `frontend/`, `backend/`, `database/`, `api/`, `tests/`, `docs/`, `config/`, `plugins/`, and `commands/` where applicable.
+- [ ] Standardize root configs, env templates, workspace tooling, TurboRepo, pnpm workspaces, git hooks, and root build configuration.
+- [ ] Add setup/bootstrap flows, local development bootstrap, verification scripts, lint/test/typecheck entrypoints, and contributor workflow.
+- [ ] Establish baseline PR checks, docs-check or architecture-drift placeholders, GitHub Actions CI, test pipeline, lint pipeline, deploy pipeline, and Docker build validation.
+- [ ] Define shared UI package foundations, naming and token conventions, and reusable package boundaries for UI, types, config, utils, analytics, and SEO.
+- [ ] Add CODEOWNERS, issue templates, pull request templates, ownership stubs, and top-level README/responsibility stubs for each domain directory.
+- [ ] Define environment strategy, required environment files, secret-handling conventions, validation rules, and secure separation across local, development, staging, test, and production.
+- [ ] Establish initial infrastructure, monitoring, Docker organization, security baseline defaults, branch protection, secret scanning, CORS planning, CSP planning, and rate-limiting preparation.
+- [ ] Prepare scalability-oriented structure for worker expansion, service isolation, analytics reuse, AI pipeline isolation, and multi-author editorial support.
 
-### Phase 2 — Database
-- Add explicit standards for migrations, naming, UUID PK strategy, JSONB usage, indexing, partitioning, RLS, functions/triggers, and seed strategy.
-- Add analytics infrastructure details: materialized views, caching strategy, observability, reliability, ingestion standards, and roles.
-- Add provenance, retention/archive, rollback test, restore validation, and entitlement-boundary requirements.
+### Phase 2 — Database Architecture, Standards & Foundation
+- [ ] Build the PostgreSQL architecture for `auth`, `content`, `stats`, `analytics`, `ai`, `system`, `ingestion`, and `billing` domains as needed.
+- [ ] Implement core schemas and tables for users, roles, permissions, refresh tokens, API keys, audit logs, players, tournaments, rounds, hole stats, strokes gained, rankings, course history, betting lines, articles, article blocks, authors, tags, categories, SEO metadata, article versions, projections, simulations, betting edges, ownership projections, trend analysis, AI prompts, generations, validations, hallucination flags, feature flags, jobs, webhooks, notifications, metrics, ingestion jobs, payloads, mappings, and failures.
+- [ ] Define PostgreSQL standards for UUID primary keys, JSONB usage, materialized views, partitioning, GIN indexing, full-text search, generated columns, row-level security, extensions, naming, functions, triggers, and seed strategy.
+- [ ] Establish migration architecture with Alembic, immutable migration history, transactional/environment-safe migrations, rollback support, migration tooling, and rollback validation.
+- [ ] Add performance foundations including indexes, partitions, query standards, materialized views, caching strategy, and analytics-read optimization.
+- [ ] Build initial materialized views and analytics infrastructure for player recent form, leaderboard summaries, projection overviews, and related read-heavy workloads.
+- [ ] Establish provenance, archive/retention rules, entitlement boundaries, backup strategy, restore testing, and disaster recovery verification cadence.
+- [ ] Add RLS scaffolding, seed framework, backup/restore validation, observability expectations, and database operations standards.
 
-### Phase 3 — Backend
-- Add contract-level route inventories (REST + GraphQL), service/repository boundaries, middleware/error-handling standards, and API performance rules.
-- Add authz/authn requirements with cache and observability instrumentation.
-- Add billing/entitlement API contracts, OpenAPI/GraphQL contract validation, and idempotent webhook/job audit requirements.
+### Phase 3 — Backend, API & Service Layer
+- [ ] Bootstrap the FastAPI application with settings, lifecycle, DI/dependencies, DB sessions, logging, exceptions, constants, and health checks.
+- [ ] Implement JWT auth, refresh tokens, password hashing, API key support, RBAC, permission middleware, rate limiting, and sanitized/structured error responses.
+- [ ] Build REST endpoints for auth, players, tournaments, stats, projections, betting, rankings, health, AI workflows, content, billing, and admin operations.
+- [ ] Add selective Strawberry GraphQL for editorial content, dashboards, article editing, admin flows, AI-assisted editor use cases, and flexible frontend reads.
+- [ ] Implement service/repository boundaries so repositories own DB access and services own business logic.
+- [ ] Add caching infrastructure, keys, decorators, invalidation flows, TTL rules, and cache priorities for leaderboards, projections, rankings, summaries, pages, and betting edges.
+- [ ] Implement observability with structured logs, tracing, metrics, error tracking, health endpoints, auth instrumentation, projection instrumentation, admin action instrumentation, and AI workflow instrumentation.
+- [ ] Define and enforce API performance budgets, pagination, query limits, GraphQL depth/complexity limits, and hot-path benchmarking.
+- [ ] Add billing and entitlement source-of-truth APIs, webhook handlers, contract validation/versioning for OpenAPI and GraphQL, and idempotency/audit-log requirements for jobs, webhooks, and privileged mutations.
+- [ ] Define worker-facing APIs, retry rules, idempotency contracts, queue contracts, and materialized view refresh hooks.
+- [ ] Add backend testing coverage for auth, permissions, REST, GraphQL, repositories, cache behavior, security, performance, and AI grounding validation.
 
-### Phase 4 — Frontend
-- Add detailed standards for routing, query caching, typed API client contracts, component architecture, table/chart systems, and premium gating UX.
-- Add accessibility acceptance criteria and performance budgets for high-traffic pages.
-- Add page-level SEO/schema hooks and entitlement-aware loading/error states.
+### Phase 4 — Frontend Public App & Shared UI
+- [ ] Set up the web app shell with routing, layouts, session/auth plumbing, query client, state organization, and typed API integration.
+- [ ] Build public pages for home, articles, players, tournaments, rankings, projections, betting, course history, and related public content surfaces.
+- [ ] Build analytics UI for tables, filters, dashboards, premium research views, comparisons, and simulation/projection exploration.
+- [ ] Create reusable UI primitives, layout components, charts, tables, forms, cards, navigation, SEO components, empty states, loading states, and skeletons.
+- [ ] Implement accessibility standards including semantic HTML, keyboard navigation, labels, focus states, and acceptance criteria for high-traffic pages.
+- [ ] Add error boundaries, loading/error UX, entitlement-aware loading states, performance budgets, query caching standards, and latency/caching UX patterns.
+- [ ] Establish typed API client contracts, GraphQL and REST split, Zod validation, query key standards, invalidation rules, and stable frontend architecture conventions.
+- [ ] Implement page-level SEO/schema hooks and premium gating UX for public and premium surfaces.
 
-### Phase 5 — Editor
-- Add structured block registry contracts, SEO-editor field requirements, and stats-grounded block rules.
-- Add editorial workflow controls: review states, approvals, publish audit trails, autosave conflict handling, and preview safety.
-- Add AI draft provenance/citation visibility and revision diff/rollback recovery requirements.
+### Phase 5 — Editor, CMS & Editorial Operations
+- [ ] Build the editor app, routing, article CRUD, preview, publish, save, autosave, revision history, and workflow state management.
+- [ ] Implement structured block editing with typed schemas, validation, ordering, duplication, rendering, serialization, and registry-based block definitions.
+- [ ] Add stats-grounded block rules, unsafe HTML sanitization, preview safety, and source-backed editorial rendering.
+- [ ] Add author, editor, and admin role states; approvals; publish audit trails; revision compare/restore; and editorial permissions.
+- [ ] Build SEO editor fields, metadata controls, citation/provenance visibility, AI-assisted drafting support, and AI generation logs.
+- [ ] Add content operations including content calendar, assignment workflow, review queues, workflow controls, autosave conflict handling, and rollback recovery.
 
-### Phase 6 — Templates
-- Add template schema contracts across article, dashboard, SEO, structured data, email, report, and export templates.
-- Add template registry/versioning with rollback and non-destructive historical rendering guarantees.
-- Add schema validation, sanitization, premium-slot/affiliate rules, and internal-link/schema.org requirements.
+### Phase 6 — Templates, Structured Rendering & Governance
+- [ ] Define reusable article, page, dashboard, SEO, block, email, report, and export template systems backed by data.
+- [ ] Create player, course, tournament, rankings, betting, and dashboard template systems for public and premium experiences.
+- [ ] Standardize metadata fields, schema fields, internal linking blocks, affiliate placements, structured data outputs, canonical patterns, OG outputs, and breadcrumb outputs.
+- [ ] Build template registries, schema contracts, validation, sanitization, versioning, rollback support, historical rendering guarantees, and editorial approval rules for template changes.
+- [ ] Define required article templates, block templates, premium templates, and template governance patterns across web, editor, and shared packages.
 
-### Phase 7 — SEO
-- Add canonical/metadata/JSON-LD standards by route class, sitemap/robots strategy, slug/redirect governance, and premium crawl-safe rules.
-- Add internal linking and breadcrumb system requirements.
-- Add CI validation for metadata/schema, Lighthouse/CWV budgets, sitemap diffing, and search-index health checks.
+### Phase 7 — SEO, Discoverability & Crawl Governance
+- [ ] Implement metadata generation for all indexable public routes including titles, descriptions, canonicals, Open Graph, Twitter cards, and Schema.org/JSON-LD outputs.
+- [ ] Build programmatic SEO for articles, players, tournaments, rankings, betting, and other verified data-backed landing pages.
+- [ ] Establish rendering and cache strategies for crawlability, speed, and Lighthouse/Core Web Vitals targets.
+- [ ] Build internal linking modules, related player/event/article links, breadcrumbs, redirect handling, slug governance, sitemap generation, and robots controls.
+- [ ] Add premium crawl-safe gating rules, teaser handling, noindex handling, and anti-cloaking enforcement for gated surfaces.
+- [ ] Add CI validation for metadata, canonical URLs, schema outputs, Lighthouse/CWV budgets, sitemap diffing, broken-link checks, and search-index health monitoring.
+- [ ] Implement utilities and components for canonical URLs, article schema, player schema, tournament schema, dataset schema, breadcrumbs, sitemap routes, and robots.txt policy.
 
-### Phase 8 — AI
-- Add prompt/version registry governance, grounding/source registry architecture, and AI claim validation workflows.
-- Add AI service/client requirements (timeouts, retries, usage logging, fallback, redaction, endpoint RBAC/rate limits).
-- Add prompt-injection red-team testing, citation/evidence surfacing, moderation queues, and retention policies.
+### Phase 8 — AI Grounding, Safety & Editorial Assist
+- [ ] Implement prompt systems, source registry, grounding layer, prompt injection architecture, validators, evaluations, pipelines, observability, and policy controls.
+- [ ] Add AI-assisted editorial drafting, summaries, projection explanations, betting explanations, SEO suggestions, and internal analyst support with review visibility.
+- [ ] Add prompt versioning, prompt registry governance, AI logs, reviewer controls, model usage logs, token tracking, validation metrics, and generation audit logs.
+- [ ] Build claim validation, hallucination checks, freshness checks, citation/evidence surfacing, moderation queues, and retention policies.
+- [ ] Add prompt-security abuse cases, red-team evaluations, rate limits, fallback behavior, retries, timeouts, redaction, and endpoint RBAC controls.
+- [ ] Ensure AI never bypasses editorial review, invents statistics, or replaces computed projection models.
 
-### Phase 9 — Hosting
-- Add environment strategy (local/dev/staging/prod), production Docker standards, managed DB/Redis/object storage requirements, and CDN/SSL policy.
-- Add CI/CD deployment, migration rollout/rollback controls, and worker deployment contracts.
-- Add explicit DR requirements: RTO/RPO, restore testing, secret rotation, scanning, WAF/origin protection, and rollback rehearsal checkpoints.
+### Phase 9 — Hosting, Deployment & Runtime Operations
+- [ ] Finalize Docker strategy, environment topology, secrets strategy, SSL/CDN policy, and production deployment topology.
+- [ ] Build CI/CD workflows for PR validation, contract checks, deploy workflows, migration rollout/rollback controls, and rollback paths.
+- [ ] Configure frontend, API, admin, editor, worker, PostgreSQL, Redis, Nginx, object storage, and monitoring runtime responsibilities.
+- [ ] Define and implement local, development, staging, and production environment strategy with parity and safe configuration boundaries.
+- [ ] Apply production Docker standards including multi-stage builds, non-root users, pinned dependencies, health checks, explicit env vars, and runtime secret injection.
+- [ ] Add managed Postgres and Redis requirements including backups, PITR, pooling, replicas, WAL archiving, slow query logging, and operational restrictions.
+- [ ] Add runbooks, incident readiness, on-call basics, outage recovery checklists, restore testing, RTO/RPO targets, secret rotation, scanning, WAF/origin protection, and rollback rehearsals.
+- [ ] Configure Grafana, Prometheus, Sentry, OpenTelemetry, and deployment/runtime observability baselines.
 
-### Phase 10 — Admin
-- Add detailed admin role/permission matrices and module coverage (users, roles, subscriptions, billing, content, AI audit, ingestion, model ops, flags, health).
-- Add admin security controls (MFA, step-up auth, impersonation auditing) and audit/export reporting requirements.
-- Add dispute/refund/reconciliation, entitlement override, and moderation-history operational workflows.
+### Phase 10 — Admin, Governance & Operational Control Plane
+- [ ] Build admin dashboards and modules for users, roles, permissions, subscriptions, billing, content, AI audit, ingestion, model operations, feature flags, health, audit logs, and settings.
+- [ ] Enforce admin/editor/owner scopes, audit logging, step-up auth, MFA controls, impersonation auditing, and protected admin role rules.
+- [ ] Build moderation queues, publishing overrides, AI content review, moderation history, entitlement overrides, dispute/refund/reconciliation workflows, and export/reporting controls.
+- [ ] Add subscription, affiliate, funnel, churn, revenue, and operational reporting dashboards.
+- [ ] Implement admin route structure, permission matrix, user management tools, role management tools, and operational workflows.
 
-### Phase 11 — Integrations
-- Add provider abstraction, retry/timeouts, webhook verification/idempotency, quota handling, and integration health/error standards.
-- Add integrations coverage for sports data, sportsbook odds normalization, payments, analytics, affiliate, AI provider, email, storage, and webhooks.
-- Add vendor SLA/fallback mode, secret ownership/rotation controls, dead-letter handling, and disclosure/attribution validation tasks.
+### Phase 11 — Integrations, Data Providers & External Services
+- [ ] Integrate sports data, odds, weather, schedules, payments, analytics, social publishing, email, storage, AI providers, affiliate systems, and webhook infrastructure.
+- [ ] Add provider abstraction, retry/timeouts, exponential backoff, webhook verification, idempotency, quota handling, health/error standards, and graceful degradation.
+- [ ] Build provider clients for PGA Tour, DataGolf or equivalent, sportsbook providers, weather providers, Stripe, analytics systems, storage, email, and OpenAI.
+- [ ] Add provider mapping, identity resolution, duplicate resolution, source QA tooling, raw payload storage, secret ownership/rotation controls, dead-letter handling, fallback modes, SLA review, and disclosure/attribution validation.
+- [ ] Build outbound content/social publishing and operational webhook handling workflows.
 
-### Phase 12 — Scale
-- Add scale tasks for DB/API/cache/worker/frontend performance, SEO at scale, AI cost controls, security/reliability hardening, and observability maturity.
-- Add load testing, throughput benchmarking, cache invalidation audits, and query-budget enforcement.
-- Add resilience drills (failover, queue backpressure, degraded mode) and cross-vendor cost observability targets.
+### Phase 12 — Scale, Reliability & Cost Optimization
+- [ ] Tune database, API, cache, frontend, worker, SEO, AI cost, security, and observability systems for higher scale.
+- [ ] Add load testing, throughput benchmarking, query-budget enforcement, cache invalidation audits, slow query analysis, and hot-path profiling.
+- [ ] Optimize Redis/cache TTLs, stale-while-revalidate behavior, cache hit rates, stampede prevention, premium key isolation, and sitemap/internal-link cache behavior.
+- [ ] Scale workers with workload-separated queues, concurrency limits, dead-letter queues, idempotency enforcement, depth monitoring, autoscaling, and expensive-job caps.
+- [ ] Optimize frontend bundles, route-level splitting, chart/table lazy loading, virtualization, image optimization, prefetching, hydration cost, and Core Web Vitals.
+- [ ] Add resilience drills including failover, queue backpressure, degraded modes, vendor fallback validation, and operational stress testing.
+- [ ] Optimize infrastructure, storage, model usage, token budgeting, prompt caching, refresh cadence, pricing experiments, conversion funnels, and retention flows.
+- [ ] Implement feature flags, controlled rollout systems, experimentation toggles, and monetization/performance optimization controls.
 
----
-
-## D. Additional Task Sources Across the Repository
-
-The following task sets were identified in other planning and support artifacts across the repo and consolidated here so this file can serve as the single master task tracker.
-
-### D1. Planning/Master Implementation Sequencing Plan.md
-
-#### Stage 1 — Repository & Infrastructure Bootstrap
-- Initialize monorepo.
-- Configure pnpm workspaces.
-- Configure TurboRepo.
-- Create root configs.
-- Initialize git hooks.
-- Bootstrap PostgreSQL container.
-- Bootstrap Redis container.
-- Bootstrap API container.
-- Bootstrap web container.
-- Bootstrap Nginx container.
-- Add GitHub Actions.
-- Add lint pipeline.
-- Add test pipeline.
-- Add Docker build validation.
-- Define `.env` strategy.
-- Add secret validation.
-- Add local development bootstrap.
-
-#### Stage 2 — Database Foundation
-- Implement `auth` schema.
-- Implement `content` schema.
-- Implement `stats` schema.
-- Implement `analytics` schema.
-- Implement `ai` schema.
-- Implement `system` schema.
-- Implement `ingestion` schema.
-- Implement `billing` schema.
-- Build priority core tables: users, roles, permissions, players, tournaments, rounds, articles, article_blocks, projections, betting_lines.
-- Add Alembic setup.
-- Add migration tooling.
-- Add seed framework.
-- Add indexing standards.
-- Add RLS scaffolding.
-- Build initial materialized views: `player_recent_form`, `leaderboard_summary`, `projection_overview`.
-
-#### Stage 3 — Backend Core
-- Add app lifecycle.
-- Add config system.
-- Add DB sessions.
-- Add logging.
-- Add error handling.
-- Implement JWT auth.
-- Implement refresh tokens.
-- Implement RBAC.
-- Implement permission middleware.
-- Add repositories layer.
-- Add services layer.
-- Add REST routes.
-- Add GraphQL schema.
-- Add request logging.
-- Add tracing.
-- Add health endpoints.
-
-#### Stage 4 — Data Ingestion System
-- Build provider clients for PGA Tour, DataGolf, odds providers, and weather providers.
-- Implement player identity mapping.
-- Implement tournament mapping.
-- Implement odds normalization.
-- Build ingestion queues.
-- Add retry logic.
-- Add stale detection.
-- Add raw payload storage.
-- Add source mappings.
-- Add ingestion logs.
-
-#### Stage 5 — Analytics Engine
-- Implement scoring projections.
-- Implement strokes gained models.
-- Implement course fit models.
-- Implement ownership projections.
-- Build tournament simulations.
-- Build betting edge calculations.
-- Build ranking generation.
-- Add materialized views for trend summaries, edge summaries, and projection rankings.
-
-#### Stage 6 — Frontend Public Site
-- Build homepage.
-- Build articles pages.
-- Build players pages.
-- Build tournaments pages.
-- Build rankings pages.
-- Build betting pages.
-- Build shared tables.
-- Build shared charts.
-- Build shared cards.
-- Build SEO components.
-- Integrate TanStack Query.
-- Add typed API hooks.
-- Add frontend error handling.
-- Implement metadata.
-- Implement schema.
-- Implement canonical handling.
-
-#### Stage 7 — Editorial System
-- Build article CRUD.
-- Build block editor.
-- Build SEO controls.
-- Build revision history.
-- Build workflow states.
-- Build stat blocks.
-- Build projection blocks.
-- Build betting blocks.
-- Build chart blocks.
-- Implement draft, review, publish, schedule, and archive pipeline.
-
-#### Stage 8 — AI Grounding System
-- Add prompt versioning.
-- Add model routing.
-- Add source injection.
-- Add claim validation.
-- Add hallucination checks.
-- Add freshness checks.
-- Build outline generation.
-- Build projection summaries.
-- Build SEO suggestions.
-- Add token tracking.
-- Add generation audit logs.
-- Add validation metrics.
-
-#### Stage 9 — Premium Systems
-- Integrate Stripe.
-- Implement subscription lifecycle.
-- Implement billing webhooks.
-- Implement partial gates.
-- Implement hard gates.
-- Build premium dashboards.
-- Enforce API access entitlements.
-- Enforce dashboard access entitlements.
-- Enforce report access entitlements.
-
-#### Stage 10 — Admin Platform
-- Build user management.
-- Build subscription management.
-- Build AI audit.
-- Build system health.
-- Build feature flags.
-- Add ingestion monitoring.
-- Add worker monitoring.
-- Add AI monitoring.
-- Add revenue monitoring.
-
-#### Stage 11 — Production Deployment
-- Configure frontend hosting.
-- Configure API hosting.
-- Configure managed Postgres.
-- Configure managed Redis.
-- Configure CDN.
-- Configure SSL.
-- Add security headers.
-- Add rate limiting.
-- Add secret isolation.
-- Add backup systems.
-- Configure Grafana.
-- Configure Prometheus.
-- Configure Sentry.
-- Configure OpenTelemetry.
-
-#### Stage 12 — Scale & Optimization
-- Optimize query performance.
-- Tune cache behavior.
-- Scale workers.
-- Optimize frontend performance.
-- Optimize model routing.
-- Add prompt caching.
-- Add token budgeting.
-- Build programmatic pages.
-- Build historical archives.
-- Build landing pages.
-- Run pricing tests.
-- Optimize conversion funnels.
-- Build retention flows.
-
-### D2. Planning/App Assets & Attributes Matrix.md
-- Build content blogs system.
-- Add SEO-first content publishing.
-- Add structured content blocks.
-- Add author and editor workflows.
-- Add player, tournament, course, and betting-market tagging.
-- Add internal linking support.
-- Add AI-assisted drafting with stats grounding.
-- Add featured image and social preview support.
-- Add scheduled publishing.
-- Add draft, review, published, and archived states.
-- Add revision history.
-- Build backend/API assets for posts and publishing workflows.
-- Build frontend components for blog index, blog post pages, featured post cards, article content rendering, related article rails, and author bio cards.
-- Add monetization hooks for affiliate CTA blocks, premium content gates, newsletter capture, internal links to projections dashboards, and sportsbook comparison modules.
-- Build custom data models for projections, betting intelligence, fantasy plays, rankings, and course-fit scores.
-- Add model versioning and transparent calculation outputs.
-- Add AI-readable model summaries.
-- Build model run and projection APIs.
-- Build frontend components for model score cards, projection tables, model version badges, confidence indicators, and explainers.
-- Ensure AI responses cite model version and keep calculated values separate from generated narrative.
-- Build stats tables and dashboards for sortable/filterable player, tournament, course, and betting analytics.
-
-### D3. Planning/Documentation System Foundation.md
-- Formalize governed documentation architecture.
-- Add execution sequencing, ownership boundaries, and dependency mapping.
-- Create immediate priority docs before implementation begins: `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, `TARGET_AUDIENCE.md`, `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`.
-- Add missing architecture governance docs: `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, `EVENT_DRIVEN_ARCHITECTURE.md`.
-- Add missing data engineering docs: `MATERIALIZED_VIEW_STRATEGY.md`, `CACHING_STRATEGY.md`, `DATA_RETENTION_POLICY.md`, `STATS_COMPUTATION_ENGINE.md`.
-- Add missing AI systems docs: `AI_GROUNDING_LAYER.md`, `AI_OBSERVABILITY.md`, `MODEL_EVALUATION.md`, `PROMPT_INJECTION_ARCHITECTURE.md`.
-- Add missing SEO engineering docs: `PROGRAMMATIC_SEO.md`, `SCHEMA_MARKUP_STRATEGY.md`, `INTERNAL_LINKING_STRATEGY.md`, `CONTENT_CLUSTER_STRATEGY.md`.
-- Add missing editorial intelligence docs: `CONTENT_SCORING_SYSTEM.md`, `ARTICLE_GENERATION_PIPELINE.md`, `HUMAN_EDITOR_REVIEW_PROCESS.md`.
-- Add missing reliability docs: `SLO_SLA_DEFINITIONS.md`, `FAILURE_RECOVERY_MATRIX.md`, `INCIDENT_SEVERITY_MATRIX.md`.
-- Add missing monetization docs: `SUBSCRIPTION_ARCHITECTURE.md`, `AFFILIATE_TRACKING_SYSTEM.md`, `PAYWALL_STRATEGY.md`.
-- Add missing platform scale docs: `MULTI_TENANCY_STRATEGY.md`, `HORIZONTAL_SCALING_PLAN.md`.
-
-### D4. Planning/build-system.md
-- Define and connect the universal AI orchestration layer to the Caddy Stats production platform.
-- Map universal AI control layer to project stack, app build layer, domain agents, domain skills, domain plugins, domain commands, and project workflows.
-- Confirm and track project intake fields covering stack, hosting, integrations, commands, plugins, admin needs, analytics, CMS, payments, and AI tooling.
-- Establish the planned project root structure under `.github/`, `agents/`, `skills/`, `instructions/`, `workflows/`, `prompts/`, `templates/`, `evals/`, `plugins/`, `commands/`, `frontend/`, `backend/`, `database/`, `api/`, `tests/`, and `automation/`.
-
-### D5. Support/docs/00-root/roadmap.md
-- Track roadmap status by phase.
-- Maintain phase outcomes and planning status for Documentation, Folder Setup, Database, Backend, Frontend, Editor, Templates, SEO, AI, Hosting, Admin, Integrations, Scale, and Business.
-- Ensure each phase produces concrete deliverables before dependent phases scale.
+### Phase X — Business, Monetization & Growth
+- [ ] Refine pricing, premium packaging, subscription tiers, affiliate placements, and premium offer design.
+- [ ] Implement funnel optimization, conversion experiments, retention loops, onboarding, lifecycle messaging, CRM segmentation, and churn analysis.
+- [ ] Expand editorial strategy tied to SEO growth, premium value, and monetization outcomes.
+- [ ] Build sponsor/partner workflows, reporting, and offer governance.
+- [ ] Implement paywall systems, entitlement enforcement, subscription event tracking, pricing infrastructure, and revenue analytics.
+- [ ] Add advanced premium products, API access tiers, exports, enterprise support, and experimentation workflows as the platform matures.
 
 ---
 
-## E. Tracking Rule
+## B. Supporting Source-Synced Scope Notes
 
-When a task appears in both the consolidated matrix and a phase source list, treat the matrix row as the canonical tracker and the phase-sourced addition as implementation detail scope.
+Use this section for non-canonical supporting detail that should remain visible but not duplicate the execution checklist above.
 
-When a task also appears in other planning artifacts across the repo, keep this file as the single canonical roll-up and treat the source artifact as supporting detail unless a more specific implementation breakdown is needed.
+### B1. Roadmap / Status Tracking
+- Documentation: in progress / expanding.
+- Folder Setup: partially complete.
+- Database through Business phases: planned.
+- Each phase must produce concrete deliverables before dependent phases scale.
+
+### B2. Build Order / Dependency Guidance
+- Infrastructure → Database → Backend Core → Ingestion → Analytics → Frontend → Editor → AI → Monetization → Admin → Production → Optimization.
+- Backend and Frontend can run in parallel after API contracts stabilize.
+- AI and Editorial can run in parallel after block schemas finalize.
+- SEO and Frontend can run in parallel after routing stabilizes.
+- Admin and Billing can run in parallel after subscription models finalize.
+
+### B3. MVP Scope Guidance
+- Include: public articles, player pages, rankings, basic projections, premium subscriptions, editorial workflows, and SEO foundation.
+- Delay: enterprise API, advanced simulations, mobile apps, multi-seat enterprise support, and deep experimentation systems.
+
+---
+
+## C. Deduplication Rule
+
+If a task appears in multiple source documents:
+- [ ] Keep the checkbox in Section A as the canonical tracker.
+- [ ] Treat roadmap, sequencing, phase docs, and supporting planning artifacts as implementation detail or status context.
+- [ ] Add new tasks to Section A only when they are materially distinct and not already covered by an existing checkbox.
+
+---
+
+## D. Maintenance Rule
+
+When updating this file in the future:
+- [ ] Preserve Section A as the single canonical task tracker.
+- [ ] Prefer merging overlapping task language instead of adding near-duplicate bullets.
+- [ ] Keep supporting context in Sections B–D concise.
+- [ ] Only add source-specific implementation detail when it changes execution scope.
