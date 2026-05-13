@@ -1,3 +1,24 @@
+## 2026-05-13 — Provenance, Compliance, and Roadmap Governance Expansion
+
+- Added:
+  - `docs/compliance/privacy-policy.md`
+  - `docs/compliance/terms-of-use.md`
+  - `docs/compliance/affiliate-disclosure.md`
+  - `docs/compliance/data-retention-policy.md`
+  - `docs/compliance/operational-compliance-policy.md`
+  - `docs/compliance/README.md`
+- Changed:
+  - `docs/data/stat-grounding-policy.md` expanded with stricter provenance field expectations, explicit AI grounding states, and retention-policy alignment
+  - `docs/roadmap/build-phases.md` expanded with milestone framework, validation-gate model, changelog flow, and dependency-aware sequencing rules
+- Fixed:
+  - Closed policy documentation gaps around retention governance, compliance disclosures, and roadmap validation flow
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Documentation-only update to strengthen governance before downstream implementation phases
+
 ## 2026-05-13 — Security Standards Documentation Expansion
 
 - Added:
