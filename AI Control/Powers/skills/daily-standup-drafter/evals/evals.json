@@ -1,0 +1,23 @@
+{
+  "skill_name": "daily-standup-drafter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write my standup for today. Yesterday I spent most of the day fixing a bug in the payment webhook handler that was causing double charges in staging. I also reviewed two PRs from Sarah. Today I'm starting on the new CSV export feature. No blockers.",
+      "expected_output": "A concise standup update in the Yesterday/Today/Blockers format. Yesterday should mention the payment webhook double-charge bug fix and two PR reviews. Today should mention starting the CSV export feature. Blockers: None. Total length should be under 120 words.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here are my recent commits. Can you write my async Slack standup?\n\ngit log:\nabc123 Fix null pointer in user profile endpoint\ndef456 Add index to users.email for faster lookup\nghi789 Write unit tests for profile endpoint\njkl012 Update API docs for profile route\n\nToday: starting on team invitation feature. Blocked: waiting for design mockups from design team.",
+      "expected_output": "A Slack-formatted async standup using emoji markers. Yesterday should consolidate the commits into 2-3 lines: fixed null pointer in user profile endpoint, added DB index for faster email lookups, added tests and updated API docs for profile route. Today: starting team invitation feature. Blocker: waiting on design mockups from design team (with @design-team mention or note to tag them).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a formal standup update for a client-facing team. I worked on: reviewed the quarterly analytics report and flagged three anomalies, had a 1:1 with the client about the roadmap, and updated the project timeline in Notion. Today I'm preparing the monthly summary deck. Blockers: need client approval on scope change before proceeding with phase 2.",
+      "expected_output": "A formal, full-sentence standup update (not bullet shorthand). Yesterday: reviewed quarterly analytics report and identified three anomalies, conducted roadmap discussion with client, updated project timeline documentation. Today: preparing monthly summary presentation. Blockers: phase 2 is on hold pending client approval of scope change request.",
+      "files": []
+    }
+  ]
+}

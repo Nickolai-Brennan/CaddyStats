@@ -1,0 +1,17 @@
+{
+  "skill_name": "skill-template",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to create a new skill that helps users write SQL queries for data analysis. Can you generate a SKILL.md for it?",
+      "expected_output": "A complete SKILL.md using the canonical template structure with appropriate YAML frontmatter, all placeholder sections filled in for a SQL/data-analysis skill: Overview, When to Use / When NOT to Use, Inputs, Outputs, Workflow with stop conditions, Edge Cases, Safety & Secrets, Examples, and Testing/Evals sections.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What does the skill template look like and how do I use it to build a new skill from scratch?",
+      "expected_output": "An explanation of the template's canonical structure and YAML frontmatter fields, plus guidance on how to copy the template, replace placeholders, write an effective description field (100–150 words with trigger phrases and exclusions), and create a matching evals/evals.json file.",
+      "files": []
+    }
+  ]
+}

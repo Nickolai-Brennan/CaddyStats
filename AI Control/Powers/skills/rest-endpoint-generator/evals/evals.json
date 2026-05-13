@@ -1,0 +1,17 @@
+{
+  "skill_name": "rest-endpoint-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate full CRUD REST endpoints for a `Post` resource in an Express + TypeScript API. A Post has: id (string), title (string, required), body (string, required), authorId (string), status (draft/published/archived), createdAt. Auth: GET endpoints are public, POST/PATCH require auth, DELETE requires admin role. Use Zod for validation.",
+      "expected_output": "Should produce: (1) An API contract table with all 5 endpoints (GET list, GET :id, POST, PATCH :id, DELETE :id), their auth requirements, and response codes. (2) A Router file with all 5 handlers. (3) Zod schemas for CreatePost and UpdatePost (UpdatePost should use `.partial()`). (4) A pagination schema for GET list. (5) Correct HTTP status codes: 200, 201, 204. (6) JSDoc/OpenAPI comments on each route. (7) A service interface stub showing what methods the service layer must implement. AuthorId should be set from `req.user.id`, not from the request body.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need a FastAPI endpoint for bulk-creating products from a CSV upload. The endpoint should accept a CSV file upload, validate each row (sku required, price must be positive), return a summary of how many succeeded and failed with per-row errors, and require an admin API key header.",
+      "expected_output": "Should produce: (1) A FastAPI route accepting `UploadFile` parameter. (2) Pydantic model for a product row with validators. (3) CSV parsing logic using `io.StringIO` and the `csv` module (not pandas, as it may not be installed). (4) API key validation via `Header` dependency. (5) Response model with `succeeded: int`, `failed: int`, and `errors: list[dict]` with row number and error message. (6) Returns 200 with the summary (not 4xx) even if some rows fail — bulk operations should report partial success. (7) File size validation to prevent large file uploads.",
+      "files": []
+    }
+  ]
+}

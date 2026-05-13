@@ -1,0 +1,17 @@
+{
+  "skill_name": "sql-query-optimizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This PostgreSQL query is taking 8 seconds on a table with 2 million orders. Optimize it:\n```sql\nSELECT u.name, u.email, COUNT(o.id) as order_count, SUM(o.total_amount) as lifetime_value\nFROM users u\nLEFT JOIN orders o ON o.user_id = u.id\nWHERE o.status = 'completed'\nAND o.created_at > '2023-01-01'\nGROUP BY u.id, u.name, u.email\nORDER BY lifetime_value DESC\nLIMIT 50;\n```\n\nThe `orders` table has: id, user_id, status, total_amount, created_at. The `users` table has: id, name, email. No indexes exist on orders except the primary key.",
+      "expected_output": "Should identify: (1) Sequential scan on orders due to no index on (user_id, status, created_at). (2) The WHERE on `o.status` after a LEFT JOIN is effectively converting it to an INNER JOIN — the query has a logical issue. Should point this out and offer corrected query. Should recommend: (1) `CREATE INDEX CONCURRENTLY idx_orders_user_status_created ON orders (user_id, status, created_at)`. (2) A corrected query either using INNER JOIN or moving the WHERE filter before the JOIN using a subquery/CTE. (3) Expected improvement from seconds to milliseconds. Should use `CREATE INDEX CONCURRENTLY` for production safety.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "How do I fix this N+1 query problem? I'm using raw SQL in Node.js:\n```javascript\nconst posts = await db.query('SELECT * FROM posts WHERE author_id = $1', [userId]);\nfor (const post of posts) {\n  post.comments = await db.query('SELECT * FROM comments WHERE post_id = $1', [post.id]);\n}\n```",
+      "expected_output": "Should explain why this is an N+1 (1 query for posts + 1 per post for comments = N+1 total queries). Should provide two solutions: (1) A single SQL query using LEFT JOIN with aggregation, or (2) Two queries — one for all posts, one for all comments with `WHERE post_id = ANY($1)` using all post IDs, then join in JavaScript. Should show both approaches with code. Should mention that for large datasets, approach 2 (two separate queries with IN/ANY) is often more efficient than a single JOIN due to result set explosion with multiple rows per post.",
+      "files": []
+    }
+  ]
+}

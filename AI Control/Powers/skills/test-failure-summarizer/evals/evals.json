@@ -1,0 +1,23 @@
+{
+  "skill_name": "test-failure-summarizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My pytest tests are failing. Here's the output:\n\nFAILED tests/test_users.py::test_create_user - AssertionError: assert 500 == 201\nFAILED tests/test_users.py::test_get_user - AssertionError: assert 500 == 200\nFAILED tests/test_auth.py::test_login - AssertionError: assert 500 == 200\nFAILED tests/test_orders.py::test_create_order - AssertionError: assert 500 == 201\n\nAll four tests passed on main branch. I just merged a DB migration.",
+      "expected_output": "A failure summary identifying all 4 tests returning 500 where 2xx expected, grouped as one failure group with common root cause. Since all failures are 500 errors and started after a DB migration, root cause hypothesis should be: database migration may have broken the schema (table structure mismatch, failed migration, or connection issue). Suggested immediate action: check migration status and application logs for database errors. Priority: P0 — likely a real regression affecting multiple components.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Help me understand these Jest failures:\n\n✕ should render user profile (timeout after 5000ms)\n✕ should render user profile (timeout after 5000ms)\n✕ should render user profile (timeout after 5000ms)\n✓ should render error state\n✓ should render loading state\n\nThis test passes about 60% of the time.",
+      "expected_output": "A failure summary classifying this as a flaky test (60% pass rate, timeout errors are the signal). Root cause analysis: the test likely relies on an async operation without proper awaiting or has a timing dependency. Suggestions: check if the component makes an API call that should be mocked but isn't, verify that async rendering is awaited with waitFor() or findBy queries, consider if the timeout (5000ms) is too low for this component. Recommend fixing the root cause (proper async handling) rather than increasing the timeout or adding retry.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Summarize these CI failures for my PR description:\n\n- test_email_validation: Expected 'invalid@' to fail validation, but it passed\n- test_email_validation_2: Expected 'user@domain' to fail validation, but it passed  \n- test_email_format: Expected valid format for 'user@domain.com', and it passed\n- test_username_too_long: Expected 400 for 256-char username, got 200",
+      "expected_output": "A summary identifying two failure groups: (1) Email validation tests — the validator is too permissive, accepting 'invalid@' and 'user@domain' (no TLD) as valid; these are test bugs only if the spec allows these formats, but more likely the validator is missing the TLD requirement check. (2) Username length validation — not enforcing the 256-character limit (returns 200 instead of 400). Suggested PR comment text summarizing these issues concisely for the reviewer.",
+      "files": []
+    }
+  ]
+}

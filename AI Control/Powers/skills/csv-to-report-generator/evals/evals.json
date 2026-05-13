@@ -1,0 +1,23 @@
+{
+  "skill_name": "csv-to-report-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's a CSV of last month's sales data. Can you generate an executive report from it?\n\nregion,product,revenue,units_sold\nNorth,Widget A,12400,310\nNorth,Widget B,8200,205\nSouth,Widget A,9100,228\nSouth,Widget B,15600,390\nWest,Widget A,7800,195\nWest,Widget B,6100,153",
+      "expected_output": "An executive report with: a title (e.g., 'Monthly Sales Report — [Month]'), executive summary (3 sentences highlighting top region/product), Key Metrics table (total revenue: $59,200; total units: 1,481; average revenue per unit), a breakdown table by region and product, Notable Findings (Widget B outsells Widget A in the South; North and West favor Widget A), and Data Notes. Plain language with no jargon. No PII issues in this dataset.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I exported a CSV of support tickets from this month: ticket_id, status, category, created_at, resolved_at, agent_name. There are 450 tickets. I want a report showing our support team's performance for a team meeting.",
+      "expected_output": "A report structure asking for the actual data, but also providing the template/approach: Key Metrics (total tickets, resolution rate %, average resolution time), breakdown by category (which categories are most common), breakdown by status (open/closed/pending), breakdown by agent (tickets handled per agent, average resolution time — but no PII leakage in shared versions). If no actual data provided, show the exact template structure with placeholder values and ask user to share the CSV.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Turn this signup data summary into a report for investors: 243 signups last week, up from 198 the week before. Top sources: organic search (95), social media (72), referral (51), direct (25). Average time to first action: 4.2 minutes. Conversion from signup to paid: 8.2%.",
+      "expected_output": "A polished investor-focused report with: headline metric (243 signups, +22.7% week-over-week), acquisition source breakdown as a table with percentages, conversion funnel (signups → activation in 4.2 min average → 8.2% paid conversion), Notable Findings (organic search is top channel at 39%, referral has strong conversion intent). Framed positively with appropriate context. Under 300 words total.",
+      "files": []
+    }
+  ]
+}

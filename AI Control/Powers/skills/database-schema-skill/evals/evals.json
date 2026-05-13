@@ -1,0 +1,23 @@
+{
+  "skill_name": "database-schema-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design a PostgreSQL schema for a project management tool. I need projects, tasks, users, and the ability to assign multiple users to a task. Tasks should track status and due dates.",
+      "expected_output": "DDL for: users (id, email, name, created_at, updated_at), projects (id, name, description, owner_id FK users, status, created_at, updated_at), tasks (id, project_id FK, title, description, status ENUM, due_date, created_at, updated_at, deleted_at), task_assignments junction table (task_id FK, user_id FK, assigned_at, PRIMARY KEY (task_id, user_id)). Indexes on tasks.project_id, tasks.status, task_assignments.user_id. Mermaid ERD. Notes on soft delete for tasks, audit fields, status enum values.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "How should I model a blog with posts, tags, and comments in a relational database? Users can write posts, posts can have many tags, and readers can comment.",
+      "expected_output": "Tables: users, posts (author_id FK users), tags, post_tags junction (post_id, tag_id), comments (post_id FK, author_id FK users, parent_id FK comments for threading). DDL with appropriate types, NOT NULL constraints, indexes on post_tags.tag_id, comments.post_id. Discussion of threaded comments (adjacency list vs. nested sets). Slugs for posts (unique index). Soft delete on posts and comments with deleted_at.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to store time-series sensor data — temperature, humidity, and pressure readings from hundreds of IoT devices. What's the best schema design?",
+      "expected_output": "devices table (id, name, location, type). readings table (id, device_id FK, metric VARCHAR or use separate columns, value NUMERIC, recorded_at TIMESTAMPTZ). Index on (device_id, recorded_at DESC). Discussion of partitioning by time (PostgreSQL range partitioning on recorded_at). TimescaleDB hypertable mention as an alternative. Trade-off between narrow (EAV-style metric/value) vs. wide (one column per metric) schema. Retention policy recommendation.",
+      "files": []
+    }
+  ]
+}

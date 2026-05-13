@@ -1,0 +1,23 @@
+{
+  "skill_name": "log-triage-helper",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here are some logs from our API server. What's going wrong?\n\n2024-11-12 14:31:58 ERROR: Connection refused: postgres:5432\n2024-11-12 14:32:01 ERROR: NullPointerException in UserService.getUser() at line 42\n2024-11-12 14:32:01 ERROR: NullPointerException in UserService.getUser() at line 42\n2024-11-12 14:32:02 ERROR: 500 Internal Server Error for GET /api/users/123\n2024-11-12 14:32:02 ERROR: NullPointerException in UserService.getUser() at line 42\n2024-11-12 14:32:03 ERROR: 500 Internal Server Error for GET /api/users/456\n2024-11-12 14:32:04 WARN: Slow query detected: 3200ms for SELECT * FROM sessions\n2024-11-12 14:32:05 ERROR: NullPointerException in UserService.getUser() at line 42",
+      "expected_output": "A triage report identifying: Critical errors (Connection refused to postgres and NullPointerException cascades), with the DB connection error starting 3 seconds before the NullPointerException as the likely root cause. Error counts: NullPointerException × 4, DB connection × 1, 500 errors × 2. Root cause hypothesis: database connectivity loss causing null user objects downstream. Recommended investigations: check DB server health at 14:31:58, check connection pool config. Warning: slow session query noted separately.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "My GitHub Actions build is failing. Here's the relevant output (truncated). Can you find what failed and why?\n\n...[many lines of npm install output]...\n✓ 342 tests passed\n✗ 1 test failed\n\n  ● UserService › should return 404 for unknown user\n    Expected: 404\n    Received: 500\n\n    at UserService.test.js:45\n\n...[many more lines]...\nError: Process completed with exit code 1.",
+      "expected_output": "A concise CI failure summary: the build failed due to 1 failing test: UserService › should return 404 for unknown user. The test expected a 404 response but received a 500 (server error), suggesting the error handling for unknown users is returning an unhandled exception instead of a proper 404. Location: UserService.test.js line 45. Recommended investigation: check the UserService handler for unknown user IDs — it's likely throwing an uncaught exception.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I have 500 lines of mixed logs. The app has been returning 503 errors to some users for the last 20 minutes. What should I look for to find the root cause?",
+      "expected_output": "A structured guide for log triage: (1) Find the first 503 error timestamp and look at what happened 1-2 minutes before it; (2) Look for ERROR-level entries that correlate with the 503 start time; (3) Check for upstream dependency failures (DB timeouts, external API errors, queue failures); (4) Look for deployment markers or config changes; (5) Check if 503s affect all users or specific segments (could point to a specific service instance). Offer to analyze the actual log content if the user shares it.",
+      "files": []
+    }
+  ]
+}

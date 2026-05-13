@@ -1,0 +1,23 @@
+{
+  "skill_name": "type-definition-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate TypeScript interfaces from this API response JSON:\n```json\n{\n  \"id\": \"ord_abc123\",\n  \"status\": \"processing\",\n  \"customer\": {\n    \"id\": \"cus_xyz789\",\n    \"email\": \"alice@example.com\",\n    \"name\": \"Alice Smith\"\n  },\n  \"items\": [\n    {\n      \"productId\": \"prd_001\",\n      \"name\": \"Widget A\",\n      \"quantity\": 2,\n      \"unitPrice\": 1999\n    }\n  ],\n  \"totalAmount\": 3998,\n  \"currency\": \"USD\",\n  \"createdAt\": \"2024-01-15T10:00:00Z\",\n  \"shippedAt\": null\n}\n```",
+      "expected_output": "Should produce: (1) A separate `Customer` interface, (2) a separate `OrderItem` interface, (3) an `Order` interface that references `Customer` and `OrderItem[]`. The `status` field should be typed as a string union (with a TODO comment about verifying all possible values). `shippedAt: string | null` since it's null in the sample. `createdAt` should have a JSDoc `/** ISO 8601 date */` comment. All types exported.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Generate both TypeScript interfaces AND a Zod schema for this user profile object:\n```json\n{\n  \"userId\": \"12345\",\n  \"username\": \"alice_smith\",\n  \"email\": \"alice@example.com\",\n  \"age\": 28,\n  \"bio\": null,\n  \"website\": \"https://alice.dev\",\n  \"isVerified\": true\n}\n```",
+      "expected_output": "Should produce: (1) A TypeScript `UserProfile` interface with correct types including `bio: string | null` and `isVerified: boolean`. (2) A Zod `UserProfileSchema` with appropriate validators: `z.string().uuid()` or plain string for userId, `z.string().email()` for email, `z.number().int().positive()` for age, `z.string().nullable()` for bio, `z.string().url()` for website. (3) `type UserProfile = z.infer<typeof UserProfileSchema>` to derive the type from schema. Both in ready-to-use code blocks.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I have this JavaScript object and want to convert my file to TypeScript. Generate the types:\n```javascript\nconst config = {\n  api: {\n    baseUrl: 'https://api.example.com',\n    timeout: 5000,\n    retries: 3,\n    headers: { 'X-API-Key': 'placeholder' }\n  },\n  features: {\n    darkMode: true,\n    analytics: false,\n    betaFeatures: ['new-dashboard', 'ai-search']\n  },\n  cache: {\n    ttl: 3600,\n    maxSize: 100\n  }\n};\n```",
+      "expected_output": "Should produce typed interfaces: `ApiConfig`, `FeaturesConfig`, `CacheConfig`, and a root `AppConfig` interface. The `headers` field should be typed as `Record<string, string>`. `betaFeatures` as `string[]`. A note should flag that the API key should never be hardcoded — `headers['X-API-Key']` should come from an environment variable. All types should use `as const` or `readonly` where appropriate for a config object.",
+      "files": []
+    }
+  ]
+}

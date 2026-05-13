@@ -1,0 +1,23 @@
+{
+  "skill_name": "docs-refactorer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Please refactor this README section. It's inconsistent and hard to read:\n\n---\n# MY APP\nThis is the app. It does stuff.\n\n## INSTALLATION\nfirst you need to install node. Then npm install. then run it with npm start or you can do npm run dev for development mode\n\n### Requirements\n- node version 18 or higher is required\n- also need postgres\n- npm version 9\n\n## usage\nthe app will run on localhost:3000. you can login with admin/admin for testing\n---",
+      "expected_output": "A refactored README section with: proper heading capitalization, a one-sentence intro for the app, numbered steps for installation (not prose), consistent list formatting for requirements with version numbers as code, a code block for the npm commands, and a note that admin/admin is for local development only. Change summary listing at least 4 improvements made.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a 500-word API guide that mixes formal and casual tone throughout, uses passive voice everywhere, and has no code examples despite describing API calls. The guide explains how to authenticate with our API using Bearer tokens. Can you rewrite it in a consistent, developer-friendly active voice with a code example? Here's the text:\n\nAuthentication is handled by the API via Bearer tokens. A token must be obtained by the user from the settings page. The token should then be included in requests. It is recommended that the token be stored securely. Requests that are not authenticated will be rejected with a 401 error.",
+      "expected_output": "A rewritten guide in active voice: 'Authenticate your requests using a Bearer token. Get your token from Settings > API Keys. Include it in every request as an Authorization header.' Followed by a code block showing an example HTTP request with `Authorization: Bearer YOUR_TOKEN_HERE`. A security note about storing tokens securely. Passive voice should be eliminated throughout.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "This doc has duplicate sections and a broken heading hierarchy. Please audit it and tell me what's wrong before you fix it.\n\n# Getting Started\n#### Installation\nRun npm install.\n## Usage\nSee examples below.\n#### Installation\nAlso run npm install (same as above).\n### Examples\nExample 1: hello world",
+      "expected_output": "An audit first: identifies 3 issues (broken heading hierarchy: H1 jumps to H4; duplicate Installation section; orphaned 'See examples below' with no examples following). Then asks for confirmation before fixing. After confirmation: produces a corrected document with proper H1→H2→H3 hierarchy, deduplicated Installation section, and a note that 'examples' section needs real content added.",
+      "files": []
+    }
+  ]
+}

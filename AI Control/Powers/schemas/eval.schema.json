@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evaluation Schema",
+  "type": "object",
+  "properties": {
+    "subject": { "type": "string" },
+    "date": { "type": "string" },
+    "score": { "type": "number" },
+    "criteria": { "type": "array" }
+  },
+  "required": ["subject", "date", "score"]
+}

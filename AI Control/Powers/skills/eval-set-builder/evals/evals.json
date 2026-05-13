@@ -1,0 +1,23 @@
+{
+  "skill_name": "eval-set-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just wrote a skill that converts meeting notes to action items. Can you build an eval set for it? The skill should: extract action items with owners and due dates, identify blockers, list decisions, and work on pasted text from rough notes or transcripts.",
+      "expected_output": "An evals.json with 3 test cases: (1) a happy path with a clear meeting transcript containing named action items; (2) an edge case with ambiguous ownership (no names attached to tasks); (3) an edge case with no action items at all (just a status meeting). Each eval has a realistic prompt, a detailed expected_output description specifying format and required content, and empty files array. An explanation of what each eval tests should accompany the JSON.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Build evals for a SQL query writing skill. It takes a natural language description of what data the user wants and writes a SQL SELECT statement. It should handle basic joins, filters, and aggregations. It should NOT write INSERT, UPDATE, or DELETE statements.",
+      "expected_output": "An evals.json with 3-4 test cases: a simple single-table query, a join with filter, an aggregation (GROUP BY with HAVING), and an adversarial case where the user asks for DELETE or UPDATE (expected output should be a polite refusal explaining the skill only handles SELECT). Each expected_output specifies valid SQL syntax, required clauses, and that no destructive statements should appear.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What edge cases should I test for a skill that summarizes articles into 3 bullet points?",
+      "expected_output": "A list of at least 5 edge cases with descriptions: (1) very short article (under 100 words — should still produce 3 bullets or note it's too short), (2) very long article (5000+ words — should still distill to 3 bullets), (3) non-article content (a recipe, a list, code — should handle or decline gracefully), (4) article in a different language, (5) article with no clear main points. Each edge case should come with a suggested eval prompt and expected behavior.",
+      "files": []
+    }
+  ]
+}

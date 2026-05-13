@@ -1,0 +1,23 @@
+{
+  "skill_name": "workflow-documenter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Document our monthly invoicing process as an SOP. Here's how it works: at the start of each month, the finance team pulls the previous month's usage data from our billing dashboard, exports it to CSV, then runs a Python script to generate PDF invoices (stored in S3), then emails each customer with their invoice attached. If a customer's payment method is invalid, they get flagged in the CRM for follow-up. Finance manager reviews all invoices before sending. Takes about 2 hours.",
+      "expected_output": "A structured SOP document with: SOP ID/version/date header, Purpose (monthly billing cycle), Scope (finance team, triggers on 1st of month), Prerequisites (billing dashboard access, S3 access, CRM access, Python environment), numbered Procedure steps (1: pull usage data, 2: export CSV, 3: run invoice script, 4: review invoices — manager approval step highlighted, 5: send emails, 6: flag invalid payment methods in CRM), Decision Point table (invalid payment method → CRM flag + manual follow-up), Completion Criteria (all customers invoiced, failed payments flagged), Estimated time: 2 hours.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write an on-call runbook for when our database connection pool is exhausted. Symptoms: API returns 503, logs show 'connection pool timeout'. Steps we take: check pg_stat_activity, kill idle connections, restart pgbouncer if needed, alert DBA team if it happens again within an hour.",
+      "expected_output": "A runbook with: Trigger (database connection pool exhaustion alert or 503 errors), Severity P1, Symptoms section (503 errors, 'connection pool timeout' in logs), Quick Triage section with the pg_stat_activity query in a code block, Resolution Steps with Option A (kill idle connections — pg_terminate_backend command in a code block, with a ⚠️ warning that this affects active queries), Option B (restart pgbouncer with service restart command), Escalation (alert DBA team if recurs within 1 hour), Post-Resolution checklist (update incident log). No credentials hardcoded.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want to document how we onboard new enterprise customers. The process is: sales sends us a signed contract, we create their account in the admin panel, add their users (they send us a CSV), set up their SSO config if requested, send them a welcome email with login instructions, then schedule a kickoff call. We don't have this written down anywhere.",
+      "expected_output": "A structured SOP for enterprise customer onboarding with: Trigger (signed contract received from sales), Owner (customer success team), numbered steps (1: receive and file contract, 2: create account in admin panel with specific fields to fill, 3: import users from CSV — note to validate CSV format first, 4: SSO configuration step with decision point 'if SSO requested', 5: send welcome email — note to use the email template, 6: schedule kickoff call), Decision Points table for SSO, Prerequisites (admin panel access, email template location), Completion Criteria (customer has logged in or confirmed receipt).",
+      "files": []
+    }
+  ]
+}

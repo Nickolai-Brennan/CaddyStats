@@ -1,0 +1,23 @@
+{
+  "skill_name": "notebook-query-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a PostgreSQL query to find our top 10 customers by total revenue in the last 90 days. I have an orders table (order_id, customer_id, total_amount, created_at) and a customers table (id, name, email).",
+      "expected_output": "SELECT with JOIN on customers.id = orders.customer_id, WHERE created_at >= NOW() - INTERVAL '90 days', GROUP BY customer_id, name, ORDER BY SUM(total_amount) DESC, LIMIT 10. Includes SELECT of customer name and email (not just ID), formats total_amount with rounding. Performance note: recommend index on orders(customer_id, created_at). Explains what the output represents.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need a Python pandas script to calculate week-over-week growth rate for a DataFrame with columns: week_start_date, revenue. Show the % change from the prior week.",
+      "expected_output": "Python/pandas code: sort by week_start_date, compute .shift(1) for prior week revenue, calculate pct_change = (current - prior) / prior * 100, handle first-week NaN gracefully. Output DataFrame with week_start_date, revenue, prior_week_revenue, wow_growth_pct. Includes .round(2) for readability. Notes on handling missing weeks (non-consecutive dates) — recommend reindex or explicit warning.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a BigQuery SQL query to find pages on our website with the highest drop-off rate in a funnel: Homepage → Product Page → Add to Cart → Checkout → Purchase. I have a pageviews table with session_id, page_name, and timestamp.",
+      "expected_output": "Funnel analysis query using CTEs or COUNTIF with session-level aggregation. For each step: count distinct sessions that reached that step. Drop-off rate = (step_n - step_n+1) / step_n * 100. Uses CASE WHEN or MAX(IF()) pattern for BigQuery. Output: step_name, sessions_reached, sessions_dropped, drop_off_pct. Notes on session ordering (timestamp) and that sessions are counted as reaching a step if they ever hit that page, not necessarily in order — asks if strict ordering is required.",
+      "files": []
+    }
+  ]
+}

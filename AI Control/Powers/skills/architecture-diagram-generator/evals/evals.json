@@ -1,0 +1,23 @@
+{
+  "skill_name": "architecture-diagram-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a Mermaid architecture diagram for a typical web app. It has: a React frontend, a Node.js API server, PostgreSQL database, Redis cache, and S3 for file storage. The frontend talks to the API, which talks to the DB, cache, and S3.",
+      "expected_output": "A valid Mermaid flowchart (LR or TD direction) with nodes for React Frontend, Node.js API, PostgreSQL, Redis, and S3. Arrows showing: Frontend → API, API → PostgreSQL, API → Redis, API → S3. Nodes should use descriptive IDs and labels (not single letters). Database nodes should use the DB cylinder shape (using parentheses notation). The code block should start with 'flowchart LR' or 'flowchart TD'.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Draw a sequence diagram for a user authentication flow: user submits login form, frontend sends POST to /auth/login, backend validates credentials against DB, returns JWT, frontend stores token and redirects to dashboard.",
+      "expected_output": "A valid Mermaid sequenceDiagram with participants: User, Frontend, Backend (or API), Database. Sequence: User->>Frontend: submit login form, Frontend->>Backend: POST /auth/login, Backend->>Database: query user by email, Database-->>Backend: user record, Backend-->>Frontend: 200 OK + JWT, Frontend-->>User: redirect to dashboard. Note showing JWT is stored (localStorage or httpOnly cookie). Valid Mermaid syntax with ->> and -->> arrows.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Generate an ERD for an e-commerce schema with users, products, orders, and order_items tables. Each order belongs to a user. Each order_item belongs to an order and references a product.",
+      "expected_output": "A valid Mermaid erDiagram with: USER entity (id PK, email UK, name, created_at), PRODUCT entity (id PK, name, price, stock_quantity), ORDER entity (id PK, user_id FK, total_amount, status, created_at), ORDER_ITEM entity (id PK, order_id FK, product_id FK, quantity, unit_price). Relationships: USER ||--o{ ORDER, ORDER ||--|{ ORDER_ITEM, PRODUCT ||--o{ ORDER_ITEM. Valid Mermaid erDiagram syntax.",
+      "files": []
+    }
+  ]
+}

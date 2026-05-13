@@ -1,0 +1,17 @@
+{
+  "skill_name": "background-job-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design and scaffold a background job system for sending transactional emails using BullMQ and Node.js/TypeScript. Jobs should be enqueued from API routes, retried up to 3 times with exponential backoff, and alert on failure after all retries are exhausted. I need: queue config, worker, and an example of enqueueing from an Express route.",
+      "expected_output": "Should produce: (1) A TypeScript interface for `SendEmailJobData` with to, subject, template, variables. (2) A BullMQ `Queue` configured with default job options (3 attempts, exponential backoff starting at 2000ms). (3) A `Worker` that processes the job, logs progress, and handles errors. (4) A `QueueEvents` dead-letter handler that detects when a job has exhausted all retries and fires an alert. (5) An Express route example showing `emailQueue.add()` called after the main operation. Note that large payload data should not be put in the job — only IDs should be stored.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to process image uploads in the background: resize to 3 sizes (thumbnail, medium, large), upload each to S3, and update a database record with the URLs. The job should be idempotent (if re-run with the same uploadId, it should not create duplicate S3 files). Design the job.",
+      "expected_output": "Should produce: (1) An `ImageProcessingJobData` interface with uploadId, sourceKey, userId. (2) A worker that: fetches the original image from S3, processes it to 3 sizes, uploads each with deterministic S3 keys (e.g., `uploads/{uploadId}/thumbnail.jpg`) so re-runs don't create duplicates, and updates the DB record. (3) A check at the start of the worker using the deterministic key approach or a DB status check for idempotency. (4) The job should use `job.updateProgress()` at each stage. (5) If the DB update fails but S3 uploads succeeded, the retry should be safe because S3 keys are deterministic.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "launch-checklist-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're launching a new payment feature to our existing SaaS app tomorrow. What should we check before we flip the switch?",
+      "expected_output": "Focused checklist for a payment feature addition: P0 items — PCI DSS compliance basics (no card data stored unless tokenized), payment provider API keys in secrets manager not code, HTTPS enforced on all payment endpoints, error handling for payment failures, idempotency keys for payment requests, rollback plan (feature flag to disable), smoke test in production-like environment. P1 items — load testing payment flow, fraud detection rules reviewed, refund flow tested, receipt/notification emails tested, monitoring on payment error rate. P2 — A/B test for conversion if applicable.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Give me a pre-launch checklist for a public REST API that other developers will consume. It's a new product, not an addition to an existing system.",
+      "expected_output": "API-specific checklist: P0 — authentication (API keys or OAuth2) working, rate limiting configured, SSL/TLS cert valid, all endpoints return appropriate HTTP status codes, error responses follow consistent schema, API versioning in place (/v1/), secrets not in responses or logs, production base URL finalized. P1 — OpenAPI/Swagger documentation published, SDK or code examples ready, developer portal or README, deprecation policy documented, health check endpoint (/health), structured logging, API monitoring dashboard. P2 — SDK libraries, changelog, postman collection.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We finished building our mobile app (iOS + Android). What's on the launch checklist for app store submission?",
+      "expected_output": "App store submission checklist: P0 — Privacy policy URL (required by both stores), app permissions justified and minimized, no hardcoded API keys in app bundle, SSL pinning for sensitive endpoints, data encryption for local storage, crash-free rate >99% from beta testing, all in-app purchase flows tested end to end. P1 — App Store metadata (screenshots, description, keywords), age rating set correctly, accessibility (VoiceOver/TalkBack) tested, app size optimized, deep link handling tested, push notification opt-in flow. P2 — Localization review, feature flag for phased rollout, analytics SDK configured.",
+      "files": []
+    }
+  ]
+}

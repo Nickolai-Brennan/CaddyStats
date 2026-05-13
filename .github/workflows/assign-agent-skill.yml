@@ -1,0 +1,267 @@
+name: Assign Agent and Skill
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  assign:
+    name: Identify and Assign Agent / Skill by File Category
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Categorise changed files and derive assignments ──────────────────
+
+      - name: Analyse changed files and build assignment map
+        id: analyse
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // ─── Category definitions ────────────────────────────────────────
+            // Each entry: { id, label, labelColor, agent, skill, instructions, match }
+            // `match` is a function(filename) => boolean
+            const CATEGORIES = [
+              {
+                id: 'skill',
+                label: 'category: skills',
+                labelColor: '7057ff',
+                displayName: 'Skills',
+                agent: 'Skill Creator Agent',
+                skill: 'skill-creator',
+                instructions: 'Review SKILL.md frontmatter, description quality, and test coverage. Ensure the skill follows the progressive-disclosure pattern and includes realistic test prompts.',
+                match: f => f.startsWith('skills/') || f.endsWith('SKILL.md'),
+              },
+              {
+                id: 'frontend',
+                label: 'category: frontend',
+                labelColor: 'e4e669',
+                displayName: 'Frontend',
+                agent: 'UX / Frontend Design Agent',
+                skill: 'frontend-design',
+                instructions: 'Review UI components for accessibility (ARIA roles, keyboard nav, contrast ratios), responsive layout, and consistent design-system usage.',
+                match: f => /\.(jsx?|tsx?|vue|svelte|css|scss|sass|less|html|htm)$/i.test(f)
+                          && !f.includes('__tests__') && !f.includes('.test.') && !f.includes('.spec.'),
+              },
+              {
+                id: 'backend',
+                label: 'category: backend',
+                labelColor: '0075ca',
+                displayName: 'Backend',
+                agent: 'Backend / API Agent',
+                skill: 'backend-review',
+                instructions: 'Review API contracts, error handling, input validation, and performance considerations. Flag any N+1 queries or missing auth guards.',
+                match: f => /\.(py|rb|go|java|cs|php|rs|kt|scala|ex|exs)$/i.test(f)
+                          && !f.includes('test') && !f.includes('spec'),
+              },
+              {
+                id: 'config',
+                label: 'category: config / devops',
+                labelColor: 'bfd4f2',
+                displayName: 'Config / DevOps',
+                agent: 'DevOps / Platform Agent',
+                skill: 'devops-review',
+                instructions: 'Review CI/CD pipeline changes, environment variable hygiene (no hardcoded secrets), dependency pins, and container/infra correctness.',
+                match: f => /\.(yml|yaml|toml|env|dockerfile|sh|bash|tf|hcl)$/i.test(f)
+                          || f.toLowerCase().includes('dockerfile')
+                          || f.startsWith('.github/'),
+              },
+              {
+                id: 'docs',
+                label: 'category: documentation',
+                labelColor: 'c2e0c6',
+                displayName: 'Documentation',
+                agent: 'Technical Writer Agent',
+                skill: 'docs-review',
+                instructions: 'Check for clarity, accurate code examples, up-to-date API references, and consistent terminology. Flag any broken anchor links.',
+                match: f => /\.(md|mdx|rst|txt|adoc)$/i.test(f) && !f.endsWith('SKILL.md'),
+              },
+              {
+                id: 'test',
+                label: 'category: tests',
+                labelColor: 'e99695',
+                displayName: 'Tests',
+                agent: 'QA / Testing Agent',
+                skill: 'test-review',
+                instructions: 'Ensure test coverage is sufficient, tests are deterministic, and edge cases are handled. Flag missing unit or integration tests for changed modules.',
+                match: f => /\.(test|spec)\.(js|ts|jsx|tsx|py|rb|go)$/i.test(f)
+                          || f.includes('__tests__')
+                          || f.includes('/tests/')
+                          || f.includes('/test/'),
+              },
+              {
+                id: 'data',
+                label: 'category: data / ml',
+                labelColor: 'f9d0c4',
+                displayName: 'Data / ML',
+                agent: 'Data Science / ML Agent',
+                skill: 'data-ml-review',
+                instructions: 'Review data pipelines for correctness, model evaluation metrics, feature leakage risks, and reproducibility (seeds, pinned library versions).',
+                match: f => /\.(ipynb|csv|parquet|pkl|h5|pt|onnx)$/i.test(f)
+                          || f.includes('notebook')
+                          || f.includes('model'),
+              },
+              {
+                id: 'security',
+                label: 'category: security',
+                labelColor: 'd93f0b',
+                displayName: 'Security',
+                agent: 'Security / AppSec Agent',
+                skill: 'security-review',
+                instructions: 'Scan for hardcoded credentials, injection vulnerabilities (SQL, XSS, command), insecure dependencies, and missing authentication/authorisation checks.',
+                match: f => /auth|secret|cred|token|password|crypto|tls|ssl|cert/i.test(f),
+              },
+            ];
+
+            // ─── Fetch changed files ─────────────────────────────────────────
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 100,
+            });
+
+            const filenames = files.map(f => f.filename);
+            console.log('Changed files:', filenames);
+
+            // ─── Build matched category set ──────────────────────────────────
+            const matched = [];
+            for (const cat of CATEGORIES) {
+              if (filenames.some(cat.match)) {
+                matched.push({ ...cat, files: filenames.filter(cat.match) });
+              }
+            }
+
+            core.setOutput('matched_json', JSON.stringify(matched));
+            core.setOutput('has_matches', matched.length > 0 ? 'true' : 'false');
+
+            console.log('Matched categories:', matched.map(c => c.id));
+
+      # ── Ensure labels exist in the repo ─────────────────────────────────
+
+      - name: Ensure category labels exist
+        if: steps.analyse.outputs.has_matches == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const matched = JSON.parse(`${{ steps.analyse.outputs.matched_json }}`);
+
+            for (const cat of matched) {
+              try {
+                await github.rest.issues.getLabel({
+                  owner: context.repo.owner,
+                  repo:  context.repo.repo,
+                  name:  cat.label,
+                });
+              } catch (e) {
+                if (e.status === 404) {
+                  await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo:  context.repo.repo,
+                    name:  cat.label,
+                    color: cat.labelColor,
+                  });
+                  console.log(`Created label: ${cat.label}`);
+                } else {
+                  throw e;
+                }
+              }
+            }
+
+      # ── Apply labels ─────────────────────────────────────────────────────
+
+      - name: Apply category labels to PR
+        if: steps.analyse.outputs.has_matches == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const matched = JSON.parse(`${{ steps.analyse.outputs.matched_json }}`);
+            const labels  = matched.map(c => c.label);
+
+            await github.rest.issues.addLabels({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+              labels,
+            });
+
+            console.log('Applied labels:', labels);
+
+      # ── Post assignment comment ───────────────────────────────────────────
+
+      - name: Post agent / skill assignment comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const matched = JSON.parse(
+              `${{ steps.analyse.outputs.matched_json }}` || '[]'
+            );
+
+            const tag = '<!-- assign-agent-skill-bot -->';
+
+            let body = `${tag}\n## 🤖 Agent & Skill Assignments\n\n`;
+
+            if (matched.length === 0) {
+              body += '_No specific agent assignments triggered for this PR._\n';
+            } else {
+              body += 'Based on the files changed in this pull request, the following agents and skills have been identified:\n\n';
+
+              for (const cat of matched) {
+                body += `### ${getCategoryEmoji(cat.id)} ${cat.displayName}\n`;
+                body += `| | |\n|---|---|\n`;
+                body += `| **Agent** | ${cat.agent} |\n`;
+                body += `| **Skill** | \`${cat.skill}\` |\n`;
+                body += `| **Scope** | ${cat.files.length} file(s) matched |\n\n`;
+                body += `**Instructions for reviewer:**\n> ${cat.instructions}\n\n`;
+                body += `<details><summary>Matched files (${cat.files.length})</summary>\n\n`;
+                for (const f of cat.files) body += `- \`${f}\`\n`;
+                body += `\n</details>\n\n---\n\n`;
+              }
+            }
+
+            body += `_Commit: \`${context.sha.slice(0, 7)}\` · ${new Date().toUTCString()}_`;
+
+            function getCategoryEmoji(id) {
+              const map = {
+                skill:    '🧠',
+                frontend: '🎨',
+                backend:  '⚙️',
+                config:   '🔧',
+                docs:     '📄',
+                test:     '🧪',
+                data:     '📊',
+                security: '🔒',
+              };
+              return map[id] || '📁';
+            }
+
+            // Upsert comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c => c.body.includes(tag));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner:      context.repo.owner,
+                repo:       context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner:        context.repo.owner,
+                repo:         context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

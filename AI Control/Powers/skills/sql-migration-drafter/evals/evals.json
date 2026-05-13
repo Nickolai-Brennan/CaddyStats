@@ -1,0 +1,23 @@
+{
+  "skill_name": "sql-migration-drafter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a PostgreSQL migration to add a 'last_login_at' timestamp column to the 'users' table. It should be nullable, and the rollback should drop the column. The table has about 500K rows.",
+      "expected_output": "An UP migration adding the nullable timestamp column using ALTER TABLE, wrapped in BEGIN/COMMIT. A COMMENT ON COLUMN statement. A DOWN migration using DROP COLUMN IF EXISTS. A note that since the column is nullable (no backfill required), this migration is fast and safe even at 500K rows. An idempotency check (IF NOT EXISTS) is included. Both UP and DOWN migrations are provided.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to add an index on the 'orders' table for the 'customer_id' column. This table has 10 million rows and is actively used in production. How do I do this without locking the table?",
+      "expected_output": "A PostgreSQL migration using CREATE INDEX CONCURRENTLY to avoid table locks, with a note explaining why CONCURRENTLY is important for large production tables. The DOWN migration uses DROP INDEX CONCURRENTLY. A warning that CONCURRENTLY cannot be run inside a transaction block (must be outside BEGIN/COMMIT). Notes on how long this might take and that it's safe to run while the application is live.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want to rename the 'first_name' and 'last_name' columns in the users table to a single 'full_name' column. The app is live. What's the safe migration strategy?",
+      "expected_output": "A multi-step zero-downtime migration strategy: Step 1 migration — add full_name column and populate it from concatenation of first_name and last_name. Step 2 — deploy application code that reads from full_name and writes to both old and new columns (dual-write period). Step 3 migration — drop first_name and last_name after confirming app is fully migrated. Each step as a separate numbered migration. Rollback strategy for each step. Clear warning that renaming directly in a live system causes downtime.",
+      "files": []
+    }
+  ]
+}

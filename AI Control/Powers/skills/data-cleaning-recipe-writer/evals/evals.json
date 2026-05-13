@@ -1,0 +1,23 @@
+{
+  "skill_name": "data-cleaning-recipe-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a CSV with customer orders. The columns are: order_id, customer_email, order_date, amount, status. Problems I know about: some emails are uppercase, some dates are in MM/DD/YYYY format and some in YYYY-MM-DD, some amounts have $ signs, and there are duplicate order_ids. Write a pandas cleaning recipe.",
+      "expected_output": "A Python function clean_dataframe() with: email normalization (.str.lower().str.strip()), date parsing using pd.to_datetime with infer_datetime_format, amount cleaning (strip '$', convert to float with pd.to_numeric), deduplication on order_id with a log of how many duplicates were removed. A validate_cleaned_data() function asserting no duplicates, all amounts are numeric and non-negative, all emails contain '@'. Logging of each step showing before/after counts.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "How do I handle missing values in a pandas DataFrame where some columns should be dropped if >50% null, some should be filled with the median, and some should be flagged with an '_is_missing' indicator column?",
+      "expected_output": "A pandas recipe showing three patterns: (1) identify and drop columns with >50% null using df.isnull().mean() > 0.5; (2) fill specific numeric columns with their median using df[col].fillna(df[col].median()); (3) create indicator columns before filling using df[col+'_is_missing'] = df[col].isnull(). All wrapped in a function with a columns configuration dict so the caller specifies which columns get which treatment. Includes logging of what was done.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a data cleaning recipe to detect and handle outliers in a 'revenue' column using the IQR method. I want to flag outliers, not remove them, and also clip extreme values to the 1st and 99th percentile.",
+      "expected_output": "A pandas recipe with: IQR calculation (Q1, Q3, IQR = Q3-Q1), outlier detection creating a boolean 'revenue_is_outlier' column, then separate clipping using df['revenue'].clip(lower=df['revenue'].quantile(0.01), upper=df['revenue'].quantile(0.99)). Both steps should preserve the original column and add a 'revenue_clipped' column. Summary statistics showing outlier count and clip range. Explanation of why flagging vs. dropping is the safer default.",
+      "files": []
+    }
+  ]
+}

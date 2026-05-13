@@ -1,0 +1,23 @@
+{
+  "skill_name": "test-plan-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a test plan for a user login feature. It accepts email and password, validates credentials, and returns a JWT. Requirements: lockout after 5 failed attempts, tokens expire in 15 minutes, passwords must be bcrypt hashed.",
+      "expected_output": "A test plan with test cases organized in sections: Happy Path (successful login returns 200 + JWT, token has correct expiry), Edge Cases (email with trailing spaces, case-insensitive email), Negative Cases (wrong password returns 401, missing email returns 400, missing password returns 400, non-existent user returns 401 with same error as wrong password to prevent enumeration), Security Cases (account lockout after 5 attempts — verify 429 or 403 on 6th attempt, SQL injection in email field, brute force protection), and Performance (lockout check doesn't add significant latency). All cases have TC-00X IDs and priority levels.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What test cases do I need for a file upload endpoint that accepts PDF and image files up to 10MB?",
+      "expected_output": "Test cases covering: Happy Path (upload valid PDF under 10MB, upload valid JPEG, upload valid PNG), Edge Cases (upload file exactly at 10MB limit, upload file that is 1 byte under 10MB, upload file with unusual but valid MIME type like TIFF), Negative Cases (upload file over 10MB returns 413, upload wrong file type e.g. .exe returns 400, upload empty file returns 400, upload with no file returns 400, upload with spoofed extension e.g. .pdf file that is actually an executable), Security Cases (upload file with path traversal in filename, upload HTML file that could be served as XSS vector).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm adding a 'bulk delete users' admin API endpoint. What should I test and what are the biggest risks?",
+      "expected_output": "A test plan with special emphasis on risk: Happy Path (delete N users returns 200 and confirmation of deleted count), Negative Cases (delete with invalid user IDs returns appropriate error, delete empty list returns 400, delete list too large returns 413 or chunking required), Authorization (non-admin user receives 403, unauthenticated returns 401), Safety Cases (deleting a user who owns critical data cascades correctly, idempotency — deleting already-deleted user doesn't error), Performance (bulk delete of 100 users completes in acceptable time). Risk section: highlights that this is a destructive, irreversible operation — recommend requiring a confirmation token and audit logging all bulk delete actions.",
+      "files": []
+    }
+  ]
+}

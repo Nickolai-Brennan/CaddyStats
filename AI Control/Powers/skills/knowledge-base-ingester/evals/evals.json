@@ -1,0 +1,23 @@
+{
+  "skill_name": "knowledge-base-ingester",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's a Slack thread where our senior engineer explained how our deployment process works. Can you turn it into a KB article for new engineers?\n\n[Alice]: So basically to deploy you go to Jenkins, find the right job, make sure staging passed, then click build on prod. You need prod access for that.\n[Bob]: What if staging fails?\n[Alice]: If staging fails don't deploy lol. Fix the issue first. Sometimes it's flaky tests though - check the test history.\n[Bob]: How do we know if it's a flaky test?\n[Alice]: Look at the last 5 runs. If it failed less than 3 times out of 5 on the same test, it's probably flaky. You can rerun. But if it's a new failure, investigate.",
+      "expected_output": "A structured KB article titled something like 'Production Deployment Guide' with: Overview (2-3 sentences), Prerequisites (prod access required), numbered steps for the deployment process, a section on handling staging failures with the flaky test identification rule (check last 5 runs, <3 failures = likely flaky), and Common Issues section. Professional tone appropriate for new engineers. Should not include the Slack handles or casual language like 'lol'.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Convert this brain dump into a Notion-ready FAQ for our customers about our API rate limits: 'We rate limit by IP and by API key. The limit is 100 requests per minute for free plans and 1000 for paid plans. If you hit the limit you get a 429 error. You can check your current usage in the dashboard. Headers X-RateLimit-Remaining and X-RateLimit-Reset are included in every response. Enterprise customers can get higher limits by contacting us.'",
+      "expected_output": "A FAQ-formatted KB entry with 4-5 Q&A pairs: 'What are the rate limits?' (free vs paid), 'What happens when I exceed the limit?' (429 error), 'How do I monitor my usage?' (dashboard + response headers with code example showing the headers), 'Can I get higher limits?' (enterprise, contact us). Each answer should be 2-4 sentences. Summary callout box at the top.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I have a rough runbook written by the on-call engineer for handling database connection pool exhaustion. Can you structure it properly? Raw notes: 'check grafana for connection count metrics, look at pg_stat_activity, kill idle connections with pg_terminate_backend, if still bad restart the connection pooler service (pgbouncer), alert the DBA team if it happens again within 1 hour, root cause is usually a long-running query or leaked connection, check slow query log'",
+      "expected_output": "A structured runbook with numbered sequential steps, a verification checkpoint after the connection pooler restart, a 'Symptoms' section at the top, and a 'Root Cause Analysis' section at the bottom. Code blocks for the SQL commands (pg_stat_activity query, pg_terminate_backend). An escalation section noting when to alert the DBA team (recurrence within 1 hour). Total should be under 200 lines.",
+      "files": []
+    }
+  ]
+}

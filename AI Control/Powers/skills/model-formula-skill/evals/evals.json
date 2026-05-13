@@ -1,0 +1,23 @@
+{
+  "skill_name": "model-formula-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to create a customer health score for our SaaS product. Signals I have: login frequency, feature adoption count, support ticket volume, contract value, and NPS score. Score should be 0-100.",
+      "expected_output": "Factor table with weights, normalization, and rationale for each: login frequency (20%, normalize to logins/week / expected cadence, capped at 1.0), feature adoption (25%, adopted_features / total_features), support tickets (20%, penalty — high tickets = low score, inverted scale), contract value (15%, tier-based), NPS score (20%, normalize -100 to 100 → 0 to 1). Formula: composite = Σ(normalized_factor × weight) × 100. Thresholds: 0-40 At Risk, 41-70 Neutral, 71-85 Healthy, 86-100 Champion. Implementation SQL snippet. Calibration examples (churned customer vs. champion customer).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Design a priority scoring formula for a bug triage system. We need to decide which bugs to fix first based on severity, user impact, reproduction rate, and how long it's been open.",
+      "expected_output": "Factor table: severity (40%, P0=1.0, P1=0.7, P2=0.4, P3=0.1), user impact (30%, affected_users / total_users, capped at 1.0), reproduction rate (20%, reproducible=1.0, intermittent=0.5, not-reproduced=0.1), age (10%, days_open / 30 capped at 1.0 to prioritize stale bugs). Formula: priority = Σ(factor × weight) × 100. Thresholds: 80+ Fix immediately, 60-79 Next sprint, 40-59 Backlog, <40 Low priority. Notes on P0 severity being an automatic override regardless of score. SQL/Python snippet for batch scoring.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create an evaluation rubric for scoring job interview candidates for a software engineering role. I need it to be fair and consistent across interviewers.",
+      "expected_output": "Rubric with criteria: technical problem-solving (35%), system design thinking (25%), communication clarity (20%), collaboration/culture signals (10%), learning agility (10%). Each criterion scored 1-4 by interviewer (1=Does not meet bar, 2=Meets partially, 3=Meets bar, 4=Exceeds). Composite = weighted average × 25 → 0-100. Thresholds: <60 No hire, 60-74 Borderline (panel review), 75-89 Hire, 90+ Strong hire. Behavioral anchors for each score level on each criterion. Bias warning: flag correlation-based conflation (communication ≠ culture fit; assess separately). Recommend calibration sessions to align interviewers.",
+      "files": []
+    }
+  ]
+}

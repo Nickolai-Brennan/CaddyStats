@@ -1,0 +1,23 @@
+{
+  "skill_name": "repo-triage",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here are 5 unclassified GitHub issues from my project. Can you triage them, suggest labels (bug/feature/chore, P0-P3), assign them to frontend or backend team, and give me a table I can copy into my sprint planning doc?\n\n#101 — 'App crashes when uploading files over 10MB'\n#102 — 'Add dark mode toggle to settings page'\n#103 — 'Update README with new env vars'\n#104 — 'Payment webhook not firing in staging'\n#105 — 'Improve search result ranking algorithm'",
+      "expected_output": "A Markdown triage table with columns for issue number, title, type, priority, team, suggested labels, and suggested assignee. Priority should reflect severity (e.g., #101 and #104 likely P1, #102 P2, #103 P3). Each issue should have 2-3 labels. A short confirmation step should be present before any write actions.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a stale PR backlog — 12 open PRs older than 30 days with no activity. Can you help me write triage comments for each asking authors to rebase or close? Here are the titles and authors: PR #55 (alice), PR #58 (bob), PR #61 (carol), PR #63 (alice), PR #67 (dave), PR #70 (eve), PR #72 (bob), PR #74 (frank), PR #78 (alice), PR #80 (carol), PR #83 (dave), PR #86 (eve).",
+      "expected_output": "Twelve draft triage comments addressed to each author, asking them to rebase against main, confirm the PR is still relevant, or close it if not needed. Comments should be professional, under 100 words each, and personalized with the author's name. A summary table listing all 12 PRs with a 'stale' label recommendation should be included.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We just received a security report: 'Unauthenticated endpoint exposes user PII'. What labels, priority, and routing should this get in our issue tracker? Who should be notified?",
+      "expected_output": "The issue should be classified as type=Security, priority=P0, and routed to the security team. Suggested labels include 'security', 'P0', 'privacy'. The response should recommend creating the issue as private/confidential if the platform supports it, notifying the security team lead immediately, and NOT discussing details in public comments. A draft triage comment should be shown but the agent should confirm before taking any action.",
+      "files": []
+    }
+  ]
+}

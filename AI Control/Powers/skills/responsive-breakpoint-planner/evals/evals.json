@@ -1,0 +1,17 @@
+{
+  "skill_name": "responsive-breakpoint-planner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a desktop-first layout with a 3-column article grid. Convert it to mobile-first CSS with breakpoints. The layout should be: 1 column on mobile, 2 columns at 640px, 3 columns at 1024px. Also scale the article title from 18px on mobile to 24px on desktop using fluid typography.",
+      "expected_output": "Should produce: (1) Mobile-first CSS with default 1-column grid, and `@media (min-width: 640px)` for 2 columns, `@media (min-width: 1024px)` for 3 columns. (2) A fluid typography `clamp()` value for the title like `clamp(1.125rem, 1rem + 0.5vw, 1.5rem)`. (3) A note about why mobile-first is preferred (progressive enhancement, fewer overrides). (4) Optional: Tailwind equivalent classes for the same grid. Should NOT use max-width queries since the user asked for mobile-first conversion.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What breakpoints should I use for a new SaaS app dashboard? The app has a sidebar nav, a main content area with data tables, and a top header. I want to support mobile, tablet, and desktop. Recommend a breakpoint system and show me the CSS variables or Tailwind approach.",
+      "expected_output": "Should recommend a 3–4 breakpoint system aligned with Tailwind defaults (sm:640px, md:768px, lg:1024px, xl:1280px) with explanations of what changes at each breakpoint: mobile (hamburger menu, single column, stacked cards), tablet (2-column layout, sidebar collapsible), desktop (full sidebar + main, multi-column tables). Should provide CSS custom property definitions or Tailwind config. Should note the difference between viewport breakpoints and container queries for data table components, recommending container queries for tables.",
+      "files": []
+    }
+  ]
+}

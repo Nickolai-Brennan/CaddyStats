@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task Schema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "enum": ["backlog", "active", "blocked", "completed"] },
+    "priority": { "enum": ["critical", "high", "medium", "low"] },
+    "assignee": { "type": "string" }
+  },
+  "required": ["id", "title", "status"]
+}

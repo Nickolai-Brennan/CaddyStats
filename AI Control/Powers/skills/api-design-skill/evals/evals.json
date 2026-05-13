@@ -1,0 +1,23 @@
+{
+  "skill_name": "api-design-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design a REST API for a recipe sharing app. Users can create recipes, rate them, save favorites, and search by ingredient. I want OpenAPI YAML.",
+      "expected_output": "OpenAPI 3.x YAML with paths: /recipes (GET, POST), /recipes/{id} (GET, PUT, DELETE), /recipes/{id}/ratings (GET, POST), /users/{id}/favorites (GET, POST, DELETE), /recipes/search (GET with ingredient query param). Schemas for Recipe, Rating, Favorite, SearchResult, Error. Bearer JWT security. Pagination on list/search endpoints. Components reuse for common schemas.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What's the best way to handle errors in a REST API? Give me a standard error response format and show me how to document it in OpenAPI.",
+      "expected_output": "A standard error schema (e.g., {error: string, message: string, details?: array, traceId?: string}). HTTP status code conventions (400 bad request, 401 unauthorized, 403 forbidden, 404 not found, 422 unprocessable entity, 429 rate limited, 500 internal). OpenAPI YAML showing the Error schema in components/schemas and its reuse via $ref across endpoint responses.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to add webhook support to my existing API so clients can subscribe to order status changes. How should I design this?",
+      "expected_output": "Webhook subscription endpoints: POST /webhooks (create subscription with target URL, events array), GET /webhooks (list), DELETE /webhooks/{id}. WebhookSubscription schema. Webhook payload schema for order events. HMAC signature verification recommendation for payload security. Retry policy and exponential backoff notes. OpenAPI webhooks section (OAS 3.1) or callbacks (OAS 3.0) definition.",
+      "files": []
+    }
+  ]
+}

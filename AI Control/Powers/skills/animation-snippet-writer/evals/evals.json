@@ -1,0 +1,23 @@
+{
+  "skill_name": "animation-snippet-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a CSS animation for a card that slides up and fades in when it enters the viewport. It should trigger once when the card becomes visible (not on every scroll). I want a smooth ease-out feel, around 400ms. Include the JavaScript to trigger it.",
+      "expected_output": "Should produce: (1) A CSS `@keyframes slideUp` animation with translateY and opacity. (2) A `.reveal` class with initial hidden state and a `.is-visible` class that applies the animation. (3) A JavaScript IntersectionObserver implementation that adds `is-visible` to elements when they enter the viewport and disconnects after triggering. (4) A `prefers-reduced-motion` media query that disables the animation for users with that preference. (5) HTML markup showing how to apply the class. Animation should use `transform` and `opacity` only (no layout properties).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a Framer Motion animation for a modal dialog that: fades in/out, slides up slightly on enter, slides down on exit, and has a dark overlay backdrop that fades independently. The modal should animate in and out when an `isOpen` boolean changes.",
+      "expected_output": "Should produce: (1) Framer Motion code using `AnimatePresence` to handle enter/exit. (2) The modal with `initial`, `animate`, `exit` variants for fade + translateY. (3) The backdrop as a separate `motion.div` with opacity animation. (4) Use of `useReducedMotion` hook to disable animation if the user prefers reduced motion. (5) Complete JSX showing both components used together. No hardcoded durations without a comment explaining the choice.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a CSS loading spinner that: is a circular ring with a spinning gap, is 24px by default but scalable via font-size, uses the current text color (currentColor), and doesn't cause layout shift when shown inline.",
+      "expected_output": "A CSS spinner using `border-radius: 50%`, `border: 2px solid currentColor`, `border-top-color: transparent`, and `animation: spin`. Should use `display: inline-block` with `width/height` in em units (e.g., 1em) so it scales with font-size. A `@keyframes spin` with `to { transform: rotate(360deg) }` and `animation: spin 0.65s linear infinite`. Should include a `prefers-reduced-motion` override that pauses or hides the animation.",
+      "files": []
+    }
+  ]
+}

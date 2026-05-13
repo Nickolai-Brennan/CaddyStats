@@ -1,0 +1,23 @@
+{
+  "skill_name": "incident-postmortem-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a postmortem for this incident: Our payment service went down for 2 hours last Tuesday (Nov 12, 2024) from 14:32 to 16:41 UTC. Root cause: a database migration added a new index to the payments table but didn't run concurrently, causing table locks. About 3,200 users got payment errors. We found out from customer support tickets, not monitoring. Fix: rolled back the migration. Action items: add concurrent index creation to migration standards, set up payment API error rate alerts.",
+      "expected_output": "A structured postmortem with all sections: Summary (2-3 sentences), Impact (3200 users, payment service, 2 hours), Timeline (approximate timestamps for the migration deployment, customer reports, investigation, rollback, resolution), Root Cause (non-concurrent index causing table locks), Contributing Factors (including lack of payment error rate monitoring — which caused detection delay via customer reports), What Went Well (at least 1 item), Action Items table (2 items with owners marked TBD and due dates), Lessons Learned. Blameless language throughout.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Help me turn this Slack thread into a postmortem timeline:\n\n09:14 - Alice: getting alerts from customers about 500 errors\n09:20 - Bob: checking logs now\n09:35 - Bob: found it, looks like the config change from last night\n09:42 - Alice: reverting config\n09:48 - Bob: services look healthy\n09:50 - Alice: confirming with customers, all clear\n\nThe incident was a misconfigured API gateway timeout after a routine change.",
+      "expected_output": "A formatted timeline table with UTC timestamps (noting timezone unknown if not specified), converting the Slack messages into event descriptions. A Root Cause section for the misconfigured API gateway timeout. Contributing Factors should include the change being deployed without a configuration validation step or monitoring. Total incident duration calculated as ~36 minutes. Action items should include adding config validation and potentially a post-change monitoring period.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write an executive summary version of a postmortem for a database outage that lasted 45 minutes, affected 15% of users, and was caused by a disk space issue on the primary DB server. No data loss occurred. Fix was to clear WAL logs and increase disk alerts threshold.",
+      "expected_output": "A 4-5 sentence executive summary suitable for stakeholders: what happened (database outage, 45 minutes, 15% of users affected), the cause (disk space exhaustion on primary database), that no data was lost, what was done to resolve it (cleared WAL logs), and what's being done to prevent recurrence (disk space alerting improvements). Plain business language, no technical jargon without explanation.",
+      "files": []
+    }
+  ]
+}

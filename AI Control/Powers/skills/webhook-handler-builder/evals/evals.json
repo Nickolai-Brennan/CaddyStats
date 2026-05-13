@@ -1,0 +1,17 @@
+{
+  "skill_name": "webhook-handler-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a Stripe webhook handler in Express/TypeScript. It needs to: verify the Stripe-Signature header using HMAC-SHA256, handle `payment_intent.succeeded` and `customer.subscription.deleted` events, acknowledge with 200 immediately and process asynchronously, and deduplicate events using Redis so the same event ID is never processed twice.",
+      "expected_output": "Should produce: (1) A `verifyStripeSignature()` function using `crypto.timingSafeEqual()` and timestamp replay protection (reject events > 5 minutes old). (2) An Express route using `express.raw()` middleware (not json — needed for sig verification). (3) Immediate `res.status(200).json({ received: true })` before processing. (4) A Redis-based `isAlreadyProcessed(eventId)` function using `SET NX EX`. (5) An event router dispatching to `handlePaymentSucceeded` and `handleSubscriptionCancelled` stubs. (6) The STRIPE_WEBHOOK_SECRET loaded from environment variable, not hardcoded.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a GitHub webhook handler in FastAPI/Python for pull request events. It should: verify the X-Hub-Signature-256 header, route `pull_request.opened` to create a Jira ticket stub and `pull_request.closed` (merged only) to close the Jira ticket, and log all unhandled event types.",
+      "expected_output": "Should produce: (1) A FastAPI route with `Request` parameter (not `body: dict` — raw body needed for sig verification). (2) A `verify_signature()` function using `hmac.compare_digest()`. (3) Reading `X-GitHub-Event` and `X-Hub-Signature-256` from headers. (4) A router that checks `event['action']` for the sub-type — `pull_request.closed` should only act if `event['pull_request']['merged'] is True`. (5) `GITHUB_WEBHOOK_SECRET` from env var. (6) Logging of unhandled event types. The endpoint returns `{received: True}` synchronously.",
+      "files": []
+    }
+  ]
+}

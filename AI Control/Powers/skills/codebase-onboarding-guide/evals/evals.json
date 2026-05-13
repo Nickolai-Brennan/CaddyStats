@@ -1,0 +1,23 @@
+{
+  "skill_name": "codebase-onboarding-guide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write an onboarding guide for a new backend engineer joining our team. Our stack: Node.js 20, Express, PostgreSQL (via Prisma), Jest for tests, GitHub Actions for CI, deployed on Railway. The main directories are: src/routes/, src/services/, src/models/, src/middleware/, src/__tests__/. Branching convention: feature/ticket-description. PR requires 1 approval and passing CI.",
+      "expected_output": "A structured onboarding guide with: Welcome section (1-2 sentence project summary), Prerequisites (Node 20, npm, PostgreSQL), Getting Started with numbered bash commands (clone, install, env setup, db migrate, run dev), Project Structure with src/ tree and 1-sentence descriptions per directory, Development Workflow covering branching convention and PR requirements, Testing section showing how to run Jest, and First PR Checklist. All commands should be in code blocks. No real credentials.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a CONTRIBUTING.md for an open source Python library. It uses pytest for testing, black and isort for formatting, poetry for dependency management. Contributions need tests and docs updates. There's a code of conduct.",
+      "expected_output": "A CONTRIBUTING.md with sections: How to Contribute (fork/clone/branch), Development Setup (poetry install, pre-commit hooks), Running Tests (pytest command with coverage flag), Code Style (black and isort commands), Documentation (instructions for updating docs), Pull Request Guidelines (checklist with tests, docs, passing CI), and a Code of Conduct reference. All commands should be in bash code blocks.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What are the most important things to include in a developer onboarding doc for a monorepo with 5 services?",
+      "expected_output": "A structured recommendation covering: (1) Monorepo navigation (how to understand which service to work in, workspace structure), (2) Service-specific setup vs shared setup, (3) Cross-service dependencies and local development with Docker Compose, (4) Which service owns what, (5) How to run tests for a single service vs all services, (6) Deployment pipeline per service vs monorepo-level. Should recommend organizing the docs as a top-level onboarding guide + per-service README.",
+      "files": []
+    }
+  ]
+}

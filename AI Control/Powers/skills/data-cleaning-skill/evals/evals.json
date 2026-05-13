@@ -1,0 +1,23 @@
+{
+  "skill_name": "data-cleaning-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a pandas DataFrame with a 'date' column that has values like '01/15/2024', 'January 15 2024', '2024-01-15', and some NaT values. How do I clean this?",
+      "expected_output": "Python/pandas code using pd.to_datetime() with infer_datetime_format=True or a custom parser. Handle NaT: show how to fill forward, backfill, or drop depending on context (ask user which). Standardize output to ISO 8601 (YYYY-MM-DD). Validate: assert no nulls remain (or expected nulls only), assert dtype is datetime64. Flag rows that failed parsing (coerce to NaT) for manual review.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "My product table has these issues: product names in mixed case ('Widget Pro', 'WIDGET PRO', 'widget pro'), price column stored as string with '$' prefix ('$29.99'), and category column with both 'N/A' and null for missing values. Give me a full cleaning script.",
+      "expected_output": "Python/pandas script: (1) name normalization: .str.strip().str.title() or .str.lower() with consistency choice noted; (2) price: .str.replace('$','').astype(float) with error handling for non-numeric values; (3) category: replace 'N/A' string with np.nan then handle nulls (ask: fill with 'Unknown' or drop?). Include validation assertions after each step. Output cleaned DataFrame to CSV with pd.to_csv().",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to merge two customer tables from different systems. Table A has email as the key, Table B has phone as the key. Both have 'name' but spelled differently in some rows. Help me deduplicate after merging.",
+      "expected_output": "Strategy: fuzzy join on normalized email + phone. Steps: (1) normalize both keys (lowercase email, E.164 phone). (2) merge on email first (exact match), then on phone for non-matched rows. (3) for remaining unmatched, use fuzzy name matching (fuzzywuzzy/rapidfuzz with threshold ~85). (4) flag uncertain matches for human review rather than auto-merging. (5) dedup final table keeping the record with more non-null fields. Warning about data loss; recommend backup before merge.",
+      "files": []
+    }
+  ]
+}

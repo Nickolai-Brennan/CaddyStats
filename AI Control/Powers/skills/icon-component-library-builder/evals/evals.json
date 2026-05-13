@@ -1,0 +1,17 @@
+{
+  "skill_name": "icon-component-library-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a React + TypeScript icon component system. I want: a base `Icon` wrapper component with size, color, strokeWidth props, an `IconProps` interface, three specific icons (ChevronRight, Check, X), an `index.ts` barrel export with an `IconName` type union, and a `DynamicIcon` component for rendering icons by name.",
+      "expected_output": "Should produce: (1) An `IconProps` interface with size (number|string, default 24), color (string, default 'currentColor'), aria-label (optional), strokeWidth (number, default 2). (2) A base `Icon` SVG wrapper using `forwardRef` with `aria-hidden={!ariaLabel}` and `role='img'` when ariaLabel is present. (3) Three individual icon components (ChevronRight, Check, X) each using the Icon wrapper. (4) A barrel `index.ts` with all exports and `type IconName = 'chevron-right' | 'check' | 'x'`. (5) A `DynamicIcon` using `lazy()` and `Suspense`. Usage examples showing decorative vs. labeled icon usage.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a folder of 50 SVG files at `assets/icons/`. Write a Node.js build script that generates a React TypeScript component for each SVG, a barrel index.ts, and an IconName type union. The component names should be PascalCase with 'Icon' suffix (e.g., arrow-right.svg → ArrowRightIcon).",
+      "expected_output": "Should produce: (1) A TypeScript `scripts/generate-icons.ts` that reads the SVG directory, converts filenames to PascalCase + Icon suffix, extracts SVG path elements, and generates one `.tsx` file per icon. (2) Generates an `index.ts` barrel with all exports. (3) Generates a `types.ts` with `IconName` union derived from filenames. (4) Uses a consistent template for each component referencing the shared Icon wrapper. (5) A `package.json` script entry like `'generate:icons': 'ts-node scripts/generate-icons.ts'`. Notes about SVGs with embedded `<style>` tags needing special handling.",
+      "files": []
+    }
+  ]
+}
