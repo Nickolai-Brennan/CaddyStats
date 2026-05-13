@@ -234,7 +234,7 @@ src/features/players/
 ├── components/
 ├── hooks/
 ├── pages/
-├── backend/
+├── services/
 ├── types.ts
 └── utils.ts
 ```

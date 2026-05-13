@@ -56,7 +56,7 @@ It is built as a data-first system where product claims, projections, and editor
 - **AI Layer:** Prompting, grounding, review, and logging controls
 
 See:
-- `docs/build-system.md`
+- `docs/planning/build-system.md`
 - `docs/architectural-decision-records/`
 - `docs/caddy-stats-building-plan.md`
 

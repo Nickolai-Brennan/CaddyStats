@@ -232,7 +232,7 @@ No route, resolver, or service should contain raw SQL unless explicitly approved
 Services own business logic.
 
 ```text
-app/backend/
+app/services/
 ├── auth_service.py
 ├── player_service.py
 ├── stats_service.py
