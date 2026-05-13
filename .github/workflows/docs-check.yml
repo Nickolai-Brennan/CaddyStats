@@ -56,5 +56,5 @@ jobs:
         if: steps.changes.outputs.code_or_data == 'true' && steps.changes.outputs.docs != 'true'
         run: |
           echo "Code or data changes were detected, but no documentation updates were found."
-          echo "Please update Support/docs and/or README.md in this pull request."
+          echo "Please update docs/ and/or Support/docs (or README.md) in this pull request."
           exit 1
