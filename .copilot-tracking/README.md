@@ -1,3 +1,7 @@
+# Instructions 
+`AI Control/Powers/instructions/task-implementation.instructions.md`
+
+
 # Consolidated Master Task List
 
 ## Purpose
