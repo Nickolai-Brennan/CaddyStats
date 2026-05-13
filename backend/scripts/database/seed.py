@@ -6,7 +6,6 @@ from __future__ import annotations
 import asyncio
 from typing import Final
 
-from passlib.context import CryptContext
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
@@ -43,8 +42,7 @@ BETTING_LINE_SCOTTIE_ID: Final[str] = "88888888-8888-8888-8888-888888888881"
 BETTING_LINE_RORY_ID: Final[str] = "88888888-8888-8888-8888-888888888882"
 BETTING_LINE_COLLIN_ID: Final[str] = "88888888-8888-8888-8888-888888888883"
 
-PASSWORD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
-SEEDED_PASSWORD_HASH: Final[str] = PASSWORD_CONTEXT.hash("caddystats-local-dev-password")
+SEEDED_PASSWORD_HASH: Final[str] = "$2b$12$EznWYiOU4kG2Ls1x8AhSlu8UXx60f0Fnnnh26P6RQjLldwjGgg0gq"  # noqa: S105
 
 
 def create_seed_engine(database_url: str | None = None) -> AsyncEngine:
