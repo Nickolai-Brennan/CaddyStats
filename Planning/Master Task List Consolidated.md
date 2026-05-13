@@ -24,7 +24,7 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 
 - [x] Establish ADR format, numbering, review process, mandatory triggers, and seed initial ADRs for stack, database, AI grounding, materialized views, and worker orchestration.
 - [x] Publish the system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching, CDN, observability, worker architecture, and AI injection architecture.
-- [ ] Document authentication, RBAC, secrets handling, security governance, and logging/redaction standards.
+- [x] Document authentication, RBAC, secrets handling, security governance, and logging/redaction standards.
 - [ ] Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy.
 - [ ] Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing.
 - [ ] Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs.
