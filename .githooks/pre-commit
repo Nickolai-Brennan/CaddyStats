@@ -6,5 +6,12 @@ if ! command -v pnpm >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "[pre-commit] running format check"
-pnpm format:check
+mapfile -t files < <(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx|js|jsx|json|md|yaml|yml)$' || true)
+
+if [ ${#files[@]} -eq 0 ]; then
+  echo "[pre-commit] no staged files require prettier"
+  exit 0
+fi
+
+echo "[pre-commit] running format check on staged files"
+pnpm exec prettier --check --ignore-unknown -- "${files[@]}"

@@ -6,13 +6,13 @@ Define how CaddyStats separates configuration and secrets across local, developm
 
 ## Environment model
 
-| Environment | Primary use | Config source | Secret source |
-| --- | --- | --- | --- |
-| local | contributor workstations | `.env.example` + `.env.local` | local uncommitted files only |
-| development | shared internal environment | platform env config + `config/environments/.env.development.example` guidance | managed platform secrets |
-| test | CI and integration validation | CI environment variables + `config/environments/.env.test.example` | GitHub Actions secrets or CI-safe defaults |
-| staging | pre-production validation | platform env config + staged deploy workflow | managed secret store |
-| production | live platform runtime | platform env config only | managed secret store with least privilege |
+| Environment | Primary use                   | Config source                                                                 | Secret source                              |
+| ----------- | ----------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------ |
+| local       | contributor workstations      | `.env.example` + `.env.local`                                                 | local uncommitted files only               |
+| development | shared internal environment   | platform env config + `config/environments/.env.development.example` guidance | managed platform secrets                   |
+| test        | CI and integration validation | CI environment variables + `config/environments/.env.test.example`            | GitHub Actions secrets or CI-safe defaults |
+| staging     | pre-production validation     | platform env config + staged deploy workflow                                  | managed secret store                       |
+| production  | live platform runtime         | platform env config only                                                      | managed secret store with least privilege  |
 
 ## Required files
 

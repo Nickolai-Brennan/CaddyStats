@@ -65,7 +65,6 @@ This repository currently contains:
 - `make test` runs the repository test entrypoints
 - `make hooks` installs standardized repository git hooks (`.githooks/`)
 
-
 ## Contributor quickstart
 
 - `make setup` bootstraps local dependencies, hooks, env files, and repository verification.

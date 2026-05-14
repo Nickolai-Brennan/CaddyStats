@@ -65,29 +65,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_DB: caddystats_test
-          POSTGRES_USER: caddystats
-          POSTGRES_PASSWORD: caddystats_test
-        ports:
-          - 5433:5432
-        options: >-
-          --health-cmd "pg_isready -U caddystats -d caddystats_test"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      redis:
-        image: redis:7-alpine
-        ports:
-          - 6380:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     env:
       APP_ENV: test
       DATABASE_URL: postgresql+asyncpg://caddystats:caddystats_test@127.0.0.1:5433/caddystats_test

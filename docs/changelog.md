@@ -1,3 +1,29 @@
+## 2026-05-14 — Phase 1 bootstrap, CI, and contributor baseline
+
+- Added:
+  - `CONTRIBUTING.md` defining the repository contributor workflow and validation expectations
+  - `docs/devops/local-development-bootstrap.md`, `docs/devops/environment-and-secrets-strategy.md`, and `docs/devops/platform-baseline.md`
+  - `config/environments/` example overlays for local, development, test, staging, and production
+  - `scripts/verify/` checks for env validation, docs entrypoints, architecture drift, and Docker validation
+  - standard GitHub issue templates, pull request template, `architecture-drift.yml`, and `deploy.yml`
+  - shared package foundations for `ui`, `types`, `config`, `utils`, `analytics`, and `seo`
+  - top-level responsibility README stubs for repository domain boundaries
+- Changed:
+  - `Makefile` and `scripts/setup/bootstrap.sh` now expose setup, verify, lint, typecheck, test, and docker validation entrypoints
+  - `.env.example`, `README.md`, `docs/README.md`, `docs/governance/NAMING_CONVENTIONS.md`, and `docs/governance/REPOSITORY_STRUCTURE_AND_OWNERSHIP.md` now document the Phase 1 baseline
+  - `.github/workflows/ci.yml`, `docs-check.yml`, `dependency-review.yml`, `stack-verify.yml`, and `verify-environment.yml` now align to the current repo structure
+  - `docs/planning/Master Task List Consolidated.md` now marks the targeted Phase 1 baseline items complete
+- Fixed:
+  - moved GitHub issue and PR templates into standard repository locations
+  - removed duplicate workflow copies that were causing avoidable drift
+  - aligned web Docker validation with a committed nginx config and docker ignore baseline
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - validation will rely on local dependency installation (`pnpm install` and `python -m pip install -r services/api/requirements/dev.txt`) before running `make lint`, `make typecheck`, `make test`, and `make docker-validate`
+
 ## 2026-05-14 — Monorepo structure and ownership lock
 
 - Added:

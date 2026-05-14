@@ -37,7 +37,6 @@ Document the naming rules used for canonical docs, architectural records, and cr
 - environment variables should remain uppercase with underscores
 - secret names should be descriptive but must not include values or provider-specific sensitive data in docs examples
 
-
 ## Shared packages and UI tokens
 
 - shared workspace packages should use the `@caddystats/<domain>` naming pattern
