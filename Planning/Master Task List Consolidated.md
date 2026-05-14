@@ -25,9 +25,9 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [x] Establish ADR format, numbering, review process, mandatory triggers, and seed initial ADRs for stack, database, AI grounding, materialized views, and worker orchestration.
 - [x] Publish the system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching, CDN, observability, worker architecture, and AI injection architecture.
 - [x] Document authentication, RBAC, secrets handling, security governance, and logging/redaction standards.
-- [ ] Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy.
-- [ ] Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing.
-- [ ] Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs.
+- [x] Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy.
+- [x] Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing.
+- [x] Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs.
 - [ ] Create foundational core and product docs including `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, and `TARGET_AUDIENCE.md`.
 - [ ] Create documentation governance and standards docs including `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`, `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, and `EVENT_DRIVEN_ARCHITECTURE.md`.
 - [ ] Create missing strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning.
