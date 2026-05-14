@@ -33,6 +33,8 @@ for raw_line in env_file.read_text().splitlines():
     if not line or line.startswith("#") or "=" not in line:
         continue
     key, value = line.split("=", 1)
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        value = value[1:-1]
     values[key] = value
 
 missing = [var for var in required_vars if var not in values]
@@ -41,11 +43,11 @@ if missing:
     raise SystemExit(1)
 
 if not env_file.name.endswith("example") and not env_file.name.endswith("sample"):
-    placeholders = [
-        var
-        for var in secret_vars
-        if not values.get(var) or values.get(var, "").startswith("change-me")
-    ]
+    placeholders = []
+    for var in secret_vars:
+        value = values.get(var, "")
+        if not value or value.startswith("change-me"):
+            placeholders.append(var)
     for var in placeholders:
         print(f"[env] warning: {var} still uses a placeholder value in {env_file}")
     if placeholders:

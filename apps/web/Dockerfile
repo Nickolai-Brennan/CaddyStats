@@ -17,8 +17,8 @@ RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 # -----------------------------------------------------------------------------
 FROM base AS development
 
-COPY package.json ./
-RUN pnpm install --no-frozen-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY . .
 
 EXPOSE 3000
@@ -30,8 +30,8 @@ CMD ["pnpm", "dev", "--host", "0.0.0.0"]
 # -----------------------------------------------------------------------------
 FROM base AS builder
 
-COPY package.json ./
-RUN pnpm install --no-frozen-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
