@@ -1,3 +1,24 @@
+## 2026-05-14 — Phase 0 Tracker Closure: Provenance, Roadmap, and Compliance Tasks
+
+- Added:
+  - N/A (documentation already created in prior session)
+- Changed:
+  - `Planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
+    - Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy
+    - Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing
+    - Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs
+- Fixed:
+  - Closed tracker gap where Phase 0 documentation tasks were complete in docs but still shown as unchecked in the master task list
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - All three tasks were satisfied by documents created on 2026-05-13:
+    - `docs/data/stat-grounding-policy.md`
+    - `docs/roadmap/build-phases.md`
+    - `docs/compliance/` (privacy-policy, terms-of-use, affiliate-disclosure, data-retention-policy, operational-compliance-policy, README)
+
 ## 2026-05-13 — Provenance, Compliance, and Roadmap Governance Expansion
 
 - Added:
