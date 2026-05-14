@@ -417,21 +417,21 @@ Every AI workflow must log:
 
 ## 10. Cross-Cutting Concerns Summary
 
-| Concern                 | Governing Document                                             |
-| ----------------------- | -------------------------------------------------------------- |
-| Service boundaries      | This document, ADR-001                                         |
-| API strategy            | This document, ADR-002                                         |
-| Schema separation       | This document, ADR-003                                         |
-| Materialized views      | ADR-004                                                        |
-| Worker orchestration    | ADR-005                                                        |
-| AI grounding and safety | ADR-006                                                        |
-| Observability           | ADR-007                                                        |
-| Edge caching and CDN    | ADR-008                                                        |
-| Search indexing         | ADR-009                                                        |
-| Editorial rendering     | ADR-010                                                        |
+| Concern                 | Governing Document                                        |
+| ----------------------- | --------------------------------------------------------- |
+| Service boundaries      | This document, ADR-001                                    |
+| API strategy            | This document, ADR-002                                    |
+| Schema separation       | This document, ADR-003                                    |
+| Materialized views      | ADR-004                                                   |
+| Worker orchestration    | ADR-005                                                   |
+| AI grounding and safety | ADR-006                                                   |
+| Observability           | ADR-007                                                   |
+| Edge caching and CDN    | ADR-008                                                   |
+| Search indexing         | ADR-009                                                   |
+| Editorial rendering     | ADR-010                                                   |
 | Engineering governance  | `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md` |
-| Domain model            | `docs/architecture/domain-model.md`                         |
-| ADR process             | `docs/governance/adr/README.md`                             |
+| Domain model            | `docs/architecture/domain-model.md`                       |
+| ADR process             | `docs/governance/adr/README.md`                           |
 
 ---
 

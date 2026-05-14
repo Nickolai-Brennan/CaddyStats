@@ -15,13 +15,13 @@ This folder covers:
 
 ## Document map
 
-| Document | Purpose |
-| --- | --- |
-| `privacy-policy.md` | defines how user and visitor data should be collected, processed, stored, and disclosed |
-| `terms-of-use.md` | defines platform usage terms, user responsibilities, and platform reservations of rights |
-| `affiliate-disclosure.md` | defines disclosure expectations for affiliate relationships and monetized content |
-| `data-retention-policy.md` | defines retention windows, deletion expectations, and auditability requirements |
-| `operational-compliance-policy.md` | defines internal operational responsibilities around compliance-sensitive workflows |
+| Document                           | Purpose                                                                                  |
+| ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| `privacy-policy.md`                | defines how user and visitor data should be collected, processed, stored, and disclosed  |
+| `terms-of-use.md`                  | defines platform usage terms, user responsibilities, and platform reservations of rights |
+| `affiliate-disclosure.md`          | defines disclosure expectations for affiliate relationships and monetized content        |
+| `data-retention-policy.md`         | defines retention windows, deletion expectations, and auditability requirements          |
+| `operational-compliance-policy.md` | defines internal operational responsibilities around compliance-sensitive workflows      |
 
 ## How to use this folder
 
