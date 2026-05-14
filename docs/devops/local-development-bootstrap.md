@@ -15,7 +15,7 @@ Define the baseline bootstrap flow for contributors working on CaddyStats locall
 ## Bootstrap flow
 
 1. Clone the repository.
-2. Run `make setup`.
+2. Run `make setup` (or `SKIP_API_DEPS=1 make setup` for frontend-only work).
 3. Review `.env` and `.env.local` before starting any service.
 4. Run `make verify` to confirm env, docs, and architecture baselines.
 5. Start the local stack with `make dev`.

@@ -65,7 +65,7 @@ test: ## Run repository tests
 	@set -e; \
 	cleanup() { docker compose -f docker-compose.test.yml down >/dev/null 2>&1 || true; }; \
 	trap cleanup EXIT; \
-	docker compose -f docker-compose.test.yml up -d; \
+	docker compose -f docker-compose.test.yml up -d --wait; \
 	cd $(API_DIR) && $(PYTHON) -m pytest; \
 	pnpm --filter web test
 
@@ -73,7 +73,7 @@ test-api: ## Run API tests only
 	@set -e; \
 	cleanup() { docker compose -f docker-compose.test.yml down >/dev/null 2>&1 || true; }; \
 	trap cleanup EXIT; \
-	docker compose -f docker-compose.test.yml up -d; \
+	docker compose -f docker-compose.test.yml up -d --wait; \
 	cd $(API_DIR) && $(PYTHON) -m pytest
 
 test-web: ## Run web tests only

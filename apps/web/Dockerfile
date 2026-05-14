@@ -2,12 +2,15 @@
 # CaddyStats Web — Dockerfile (React/Vite)
 # =============================================================================
 
+ARG PNPM_VERSION=9.15.9
+
 # -----------------------------------------------------------------------------
 # Base
 # -----------------------------------------------------------------------------
 FROM node:20-alpine AS base
-
+ARG PNPM_VERSION
 WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # -----------------------------------------------------------------------------
 # Development dependencies
@@ -15,12 +18,12 @@ WORKDIR /app
 FROM base AS development
 
 COPY package.json ./
-RUN npm install
+RUN pnpm install --no-frozen-lockfile
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["pnpm", "dev", "--host", "0.0.0.0"]
 
 # -----------------------------------------------------------------------------
 # Builder
@@ -28,9 +31,9 @@ CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 FROM base AS builder
 
 COPY package.json ./
-RUN npm install
+RUN pnpm install --no-frozen-lockfile
 COPY . .
-RUN npm run build
+RUN pnpm build
 
 # -----------------------------------------------------------------------------
 # Production

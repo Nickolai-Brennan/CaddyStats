@@ -15,6 +15,7 @@ header() { echo -e "\n${BOLD}$*${RESET}"; }
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 NODE_MAJOR_REQUIRED=20
 PYTHON_MINOR_REQUIRED=12
+SKIP_API_DEPS="${SKIP_API_DEPS:-0}"
 
 require_command() {
   local command="$1"
@@ -45,6 +46,7 @@ if [[ "$PYTHON_MINOR" -lt "$PYTHON_MINOR_REQUIRED" ]]; then
 fi
 
 if ! command -v pnpm >/dev/null 2>&1; then
+  require_command corepack "corepack is required to install pnpm automatically."
   log "pnpm not found — enabling via corepack"
   corepack enable
   corepack prepare pnpm@9.15.9 --activate
@@ -71,9 +73,13 @@ header "Installing workspace dependencies"
 pnpm install
 log "pnpm install complete"
 
-header "Installing API development dependencies"
-python3 -m pip install -r services/api/requirements/dev.txt
-log "API dependencies installed"
+if [[ "$SKIP_API_DEPS" == "1" ]]; then
+  warn "Skipping API dependency installation because SKIP_API_DEPS=1"
+else
+  header "Installing API development dependencies"
+  python3 -m pip install -r services/api/requirements/dev.txt
+  log "API dependencies installed"
+fi
 
 header "Installing repository hooks"
 make hooks
@@ -92,4 +98,6 @@ echo "  make typecheck        # run repo type checks"
 echo "  make test             # run API + web tests"
 echo "  make dev              # start the local Docker stack"
 echo "  make docker-validate  # validate compose files and image builds"
+echo ""
+echo "  Frontend-only setup:  SKIP_API_DEPS=1 make setup"
 echo ""

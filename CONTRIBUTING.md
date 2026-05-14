@@ -7,7 +7,7 @@ This repository follows an architecture-first, data-first workflow. Phase 1 work
 ## Contributor workflow
 
 1. Read `README.md`, `docs/workflow.md`, and the closest relevant docs under `docs/`.
-2. Run `make setup` on a fresh clone.
+2. Run `make setup` on a fresh clone. Use `SKIP_API_DEPS=1 make setup` for frontend-only work.
 3. Review `.env.example` and the overlays in `config/environments/` before adding or changing environment variables.
 4. Make the smallest change that satisfies the task.
 5. Run `make verify`, `make lint`, `make typecheck`, and `make test` before requesting review.
