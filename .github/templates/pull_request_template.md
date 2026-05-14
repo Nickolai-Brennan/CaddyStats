@@ -31,7 +31,7 @@ N/A
 
 ## Documentation Updates
 
-- [ ] Changelog updated (`Support/docs/changelog.md`)
+- [ ] Changelog updated (`docs/changelog.md`)
 - [ ] Relevant docs updated
 
 ## Checklist

@@ -138,7 +138,7 @@ PostgreSQL is partitioned into named schemas with strict ownership boundaries.
 - All schema changes via Alembic migrations
 - Prefer expand/contract pattern for high-risk changes
 - Migration files include backward-compatibility risk notes
-- See `Support/docs/00-root/engineering-standards-and-governance.md` section 6 for full migration governance
+- See `docs/00-root/engineering-standards-and-governance.md` section 6 for full migration governance
 
 ---
 
@@ -429,9 +429,9 @@ Every AI workflow must log:
 | Edge caching and CDN    | ADR-008                                                        |
 | Search indexing         | ADR-009                                                        |
 | Editorial rendering     | ADR-010                                                        |
-| Engineering governance  | `Support/docs/00-root/engineering-standards-and-governance.md` |
+| Engineering governance  | `docs/00-root/engineering-standards-and-governance.md` |
 | Domain model            | `docs/architecture/domain-model.md`                            |
-| ADR process             | `Support/docs/architectural-decision-records/README.md`        |
+| ADR process             | `docs/architecture/decisions/README.md`        |
 
 ---
 

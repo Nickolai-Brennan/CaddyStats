@@ -6,7 +6,7 @@ Provide a single master planning artifact that combines:
 
 1. The cross-phase consolidated roadmap task matrix
 2. Missing-but-critical tasks identified in planning review
-3. Additional tasks sourced directly from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md`
+3. Additional tasks sourced directly from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md`
 4. Additional task-bearing planning artifacts found throughout the repository
 5. A deduplicated checkbox-based tracker for execution
 

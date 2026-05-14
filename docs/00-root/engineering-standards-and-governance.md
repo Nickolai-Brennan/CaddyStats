@@ -132,7 +132,7 @@ Default ownership mapping:
 - `database/` → database owner
 - `infrastructure/` → platform/DevOps owner
 - `ai/` → AI systems owner
-- `docs/` and `Support/docs/` → documentation owner with domain reviewer support
+- `docs/` → documentation owner with domain reviewer support
 - `scripts/` → platform owner
 - `tests/` → testing owner with affected domain reviewers
 - `config/` → platform owner or system architecture owner
@@ -156,11 +156,11 @@ The owner of the changed domain is responsible for ensuring relevant docs are up
 
 When applicable, changes must update the closest relevant source first:
 
-- root/core docs in `Support/docs/00-root/`
-- product strategy docs in `Support/docs/01-product/`
-- ADRs in `Support/docs/architectural-decision-records/`
-- changelog in `Support/docs/changelog.md`
-- workflow/process docs in `Support/docs/workflow.md`
+- root/core docs in `docs/00-root/`
+- product strategy docs in `docs/product/`
+- ADRs in `docs/architecture/decisions/`
+- changelog in `docs/changelog.md`
+- workflow/process docs in `docs/workflow.md`
 
 ### 4.4 ADR Trigger Rule
 
@@ -182,7 +182,7 @@ An ADR is required when a change introduces or materially revises:
 
 Every merged material change must add or update an entry in:
 
-- `Support/docs/changelog.md`
+- `docs/changelog.md`
 
 Exceptions may be allowed for trivial, purely internal, or non-behavioral noise changes, but the default expectation is to log meaningful work.
 
@@ -654,10 +654,10 @@ If this document conflicts with a later approved ADR or a more specific domain-l
 
 ## 13. Related Documents
 
-- `Support/docs/workflow.md`
-- `Support/docs/changelog.md`
-- `Planning/Master Task List Consolidated.md`
-- `Support/docs/architectural-decision-records/`
+- `docs/workflow.md`
+- `docs/changelog.md`
+- `docs/planning/Master Task List Consolidated.md`
+- `docs/architecture/decisions/`
 
 ---
 

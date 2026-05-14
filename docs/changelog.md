@@ -1,9 +1,32 @@
+## 2026-05-14 — Docs Consolidation: Merge and Layer All Folder Docs
+
+- Added:
+  - `docs/00-root/` — root governance docs moved from `Support/docs/00-root/`
+  - `docs/architecture/decisions/` — ADRs moved from `Support/docs/architectural-decision-records/`
+  - `docs/devops/` — DevOps docs moved from `Support/docs/DevOps/`
+  - `docs/planning/` — planning and task list docs moved from root `Planning/`
+  - `docs/product/` expanded — product strategy docs moved from `Support/docs/01-product/`
+  - `docs/caddy-stats-building-plan.md`, `docs/changelog.md`, `docs/workflow.md` — moved from `Support/docs/`
+- Changed:
+  - All internal cross-references updated from `Support/docs/...` → `docs/...` and `Planning/...` → `docs/planning/...`
+  - `docs/workflow.md` core-location section updated to reflect new canonical paths
+  - `docs/architecture/decisions/ADR-001-monorepo-architecture.md` ADR storage location updated
+- Fixed:
+  - Eliminated split documentation roots (`Support/docs/`, `Planning/`, `docs/`) in favour of a single `docs/` tree
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - `Support/` and `Planning/` root directories removed after all content migrated into `docs/`
+  - No content was lost; all files were moved with git history preserved
+
 ## 2026-05-14 — Phase 0 Tracker Closure: Provenance, Roadmap, and Compliance Tasks
 
 - Added:
   - N/A (documentation already created in prior session)
 - Changed:
-  - `Planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
+  - `docs/planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
     - Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy
     - Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing
     - Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs
@@ -58,7 +81,7 @@
 ## 2026-05-13 — ADR Governance and System Blueprint
 
 - Added:
-  - `Support/docs/architectural-decision-records/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
+  - `docs/architecture/decisions/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
   - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability, workers, and AI injection architecture
 - Changed:
   - N/A
@@ -75,7 +98,7 @@
 ## 2026-05-13 — Engineering Standards and Governance
 
 - Added:
-  - `Support/docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
+  - `docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
 - Changed:
   - Governance coverage now formalizes architecture-first delivery controls, documentation update requirements, ADR triggers, release readiness expectations, and production approval checkpoints
 - Fixed:
@@ -90,7 +113,7 @@
 ## 2026-05-13 — Consolidated Master Task List
 
 - Added:
-  - `Planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase X.md`
+  - `docs/planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase X.md`
 - Changed:
   - Consolidated planning now includes phase-derived implementation scope callouts to complement the master matrix
 - Fixed:
@@ -164,7 +187,7 @@
 ## 2026-05-12 — Master Task List Audit
 
 - Added:
-  - Additional required task coverage across `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md` and `Planning/Master Task List Phase X.md`
+  - Additional required task coverage across `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md` and `docs/planning/Master Task List Phase X.md`
 - Changed:
   - Standardized markdown structure in the phase master task lists with consistent headings and checklist-style task blocks
 - Fixed:
@@ -179,9 +202,9 @@
 ## 2026-05-12 — Documentation Foundation
 
 - Added:
-  - Initial product requirements documentation in `Support/docs/00-root/product-requirements-doc.md`
-  - Product strategy documents under `Support/docs/01-product/`
-  - Core ADR set under `Support/docs/architectural-decision-records/`
+  - Initial product requirements documentation in `docs/00-root/product-requirements-doc.md`
+  - Product strategy documents under `docs/product/`
+  - Core ADR set under `docs/architecture/decisions/`
   - Build and implementation planning docs (`build-system.md`, `caddy-stats-building-plan.md`)
 - Changed:
   - Established build-order-first project direction across docs
@@ -198,10 +221,10 @@
 
 - Added:
   - New foundational docs for project overview, vision/goals, and roadmap:
-    - `Support/docs/00-root/project-overview.md`
-    - `Support/docs/00-root/vision-and-goals.md`
-    - `Support/docs/00-root/roadmap.md`
-  - Full workflow guidance in `Support/docs/workflow.md`
+    - `docs/00-root/project-overview.md`
+    - `docs/00-root/vision-and-goals.md`
+    - `docs/00-root/roadmap.md`
+  - Full workflow guidance in `docs/workflow.md`
 - Changed:
   - Expanded root `README.md` with project summary and documentation index
   - Standardized documentation navigation references across root docs

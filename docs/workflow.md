@@ -41,10 +41,10 @@ For every major task:
 
 Core locations:
 
-- root product docs: `Support/docs/00-root/`
-- product strategy docs: `Support/docs/01-product/`
-- architecture decisions: `Support/docs/architectural-decision-records/`
-- changelog: `Support/docs/changelog.md`
+- root product docs: `docs/00-root/`
+- product strategy docs: `docs/product/`
+- architecture decisions: `docs/architecture/decisions/`
+- changelog: `docs/changelog.md`
 
 ## 4. Delivery Workflow by Phase
 

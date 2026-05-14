@@ -352,7 +352,7 @@ High-risk domains (auth, billing, AI, compliance, migrations, infrastructure) re
 
 Material phase work must be logged in:
 
-- `Support/docs/changelog.md`
+- `docs/changelog.md`
 
 Expected flow:
 

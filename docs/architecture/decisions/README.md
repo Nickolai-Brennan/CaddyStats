@@ -84,8 +84,8 @@ Once an ADR is **Accepted**, its content must not be retroactively edited to cha
 5. If the decision is rejected, the ADR is either revised or closed. A rejected ADR is not committed.
 6. On merge:
    - Update this README's index table below.
-   - Add a `changelog.md` entry under `Support/docs/changelog.md`.
-   - Update `Support/docs/00-root/engineering-standards-and-governance.md` if the ADR changes a governance-level rule.
+   - Add a `changelog.md` entry under `docs/changelog.md`.
+   - Update `docs/00-root/engineering-standards-and-governance.md` if the ADR changes a governance-level rule.
 
 ---
 
@@ -133,7 +133,7 @@ If uncertain whether a decision warrants an ADR, default to writing one. A short
 
 ## Related Documents
 
-- `Support/docs/00-root/engineering-standards-and-governance.md` — section 4.4 defines the ADR trigger policy
-- `Support/docs/changelog.md` — every merged ADR must add a changelog entry
+- `docs/00-root/engineering-standards-and-governance.md` — section 4.4 defines the ADR trigger policy
+- `docs/changelog.md` — every merged ADR must add a changelog entry
 - `docs/architecture/system-blueprint.md` — system-wide architecture reference that ADRs collectively inform
 - `docs/architecture/system-overview.md` — high-level platform summary
