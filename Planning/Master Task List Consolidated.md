@@ -31,6 +31,13 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [ ] Create foundational core and product docs including `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, and `TARGET_AUDIENCE.md`.
 - [ ] Create documentation governance and standards docs including `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`, `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, and `EVENT_DRIVEN_ARCHITECTURE.md`.
 - [ ] Create missing strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning.
+- [ ] Replace the root README.md with a repository-focused overview and canonical docs map
+- [ ] Create foundational core and product docs under docs/ for project overview, architecture overview, glossary, vision, non-goals, product brief, problem statement, value proposition, and target audience
+- [ ] Create documentation governance and standards docs under docs/governance and docs/governance/adr
+- [ ] Create architecture support docs for service boundaries, domain model, and event-driven architecture
+- [ ] Create strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning
+- [ ] Add a changelog entry for this documentation foundation work if a canonical changelog path is needed
+- [ ] Review the new docs for consistency, then rerun available validation commands and note any environment-related failures
 
 ### Phase 1 — Folder Setup, Repository Structure & Tooling
 
