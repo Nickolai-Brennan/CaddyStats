@@ -75,7 +75,7 @@ Turn fragmented golf research into a unified, auditable, and monetizable product
 ## 7. Strategy Document Map
 
 This document remains the summary-level strategy anchor for Caddy Stats.
-Detailed planning for the first Phase 0 strategy set lives in dedicated supporting documents under `Support/docs/00-root/`.
+Detailed planning for the first Phase 0 strategy set lives in dedicated supporting documents under `docs/legacy/support/00-root/`.
 
 ### Supporting Strategy Documents
 

@@ -73,4 +73,4 @@ Ownership and boundaries are enforced by folder-domain responsibility rather tha
 ## Implementation Notes
 
 - Enforce pull request checks for architecture/documentation updates when core decisions change.
-- Keep ADRs under Support/docs/architectural-decision-records and reference them from architecture docs.
+- Keep ADRs under `docs/governance/adr/records/` and reference them from architecture docs.

@@ -59,9 +59,9 @@ It is built as a data-first system where product claims, projections, and editor
 
 See:
 
-- `Support/docs/build-system.md`
-- `Support/docs/architectural-decision-records/`
-- `Support/docs/caddy-stats-building-plan.md`
+- `docs/planning/build-system.md`
+- `docs/governance/adr/records/`
+- `docs/planning/caddy-stats-building-plan.md`
 
 ---
 
