@@ -1,3 +1,5 @@
 # Plugins Domain Boundary
 
-This directory is reserved for plugin modules and plugin-specific lifecycle assets.
+## Responsibility
+
+Plugin modules and plugin-specific lifecycle assets that extend repository automation or runtime behavior.

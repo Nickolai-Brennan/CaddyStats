@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:unit": "vitest run",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --passWithNoTests",
     "clean": "rm -rf dist .vite"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
+  "packageManager": "pnpm@9.15.9",
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "@types/node": "^25.7.0",

@@ -1,5 +1,5 @@
 # Backend Domain Boundary
 
-This directory is reserved as the canonical backend ownership boundary.
+## Responsibility
 
-Active backend implementations currently live under `services/` (`services/api`) and `workers/`.
+Canonical backend ownership boundary for business logic, internal services, and future service extraction. Active backend implementations currently live under `services/` and `workers/`.

@@ -1,3 +1,5 @@
 # Automation Domain Boundary
 
-This directory is reserved for non-runtime automation artifacts such as prompts, reports, scripts, and metrics.
+## Responsibility
+
+Non-runtime automation assets such as prompts, reports, recurring checks, and operational helper definitions.

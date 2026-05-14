@@ -1,0 +1,22 @@
+name: Architecture Drift
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  architecture-drift:
+    name: Verify repository boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate architecture boundaries
+        run: bash scripts/verify/architecture-drift.sh
+      - name: Validate docs entrypoints
+        run: bash scripts/verify/docs-check.sh

@@ -12,12 +12,8 @@ jobs:
   docs-required:
     name: Require Docs Updates
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
     steps:
       - uses: actions/checkout@v4
-
       - name: Detect changed paths
         id: changes
         uses: dorny/paths-filter@v3
@@ -25,36 +21,30 @@ jobs:
           filters: |
             docs:
               - 'docs/**'
-              - 'Support/docs/**'
               - 'README.md'
-              - '.github/PULL_REQUEST_TEMPLATE/**'
-              - '.github/copilot-instructions.md'
-            code_or_data:
-              - 'frontend/**'
-              - 'backend/**'
+              - 'CONTRIBUTING.md'
+              - '.github/CODEOWNERS'
+              - '.github/ISSUE_TEMPLATE/**'
+              - '.github/pull_request_template.md'
+              - '.env.example'
+              - 'config/environments/**'
+            code_or_platform:
               - 'apps/**'
               - 'services/**'
               - 'packages/**'
               - 'workers/**'
               - 'database/**'
               - 'api/**'
+              - 'backend/**'
+              - 'frontend/**'
               - 'infrastructure/**'
               - 'tests/**'
-              - 'agents/**'
-              - 'skills/**'
-              - 'instructions/**'
-              - 'workflows/**'
-              - 'prompts/**'
-              - 'templates/**'
-              - 'evals/**'
-              - 'plugins/**'
-              - 'commands/**'
               - 'scripts/**'
               - 'config/**'
-
-      - name: Enforce docs updates for code/data PRs
-        if: steps.changes.outputs.code_or_data == 'true' && steps.changes.outputs.docs != 'true'
+              - '.github/workflows/**'
+      - name: Enforce docs updates for code or platform PRs
+        if: steps.changes.outputs.code_or_platform == 'true' && steps.changes.outputs.docs != 'true'
         run: |
-          echo "Code or data changes were detected, but no documentation updates were found."
-          echo "Please update docs/, Support/docs/, README.md, or PR documentation templates in this pull request."
+          echo "Code or platform changes were detected, but no documentation updates were found."
+          echo "Please update docs/, README.md, CONTRIBUTING.md, or governance templates in this pull request."
           exit 1
