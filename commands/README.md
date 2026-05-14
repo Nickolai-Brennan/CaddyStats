@@ -1,3 +1,5 @@
 # Commands Domain Boundary
 
-This directory is reserved for reusable command modules and command execution descriptors.
+## Responsibility
+
+Reusable command modules and command execution descriptors for deterministic workflows.

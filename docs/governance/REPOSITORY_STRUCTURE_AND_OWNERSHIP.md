@@ -65,6 +65,32 @@ Operational reviewer enforcement is defined by `.github/CODEOWNERS`.
 - Root scripts: `package.json`
 - Build/validation command entrypoints: `Makefile`
 - Environment baseline: `.env.example`
+- Environment overlays: `config/environments/`
 - Git hooks: `.githooks/` via `git config core.hooksPath .githooks`
 
 Root configuration must preserve compatibility with active domains (`apps/`, `services/`) while allowing incremental adoption of approved target aliases.
+
+## Shared Package Baseline
+
+The shared package layer is reserved for reusable cross-domain contracts and helpers:
+
+- `packages/ui` — semantic UI tokens and shared presentation primitives
+- `packages/types` — shared type contracts
+- `packages/config` — runtime-safe config helpers
+- `packages/utils` — general-purpose utilities
+- `packages/analytics` — reusable analytics helpers
+- `packages/seo` — canonical metadata and SEO helpers
+
+Package naming follows the `@caddystats/<domain>` pattern and token naming remains semantic so shared UI meaning survives future app extraction or service isolation work.
+
+## Verification Baseline
+
+The repository baseline must remain runnable through:
+
+- `make verify`
+- `make lint`
+- `make typecheck`
+- `make test`
+- `make docker-validate`
+
+GitHub Actions workflows should enforce the same baseline through CI, docs-check, architecture-drift, dependency-review, verify-environment, and deploy-gate workflows.

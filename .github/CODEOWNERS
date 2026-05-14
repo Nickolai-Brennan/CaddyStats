@@ -23,7 +23,7 @@
 /tests/ @Nickolai-Brennan
 /config/ @Nickolai-Brennan
 /automation/ @Nickolai-Brennan
-
-# Repository automation controls
-/.github/workflows/ @Nickolai-Brennan
 /.github/CODEOWNERS @Nickolai-Brennan
+/.github/ISSUE_TEMPLATE/ @Nickolai-Brennan
+/.github/pull_request_template.md @Nickolai-Brennan
+/.github/workflows/ @Nickolai-Brennan

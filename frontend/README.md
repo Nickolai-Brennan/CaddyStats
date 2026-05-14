@@ -1,5 +1,5 @@
 # Frontend Domain Boundary
 
-This directory is reserved as the canonical frontend ownership boundary.
+## Responsibility
 
-Active frontend implementations currently live under `apps/` (`apps/web`, `apps/admin`, `apps/editor`).
+Canonical frontend ownership boundary for shared UI and future frontend package migrations. Active frontend implementations currently live under `apps/`.

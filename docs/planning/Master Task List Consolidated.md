@@ -43,13 +43,13 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [ ] Lock the canonical monorepo structure and ownership boundaries across apps, services, packages, infrastructure, database, workers, AI, docs, scripts, tests, and automation domains.
 - [ ] Align the approved target structure with the ownership model covering `frontend/`, `backend/`, `database/`, `api/`, `tests/`, `docs/`, `config/`, `plugins/`, and `commands/` where applicable.
 - [ ] Standardize root configs, env templates, workspace tooling, TurboRepo, pnpm workspaces, git hooks, and root build configuration.
-- [ ] Add setup/bootstrap flows, local development bootstrap, verification scripts, lint/test/typecheck entrypoints, and contributor workflow.
-- [ ] Establish baseline PR checks, docs-check or architecture-drift placeholders, GitHub Actions CI, test pipeline, lint pipeline, deploy pipeline, and Docker build validation.
-- [ ] Define shared UI package foundations, naming and token conventions, and reusable package boundaries for UI, types, config, utils, analytics, and SEO.
-- [ ] Add CODEOWNERS, issue templates, pull request templates, ownership stubs, and top-level README/responsibility stubs for each domain directory.
-- [ ] Define environment strategy, required environment files, secret-handling conventions, validation rules, and secure separation across local, development, staging, test, and production.
-- [ ] Establish initial infrastructure, monitoring, Docker organization, security baseline defaults, branch protection, secret scanning, CORS planning, CSP planning, and rate-limiting preparation.
-- [ ] Prepare scalability-oriented structure for worker expansion, service isolation, analytics reuse, AI pipeline isolation, and multi-author editorial support.
+- [x] Add setup/bootstrap flows, local development bootstrap, verification scripts, lint/test/typecheck entrypoints, and contributor workflow.
+- [x] Establish baseline PR checks, docs-check or architecture-drift placeholders, GitHub Actions CI, test pipeline, lint pipeline, deploy pipeline, and Docker build validation.
+- [x] Define shared UI package foundations, naming and token conventions, and reusable package boundaries for UI, types, config, utils, analytics, and SEO.
+- [x] Add CODEOWNERS, issue templates, pull request templates, ownership stubs, and top-level README/responsibility stubs for each domain directory.
+- [x] Define environment strategy, required environment files, secret-handling conventions, validation rules, and secure separation across local, development, staging, test, and production.
+- [x] Establish initial infrastructure, monitoring, Docker organization, security baseline defaults, branch protection, secret scanning, CORS planning, CSP planning, and rate-limiting preparation.
+- [x] Prepare scalability-oriented structure for worker expansion, service isolation, analytics reuse, AI pipeline isolation, and multi-author editorial support.
 
 ### Phase 2 — Database Architecture, Standards & Foundation
 

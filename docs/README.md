@@ -19,6 +19,7 @@ Primary locations:
 - `docs/security/`
 - `docs/data/`
 - `docs/strategy/`
+- `docs/devops/`
 - `docs/compliance/`
 - `docs/roadmap/`
 - `docs/workflow.md`
@@ -57,6 +58,9 @@ Use it when you need provenance, older planning context, or migration history. D
 
 ### Supporting detailed references
 
+- `docs/devops/local-development-bootstrap.md`
+- `docs/devops/environment-and-secrets-strategy.md`
+- `docs/devops/platform-baseline.md`
 - `docs/architecture/system-overview.md`
 - `docs/architecture/system-blueprint.md`
 - `docs/architecture/domain-model.md`

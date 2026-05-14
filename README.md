@@ -65,6 +65,20 @@ This repository currently contains:
 - `make test` runs the repository test entrypoints
 - `make hooks` installs standardized repository git hooks (`.githooks/`)
 
+## Contributor quickstart
+
+- `make setup` bootstraps local dependencies, hooks, env files, and repository verification.
+- `make verify` validates environment templates, documentation entrypoints, and architecture boundaries.
+- `make lint`, `make typecheck`, and `make test` are the canonical local validation entrypoints.
+- `make docker-validate` verifies Compose configuration and container image builds.
+- `CONTRIBUTING.md` documents the expected contributor workflow.
+
+## Environment and platform baseline
+
+- `.env.example` defines the shared variable contract.
+- `config/environments/` contains environment-specific example overlays for local, development, test, staging, and production.
+- `docs/devops/local-development-bootstrap.md`, `docs/devops/environment-and-secrets-strategy.md`, and `docs/devops/platform-baseline.md` define the bootstrap, environment, and security baseline.
+
 ## Documentation rules
 
 - durable project docs belong under `docs/`
