@@ -28,11 +28,11 @@ class Settings(BaseSettings):
     API_WORKERS: int = 1
 
     # Database
-    DATABASE_URL: str = "postgresql+asyncpg://caddystats:caddystats@postgres:5432/caddystats"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@postgres:5432/db_golf"
     DUCKDB_PATH: str = "./data/caddystats.duckdb"
     MOTHERDUCK_TOKEN: str = ""
-    MOTHERDUCK_DATABASE: str = "caddystats"
-    MOTHERDUCK_URL: str = "md:caddystats"
+    MOTHERDUCK_DATABASE: str = "CaddyStats"
+    MOTHERDUCK_URL: str = "md:CaddyStats"
     PANDAS_QUERY_ROW_LIMIT: int = 5000
 
     # Redis

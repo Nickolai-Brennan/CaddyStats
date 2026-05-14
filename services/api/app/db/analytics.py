@@ -26,17 +26,20 @@ def get_postgres_engine() -> Engine:
     return create_engine(to_sync_postgres_url(), pool_pre_ping=True)
 
 
+@lru_cache(maxsize=8)
+def get_postgres_engine_for_url(database_url: str) -> Engine:
+    """Build and cache a sync PostgreSQL engine for a provided URL."""
+    return create_engine(to_sync_postgres_url(database_url), pool_pre_ping=True)
+
+
 def build_motherduck_url(
     base_url: str | None = None,
-    motherduck_token: str | None = None,
     database: str | None = None,
 ) -> str:
     """Build a MotherDuck connection URL and append token when provided."""
     resolved_database = database or settings.MOTHERDUCK_DATABASE
     resolved_base_url = base_url or settings.MOTHERDUCK_URL or f"md:{resolved_database}"
-    resolved_token = (
-        motherduck_token if motherduck_token is not None else settings.MOTHERDUCK_TOKEN
-    )
+    resolved_token = settings.MOTHERDUCK_TOKEN
 
     if not resolved_token or "motherduck_token=" in resolved_base_url:
         return resolved_base_url
@@ -64,7 +67,6 @@ def get_duckdb_connection(
 
 def get_motherduck_connection(
     base_url: str | None = None,
-    motherduck_token: str | None = None,
     database: str | None = None,
     *,
     read_only: bool = True,
@@ -72,7 +74,6 @@ def get_motherduck_connection(
     """Return a MotherDuck-backed DuckDB connection."""
     connection_url = build_motherduck_url(
         base_url=base_url,
-        motherduck_token=motherduck_token,
         database=database,
     )
     return duckdb.connect(connection_url, read_only=read_only)
@@ -83,15 +84,25 @@ def dataframe_from_postgres(
     params: Mapping[str, Any] | None = None,
     database_url: str | None = None,
 ) -> pd.DataFrame:
-    """Run a PostgreSQL query and return a pandas DataFrame for graphing."""
+    """Run a trusted PostgreSQL query and return a pandas DataFrame for graphing.
+
+    Callers should pass static SQL or parameterized SQL with bound params.
+    """
     engine = (
-        create_engine(to_sync_postgres_url(database_url), pool_pre_ping=True)
+        get_postgres_engine_for_url(database_url)
         if database_url
         else get_postgres_engine()
     )
     with engine.connect() as connection:
-        dataframe = pd.read_sql_query(text(query), connection, params=dict(params or {}))
-    return dataframe.head(settings.PANDAS_QUERY_ROW_LIMIT)
+        chunks = pd.read_sql_query(
+            text(query),
+            connection,
+            params=params or {},
+            chunksize=settings.PANDAS_QUERY_ROW_LIMIT,
+        )
+        for chunk in chunks:
+            return chunk
+    return pd.DataFrame()
 
 
 def dataframe_from_duckdb(
@@ -99,12 +110,17 @@ def dataframe_from_duckdb(
     params: Mapping[str, Any] | None = None,
     connection: duckdb.DuckDBPyConnection | None = None,
 ) -> pd.DataFrame:
-    """Run a DuckDB or MotherDuck query and return a pandas DataFrame for graphing."""
+    """Run a trusted DuckDB/MotherDuck query and return a pandas DataFrame for graphing.
+
+    Callers should pass static SQL or parameterized SQL with bound params.
+    """
     owns_connection = connection is None
     active_connection = connection or get_duckdb_connection()
     try:
-        dataframe = active_connection.execute(query, params or {}).df()
-        return dataframe.head(settings.PANDAS_QUERY_ROW_LIMIT)
+        cursor = active_connection.execute(query, params or {})
+        rows = cursor.fetchmany(settings.PANDAS_QUERY_ROW_LIMIT)
+        columns = [column[0] for column in (cursor.description or [])]
+        return pd.DataFrame(rows, columns=columns)
     finally:
         if owns_connection:
             active_connection.close()

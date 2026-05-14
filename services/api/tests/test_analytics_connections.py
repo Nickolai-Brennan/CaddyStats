@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import duckdb
+import pytest
 
+from app.core.config import settings
 from app.db.analytics import build_motherduck_url, dataframe_from_duckdb, to_sync_postgres_url
 
 
@@ -20,18 +22,18 @@ def test_to_sync_postgres_url_keeps_existing_sync_driver() -> None:
     assert to_sync_postgres_url(sync_url) == sync_url
 
 
-def test_build_motherduck_url_adds_token_when_missing() -> None:
-    motherduck_auth_value = "sample-value"
+def test_build_motherduck_url_adds_token_when_missing(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(settings, "MOTHERDUCK_TOKEN", "sample-value")
     assert (
-        build_motherduck_url(base_url="md:caddystats", motherduck_token=motherduck_auth_value)
+        build_motherduck_url(base_url="md:caddystats")
         == "md:caddystats?motherduck_token=sample-value"
     )
 
 
-def test_build_motherduck_url_keeps_existing_token() -> None:
+def test_build_motherduck_url_keeps_existing_token(monkeypatch: pytest.MonkeyPatch) -> None:
     url = "md:caddystats?motherduck_token=already-set"
-    unused_auth_value = "ignored-value"
-    assert build_motherduck_url(base_url=url, motherduck_token=unused_auth_value) == url
+    monkeypatch.setattr(settings, "MOTHERDUCK_TOKEN", "ignored-value")
+    assert build_motherduck_url(base_url=url) == url
 
 
 def test_dataframe_from_duckdb_returns_dataframe() -> None:
