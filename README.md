@@ -20,10 +20,12 @@ This repository currently contains:
 - `apps/admin/` for internal admin interfaces
 - `apps/editor/` for editorial tooling surfaces
 - `services/api/` for the FastAPI backend
+- `frontend/`, `backend/`, and `api/` as canonical target ownership boundaries for future direct implementations
 - `packages/` for shared workspace packages
 - `database/` for shared database assets and references
 - `docs/` for canonical docs, planning artifacts, and legacy documentation archives
 - `tests/`, `scripts/`, `infrastructure/`, `workers/`, `ai/`, and `config/` for support and runtime concerns
+- `plugins/`, `commands/`, and `automation/` for extensibility and deterministic automation workflows
 - `AI Control/` for imported agentic assets and workflow support material
 
 ## Documentation map
@@ -61,6 +63,7 @@ This repository currently contains:
 - `make dev` starts the local stack with Docker Compose
 - `make lint` runs the repository linting entrypoints
 - `make test` runs the repository test entrypoints
+- `make hooks` installs standardized repository git hooks (`.githooks/`)
 
 ## Documentation rules
 

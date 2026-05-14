@@ -1,4 +1,7 @@
-.PHONY: help setup dev stop build test lint format clean db-migrate db-seed logs shell-api shell-db
+.PHONY: help setup hooks dev stop build test lint format clean db-migrate db-seed logs shell-api shell-db
+
+API_DIR ?= services/api
+WEB_DIR ?= apps/web
 
 # Default target
 help: ## Show this help
@@ -11,6 +14,11 @@ setup: ## Bootstrap local development environment
 	@echo "Setting up CaddyStats local environment..."
 	@cp -n .env.example .env || true
 	@bash scripts/setup/bootstrap.sh
+	@$(MAKE) hooks
+
+hooks: ## Install repository git hooks
+	@git config core.hooksPath .githooks
+	@echo "Git hooks path set to .githooks"
 
 # ---------------------------------------------------------------------------
 # Docker
@@ -38,28 +46,28 @@ restart: ## Restart a specific service (e.g. make restart service=api)
 # ---------------------------------------------------------------------------
 test: ## Run all tests
 	docker compose -f docker-compose.test.yml up -d
-	cd services/api && pytest
+	cd $(API_DIR) && pytest
 	docker compose -f docker-compose.test.yml down
 
 test-api: ## Run API tests only
-	cd services/api && pytest
+	cd $(API_DIR) && pytest
 
 test-watch: ## Run API tests in watch mode
-	cd services/api && pytest --watch
+	cd $(API_DIR) && pytest --watch
 
 # ---------------------------------------------------------------------------
 # Linting & Formatting
 # ---------------------------------------------------------------------------
 lint: ## Run all linters
-	cd services/api && ruff check .
+	cd $(API_DIR) && ruff check .
 	pnpm lint
 
 format: ## Auto-format all code
-	cd services/api && ruff format .
+	cd $(API_DIR) && ruff format .
 	pnpm format
 
 typecheck: ## Run type checkers
-	cd services/api && mypy app/
+	cd $(API_DIR) && mypy app/
 	pnpm typecheck
 
 # ---------------------------------------------------------------------------

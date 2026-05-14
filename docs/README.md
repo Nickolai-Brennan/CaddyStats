@@ -49,6 +49,7 @@ Use it when you need provenance, older planning context, or migration history. D
 
 - `docs/governance/DOCS_STYLE_GUIDE.md`
 - `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md`
+- `docs/governance/REPOSITORY_STRUCTURE_AND_OWNERSHIP.md`
 - `docs/governance/DEPENDENCY_MAPPING.md`
 - `docs/governance/adr/README.md`
 - `docs/workflow.md`

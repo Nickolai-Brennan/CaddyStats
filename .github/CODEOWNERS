@@ -1,0 +1,29 @@
+# Global fallback
+* @Nickolai-Brennan
+
+# Active runtime domains
+/apps/ @Nickolai-Brennan
+/services/ @Nickolai-Brennan
+/packages/ @Nickolai-Brennan
+/workers/ @Nickolai-Brennan
+/database/ @Nickolai-Brennan
+/infrastructure/ @Nickolai-Brennan
+/ai/ @Nickolai-Brennan
+
+# Canonical target ownership aliases
+/frontend/ @Nickolai-Brennan
+/backend/ @Nickolai-Brennan
+/api/ @Nickolai-Brennan
+/plugins/ @Nickolai-Brennan
+/commands/ @Nickolai-Brennan
+
+# Support, governance, and automation
+/docs/ @Nickolai-Brennan
+/scripts/ @Nickolai-Brennan
+/tests/ @Nickolai-Brennan
+/config/ @Nickolai-Brennan
+/automation/ @Nickolai-Brennan
+
+# Repository automation controls
+/.github/workflows/ @Nickolai-Brennan
+/.github/CODEOWNERS @Nickolai-Brennan

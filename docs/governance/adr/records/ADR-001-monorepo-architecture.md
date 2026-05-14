@@ -36,6 +36,7 @@ Canonical root structure:
 - database/
 - api/
 - tests/
+- automation/
 - scripts/
 - docs/
 - config/

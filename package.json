@@ -4,6 +4,8 @@
   "private": true,
   "description": "Caddy Stats — production-grade golf analytics, content, and betting intelligence platform",
   "scripts": {
+    "hooks:install": "git config core.hooksPath .githooks",
+    "prepare": "pnpm hooks:install || true",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
