@@ -49,7 +49,7 @@ make db-shell
 Default connection string (from `.env.example`):
 
 ```
-postgresql+asyncpg://caddystats:caddystats_dev@localhost:5432/caddystats
+postgresql+asyncpg://postgres:postgres@localhost:5432/db_golf
 ```
 
 ---
@@ -110,7 +110,7 @@ python -c "import duckdb; con = duckdb.connect('md:?motherduck_token=<YOUR_TOKEN
 ```python
 import duckdb
 
-con = duckdb.connect("md:caddystats?motherduck_token=<YOUR_TOKEN>")
+con = duckdb.connect("md:CaddyStats?motherduck_token=<YOUR_TOKEN>")
 con.sql("SELECT * FROM player_stats LIMIT 10").show()
 ```
 
@@ -288,10 +288,14 @@ Copy `.env.example` to `.env` and set these database variables:
 | ------------------- | ---------------------------------------------- | ----------------------------------------------------- |
 | `POSTGRES_HOST`     | PostgreSQL host                                | `postgres` (Docker) or Neon hostname                  |
 | `POSTGRES_PORT`     | PostgreSQL port                                | `5432`                                                |
-| `POSTGRES_DB`       | Database name                                  | `caddystats`                                          |
-| `POSTGRES_USER`     | Database user                                  | `caddystats`                                          |
-| `POSTGRES_PASSWORD` | Database password                              | `change-me`                                           |
-| `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://user:pass@host:5432/caddystats` |
+| `POSTGRES_DB`       | Database name                                  | `db_golf`                                             |
+| `POSTGRES_USER`     | Database user                                  | `postgres`                                            |
+| `POSTGRES_PASSWORD` | Database password                              | `postgres`                                            |
+| `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://postgres:postgres@host:5432/db_golf` |
+| `DUCKDB_PATH`       | Local DuckDB file path                         | `./data/caddystats.duckdb`                            |
+| `MOTHERDUCK_URL`    | MotherDuck connection target                   | `md:CaddyStats`                                       |
+| `MOTHERDUCK_TOKEN`  | MotherDuck auth token                          | `<SECRET>`                                            |
+| `PANDAS_QUERY_ROW_LIMIT` | Max rows returned by API pandas helpers   | `5000`                                                |
 
 For Neon, append `?sslmode=require` to `DATABASE_URL`.
 

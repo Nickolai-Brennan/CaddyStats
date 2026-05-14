@@ -1,3 +1,23 @@
+## 2026-05-14 — Multi-database analytics connection setup
+
+- Added:
+  - `services/api/app/db/analytics.py` with PostgreSQL, DuckDB, and MotherDuck connection helpers plus pandas DataFrame query helpers for graph-ready analytics workflows
+  - `services/api/tests/test_analytics_connections.py` for URL conversion, MotherDuck URL construction, and DuckDB DataFrame helper coverage
+- Changed:
+  - `services/api/app/core/config.py` now includes `DUCKDB_PATH`, `MOTHERDUCK_TOKEN`, `MOTHERDUCK_DATABASE`, `MOTHERDUCK_URL`, and `PANDAS_QUERY_ROW_LIMIT` settings
+  - default connection values now use PostgreSQL `postgres/postgres` with `db_golf` and MotherDuck database `CaddyStats`
+  - `services/api/app/db/__init__.py` now exports analytics connection helper functions
+  - `services/api/requirements/base.txt` now includes `duckdb`, `pandas`, and `psycopg[binary]`
+  - `database/README.md` environment variable table now documents DuckDB/MotherDuck/pandas helper variables
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - `make lint` and `make test` baseline initially failed in this environment before edits due missing local Python tools (`ruff`, `pytest`) and were re-run after dependency installation for this change
+
 ## 2026-05-14 — Phase 1 bootstrap, CI, and contributor baseline
 
 - Added:
