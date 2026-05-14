@@ -9,6 +9,7 @@ This document summarizes the primary bounded contexts that shape Caddy Stats.
 Owns the canonical sports entities that power research and projections.
 
 ### Core entities
+
 - `Player`
 - `Tournament`
 - `Course`
@@ -25,6 +26,7 @@ Owns the canonical sports entities that power research and projections.
 Owns editorial objects and publication state.
 
 ### Core entities
+
 - `Article`
 - `ArticleVersion`
 - `ArticleBlock`
@@ -37,6 +39,7 @@ Owns editorial objects and publication state.
 Owns authentication and permission state.
 
 ### Core entities
+
 - `User`
 - `Role`
 - `Permission`
@@ -47,6 +50,7 @@ Owns authentication and permission state.
 Owns billing-linked access control.
 
 ### Core entities
+
 - `Subscription`
 - `Entitlement`
 - `BillingEvent`
@@ -57,6 +61,7 @@ Owns billing-linked access control.
 Owns the accountability layer for privileged or automated actions.
 
 ### Core entities
+
 - `AuditEvent`
 - `AIOutputLog`
 - `EditorialReviewAction`

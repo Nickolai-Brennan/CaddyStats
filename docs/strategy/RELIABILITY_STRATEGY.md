@@ -14,11 +14,13 @@ Keep the platform dependable across public traffic, premium research flows, inge
 ## Reliability model
 
 ### User-facing reliability
+
 - public entity and content pages should remain available and cache-safe
 - premium read paths should fail safely without leaking gated data
 - auth and billing changes should propagate predictably
 
 ### Operational reliability
+
 - background jobs must be idempotent and observable
 - retries should be bounded
 - stale provider data should be surfaced explicitly

@@ -7,25 +7,30 @@ This document summarizes the canonical architecture shape for Caddy Stats and pr
 ## Platform layers
 
 ### Experience layer
+
 - public web pages for SEO discovery
 - authenticated member and subscriber experiences
 - internal editor, analyst, and admin dashboards
 
 ### API and application layer
+
 - REST endpoints for stats, auth, admin, billing, health, and integrations
 - GraphQL for selective nested editorial and dashboard read patterns
 - service-layer orchestration, validation, and authorization
 
 ### Data layer
+
 - PostgreSQL as the source of truth
 - schema boundaries across stats, content, auth, billing, and audit concerns
 - indexes and materialized views for high-read analytics queries
 
 ### Async and event layer
+
 - workers for ingestion, model execution, cache invalidation, and scheduled refreshes
 - event flows for billing changes, content publication, provider ingestion, and reliability operations
 
 ### Governance layer
+
 - JWT auth and RBAC
 - audit logging for privileged and AI-assisted workflows
 - documentation and ADRs for architectural change control

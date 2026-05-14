@@ -7,12 +7,15 @@ Define how Caddy Stats versions code, contracts, documentation, and architectura
 ## Release classes
 
 ### Patch
+
 Used for low-risk fixes, maintenance, documentation-only updates, and non-breaking internal improvements.
 
 ### Minor
+
 Used for backward-compatible capability additions or meaningful behavior expansion.
 
 ### Major
+
 Used for breaking changes to APIs, schemas, workflows, security expectations, or operating models.
 
 ## API versioning

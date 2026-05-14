@@ -25,6 +25,7 @@ Caddy Stats exists to:
 ## Scope
 
 ### In scope
+
 - PGA-focused player, tournament, and course analytics
 - public SEO pages and premium subscriber surfaces
 - editorial and admin workflows
@@ -33,6 +34,7 @@ Caddy Stats exists to:
 - AI assistance with grounding and human review controls
 
 ### Out of scope for the current foundation
+
 - multi-sport expansion
 - autonomous bet placement
 - unsupported real-time claims when source data is stale

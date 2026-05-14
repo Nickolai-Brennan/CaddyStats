@@ -17,27 +17,33 @@ The platform has several domains where downstream actions should not block the u
 ## Event categories
 
 ### Domain events
+
 Raised when an internal business action occurs.
 
 Examples:
+
 - `projection.model_run_completed`
 - `content.article_published`
 - `subscription.entitlement_changed`
 - `user.role_assignment_granted`
 
 ### Integration events
+
 Raised when an external provider or partner changes state.
 
 Examples:
+
 - `provider.stats_batch_received`
 - `provider.odds_snapshot_updated`
 - `billing.invoice_payment_succeeded`
 - `billing.subscription_canceled`
 
 ### Operational events
+
 Raised to support reliability and observability.
 
 Examples:
+
 - `cache.entity_purge_requested`
 - `materialized_view.refresh_requested`
 - `job.retry_exhausted`
