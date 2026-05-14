@@ -1,5 +1,13 @@
 packages:
+  # Active app/service workspaces
   - "apps/*"
-  - "packages/*"
   - "services/*"
+  # Shared libraries and workers
+  - "packages/*"
   - "workers/*"
+  # Canonical target-domain aliases (used when packages are added there)
+  - "frontend/*"
+  - "backend/*"
+  - "api/*"
+  - "plugins/*"
+  - "commands/*"

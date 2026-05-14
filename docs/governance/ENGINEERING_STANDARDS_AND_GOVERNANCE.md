@@ -41,7 +41,10 @@ This document governs:
 This document applies to:
 
 - `apps/`
+- `frontend/`
 - `services/`
+- `backend/`
+- `api/`
 - `packages/`
 - `workers/`
 - `database/`
@@ -51,6 +54,9 @@ This document applies to:
 - `scripts/`
 - `tests/`
 - `config/`
+- `plugins/`
+- `commands/`
+- `automation/`
 - GitHub workflows and repository governance assets
 
 ---
@@ -125,10 +131,10 @@ Documentation ownership follows the owning engineering domain.
 
 Default ownership mapping:
 
-- `apps/` → frontend owner
-- `services/` → backend owner
+- `apps/` and `frontend/` → frontend owner
+- `services/`, `backend/`, and `workers/` → backend owner
+- `api/` → API owner
 - `packages/` → shared platform owner or relevant consuming domain owner
-- `workers/` → backend/platform owner
 - `database/` → database owner
 - `infrastructure/` → platform/DevOps owner
 - `ai/` → AI systems owner
@@ -136,6 +142,9 @@ Default ownership mapping:
 - `scripts/` → platform owner
 - `tests/` → testing owner with affected domain reviewers
 - `config/` → platform owner or system architecture owner
+- `plugins/` → plugin owner
+- `commands/` → command owner
+- `automation/` → platform owner
 
 If a CODEOWNERS file is introduced later, that file becomes the operational reviewer source of truth while this document remains the governance policy.
 

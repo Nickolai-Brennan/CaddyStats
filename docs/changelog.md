@@ -1,3 +1,25 @@
+## 2026-05-14 — Monorepo structure and ownership lock
+
+- Added:
+  - `docs/governance/REPOSITORY_STRUCTURE_AND_OWNERSHIP.md` defining canonical monorepo boundaries, ownership mapping, and root tooling standards
+  - `.github/CODEOWNERS` for repository-domain reviewer ownership coverage
+  - canonical target-boundary directories: `frontend/`, `backend/`, `api/`, `plugins/`, `commands/`, `automation/`
+  - `.githooks/pre-commit` as the standardized repository pre-commit hook entrypoint
+- Changed:
+  - `pnpm-workspace.yaml` to include canonical target-domain workspace globs in addition to active app/service globs
+  - `Makefile` root build configuration to centralize API path variables and add `make hooks`
+  - `package.json` root scripts to standardize git hook installation
+  - `README.md`, `docs/README.md`, and `.env.example` references to reflect approved boundary model and active-path mapping
+  - `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md` scope and ownership model to include canonical target domains and automation/plugins/commands
+- Fixed:
+  - Reduced structure drift between approved canonical domains and active runtime folder layout
+- Plugins:
+  - Introduced `plugins/` canonical boundary directory
+- Commands:
+  - Introduced `commands/` canonical boundary directory
+- Notes:
+  - `make lint` and `make test` continue to fail in this environment due missing local tooling (`ruff`, `pytest`)
+
 ## 2026-05-14 — Documentation consolidation and audit
 
 - Added:
