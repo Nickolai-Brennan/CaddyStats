@@ -292,6 +292,10 @@ Copy `.env.example` to `.env` and set these database variables:
 | `POSTGRES_USER`     | Database user                                  | `caddystats`                                          |
 | `POSTGRES_PASSWORD` | Database password                              | `change-me`                                           |
 | `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://user:pass@host:5432/caddystats` |
+| `DUCKDB_PATH`       | Local DuckDB file path                         | `./data/caddystats.duckdb`                            |
+| `MOTHERDUCK_URL`    | MotherDuck connection target                   | `md:caddystats`                                       |
+| `MOTHERDUCK_TOKEN`  | MotherDuck auth token                          | `<SECRET>`                                            |
+| `PANDAS_QUERY_ROW_LIMIT` | Max rows returned by API pandas helpers   | `5000`                                                |
 
 For Neon, append `?sslmode=require` to `DATABASE_URL`.
 
