@@ -1,8 +1,244 @@
+## 2026-05-14 — Documentation consolidation and audit
+
+- Added:
+  - `docs/README.md` — single-entry documentation map for canonical, planning, and legacy material
+  - `docs/governance/DOCUMENTATION_CONSOLIDATION_AUDIT.md` — tracked remaining overlapping docs to trim later
+- Changed:
+  - moved planning artifacts into `docs/planning/`
+  - moved workflow guidance to `docs/workflow.md`
+  - moved ADR source files to `docs/governance/adr/records/`
+  - expanded thin summary and index docs so they better match the depth of the stronger repository docs
+- Fixed:
+  - removed contradictory references to `Support/docs/` and top-level `Planning/` as current documentation roots
+  - aligned changelog, workflow, ADR, and template references to the consolidated `docs/` tree
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - `make lint` and `make test` were run before the edit window; they currently fail in this environment because `ruff` and `pytest` are unavailable
+
 ## 2026-05-14 — Documentation foundation
 
 - Added: canonical core, product, governance, architecture, and strategy documentation under `docs/`
 - Changed: root `README.md` now points to the canonical documentation map instead of acting as a build-system spec
-- Fixed: documentation entry points now distinguish canonical `docs/` content from legacy `Support/docs/` source material
+- Fixed: documentation entry points now distinguish canonical `docs/` content from legacy `docs/legacy/support/` source material
 - Plugins:
 - Commands:
 - Notes: `make lint` and `make test` were run before and after the edit window; both currently fail in this environment because `ruff` and `pytest` are unavailable
+
+## 2026-05-14 — Phase 0 Tracker Closure: Provenance, Roadmap, and Compliance Tasks
+
+- Added:
+  - N/A (documentation already created in prior session)
+- Changed:
+  - `docs/planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
+    - Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy
+    - Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing
+    - Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs
+- Fixed:
+  - Closed tracker gap where Phase 0 documentation tasks were complete in docs but still shown as unchecked in the master task list
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - All three tasks were satisfied by documents created on 2026-05-13:
+    - `docs/data/stat-grounding-policy.md`
+    - `docs/roadmap/build-phases.md`
+    - `docs/compliance/` (privacy-policy, terms-of-use, affiliate-disclosure, data-retention-policy, operational-compliance-policy, README)
+
+## 2026-05-13 — Provenance, Compliance, and Roadmap Governance Expansion
+
+- Added:
+  - `docs/compliance/privacy-policy.md`
+  - `docs/compliance/terms-of-use.md`
+  - `docs/compliance/affiliate-disclosure.md`
+  - `docs/compliance/data-retention-policy.md`
+  - `docs/compliance/operational-compliance-policy.md`
+  - `docs/compliance/README.md`
+- Changed:
+  - `docs/data/stat-grounding-policy.md` expanded with stricter provenance field expectations, explicit AI grounding states, and retention-policy alignment
+  - `docs/roadmap/build-phases.md` expanded with milestone framework, validation-gate model, changelog flow, and dependency-aware sequencing rules
+- Fixed:
+  - Closed policy documentation gaps around retention governance, compliance disclosures, and roadmap validation flow
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Documentation-only update to strengthen governance before downstream implementation phases
+
+## 2026-05-13 — Security Standards Documentation Expansion
+
+- Added:
+  - `docs/security/auth-rbac.md` expanded into a broader security standards reference covering authentication, authorization, RBAC, secrets handling, logging/redaction requirements, security governance, and incident expectations
+- Changed:
+  - Consolidated previously partial auth/RBAC guidance into a more complete Phase 0 policy document aligned with runtime config, database RBAC/RLS assumptions, and structured logging expectations
+- Fixed:
+  - Filled the documentation gap for authentication, RBAC, secrets handling, security governance, and logging/redaction standards called out in the consolidated master task list
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This update is documentation-only and establishes the canonical baseline security policy pending future implementation ADRs and operational runbooks
+
+## 2026-05-13 — ADR Governance and System Blueprint
+
+- Added:
+  - `docs/governance/adr/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
+  - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability, workers, and AI injection architecture
+- Changed:
+  - N/A
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - The ADR README formalizes the process described informally in engineering-standards-and-governance.md section 4.4 and provides a single navigable index of all accepted ADRs
+  - The system blueprint consolidates decisions from ADR-001 through ADR-010 into one comprehensive architectural reference; the existing system-overview.md remains the entry-level introduction
+
+## 2026-05-13 — Engineering Standards and Governance
+
+- Added:
+  - `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
+- Changed:
+  - Governance coverage now formalizes architecture-first delivery controls, documentation update requirements, ADR triggers, release readiness expectations, and production approval checkpoints
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This update establishes the baseline repository governance policy for engineering execution, review, and release management
+
+## 2026-05-13 — Consolidated Master Task List
+
+- Added:
+  - `docs/planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase X.md`
+- Changed:
+  - Consolidated planning now includes phase-derived implementation scope callouts to complement the master matrix
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This pass focused on planning artifact consolidation and scope completeness; no application runtime code changed
+
+## 2026-05-13 — Stage 1: Repository & Infrastructure Bootstrap
+
+- Added:
+  - Monorepo root folder scaffold (apps/, services/, packages/, workers/, database/, infrastructure/, ai/, docs/, scripts/, tests/, config/)
+  - `pnpm-workspace.yaml` — pnpm monorepo workspace configuration
+  - `turbo.json` — TurboRepo pipeline configuration (build, dev, lint, typecheck, test)
+  - `package.json` — root workspace package with turbo + prettier + typescript
+  - `tsconfig.base.json` — shared TypeScript base config
+  - `.prettierrc` — shared formatting config
+  - `.env.example` — complete environment variable template with all required variables
+  - `.gitignore` — comprehensive root gitignore
+  - `docker-compose.yml` — full dev stack (postgres, redis, api, web, nginx)
+  - `docker-compose.test.yml` — isolated test stack
+  - `services/api/Dockerfile` — multi-stage FastAPI Dockerfile (dev + prod)
+  - `apps/web/Dockerfile` — multi-stage React/Vite Dockerfile (dev + prod)
+  - `infrastructure/nginx/nginx.conf` + `conf.d/default.conf` — reverse proxy config
+  - `services/api/` — FastAPI app bootstrap (main.py, config, logging, health endpoints, request ID middleware)
+  - `services/api/requirements/` — base, prod, dev requirements
+  - `services/api/pyproject.toml` — ruff, mypy, pytest configuration
+  - `apps/web/` — React/Vite/TypeScript/Tailwind app scaffold
+  - `.github/workflows/ci.yml` — full CI pipeline (lint, typecheck, test, docker build, CI gate)
+  - `.github/workflows/dependency-review.yml` — daily dependency audit
+  - `.github/workflows/code-cleanup.yml` — weekly formatting/lint sweep
+  - `.github/templates/pull_request_template.md` — PR template
+  - `.github/templates/issue-template/` — bug and feature request templates
+  - `Makefile` — local dev commands (dev, test, lint, format, db-migrate, db-shell, etc.)
+  - `scripts/setup/bootstrap.sh` — local environment bootstrap script
+- Changed:
+  - Repository structure transitioned from documentation-only to active monorepo implementation
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Stage 1 complete. Validation gate: local stack can boot with `make dev`. CI pipeline operational on push/PR.
+
+## 2026-05-13 — Database Foundation
+
+- Added:
+  - Alembic configuration under `services/api/alembic*` with an initial baseline migration for core schemas, tables, indexes, triggers, RLS scaffolding, and materialized views
+  - SQLAlchemy database scaffolding under `services/api/app/db/`
+  - Seed framework at `services/api/scripts/database/seed.py` with sample auth, content, stats, analytics, and betting records
+  - Database validation coverage in `services/api/tests/test_database_foundation.py`
+  - Bootstrap SQL in `database/schemas/001-bootstrap.sql`
+- Changed:
+  - `services/api/app/core/config.py` defaults now avoid hardcoded secret literals while keeping local development safe
+  - `App Build/database/README.md` now documents the active database foundation
+- Fixed:
+  - Existing API lint issues in `services/api/app/main.py`
+- Plugins:
+  - N/A
+- Commands:
+  - `make db-migrate`
+  - `make db-seed`
+- Notes:
+  - Validation gate now covers migration upgrade/downgrade, index presence, materialized views, and seed-data loading against PostgreSQL
+
+## 2026-05-12 — Master Task List Audit
+
+- Added:
+  - Additional required task coverage across `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md` and `docs/planning/Master Task List Phase X.md`
+- Changed:
+  - Standardized markdown structure in the phase master task lists with consistent headings and checklist-style task blocks
+- Fixed:
+  - Filled cross-phase planning gaps around governance, observability, compliance, validation, monetization, and recovery planning
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - This pass focused on documentation quality and planning completeness; no application code or build tooling changed
+
+## 2026-05-12 — Documentation Foundation
+
+- Added:
+  - Initial product requirements documentation in `docs/legacy/support/00-root/product-requirements-doc.md`
+  - Product strategy documents under `docs/legacy/support/01-product/`
+  - Core ADR set under `docs/governance/adr/records/`
+  - Build and implementation planning docs (`build-system.md`, `caddy-stats-building-plan.md`)
+- Changed:
+  - Established build-order-first project direction across docs
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Repository entered architecture-first documentation phase
+
+## 2026-05-12 — Documentation Expansion Pass
+
+- Added:
+  - New foundational docs for project overview, vision/goals, and roadmap:
+    - `docs/legacy/support/00-root/project-overview.md`
+    - `docs/legacy/support/00-root/vision-and-goals.md`
+    - `docs/legacy/support/00-root/roadmap.md`
+  - Full workflow guidance in `docs/workflow.md`
+- Changed:
+  - Expanded root `README.md` with project summary and documentation index
+  - Standardized documentation navigation references across root docs
+- Fixed:
+  - Filled previously empty or placeholder documentation files
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Documentation coverage now includes core strategic, operational, and roadmap context

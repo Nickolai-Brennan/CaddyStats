@@ -2,59 +2,62 @@
 
 ## Purpose
 
-This document summarizes the canonical architecture shape for Caddy Stats and provides the bridge between product intent and deeper engineering references.
+Provide the executive architecture map for Caddy Stats and point readers to the deeper documents that define subsystem responsibilities in more detail.
+
+## Why this document exists
+
+Caddy Stats has multiple architecture documents because the platform needs both a concise governing summary and deeper implementation-guiding references. This file is the short-form canonical overview for product, engineering, and planning readers who need the platform shape without reading the full blueprint first.
 
 ## Platform layers
 
 ### Experience layer
 
-- public web pages for SEO discovery
+- public SEO pages for player, tournament, course, ranking, and editorial discovery
 - authenticated member and subscriber experiences
-- internal editor, analyst, and admin dashboards
+- internal editor, analyst, and admin surfaces
 
 ### API and application layer
 
 - REST endpoints for stats, auth, admin, billing, health, and integrations
-- GraphQL for selective nested editorial and dashboard read patterns
-- service-layer orchestration, validation, and authorization
+- selective GraphQL read patterns where nested editorial or dashboard composition benefits from it
+- service-layer validation, authorization, and orchestration
 
 ### Data layer
 
 - PostgreSQL as the source of truth
-- schema boundaries across stats, content, auth, billing, and audit concerns
-- indexes and materialized views for high-read analytics queries
+- bounded data ownership across stats, content, auth, billing, and audit concerns
+- indexes and materialized views for high-read analytics paths
 
 ### Async and event layer
 
-- workers for ingestion, model execution, cache invalidation, and scheduled refreshes
-- event flows for billing changes, content publication, provider ingestion, and reliability operations
+- workers for ingestion, model execution, cache invalidation, notifications, and scheduled refreshes
+- event-driven flows for provider sync, publishing, billing, and reliability operations
 
 ### Governance layer
 
 - JWT auth and RBAC
 - audit logging for privileged and AI-assisted workflows
-- documentation and ADRs for architectural change control
+- documentation and ADR controls for architectural change management
 
 ## Architectural goals
 
 - keep verified data at the center of public and premium experiences
-- isolate domain responsibilities so services can scale safely
-- support SEO-heavy traffic and premium authenticated workflows together
-- make AI assistance reviewable and attributable
+- isolate domain responsibilities so services and workflows can scale safely
+- support SEO-heavy traffic and premium authenticated usage together
+- make AI assistance attributable, reviewable, and constrained by grounded data
 - preserve operational safety for content, billing, and integrations
 
-## Primary data flows
+## Primary architecture handoffs
 
 1. providers and internal jobs write normalized data into PostgreSQL
-2. API services validate access and compose read models for the frontend
+2. API services validate access and compose read models for frontend and internal surfaces
 3. workers refresh derived models, projections, and cache invalidation events
-4. editorial tooling combines structured content with grounded data references
-5. analytics and monetization workflows depend on stable entitlements and audit records
+4. editorial tools combine structured content with grounded data references
+5. monetization and admin workflows rely on stable identity, entitlement, and audit records
 
-## Detailed references
+## How to use this file with related docs
 
-- `docs/architecture/system-overview.md`
-- `docs/architecture/system-blueprint.md`
-- `docs/architecture/SERVICE_BOUNDARIES.md`
-- `docs/architecture/DOMAIN_MODEL.md`
-- `docs/architecture/EVENT_DRIVEN_ARCHITECTURE.md`
+- use `docs/architecture/system-overview.md` for the broader implementation-guiding architecture narrative
+- use `docs/architecture/system-blueprint.md` for subsystem details, pipeline flow, and infrastructure shape
+- use `docs/architecture/DOMAIN_MODEL.md` and `docs/architecture/domain-model.md` for entity and context boundaries
+- use ADRs under `docs/governance/adr/records/` for architecture decisions that changed the platform shape

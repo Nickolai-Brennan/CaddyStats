@@ -3,7 +3,7 @@
 - Added:
   - N/A (documentation already created in prior session)
 - Changed:
-  - `Planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
+  - `docs/planning/Master Task List Consolidated.md` — marked three Phase 0 items complete:
     - Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy
     - Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing
     - Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs
@@ -58,7 +58,7 @@
 ## 2026-05-13 — ADR Governance and System Blueprint
 
 - Added:
-  - `Support/docs/architectural-decision-records/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
+  - `docs/governance/adr/README.md` — formal ADR governance document covering the ADR template, numbering convention, status lifecycle, review process, mandatory triggers and a navigable ADR index
   - `docs/architecture/system-blueprint.md` — detailed system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching and CDN topology, observability, workers, and AI injection architecture
 - Changed:
   - N/A
@@ -75,7 +75,7 @@
 ## 2026-05-13 — Engineering Standards and Governance
 
 - Added:
-  - `Support/docs/00-root/engineering-standards-and-governance.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
+  - `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md` defining repository-wide engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review expectations, and production readiness controls
 - Changed:
   - Governance coverage now formalizes architecture-first delivery controls, documentation update requirements, ADR triggers, release readiness expectations, and production approval checkpoints
 - Fixed:
@@ -90,7 +90,7 @@
 ## 2026-05-13 — Consolidated Master Task List
 
 - Added:
-  - `Planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase X.md`
+  - `docs/planning/Master Task List Consolidated.md` with unified cross-phase matrix, missing-task priorities, and phase-sourced additions from `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase X.md`
 - Changed:
   - Consolidated planning now includes phase-derived implementation scope callouts to complement the master matrix
 - Fixed:
@@ -125,8 +125,8 @@
   - `.github/workflows/ci.yml` — full CI pipeline (lint, typecheck, test, docker build, CI gate)
   - `.github/workflows/dependency-review.yml` — daily dependency audit
   - `.github/workflows/code-cleanup.yml` — weekly formatting/lint sweep
-  - `.github/PULL_REQUEST_TEMPLATE/` — PR template
-  - `.github/ISSUE_TEMPLATE/` — bug and feature request templates
+  - `.github/templates/pull_request_template.md` — PR template
+  - `.github/templates/issue-template/` — bug and feature request templates
   - `Makefile` — local dev commands (dev, test, lint, format, db-migrate, db-shell, etc.)
   - `scripts/setup/bootstrap.sh` — local environment bootstrap script
 - Changed:
@@ -164,7 +164,7 @@
 ## 2026-05-12 — Master Task List Audit
 
 - Added:
-  - Additional required task coverage across `Planning/Master Task List Phase 0.md` through `Planning/Master Task List Phase 12.md` and `Planning/Master Task List Phase X.md`
+  - Additional required task coverage across `docs/planning/Master Task List Phase 0.md` through `docs/planning/Master Task List Phase 12.md` and `docs/planning/Master Task List Phase X.md`
 - Changed:
   - Standardized markdown structure in the phase master task lists with consistent headings and checklist-style task blocks
 - Fixed:
@@ -179,9 +179,9 @@
 ## 2026-05-12 — Documentation Foundation
 
 - Added:
-  - Initial product requirements documentation in `Support/docs/00-root/product-requirements-doc.md`
-  - Product strategy documents under `Support/docs/01-product/`
-  - Core ADR set under `Support/docs/architectural-decision-records/`
+  - Initial product requirements documentation in `docs/legacy/support/00-root/product-requirements-doc.md`
+  - Product strategy documents under `docs/legacy/support/01-product/`
+  - Core ADR set under `docs/governance/adr/records/`
   - Build and implementation planning docs (`build-system.md`, `caddy-stats-building-plan.md`)
 - Changed:
   - Established build-order-first project direction across docs
@@ -198,10 +198,10 @@
 
 - Added:
   - New foundational docs for project overview, vision/goals, and roadmap:
-    - `Support/docs/00-root/project-overview.md`
-    - `Support/docs/00-root/vision-and-goals.md`
-    - `Support/docs/00-root/roadmap.md`
-  - Full workflow guidance in `Support/docs/workflow.md`
+    - `docs/legacy/support/00-root/project-overview.md`
+    - `docs/legacy/support/00-root/vision-and-goals.md`
+    - `docs/legacy/support/00-root/roadmap.md`
+  - Full workflow guidance in `docs/workflow.md`
 - Changed:
   - Expanded root `README.md` with project summary and documentation index
   - Standardized documentation navigation references across root docs

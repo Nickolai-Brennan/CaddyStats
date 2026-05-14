@@ -6,7 +6,7 @@ Establish the foundational documentation, governance, architecture, standards, o
 
 Phase 0 defines the authoritative system blueprint.
 
-Reference expansion plan: `Planning/App Assets & Attributes Matrix.md`
+Reference expansion plan: `docs/planning/App Assets & Attributes Matrix.md`
 
 ---
 

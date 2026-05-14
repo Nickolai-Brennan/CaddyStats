@@ -36,5 +36,5 @@
 ## Governance terms
 
 - **Canonical docs**: the documentation set under `docs/` that defines current product and system intent.
-- **Legacy source material**: older planning or support docs retained for reference, especially under `Support/docs/`.
+- **Legacy source material**: older planning or support docs retained for reference, especially under `docs/legacy/support/`.
 - **Release class**: patch, minor, or major classification used to describe change impact.

@@ -16,55 +16,44 @@ The product combines verified golf data, projection workflows, SEO-ready content
 
 This repository currently contains:
 
-- `apps/web/` for the React + Vite frontend
+- `apps/web/` for the public React + Vite frontend
+- `apps/admin/` for internal admin interfaces
+- `apps/editor/` for editorial tooling surfaces
 - `services/api/` for the FastAPI backend
+- `packages/` for shared workspace packages
 - `database/` for shared database assets and references
-- `docs/` for canonical product, architecture, governance, and strategy docs
-- `Support/docs/` for legacy source material that informed the canonical docs set
-- `tests/`, `scripts/`, `infrastructure/`, and `workers/` for support and runtime concerns
+- `docs/` for canonical docs, planning artifacts, and legacy documentation archives
+- `tests/`, `scripts/`, `infrastructure/`, `workers/`, `ai/`, and `config/` for support and runtime concerns
+- `AI Control/` for imported agentic assets and workflow support material
 
-## Canonical documentation map
+## Documentation map
 
-### Core and product
+### Canonical docs
+
+- `docs/README.md`
 - `docs/core/PROJECT_OVERVIEW.md`
-- `docs/core/TERMINOLOGY_GLOSSARY.md`
-- `docs/product/PRODUCT_BRIEF.md`
-- `docs/product/PROBLEM_STATEMENT.md`
 - `docs/product/VISION_AND_GOALS.md`
-- `docs/product/NON_GOALS.md`
-- `docs/product/VALUE_PROPOSITION.md`
-- `docs/product/TARGET_AUDIENCE.md`
-
-### Architecture and governance
 - `docs/architecture/SYSTEM_ARCHITECTURE_OVERVIEW.md`
-- `docs/architecture/SERVICE_BOUNDARIES.md`
-- `docs/architecture/DOMAIN_MODEL.md`
-- `docs/architecture/EVENT_DRIVEN_ARCHITECTURE.md`
-- `docs/governance/DOCS_STYLE_GUIDE.md`
-- `docs/governance/NAMING_CONVENTIONS.md`
-- `docs/governance/VERSIONING_STRATEGY.md`
-- `docs/governance/DEPENDENCY_MAPPING.md`
-- `docs/governance/adr/ADR_TEMPLATE.md`
-- `docs/governance/adr/ADR_PROCESS.md`
-- `docs/governance/adr/ARCHITECTURE_DECISION_LOG.md`
+- `docs/governance/ENGINEERING_STANDARDS_AND_GOVERNANCE.md`
+- `docs/governance/adr/README.md`
+- `docs/workflow.md`
+- `docs/changelog.md`
 
-### Strategy
-- `docs/strategy/DATA_ENGINEERING_STRATEGY.md`
-- `docs/strategy/AI_STRATEGY.md`
-- `docs/strategy/SEO_STRATEGY.md`
-- `docs/strategy/EDITORIAL_INTELLIGENCE_STRATEGY.md`
-- `docs/strategy/RELIABILITY_STRATEGY.md`
-- `docs/strategy/MONETIZATION_STRATEGY.md`
-- `docs/strategy/SCALE_PLANNING.md`
+### Detailed supporting docs
 
-### Detailed supporting docs already in repo
-- `docs/architecture/system-blueprint.md`
 - `docs/architecture/system-overview.md`
+- `docs/architecture/system-blueprint.md`
 - `docs/architecture/domain-model.md`
 - `docs/data/stat-grounding-policy.md`
 - `docs/security/auth-rbac.md`
 - `docs/roadmap/build-phases.md`
 - `docs/compliance/`
+
+### Planning and historical context
+
+- `docs/planning/` for active planning and task-sequencing artifacts
+- `docs/legacy/support/` for archived support material retained for provenance
+- `docs/governance/DOCUMENTATION_CONSOLIDATION_AUDIT.md` for remaining overlap to trim later
 
 ## Build and validation entry points
 
@@ -75,8 +64,9 @@ This repository currently contains:
 
 ## Documentation rules
 
-- canonical docs now live under `docs/`
-- `Support/docs/` should be treated as legacy reference material unless explicitly migrated
+- durable project docs belong under `docs/`
+- `docs/planning/` is the active planning area, but not the canonical architecture or governance source by default
+- `docs/legacy/support/` is historical reference material only
 - major architecture or governance changes should update the nearest canonical doc and ADR references
 - documentation should stay aligned with real repository structure, contracts, and operating rules
 
@@ -91,6 +81,8 @@ This repository currently contains:
 
 ## Related references
 
+- `docs/README.md`
+- `docs/workflow.md`
 - `docs/product/vision.md`
 - `docs/architecture/system-overview.md`
 - `docs/architecture/system-blueprint.md`
