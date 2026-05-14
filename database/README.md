@@ -284,18 +284,18 @@ Seed script: `services/api/scripts/database/seed.py`
 
 Copy `.env.example` to `.env` and set these database variables:
 
-| Variable            | Description                                    | Example                                               |
-| ------------------- | ---------------------------------------------- | ----------------------------------------------------- |
-| `POSTGRES_HOST`     | PostgreSQL host                                | `postgres` (Docker) or Neon hostname                  |
-| `POSTGRES_PORT`     | PostgreSQL port                                | `5432`                                                |
-| `POSTGRES_DB`       | Database name                                  | `db_golf`                                             |
-| `POSTGRES_USER`     | Database user                                  | `postgres`                                            |
-| `POSTGRES_PASSWORD` | Database password                              | `postgres`                                            |
-| `DATABASE_URL`      | Full async connection string (used by FastAPI) | `postgresql+asyncpg://postgres:postgres@host:5432/db_golf` |
-| `DUCKDB_PATH`       | Local DuckDB file path                         | `./data/caddystats.duckdb`                            |
-| `MOTHERDUCK_URL`    | MotherDuck connection target                   | `md:CaddyStats`                                       |
-| `MOTHERDUCK_TOKEN`  | MotherDuck auth token                          | `<SECRET>`                                            |
-| `PANDAS_QUERY_ROW_LIMIT` | Max rows returned by API pandas helpers   | `5000`                                                |
+| Variable                 | Description                                    | Example                                                    |
+| ------------------------ | ---------------------------------------------- | ---------------------------------------------------------- |
+| `POSTGRES_HOST`          | PostgreSQL host                                | `postgres` (Docker) or Neon hostname                       |
+| `POSTGRES_PORT`          | PostgreSQL port                                | `5432`                                                     |
+| `POSTGRES_DB`            | Database name                                  | `db_golf`                                                  |
+| `POSTGRES_USER`          | Database user                                  | `postgres`                                                 |
+| `POSTGRES_PASSWORD`      | Database password                              | `postgres`                                                 |
+| `DATABASE_URL`           | Full async connection string (used by FastAPI) | `postgresql+asyncpg://postgres:postgres@host:5432/db_golf` |
+| `DUCKDB_PATH`            | Local DuckDB file path                         | `./data/caddystats.duckdb`                                 |
+| `MOTHERDUCK_URL`         | MotherDuck connection target                   | `md:CaddyStats`                                            |
+| `MOTHERDUCK_TOKEN`       | MotherDuck auth token                          | `<SECRET>`                                                 |
+| `PANDAS_QUERY_ROW_LIMIT` | Max rows returned by API pandas helpers        | `5000`                                                     |
 
 For Neon, append `?sslmode=require` to `DATABASE_URL`.
 
