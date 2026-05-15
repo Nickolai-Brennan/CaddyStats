@@ -54,8 +54,16 @@ def create_app() -> FastAPI:
 def _register_routes(app: FastAPI) -> None:
     """Register all API routers."""
     from app.api.health import router as health_router
+    from app.api.v1.auth import router as auth_router
+    from app.api.v1.articles import router as articles_router
+    from app.api.v1.players import router as players_router
+    from app.api.v1.tournaments import router as tournaments_router
 
     app.include_router(health_router)
+    app.include_router(auth_router, prefix="/api/v1")
+    app.include_router(players_router, prefix="/api/v1")
+    app.include_router(tournaments_router, prefix="/api/v1")
+    app.include_router(articles_router, prefix="/api/v1")
 
 
 app = create_app()

@@ -19,7 +19,7 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 ### Phase 0 — Documentation & Foundational Architecture
 
 - [x] Finalize vision, personas, monetization model, subscription tiers, editorial philosophy, analytics differentiation, sportsbook positioning, AI workflow strategy, and long-term scalability objectives.
-- [x] Define engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flo
+- [x] Define engineering standards, documentation ownership, release governance, migration governance, naming conventions, branching strategy, commit standards, code review requirements, and production approval flow.
 
 - [x] Establish ADR format, numbering, review process, mandatory triggers, and seed initial ADRs for stack, database, AI grounding, materialized views, and worker orchestration.
 - [x] Publish the system blueprint covering service boundaries, API strategy, schema separation, analytics pipeline architecture, caching, CDN, observability, worker architecture, and AI injection architecture.
@@ -27,16 +27,16 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [x] Define stat provenance, AI grounding rules, editorial-vs-computed content boundaries, and data retention policy.
 - [x] Maintain roadmap, milestones, validation gates, changelog flow, and dependency-aware sequencing.
 - [x] Add compliance and disclosure documentation including privacy, terms, affiliate disclosure, retention, and related operational policy docs.
-- [ ] Create foundational core and product docs including `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, and `TARGET_AUDIENCE.md`.
-- [ ] Create documentation governance and standards docs including `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`, `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, and `EVENT_DRIVEN_ARCHITECTURE.md`.
-- [ ] Create missing strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning.
-- [ ] Replace the root README.md with a repository-focused overview and canonical docs map
-- [ ] Create foundational core and product docs under docs/ for project overview, architecture overview, glossary, vision, non-goals, product brief, problem statement, value proposition, and target audience
-- [ ] Create documentation governance and standards docs under docs/governance and docs/governance/adr
-- [ ] Create architecture support docs for service boundaries, domain model, and event-driven architecture
-- [ ] Create strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning
-- [ ] Add a changelog entry for this documentation foundation work if a canonical changelog path is needed
-- [ ] Review the new docs for consistency, then rerun available validation commands and note any environment-related failures
+- [x] Create foundational core and product docs including `README.md`, `PROJECT_OVERVIEW.md`, `SYSTEM_ARCHITECTURE_OVERVIEW.md`, `TERMINOLOGY_GLOSSARY.md`, `VISION_AND_GOALS.md`, `NON_GOALS.md`, `PRODUCT_BRIEF.md`, `PROBLEM_STATEMENT.md`, `VALUE_PROPOSITION.md`, and `TARGET_AUDIENCE.md`.
+- [x] Create documentation governance and standards docs including `DOCS_STYLE_GUIDE.md`, `NAMING_CONVENTIONS.md`, `VERSIONING_STRATEGY.md`, `ADR_TEMPLATE.md`, `ARCHITECTURE_DECISION_LOG.md`, `DEPENDENCY_MAPPING.md`, `ADR_PROCESS.md`, `SERVICE_BOUNDARIES.md`, `DOMAIN_MODEL.md`, and `EVENT_DRIVEN_ARCHITECTURE.md`.
+- [x] Create missing strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning.
+- [x] Replace the root README.md with a repository-focused overview and canonical docs map
+- [x] Create foundational core and product docs under docs/ for project overview, architecture overview, glossary, vision, non-goals, product brief, problem statement, value proposition, and target audience
+- [x] Create documentation governance and standards docs under docs/governance and docs/governance/adr
+- [x] Create architecture support docs for service boundaries, domain model, and event-driven architecture
+- [x] Create strategy docs for data engineering, AI, SEO, editorial intelligence, reliability, monetization, and scale planning
+- [x] Add a changelog entry for this documentation foundation work if a canonical changelog path is needed
+- [x] Review the new docs for consistency, then rerun available validation commands and note any environment-related failures
 
 ### Phase 1 — Folder Setup, Repository Structure & Tooling
 
@@ -53,22 +53,22 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 
 ### Phase 2 — Database Architecture, Standards & Foundation
 
-- [ ] Build the PostgreSQL architecture for `auth`, `content`, `stats`, `analytics`, `ai`, `system`, `ingestion`, and `billing` domains as needed.
-- [ ] Implement core schemas and tables for users, roles, permissions, refresh tokens, API keys, audit logs, players, tournaments, rounds, hole stats, strokes gained, rankings, course history, betting lines, articles, article blocks, authors, tags, categories, SEO metadata, article versions, projections, simulations, betting edges, ownership projections, trend analysis, AI prompts, generations, validations, hallucination flags, feature flags, jobs, webhooks, notifications, metrics, ingestion jobs, payloads, mappings, and failures.
-- [ ] Define PostgreSQL standards for UUID primary keys, JSONB usage, materialized views, partitioning, GIN indexing, full-text search, generated columns, row-level security, extensions, naming, functions, triggers, and seed strategy.
-- [ ] Establish migration architecture with Alembic, immutable migration history, transactional/environment-safe migrations, rollback support, migration tooling, and rollback validation.
-- [ ] Add performance foundations including indexes, partitions, query standards, materialized views, caching strategy, and analytics-read optimization.
-- [ ] Build initial materialized views and analytics infrastructure for player recent form, leaderboard summaries, projection overviews, and related read-heavy workloads.
-- [ ] Establish provenance, archive/retention rules, entitlement boundaries, backup strategy, restore testing, and disaster recovery verification cadence.
-- [ ] Add RLS scaffolding, seed framework, backup/restore validation, observability expectations, and database operations standards.
+- [x] Build the PostgreSQL architecture for `auth`, `content`, `stats`, `analytics`, `ai`, `system`, `ingestion`, and `billing` domains as needed.
+- [x] Implement core schemas and tables for users, roles, permissions, refresh tokens, API keys, audit logs, players, tournaments, rounds, hole stats, strokes gained, rankings, course history, betting lines, articles, article blocks, authors, tags, categories, SEO metadata, article versions, projections, simulations, betting edges, ownership projections, trend analysis, AI prompts, generations, validations, hallucination flags, feature flags, jobs, webhooks, notifications, metrics, ingestion jobs, payloads, mappings, and failures.
+- [x] Define PostgreSQL standards for UUID primary keys, JSONB usage, materialized views, partitioning, GIN indexing, full-text search, generated columns, row-level security, extensions, naming, functions, triggers, and seed strategy.
+- [x] Establish migration architecture with Alembic, immutable migration history, transactional/environment-safe migrations, rollback support, migration tooling, and rollback validation.
+- [x] Add performance foundations including indexes, partitions, query standards, materialized views, caching strategy, and analytics-read optimization.
+- [x] Build initial materialized views and analytics infrastructure for player recent form, leaderboard summaries, projection overviews, and related read-heavy workloads.
+- [x] Establish provenance, archive/retention rules, entitlement boundaries, backup strategy, restore testing, and disaster recovery verification cadence.
+- [x] Add RLS scaffolding, seed framework, backup/restore validation, observability expectations, and database operations standards.
 
 ### Phase 3 — Backend, API & Service Layer
 
-- [ ] Bootstrap the FastAPI application with settings, lifecycle, DI/dependencies, DB sessions, logging, exceptions, constants, and health checks.
+- [x] Bootstrap the FastAPI application with settings, lifecycle, DI/dependencies, DB sessions, logging, exceptions, constants, and health checks.
 - [ ] Implement JWT auth, refresh tokens, password hashing, API key support, RBAC, permission middleware, rate limiting, and sanitized/structured error responses.
 - [ ] Build REST endpoints for auth, players, tournaments, stats, projections, betting, rankings, health, AI workflows, content, billing, and admin operations.
 - [ ] Add selective Strawberry GraphQL for editorial content, dashboards, article editing, admin flows, AI-assisted editor use cases, and flexible frontend reads.
-- [ ] Implement service/repository boundaries so repositories own DB access and services own business logic.
+- [x] Implement service/repository boundaries so repositories own DB access and services own business logic.
 - [ ] Add caching infrastructure, keys, decorators, invalidation flows, TTL rules, and cache priorities for leaderboards, projections, rankings, summaries, pages, and betting edges.
 - [ ] Implement observability with structured logs, tracing, metrics, error tracking, health endpoints, auth instrumentation, projection instrumentation, admin action instrumentation, and AI workflow instrumentation.
 - [ ] Define and enforce API performance budgets, pagination, query limits, GraphQL depth/complexity limits, and hot-path benchmarking.
@@ -180,7 +180,7 @@ Use this section for non-canonical supporting detail that should remain visible 
 
 - Documentation: in progress / expanding.
 - Folder Setup: partially complete.
-- Database through Business phases: planned.
+- Database complete; Backend underway.
 - Each phase must produce concrete deliverables before dependent phases scale.
 
 ### B2. Build Order / Dependency Guidance
