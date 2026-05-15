@@ -1,5 +1,51 @@
 # Changelog
 
+## 2026-05-15 — Local Stack Bootstrap & Runtime Compatibility Fixes
+
+- Added:
+  - `email-validator` dependency in `services/api/requirements/base.txt` so Pydantic email-backed schema fields can load during API startup.
+  - Compose-scoped database environment variables in `.env.example`:
+    - `CADDYSTATS_POSTGRES_DB`
+    - `CADDYSTATS_POSTGRES_USER`
+    - `CADDYSTATS_POSTGRES_PASSWORD`
+  - Docker bind mount for root `tsconfig.base.json` in `docker-compose.yml` to support local containerized frontend development.
+
+- Changed:
+  - `.env.example` development defaults now align with the local Docker stack:
+    - `APP_ENV=development`
+    - PostgreSQL defaults use `caddystats` / `caddystats_dev`
+    - `DATABASE_URL` targets the local Compose PostgreSQL service
+  - `docker-compose.yml` now uses compose-scoped database variables for PostgreSQL and API connection strings to avoid host-environment collisions.
+  - `apps/web/tsconfig.json` no longer depends on a cross-repo `extends` path that failed inside the Docker-mounted frontend workspace.
+  - `services/api/app/graphql/schema.py` temporarily exposes a query-only Strawberry schema so incomplete mutation wiring does not block API startup.
+  - `services/api/app/main.py` now mounts Strawberry ASGI GraphQL without the unsupported `debug` constructor argument.
+
+- Fixed:
+  - Resolved Vite container startup failure caused by `../../tsconfig.base.json` not resolving from `/app/tsconfig.json`.
+  - Resolved API startup crash caused by missing `email-validator` dependency.
+  - Resolved PostgreSQL healthcheck and connection drift caused by conflicting host-level `POSTGRES_*` environment values.
+  - Resolved Strawberry schema initialization failures in `services/api/app/graphql/queries.py` by removing invalid dependency-style resolver arguments.
+  - Resolved Strawberry type generation failures in `services/api/app/graphql/types.py` by converting raw `dict` GraphQL fields to JSON scalar fields.
+  - Resolved Strawberry ASGI compatibility issue where `GraphQL(..., debug=...)` crashed with the installed package version.
+
+- Plugins:
+  - N/A
+
+- Commands:
+  - Validated local stack with:
+    - `./dev.cmd up`
+    - `docker compose up -d --build`
+    - `Invoke-WebRequest http://localhost:8000/health`
+    - GraphQL POST smoke test against `http://localhost:8000/graphql`
+
+- Notes:
+  - Verified final local runtime status:
+    - Frontend: `http://localhost:3000` -> 200
+    - API health: `http://localhost:8000/health` -> 200
+    - Swagger docs: `http://localhost:8000/docs` -> 200
+    - GraphQL endpoint: `http://localhost:8000/graphql` -> 200
+  - GraphQL mutations remain intentionally excluded from schema startup until their dependency/auth wiring is brought in line with Strawberry resolver requirements.
+
 ## 2025-01-15 — Phase 4: Web App Shell & Frontend Foundation
 
 - Added:

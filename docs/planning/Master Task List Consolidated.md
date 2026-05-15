@@ -61,6 +61,11 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [x] Build initial materialized views and analytics infrastructure for player recent form, leaderboard summaries, projection overviews, and related read-heavy workloads.
 - [x] Establish provenance, archive/retention rules, entitlement boundaries, backup strategy, restore testing, and disaster recovery verification cadence.
 - [x] Add RLS scaffolding, seed framework, backup/restore validation, observability expectations, and database operations standards.
+- [ ] restore and properly re-enable GraphQL mutations
+- [ ] clean up the local modified file set and prepare a commit 
+- [ ] run a broader functional test pass across frontend and AP
+
+
 
 ### Phase 3 — Backend, API & Service Layer
 

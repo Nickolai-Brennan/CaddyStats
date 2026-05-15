@@ -92,6 +92,17 @@ open http://localhost:3000
 - **`API_TESTING.md`** - API testing tools and examples
 - **`QUICKREF.md`** - One-page developer reference
 
+### Environment Access
+- Copy `.env.example` to `.env` for local development, or let `./dev.sh up` / `dev.cmd up` create `.env` automatically on first run.
+- Use `config/environments/` for environment-specific reference files and overlay examples.
+- Local Docker defaults are:
+	- `APP_ENV=development`
+	- PostgreSQL database: `caddystats`
+	- PostgreSQL user: `caddystats`
+	- PostgreSQL password: `caddystats_dev`
+- Compose uses the repo-scoped `CADDYSTATS_POSTGRES_*` variables to avoid collisions with machine-level `POSTGRES_*` environment variables.
+- If you change `.env`, restart the stack with `./dev.sh restart` or `dev.cmd restart` so containers pick up the new values.
+
 ### Service URLs (after running `./dev.sh up`)
 | Service | URL |
 |---------|-----|

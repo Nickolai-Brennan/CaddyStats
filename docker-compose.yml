@@ -9,16 +9,16 @@ services:
     container_name: caddystats-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-caddystats}
-      POSTGRES_USER: ${POSTGRES_USER:-caddystats}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-caddystats_dev}
+      POSTGRES_DB: ${CADDYSTATS_POSTGRES_DB:-caddystats}
+      POSTGRES_USER: ${CADDYSTATS_POSTGRES_USER:-caddystats}
+      POSTGRES_PASSWORD: ${CADDYSTATS_POSTGRES_PASSWORD:-caddystats_dev}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/schemas:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-caddystats} -d ${POSTGRES_DB:-caddystats}"]
+      test: ["CMD-SHELL", "pg_isready -U ${CADDYSTATS_POSTGRES_USER:-caddystats} -d ${CADDYSTATS_POSTGRES_DB:-caddystats}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -62,7 +62,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-caddystats}:${POSTGRES_PASSWORD:-caddystats_dev}@postgres:5432/${POSTGRES_DB:-caddystats}
+      DATABASE_URL: postgresql+asyncpg://${CADDYSTATS_POSTGRES_USER:-caddystats}:${CADDYSTATS_POSTGRES_PASSWORD:-caddystats_dev}@postgres:5432/${CADDYSTATS_POSTGRES_DB:-caddystats}
       REDIS_URL: redis://:${REDIS_PASSWORD:-caddystats_dev}@redis:6379/0
     ports:
       - "8000:8000"
@@ -100,6 +100,7 @@ services:
       - "3000:3000"
     volumes:
       - ./apps/web:/app
+      - ./tsconfig.base.json:/tsconfig.base.json:ro
       - /app/node_modules
     depends_on:
       - api
