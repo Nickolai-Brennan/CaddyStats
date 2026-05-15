@@ -1,3 +1,103 @@
+# Changelog
+
+## 2026-05-15 — Selective Strawberry GraphQL for Editorial, Admin, and Dashboards
+
+- Added:
+  - `services/api/app/graphql/types.py` with Strawberry GraphQL types for:
+    - Content domain: ArticleType, ArticleBlockType, ArticleListType, AuthorType, TagType, TemplateType
+    - Auth domain (admin-gated): UserType, RoleType, PermissionType
+    - Billing domain: SubscriptionType, BillingPlanType, EntitlementType
+    - AI workflows: AIWorkflowType, AIPromptVersionType, AIOutputLogType
+    - Dashboard aggregates: DashboardStatsType, RecentActivityType
+    - Input types: ArticleCreateInput, ArticleUpdateInput, ArticleBlockInput, AuthorCreateInput, AuthorUpdateInput, AIWorkflowReviewInput
+  - `services/api/app/graphql/queries.py` with Query resolvers for:
+    - Article discovery (list with filtering, single by slug)
+    - Author metadata (list, single by slug)
+    - Tag browsing
+    - User self-view (authenticated) and admin user list (admin-gated)
+    - Editorial dashboard stats (total articles, drafts, published, AI-assisted, word count, average read time)
+    - Recent editorial activity timeline
+  - `services/api/app/graphql/mutations.py` with Mutation operations for:
+    - Article CRUD (create, update, delete) with nested block editing
+    - Author CRUD (create, update)
+    - Admin user role assignment
+    - AI workflow review (approve/reject editorial output with notes)
+  - `services/api/app/graphql/schema.py` combining Query and Mutation into Strawberry schema
+  - Dashboard query methods in `services/api/app/repositories/content.py`:
+    - `get_dashboard_stats()` for editorial analytics aggregations
+    - `get_recent_activity()` for activity timeline
+  - Repository classes for content domain: `AuthorRepository`, `TagRepository`, `TemplateRepository`
+  - GraphQL ASGI mount in `services/api/app/main.py` at `/graphql` endpoint
+- Changed:
+  - `services/api/app/main.py` now imports and mounts Strawberry GraphQL schema with debug mode conditional on environment
+  - `services/api/app/repositories/content.py` expanded with dashboard stats methods and new repository classes
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - GraphQL schema validates RBAC permissions inline at resolver level using existing `require_permission` pattern
+  - Selective coverage prioritizes article editing workflows, admin user management, and dashboard queries
+  - All GraphQL types and resolvers compile without static errors
+  - REST endpoints remain primary data interface; GraphQL provides query-flexible reads for editorial and dashboard consumption
+
+## 2026-05-15 — REST Endpoint Expansion Across Core Domains
+
+- Added:
+  - New API routers for missing domains:
+    - `services/api/app/api/v1/stats.py`
+    - `services/api/app/api/v1/projections.py`
+    - `services/api/app/api/v1/betting.py`
+    - `services/api/app/api/v1/rankings.py`
+    - `services/api/app/api/v1/ai_workflows.py`
+    - `services/api/app/api/v1/content.py`
+    - `services/api/app/api/v1/billing.py`
+    - `services/api/app/api/v1/admin.py`
+  - New operational schemas in `services/api/app/schemas/operations.py` for stats overview, AI workflow runs/status, billing objects, and admin responses
+  - New service modules:
+    - `services/api/app/services/ai.py`
+    - `services/api/app/services/billing.py`
+    - `services/api/app/services/admin.py`
+- Changed:
+  - `services/api/app/main.py` now registers all new v1 routers for stats/projections/betting/rankings/ai/content/billing/admin
+  - `services/api/app/services/stats.py` expanded with overview, leaderboard, rankings, round history, player projections, and market retrieval methods
+  - `services/api/app/repositories/stats.py` expanded with market, leaderboard, ranking, round-history, and player-projection query helpers
+  - `services/api/app/services/content.py` and `services/api/app/repositories/content.py` expanded with tag/author/template listing operations
+  - `services/api/app/schemas/stats.py` expanded with leaderboard/ranking/round response models
+  - `services/api/app/repositories/auth.py` role assignment made idempotent for admin role-management endpoint behavior
+- Fixed:
+  - Pagination contract consistency (`has_next`) for paginated stats/content responses
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Static diagnostics completed on all changed files with no reported errors
+
+## 2026-05-15 — API Security Hardening (JWT, API Keys, RBAC, Rate Limits, Structured Errors)
+
+- Added:
+  - `services/api/app/core/errors.py` for sanitized and structured API error envelopes with request metadata
+  - `services/api/app/middleware/rate_limit.py` for fixed-window per-client rate limiting with Redis-first and in-memory fallback
+- Changed:
+  - `services/api/app/main.py` now registers global HTTP/validation/unhandled exception handlers and rate-limit middleware
+  - `services/api/app/core/config.py` now includes API key and rate-limit settings (`API_KEY_HEADER_NAME`, `API_KEY_STATIC_KEYS`, `RATE_LIMIT_*`)
+  - `services/api/app/dependencies/auth.py` now supports API key principals in addition to JWT bearer auth and unifies RBAC checks across principals
+  - `services/api/app/services/auth.py` now persists access token hashes in sessions, rotates refresh sessions safely, updates last-login timestamp, and returns `expires_in` consistently
+  - `services/api/app/middleware/request_id.py` now stores request IDs on request scope/state for uniform error response metadata
+  - `services/api/app/api/v1/articles.py` permission keys aligned with seeded RBAC permissions (`content.write`, `content.delete`)
+- Fixed:
+  - token response contract mismatch (`expires_in` vs `expires_at`) in auth token responses
+  - article write permission checks referenced non-seeded permission keys
+- Plugins:
+  - N/A
+- Commands:
+  - N/A
+- Notes:
+  - Validation executed with editor diagnostics (`get_errors`) and all changed files returned no static errors
+
 ## 2026-05-14 — Multi-database analytics connection setup
 
 - Added:

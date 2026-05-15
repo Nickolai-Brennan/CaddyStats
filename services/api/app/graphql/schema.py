@@ -1,0 +1,11 @@
+"""Strawberry GraphQL schema — combines queries, mutations, and scalar types."""
+
+from __future__ import annotations
+
+import strawberry
+
+from app.graphql.queries import Query
+from app.graphql.mutations import Mutation
+
+
+schema = strawberry.Schema(query=Query, mutation=Mutation)

@@ -11,6 +11,9 @@ from app.schemas.content import (
     ArticleListOut,
     ArticleOut,
     ArticleUpdateIn,
+    AuthorOut,
+    TagOut,
+    TemplateOut,
 )
 from app.schemas.stats import PaginatedOut
 
@@ -41,6 +44,7 @@ class ContentService:
             total=total,
             page=page,
             page_size=page_size,
+            has_next=(page * page_size) < total,
         )
 
     async def get_article(self, slug: str) -> ArticleOut:
@@ -78,3 +82,15 @@ class ContentService:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Article not found")
         article.status = "archived"
         await self._repo.update(article, {"status": "archived"})
+
+    async def list_tags(self, limit: int) -> list[TagOut]:
+        tags = await self._repo.list_tags(limit=limit)
+        return [TagOut.model_validate(item) for item in tags]
+
+    async def list_authors(self, limit: int) -> list[AuthorOut]:
+        authors = await self._repo.list_authors(limit=limit)
+        return [AuthorOut.model_validate(item) for item in authors]
+
+    async def list_templates(self, active_only: bool, limit: int) -> list[TemplateOut]:
+        templates = await self._repo.list_templates(active_only=active_only, limit=limit)
+        return [TemplateOut.model_validate(item) for item in templates]

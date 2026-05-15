@@ -35,6 +35,18 @@ class AuthorOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class TemplateOut(BaseModel):
+    id: str
+    slug: str
+    name: str
+    description: str | None = None
+    block_schema: dict | None = None
+    metadata_defaults: dict | None = None
+    is_active: bool
+
+    model_config = {"from_attributes": True}
+
+
 # ---------------------------------------------------------------------------
 # Article block
 # ---------------------------------------------------------------------------

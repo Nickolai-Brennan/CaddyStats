@@ -44,6 +44,15 @@ class Settings(BaseSettings):
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
+    # API Keys (format: name|secret|role1,role2|perm1,perm2)
+    API_KEY_HEADER_NAME: str = "X-API-Key"
+    API_KEY_STATIC_KEYS: list[str] = []
+
+    # Rate limiting
+    RATE_LIMIT_ENABLED: bool = True
+    RATE_LIMIT_REQUESTS_PER_MINUTE: int = 120
+    RATE_LIMIT_AUTH_REQUESTS_PER_MINUTE: int = 20
+
     # CORS
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:80"]
 
@@ -61,6 +70,14 @@ class Settings(BaseSettings):
         """Allow comma-separated string or list."""
         if isinstance(v, str):
             return [origin.strip() for origin in v.split(",")]
+        return v
+
+    @field_validator("API_KEY_STATIC_KEYS", mode="before")
+    @classmethod
+    def parse_api_keys(cls, v: str | list[str]) -> list[str]:
+        """Allow comma-separated string or list for static API key definitions."""
+        if isinstance(v, str):
+            return [item.strip() for item in v.split(",") if item.strip()]
         return v
 
 

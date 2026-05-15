@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -57,6 +58,10 @@ class UserRepository:
         role = role_result.scalar_one_or_none()
         if role is None:
             return
-        assignment = RoleAssignment(user_id=user_id, role_id=role.id)
-        self._db.add(assignment)
+        stmt = (
+            insert(RoleAssignment)
+            .values(user_id=user_id, role_id=role.id)
+            .on_conflict_do_nothing(index_elements=["user_id", "role_id"])
+        )
+        await self._db.execute(stmt)
         await self._db.flush()

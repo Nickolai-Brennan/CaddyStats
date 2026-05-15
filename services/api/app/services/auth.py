@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import hashlib
-from datetime import datetime
+from datetime import UTC, datetime
 
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -38,7 +38,7 @@ class AuthService:
             account_status="active",
         )
         await self._repo.assign_role(user.id, "user")
-        return await self._issue_tokens(user.id, str(data.email))
+        return await self._issue_tokens(user.id)
 
     async def login(self, data: LoginIn) -> TokenOut:
         user = await self._repo.get_by_email(data.email)
@@ -46,7 +46,9 @@ class AuthService:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
         if user.account_status != "active":
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account suspended")
-        return await self._issue_tokens(user.id, str(user.email))
+        user.last_login_at = datetime.now(UTC)
+        await self._repo.save(user)
+        return await self._issue_tokens(user.id)
 
     async def refresh(self, refresh_token: str) -> TokenOut:
         try:
@@ -76,9 +78,9 @@ class AuthService:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User unavailable")
 
         # Rotate: revoke old session, issue new tokens
-        session.revoked_at = datetime.utcnow()
+        session.revoked_at = datetime.now(UTC)
         self._db.add(session)
-        return await self._issue_tokens(user.id, str(user.email))
+        return await self._issue_tokens(user.id)
 
     async def logout(self, user_id: str, refresh_token: str) -> None:
         token_hash = _token_hash(refresh_token)
@@ -91,25 +93,27 @@ class AuthService:
         )
         session = session_result.scalar_one_or_none()
         if session:
-            session.revoked_at = datetime.utcnow()
+            session.revoked_at = datetime.now(UTC)
             self._db.add(session)
             await self._db.flush()
 
-    async def _issue_tokens(self, user_id: str, email: str) -> TokenOut:
+    async def _issue_tokens(self, user_id: str) -> TokenOut:
         access_token, access_exp = create_access_token(user_id)
         refresh_token, refresh_exp = create_refresh_token(user_id)
 
         session = Session(
             user_id=user_id,
+            token_hash=_token_hash(access_token),
             refresh_token_hash=_token_hash(refresh_token),
             expires_at=refresh_exp,
         )
         self._db.add(session)
         await self._db.flush()
 
+        expires_in = int((access_exp - datetime.now(UTC)).total_seconds())
         return TokenOut(
             access_token=access_token,
             refresh_token=refresh_token,
             token_type="bearer",
-            expires_at=access_exp,
+            expires_in=max(0, expires_in),
         )

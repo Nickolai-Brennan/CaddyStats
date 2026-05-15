@@ -8,8 +8,7 @@ from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db_session
-from app.dependencies.auth import get_current_user, require_permission
-from app.models.auth import User
+from app.dependencies.auth import require_permission
 from app.schemas.content import ArticleCreateIn, ArticleListOut, ArticleOut, ArticleUpdateIn
 from app.schemas.stats import PaginatedOut
 from app.services.content import ContentService
@@ -57,7 +56,7 @@ async def get_article(
     "",
     response_model=ArticleOut,
     status_code=status.HTTP_201_CREATED,
-    dependencies=[Depends(require_permission("content.create"))],
+    dependencies=[Depends(require_permission("content.write"))],
 )
 async def create_article(
     data: ArticleCreateIn,
@@ -72,7 +71,7 @@ async def create_article(
 @router.patch(
     "/{article_id}",
     response_model=ArticleOut,
-    dependencies=[Depends(require_permission("content.edit"))],
+    dependencies=[Depends(require_permission("content.write"))],
 )
 async def update_article(
     article_id: str,

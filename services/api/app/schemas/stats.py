@@ -165,6 +165,49 @@ class MarketOut(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Ranking / leaderboard / rounds
+# ---------------------------------------------------------------------------
+
+class PlayerRankingOut(BaseModel):
+    id: str
+    slug: str
+    display_name: str
+    world_ranking: int | None = None
+    owgr_points: Decimal | None = None
+    country_code: str | None = None
+
+    model_config = {"from_attributes": True}
+
+
+class LeaderboardEntryOut(BaseModel):
+    tournament_id: str
+    player_id: str
+    field_status: str
+    position: str | None = None
+    total_score: int | None = None
+    total_strokes: int | None = None
+    earnings_usd: int | None = None
+    player: PlayerListOut
+
+    model_config = {"from_attributes": True}
+
+
+class PlayerRoundOut(BaseModel):
+    id: str
+    tournament_id: str
+    player_id: str
+    round_number: int
+    score: int | None = None
+    score_to_par: int | None = None
+    birdies: int | None = None
+    bogeys: int | None = None
+    sg_total: Decimal | None = None
+    updated_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+# ---------------------------------------------------------------------------
 # Query params
 # ---------------------------------------------------------------------------
 
