@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from app.caching.decorators import cache_aside, cache_through, invalidate_cache
-from app.caching.keys import CacheKeyBuilder
-from app.caching.config import CachePolicy
 from app.caching.client import CacheOps
-from app.caching.invalidation import CacheInvalidationFlow, InvalidationEvent
-
+from app.caching.config import CachePolicy
+from app.caching.decorators import cache_aside, cache_through, invalidate_cache
+from app.caching.invalidation import CacheInvalidationFlow
+from app.caching.keys import CacheKeyBuilder
 
 # -----------------------------------------------------------------------
 # Service Integration Examples

@@ -9,7 +9,7 @@ from typing import Any, Awaitable, Callable, TypeVar, cast
 import structlog
 
 from app.caching.client import CacheOps
-from app.caching.config import CachePolicy, DEFAULT_CACHE_POLICY
+from app.caching.config import CachePolicy
 
 logger = structlog.get_logger(__name__)
 

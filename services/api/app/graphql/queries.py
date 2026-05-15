@@ -7,9 +7,7 @@ from typing import Optional
 import strawberry
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.dependencies.auth import get_current_principal, get_optional_user
 from app.graphql.types import (
-    AIWorkflowType,
     ArticleBlockType,
     ArticleListType,
     ArticleType,
@@ -17,18 +15,12 @@ from app.graphql.types import (
     DashboardStatsType,
     RecentActivityType,
     RoleType,
-    SubscriptionType,
     TagType,
     UserType,
 )
-from app.models.content import Article, Author, Tag
-from app.models.auth import User
 from app.repositories.content import ArticleRepository, AuthorRepository, TagRepository
-from app.services.content import ContentService
-from app.services.auth import AuthService
 from app.services.admin import AdminService
-from app.schemas.content import ArticleListOut, ArticleOut, AuthorOut, TagOut
-from app.schemas.stats import PaginatedOut
+from app.services.content import ContentService
 
 
 @strawberry.type

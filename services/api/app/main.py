@@ -87,8 +87,8 @@ def _register_routes(app: FastAPI) -> None:
     from app.api.health import router as health_router
     from app.api.v1.admin import router as admin_router
     from app.api.v1.ai_workflows import router as ai_router
-    from app.api.v1.auth import router as auth_router
     from app.api.v1.articles import router as articles_router
+    from app.api.v1.auth import router as auth_router
     from app.api.v1.betting import router as betting_router
     from app.api.v1.billing import router as billing_router
     from app.api.v1.content import router as content_router

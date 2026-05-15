@@ -9,7 +9,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db_session
 from app.dependencies.auth import require_permission
-from app.schemas.operations import AdminEventOut, AdminRoleAssignmentIn, AdminRoleAssignmentOut, AdminUserOut
+from app.schemas.operations import (
+    AdminEventOut,
+    AdminRoleAssignmentIn,
+    AdminRoleAssignmentOut,
+    AdminUserOut,
+)
 from app.services.admin import AdminService
 
 router = APIRouter(prefix="/admin", tags=["admin"])

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import select
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 

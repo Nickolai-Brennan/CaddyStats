@@ -123,7 +123,6 @@ class ArticleRepository:
 
     async def get_dashboard_stats(self) -> dict:
         """Fetch editorial dashboard statistics."""
-        from sqlalchemy import and_, text
 
         # Total articles
         total_result = await self._db.execute(select(func.count()).select_from(Article))

@@ -68,6 +68,7 @@ This repository currently contains:
 ## 🚀 Local Development
 
 ### Quick Start
+
 ```bash
 # macOS/Linux
 ./dev.sh up
@@ -84,35 +85,39 @@ open http://localhost:3000
 
 **Note for Windows PowerShell users**: Use `.\dev.cmd up` (with the `.\` prefix)
 
-**See `QUICKREF.md` for a one-page cheat sheet.**
+**See `docs/devops/local-development-bootstrap.md` for the canonical local bootstrap guide.**
 
 ### Full Development Setup
-- **`LOCAL_DEVELOPMENT.md`** - Complete guide for running all services locally
-- **`DEVELOPMENT_SETUP.md`** - Environment configuration and setup options
-- **`API_TESTING.md`** - API testing tools and examples
-- **`QUICKREF.md`** - One-page developer reference
+
+- **`docs/devops/local-development-bootstrap.md`** - Canonical local setup and bootstrap flow
+- **`docs/devops/environment-and-secrets-strategy.md`** - Environment and secrets contract
+- **`docs/devops/platform-baseline.md`** - Runtime and platform baseline
+- **`docs/legacy/support/dev-setup/`** - Archived legacy setup references
 
 ### Environment Access
+
 - Copy `.env.example` to `.env` for local development, or let `./dev.sh up` / `dev.cmd up` create `.env` automatically on first run.
 - Use `config/environments/` for environment-specific reference files and overlay examples.
 - Local Docker defaults are:
-	- `APP_ENV=development`
-	- PostgreSQL database: `caddystats`
-	- PostgreSQL user: `caddystats`
-	- PostgreSQL password: `caddystats_dev`
+  - `APP_ENV=development`
+  - PostgreSQL database: `caddystats`
+  - PostgreSQL user: `caddystats`
+  - PostgreSQL password: `caddystats_dev`
 - Compose uses the repo-scoped `CADDYSTATS_POSTGRES_*` variables to avoid collisions with machine-level `POSTGRES_*` environment variables.
 - If you change `.env`, restart the stack with `./dev.sh restart` or `dev.cmd restart` so containers pick up the new values.
 
 ### Service URLs (after running `./dev.sh up`)
-| Service | URL |
-|---------|-----|
-| Frontend | http://localhost:3000 |
-| API Docs | http://localhost:8000/docs |
-| GraphQL | http://localhost:8000/graphql |
-| Database | localhost:5432 |
-| Redis | localhost:6379 |
+
+| Service  | URL                           |
+| -------- | ----------------------------- |
+| Frontend | http://localhost:3000         |
+| API Docs | http://localhost:8000/docs    |
+| GraphQL  | http://localhost:8000/graphql |
+| Database | localhost:5432                |
+| Redis    | localhost:6379                |
 
 ### Making Changes
+
 - **Backend**: Edit `backend/app/` - auto-reload enabled
 - **Frontend**: Edit `apps/web/src/` - HMR enabled
 - **Database**: Run migrations, changes auto-sync
@@ -127,7 +132,8 @@ open http://localhost:3000
 - `CONTRIBUTING.md` documents the expected contributor workflow.
 
 ### Start developing
-1. Read `QUICKREF.md` (2 min)
+
+1. Read `docs/devops/local-development-bootstrap.md` (2 min)
 2. Run `./dev.sh up` (1 min)
 3. Open http://localhost:3000 (10 sec)
 4. Start coding!

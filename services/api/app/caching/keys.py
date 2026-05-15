@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Literal
-
 
 class CacheKeyBuilder:
     """Typed cache key generation for all domains."""

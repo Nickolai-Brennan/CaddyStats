@@ -12,21 +12,20 @@ from app.repositories.stats import (
     ProjectionRepository,
     TournamentRepository,
 )
+from app.schemas.operations import StatsOverviewOut
 from app.schemas.stats import (
     LeaderboardEntryOut,
     MarketOut,
-    PlayerRankingOut,
-    PlayerRoundOut,
     PaginatedOut,
     PlayerListOut,
     PlayerOut,
+    PlayerRankingOut,
+    PlayerRoundOut,
     ProjectionOut,
     TournamentFieldEntryOut,
     TournamentListOut,
     TournamentOut,
-    
 )
-from app.schemas.operations import StatsOverviewOut
 
 
 class StatsService:

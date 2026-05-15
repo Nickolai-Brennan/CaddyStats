@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Generic, TypeVar
+from typing import Any, TypeVar
 
 import redis.asyncio as redis
 import structlog

@@ -2,18 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 import strawberry
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.dependencies.auth import get_current_principal
 from app.graphql.types import (
     AIWorkflowReviewInput,
-    ArticleBlockInput,
-    ArticleBlockType,
     ArticleCreateInput,
-    ArticleListType,
     ArticleType,
     ArticleUpdateInput,
     AuthorCreateInput,
@@ -21,13 +15,11 @@ from app.graphql.types import (
     AuthorUpdateInput,
     UserType,
 )
-from app.repositories.content import ArticleRepository, AuthorRepository
-from app.repositories.auth import UserRepository
-from app.services.content import ContentService
+from app.repositories.content import AuthorRepository
+from app.schemas.content import ArticleBlockIn, ArticleCreateIn, ArticleUpdateIn
 from app.services.admin import AdminService
 from app.services.ai import AIService
-from app.schemas.content import ArticleBlockIn, ArticleCreateIn, ArticleUpdateIn, AuthorOut
-from app.models.auth import User
+from app.services.content import ContentService
 
 
 @strawberry.type

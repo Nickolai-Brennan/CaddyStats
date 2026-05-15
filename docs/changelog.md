@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-05-15 — Automation Cleanup Pass and Legacy Docs Reorganization
+
+- Added:
+  - `docs/legacy/support/README.md` to define legacy archive structure and usage.
+
+- Changed:
+  - Reorganized legacy setup/reference docs from repository root into `docs/legacy/support/dev-setup/`:
+    - `API_TESTING.md`
+    - `DEVELOPMENT_SETUP.md`
+    - `ENVIRONMENT_SETUP.md`
+    - `LOCAL_DEVELOPMENT.md`
+    - `QUICKREF.md`
+  - Added root compatibility stubs for the moved setup/reference docs, each pointing to canonical and legacy locations.
+  - Updated `README.md` setup/documentation links to prioritize canonical `docs/devops/*` guidance.
+  - Applied safe Ruff auto-fixes (`I`, `F401`, `C408`) across `services/api` for import ordering and unused import cleanup.
+
+- Fixed:
+  - Reduced API lint noise by removing mechanically-fixable import and unused-symbol issues.
+
+- Plugins:
+  - N/A
+
+- Commands:
+  - `make verify`
+  - `make setup`
+  - `make lint`
+  - `make typecheck`
+  - `make test`
+  - `python3 -m ruff check . --fix --select I,F401,C408` (from `services/api`)
+
+- Notes:
+  - `make test` passes in this environment after bootstrap.
+  - `make lint` and `make typecheck` still report substantial pre-existing non-trivial issues outside this cleanup pass.
+
 ## 2026-05-15 — Local Stack Bootstrap & Runtime Compatibility Fixes
 
 - Added:
