@@ -40,9 +40,9 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 
 ### Phase 1 — Folder Setup, Repository Structure & Tooling
 
-- [ ] Lock the canonical monorepo structure and ownership boundaries across apps, services, packages, infrastructure, database, workers, AI, docs, scripts, tests, and automation domains.
-- [ ] Align the approved target structure with the ownership model covering `frontend/`, `backend/`, `database/`, `api/`, `tests/`, `docs/`, `config/`, `plugins/`, and `commands/` where applicable.
-- [ ] Standardize root configs, env templates, workspace tooling, TurboRepo, pnpm workspaces, git hooks, and root build configuration.
+- [x] Lock the canonical monorepo structure and ownership boundaries across apps, services, packages, infrastructure, database, workers, AI, docs, scripts, tests, and automation domains.
+- [x] Align the approved target structure with the ownership model covering `frontend/`, `backend/`, `database/`, `api/`, `tests/`, `docs/`, `config/`, `plugins/`, and `commands/` where applicable.
+- [x] Standardize root configs, env templates, workspace tooling, TurboRepo, pnpm workspaces, git hooks, and root build configuration.
 - [x] Add setup/bootstrap flows, local development bootstrap, verification scripts, lint/test/typecheck entrypoints, and contributor workflow.
 - [x] Establish baseline PR checks, docs-check or architecture-drift placeholders, GitHub Actions CI, test pipeline, lint pipeline, deploy pipeline, and Docker build validation.
 - [x] Define shared UI package foundations, naming and token conventions, and reusable package boundaries for UI, types, config, utils, analytics, and SEO.
@@ -65,16 +65,16 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 ### Phase 3 — Backend, API & Service Layer
 
 - [x] Bootstrap the FastAPI application with settings, lifecycle, DI/dependencies, DB sessions, logging, exceptions, constants, and health checks.
-- [ ] Implement JWT auth, refresh tokens, password hashing, API key support, RBAC, permission middleware, rate limiting, and sanitized/structured error responses.
-- [ ] Build REST endpoints for auth, players, tournaments, stats, projections, betting, rankings, health, AI workflows, content, billing, and admin operations.
-- [ ] Add selective Strawberry GraphQL for editorial content, dashboards, article editing, admin flows, AI-assisted editor use cases, and flexible frontend reads.
+- [x] Implement JWT auth, refresh tokens, password hashing, API key support, RBAC, permission middleware, rate limiting, and sanitized/structured error responses.
+- [x] Build REST endpoints for auth, players, tournaments, stats, projections, betting, rankings, health, AI workflows, content, billing, and admin operations.
+- [x] Add selective Strawberry GraphQL for editorial content, dashboards, article editing, admin flows, AI-assisted editor use cases, and flexible frontend reads.
 - [x] Implement service/repository boundaries so repositories own DB access and services own business logic.
-- [ ] Add caching infrastructure, keys, decorators, invalidation flows, TTL rules, and cache priorities for leaderboards, projections, rankings, summaries, pages, and betting edges.
+- [x] Add caching infrastructure, keys, decorators, invalidation flows, TTL rules, and cache priorities for leaderboards, projections, rankings, summaries, pages, and betting edges.
 - [ ] Implement observability with structured logs, tracing, metrics, error tracking, health endpoints, auth instrumentation, projection instrumentation, admin action instrumentation, and AI workflow instrumentation.
 - [ ] Define and enforce API performance budgets, pagination, query limits, GraphQL depth/complexity limits, and hot-path benchmarking.
 - [ ] Add billing and entitlement source-of-truth APIs, webhook handlers, contract validation/versioning for OpenAPI and GraphQL, and idempotency/audit-log requirements for jobs, webhooks, and privileged mutations.
 - [ ] Define worker-facing APIs, retry rules, idempotency contracts, queue contracts, and materialized view refresh hooks.
-- [ ] Add backend testing coverage for auth, permissions, REST, GraphQL, repositories, cache behavior, security, performance, and AI grounding validation.
+- [x] Add backend testing coverage for auth, permissions, REST, GraphQL, repositories, cache behavior, security, performance, and AI grounding validation.
 
 ### Phase 4 — Frontend Public App & Shared UI
 

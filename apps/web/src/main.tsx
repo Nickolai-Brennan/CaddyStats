@@ -1,25 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import App from "./app/App";
-import "./styles/globals.css";
+/**
+ * Application Entry Point
+ *
+ * Vite entry point. Creates React root and renders App component.
+ */
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000,
-      retry: 1,
-    },
-  },
-});
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { App } from '@/app';
+import '@/index.css';
 
-const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Root element not found");
+// Get root element
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
 
+// Create and render app
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <App />
   </React.StrictMode>
 );

@@ -65,6 +65,48 @@ This repository currently contains:
 - `make test` runs the repository test entrypoints
 - `make hooks` installs standardized repository git hooks (`.githooks/`)
 
+## 🚀 Local Development
+
+### Quick Start
+```bash
+# macOS/Linux
+./dev.sh up
+
+# Windows (PowerShell)
+.\dev.cmd up
+
+# Windows (Command Prompt)
+dev.cmd up
+
+# Open frontend
+open http://localhost:3000
+```
+
+**Note for Windows PowerShell users**: Use `.\dev.cmd up` (with the `.\` prefix)
+
+**See `QUICKREF.md` for a one-page cheat sheet.**
+
+### Full Development Setup
+- **`LOCAL_DEVELOPMENT.md`** - Complete guide for running all services locally
+- **`DEVELOPMENT_SETUP.md`** - Environment configuration and setup options
+- **`API_TESTING.md`** - API testing tools and examples
+- **`QUICKREF.md`** - One-page developer reference
+
+### Service URLs (after running `./dev.sh up`)
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000 |
+| API Docs | http://localhost:8000/docs |
+| GraphQL | http://localhost:8000/graphql |
+| Database | localhost:5432 |
+| Redis | localhost:6379 |
+
+### Making Changes
+- **Backend**: Edit `backend/app/` - auto-reload enabled
+- **Frontend**: Edit `apps/web/src/` - HMR enabled
+- **Database**: Run migrations, changes auto-sync
+- **Tests**: `docker-compose exec api pytest` or `docker-compose exec web npm run test`
+
 ## Contributor quickstart
 
 - `make setup` bootstraps local dependencies, hooks, env files, and repository verification.
@@ -72,6 +114,12 @@ This repository currently contains:
 - `make lint`, `make typecheck`, and `make test` are the canonical local validation entrypoints.
 - `make docker-validate` verifies Compose configuration and container image builds.
 - `CONTRIBUTING.md` documents the expected contributor workflow.
+
+### Start developing
+1. Read `QUICKREF.md` (2 min)
+2. Run `./dev.sh up` (1 min)
+3. Open http://localhost:3000 (10 sec)
+4. Start coding!
 
 ## Environment and platform baseline
 

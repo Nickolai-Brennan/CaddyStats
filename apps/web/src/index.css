@@ -1,0 +1,269 @@
+/**
+ * Global Styles & Tailwind Setup
+ *
+ * Tailwind CSS directives and custom global styles for premium UI.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   Base Styles
+   ======================================================================= */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-50 antialiased;
+  }
+
+  /* Typography scale with extreme contrast (clamp for headlines) */
+  h1 {
+    @apply text-5xl font-bold tracking-tight;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  h2 {
+    @apply text-4xl font-bold tracking-tight;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply text-xl font-semibold;
+  }
+
+  h5 {
+    @apply text-lg font-semibold;
+  }
+
+  h6 {
+    @apply text-base font-semibold;
+  }
+
+  /* Body text - minimum 16px for accessibility */
+  p,
+  li {
+    @apply text-base leading-relaxed;
+    font-size: clamp(1rem, 1vw, 1.125rem);
+  }
+
+  /* Links */
+  a {
+    @apply text-amber-500 hover:text-amber-400 transition-colors duration-200;
+  }
+
+  /* Ensure images are responsive */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+/* =========================================================================
+   Component Styles
+   ======================================================================= */
+
+@layer components {
+  /* Hero sections - full bleed containers */
+  .hero {
+    @apply relative w-full;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Cards - premium styling */
+  .card {
+    @apply rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Buttons - with magnetic effect prep */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-slate-950;
+  }
+
+  .btn-primary {
+    @apply btn bg-amber-500 text-slate-950 hover:bg-amber-400 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn border border-slate-700 text-slate-50 hover:bg-slate-800 hover:border-slate-600;
+  }
+
+  /* Input fields */
+  .input {
+    @apply w-full rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2 text-slate-50 placeholder-slate-500 transition-all duration-200;
+    @apply focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/20;
+  }
+
+  /* Containers */
+  .container-max {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-sm {
+    @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-block rounded-full px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-amber-500/20 text-amber-400;
+  }
+
+  .badge-success {
+    @apply badge bg-green-500/20 text-green-400;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-500/20 text-red-400;
+  }
+
+  .badge-neutral {
+    @apply badge bg-slate-700 text-slate-300;
+  }
+
+  /* Tables */
+  .table-container {
+    @apply w-full overflow-x-auto rounded-lg border border-slate-800 bg-slate-900/50;
+  }
+
+  .table {
+    @apply w-full text-left text-sm;
+  }
+
+  .table thead {
+    @apply border-b border-slate-700 bg-slate-800/50;
+  }
+
+  .table th {
+    @apply px-6 py-3 font-semibold text-slate-200;
+  }
+
+  .table tbody tr {
+    @apply border-b border-slate-800 transition-colors hover:bg-slate-800/20;
+  }
+
+  .table td {
+    @apply px-6 py-4;
+  }
+
+  /* Skeletons for loading states */
+  .skeleton {
+    @apply animate-pulse rounded bg-slate-800;
+  }
+
+  .skeleton-text {
+    @apply skeleton h-4 w-24;
+  }
+
+  .skeleton-card {
+    @apply skeleton h-64 w-full;
+  }
+}
+
+/* =========================================================================
+   Animation & Transitions
+   ======================================================================= */
+
+@layer utilities {
+  /* Smooth scroll for anchor links */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Disable animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets to 44x44px minimum */
+    .btn,
+    a,
+    button {
+      @apply min-h-11 min-w-11;
+    }
+
+    /* Remove hover effects on touch devices */
+    .card {
+      @apply hover:shadow-lg;
+    }
+  }
+
+  /* Composited layer for scroll performance */
+  .will-animate {
+    @apply will-change-transform;
+  }
+
+  /* Hardware acceleration */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Print styles */
+  @media print {
+    @page {
+      margin: 1in;
+    }
+
+    body {
+      @apply bg-white text-black;
+    }
+
+    .no-print {
+      @apply hidden;
+    }
+  }
+}
+
+/* =========================================================================
+   Responsive Design
+   ======================================================================= */
+
+/* Mobile-first typography scale */
+@media (min-width: 640px) {
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+}
+
+/* Landscape orientation optimization */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+}
