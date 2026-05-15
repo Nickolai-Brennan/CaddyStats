@@ -5,6 +5,7 @@
 You now have a complete, production-ready frontend foundation for CaddyStats:
 
 ### ✅ Infrastructure
+
 - **Type System**: Full TypeScript types for API contracts
 - **API Client**: Typed HTTP client with automatic JWT refresh
 - **Auth**: Global authentication context with session management
@@ -15,6 +16,7 @@ You now have a complete, production-ready frontend foundation for CaddyStats:
 - **Errors**: Error boundary and error handling
 
 ### ✅ File Locations
+
 ```
 apps/web/src/
 ├── types/index.ts              # API types
@@ -34,6 +36,7 @@ apps/web/src/
 ## How to Use
 
 ### Running the Dev Server
+
 ```bash
 cd apps/web
 npm run dev
@@ -41,13 +44,16 @@ npm run dev
 ```
 
 ### Building for Production
+
 ```bash
 npm run build
 npm run preview
 ```
 
 ### Environment Variables
+
 Copy or create `.env.local` from `.env.example`:
+
 ```bash
 VITE_API_BASE_URL=http://localhost:8000/api/v1
 VITE_API_GRAPHQL_URL=http://localhost:8000/graphql
@@ -57,6 +63,7 @@ VITE_API_GRAPHQL_URL=http://localhost:8000/graphql
 ## Architecture Overview
 
 ### Provider Stack
+
 ```javascript
 <QueryClientProvider>
   <AuthProvider>
@@ -70,6 +77,7 @@ VITE_API_GRAPHQL_URL=http://localhost:8000/graphql
 ```
 
 ### Authentication Flow
+
 1. User logs in via `apiClient.login(email, password)`
 2. Tokens saved to localStorage and context
 3. `Authorization: Bearer <token>` added to all requests
@@ -77,27 +85,31 @@ VITE_API_GRAPHQL_URL=http://localhost:8000/graphql
 5. `useAuth()` hook provides user/status throughout app
 
 ### Data Fetching Pattern
+
 ```typescript
 // Using TanStack Query with type-safe keys
 const { data, isLoading, error } = useQuery({
   queryKey: queryKeys.players.list(),
   queryFn: () => apiClient.getPlayers(),
-})
+});
 ```
 
 ### Routing
+
 ```typescript
 // Routes defined in src/router.tsx
 // Access via TanStack Router
-import { useNavigate } from '@tanstack/react-router'
-const navigate = useNavigate()
-navigate({ to: '/players/$playerId', params: { playerId: '123' } })
+import { useNavigate } from "@tanstack/react-router";
+const navigate = useNavigate();
+navigate({ to: "/players/$playerId", params: { playerId: "123" } });
 ```
 
 ## Next Steps
 
 ### 1. Build Public Pages
+
 Create page components that use the API client:
+
 - Home page (`src/pages/home.tsx`)
 - Players list and detail (`src/pages/players/...`)
 - Tournaments (`src/pages/tournaments/...`)
@@ -105,17 +117,20 @@ Create page components that use the API client:
 - Articles (`src/pages/articles/...`)
 
 ### 2. Create Reusable Components
+
 - Hero sections, cards, tables
 - Form components (login, search)
 - Charts and visualizations
 - Loading skeletons
 
 ### 3. Implement Auth Pages
+
 - Login page with form validation
 - Register page
 - Protected route middleware
 
 ### 4. Add Analytics UI
+
 - TanStack Table for sortable/filterable data
 - Filters and search
 - Data export
@@ -123,6 +138,7 @@ Create page components that use the API client:
 ## API Integration Examples
 
 ### Fetching Data
+
 ```typescript
 import { useQuery } from '@tanstack/react-query'
 import { queryKeys } from '@/lib/query-client'
@@ -135,7 +151,7 @@ export function PlayersList() {
   })
 
   if (isLoading) return <div>Loading...</div>
-  
+
   return (
     <div>
       {data?.results.map(player => (
@@ -147,6 +163,7 @@ export function PlayersList() {
 ```
 
 ### Authentication
+
 ```typescript
 import { useAuth } from '@/contexts/auth'
 
@@ -174,6 +191,7 @@ export function LoginForm() {
 ```
 
 ### Protected Routes
+
 ```typescript
 import { useIsAuthenticated } from '@/contexts/auth'
 
@@ -191,6 +209,7 @@ export function ProtectedComponent() {
 ## Performance Budgets (from Phase 3)
 
 Cache times are pre-configured:
+
 - **Auth**: 5 min (verify frequently)
 - **Players**: 30 min (stable data)
 - **Tournaments**: 2 hours (rarely changes)
@@ -203,6 +222,7 @@ Adjust in `src/lib/query-client.ts` if needed.
 ## Accessibility
 
 ✅ Already built in:
+
 - Semantic HTML
 - Keyboard navigation
 - Focus management
@@ -215,6 +235,7 @@ Continue following WCAG 2.1 when adding pages.
 ## Type Safety Checklist
 
 When building pages:
+
 - ✅ All API calls return typed data
 - ✅ All hooks have typed returns
 - ✅ All props are typed
@@ -224,6 +245,7 @@ When building pages:
 ## Common Patterns
 
 ### Loading State
+
 ```typescript
 import { useQuery } from '@tanstack/react-query'
 
@@ -235,48 +257,54 @@ return <Content data={data} />
 ```
 
 ### Pagination
+
 ```typescript
-const [page, setPage] = useState(1)
+const [page, setPage] = useState(1);
 const { data } = useQuery({
   queryKey: queryKeys.players.list({ page }),
   queryFn: () => apiClient.getPlayers({ page, page_size: 50 }),
-})
+});
 ```
 
 ### Search
+
 ```typescript
-const [query, setQuery] = useState('')
+const [query, setQuery] = useState("");
 const { data } = useQuery({
-  queryKey: queryKeys.players.lists(), 
+  queryKey: queryKeys.players.lists(),
   queryFn: () => apiClient.searchPlayers(query),
-})
+});
 ```
 
 ## Debugging
 
 ### Check Network Requests
+
 - Open DevTools → Network tab
 - Look for `/api/v1/*` requests
 - Check response headers for auth token
 
 ### Check Query Cache
+
 ```typescript
 // In browser console
-import { queryClient } from '@/lib/query-client'
-queryClient.getQueryData(['players', 'list'])
+import { queryClient } from "@/lib/query-client";
+queryClient.getQueryData(["players", "list"]);
 ```
 
 ### Check Auth State
+
 ```typescript
 // In browser console, from any component
-import { useAuth } from '@/contexts/auth'
+import { useAuth } from "@/contexts/auth";
 // Call useAuth() to see current state
 ```
 
 ### Environment Variables
+
 ```typescript
 // In browser console
-console.log(import.meta.env.VITE_API_BASE_URL)
+console.log(import.meta.env.VITE_API_BASE_URL);
 ```
 
 ## Resources
@@ -292,6 +320,7 @@ console.log(import.meta.env.VITE_API_BASE_URL)
 Backend is running on `http://localhost:8000`:
 
 ### REST Endpoints (from Phase 3)
+
 - `/api/v1/auth/login` - POST
 - `/api/v1/players` - GET
 - `/api/v1/tournaments` - GET
@@ -300,6 +329,7 @@ Backend is running on `http://localhost:8000`:
 - `/api/v1/betting/edges` - GET
 
 ### GraphQL
+
 - `/graphql` - POST (introspection available)
 
 See `src/lib/api-client.ts` for all available methods.

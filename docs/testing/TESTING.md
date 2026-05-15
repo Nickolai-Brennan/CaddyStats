@@ -595,15 +595,19 @@ jobs:
 ### Common Issues
 
 **Issue**: Tests fail with "Redis connection refused"
+
 - **Solution**: Ensure Redis is running (`docker-compose up redis`) or mock_redis_client fixture is used
 
 **Issue**: Tests fail with "Database locked"
+
 - **Solution**: Use test_db_session fixture which handles transaction isolation
 
 **Issue**: Async test timeouts
+
 - **Solution**: Increase pytest-asyncio timeout: `pytest --asyncio-mode=auto`
 
 **Issue**: Fixture not found errors
+
 - **Solution**: Ensure conftest.py is in tests/ directory and imports are correct
 
 ## Related Documentation
