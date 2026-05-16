@@ -20,7 +20,7 @@ export interface User {
   updated_at: string;
 }
 
-export type UserRole = 'anonymous' | 'user' | 'subscriber' | 'editor' | 'admin' | 'owner';
+export type UserRole = "anonymous" | "user" | "subscriber" | "editor" | "admin" | "owner";
 
 export interface AuthResponse {
   access_token: string;
@@ -120,7 +120,7 @@ export interface Tournament {
   created_at: string;
 }
 
-export type TournamentStatus = 'upcoming' | 'in_progress' | 'completed' | 'cancelled';
+export type TournamentStatus = "upcoming" | "in_progress" | "completed" | "cancelled";
 
 export interface TournamentDetail extends Tournament {
   leaderboard: LeaderboardEntry[];
@@ -134,14 +134,14 @@ export interface LeaderboardEntry {
   position: number;
   score: number;
   rounds: number[];
-  status: 'active' | 'cut' | 'withdrew';
+  status: "active" | "cut" | "withdrew";
 }
 
 export interface FieldEntry {
   player_id: string;
   player_name: string;
   world_rank: number;
-  status: 'entered' | 'withdrew' | 'injured';
+  status: "entered" | "withdrew" | "injured";
 }
 
 export interface Round {
@@ -155,7 +155,7 @@ export interface Round {
     score: number;
     holes: HoleScore[];
   }[];
-  status: 'scheduled' | 'in_progress' | 'completed';
+  status: "scheduled" | "in_progress" | "completed";
 }
 
 export interface HoleScore {
@@ -203,12 +203,12 @@ export interface Ranking {
   rank: number;
   previous_rank: number;
   points?: number;
-  trend: 'up' | 'down' | 'stable';
+  trend: "up" | "down" | "stable";
 }
 
 export interface RankingCategory {
   name: string;
-  type: 'world' | 'fedex_cup' | 'tournament';
+  type: "world" | "fedex_cup" | "tournament";
   rankings: Ranking[];
   last_updated: string;
 }
@@ -229,7 +229,7 @@ export interface Projection {
   tournament_id: string;
   player_id: string;
   player_name: string;
-  projection_type: 'score' | 'finish' | 'ownership';
+  projection_type: "score" | "finish" | "ownership";
   value: number;
   confidence: number;
   model_version: string;
@@ -238,7 +238,7 @@ export interface Projection {
 }
 
 export interface ProjectedScore extends Projection {
-  projection_type: 'score';
+  projection_type: "score";
   value: number; // projected score
   range: {
     low: number;
@@ -256,7 +256,7 @@ export interface FieldProjection {
 export interface BettingOdds {
   player_id: string;
   player_name: string;
-  market_type: 'to_win' | 'top_10' | 'top_20' | 'make_cut';
+  market_type: "to_win" | "top_10" | "top_20" | "make_cut";
   odds: number;
   implied_probability: number;
   sportsbook: string;
@@ -271,7 +271,7 @@ export interface BettingEdge {
   predicted_probability: number;
   implied_probability: number;
   edge: number; // edge_percentage (positive = favorable)
-  recommendation: 'back' | 'lay' | 'neutral';
+  recommendation: "back" | "lay" | "neutral";
   confidence: number;
   model_version: string;
   generated_at: string;
@@ -292,7 +292,7 @@ export interface Article {
   published_at?: string;
   created_at: string;
   updated_at: string;
-  status: 'draft' | 'published' | 'archived';
+  status: "draft" | "published" | "archived";
   seo_metadata: SEOMetadata;
   is_premium: boolean;
 }
@@ -307,7 +307,7 @@ export interface ArticleList {
 
 export interface ContentBlock {
   id: string;
-  type: 'text' | 'image' | 'stat' | 'table' | 'embed' | 'quote';
+  type: "text" | "image" | "stat" | "table" | "embed" | "quote";
   position: number;
   content: Record<string, unknown>;
 }

@@ -5,7 +5,7 @@
  * refetching, and error handling based on performance budgets.
  */
 
-import { QueryClient, DefaultOptions } from '@tanstack/react-query';
+import { QueryClient, DefaultOptions } from "@tanstack/react-query";
 
 /**
  * Default query options optimized for performance
@@ -21,9 +21,9 @@ const defaultQueryOptions: DefaultOptions = {
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
 
     // Refetch on these events
-    refetchOnWindowFocus: 'stale',
-    refetchOnReconnect: 'stale',
-    refetchOnMount: 'stale',
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
   },
   mutations: {
     retry: 1,
@@ -110,78 +110,74 @@ export const CACHE_TIMES = {
 export const queryKeys = {
   // Auth
   auth: {
-    all: ['auth'] as const,
-    me: () => [...queryKeys.auth.all, 'me'] as const,
+    all: ["auth"] as const,
+    me: () => [...queryKeys.auth.all, "me"] as const,
   },
 
   // Players
   players: {
-    all: ['players'] as const,
-    lists: () => [...queryKeys.players.all, 'list'] as const,
-    list: (filters?: Record<string, unknown>) =>
-      [...queryKeys.players.lists(), filters] as const,
-    details: () => [...queryKeys.players.all, 'detail'] as const,
+    all: ["players"] as const,
+    lists: () => [...queryKeys.players.all, "list"] as const,
+    list: (filters?: Record<string, unknown>) => [...queryKeys.players.lists(), filters] as const,
+    details: () => [...queryKeys.players.all, "detail"] as const,
     detail: (id: string) => [...queryKeys.players.details(), id] as const,
-    stats: (id: string) => [...queryKeys.players.detail(id), 'stats'] as const,
+    stats: (id: string) => [...queryKeys.players.detail(id), "stats"] as const,
   },
 
   // Tournaments
   tournaments: {
-    all: ['tournaments'] as const,
-    lists: () => [...queryKeys.tournaments.all, 'list'] as const,
+    all: ["tournaments"] as const,
+    lists: () => [...queryKeys.tournaments.all, "list"] as const,
     list: (filters?: Record<string, unknown>) =>
       [...queryKeys.tournaments.lists(), filters] as const,
-    details: () => [...queryKeys.tournaments.all, 'detail'] as const,
+    details: () => [...queryKeys.tournaments.all, "detail"] as const,
     detail: (id: string) => [...queryKeys.tournaments.details(), id] as const,
-    leaderboard: (id: string) =>
-      [...queryKeys.tournaments.detail(id), 'leaderboard'] as const,
+    leaderboard: (id: string) => [...queryKeys.tournaments.detail(id), "leaderboard"] as const,
   },
 
   // Rankings
   rankings: {
-    all: ['rankings'] as const,
+    all: ["rankings"] as const,
     world: (filters?: Record<string, unknown>) =>
-      [...queryKeys.rankings.all, 'world', filters] as const,
+      [...queryKeys.rankings.all, "world", filters] as const,
     fedexCup: (filters?: Record<string, unknown>) =>
-      [...queryKeys.rankings.all, 'fedex_cup', filters] as const,
+      [...queryKeys.rankings.all, "fedex_cup", filters] as const,
     tournament: (id: string, filters?: Record<string, unknown>) =>
-      [...queryKeys.rankings.all, 'tournament', id, filters] as const,
+      [...queryKeys.rankings.all, "tournament", id, filters] as const,
   },
 
   // Projections
   projections: {
-    all: ['projections'] as const,
-    lists: () => [...queryKeys.projections.all, 'list'] as const,
+    all: ["projections"] as const,
+    lists: () => [...queryKeys.projections.all, "list"] as const,
     list: (tournamentId: string, filters?: Record<string, unknown>) =>
       [...queryKeys.projections.lists(), tournamentId, filters] as const,
     player: (playerId: string, tournamentId: string) =>
-      [...queryKeys.projections.all, 'player', playerId, tournamentId] as const,
-    field: (tournamentId: string) =>
-      [...queryKeys.projections.all, 'field', tournamentId] as const,
+      [...queryKeys.projections.all, "player", playerId, tournamentId] as const,
+    field: (tournamentId: string) => [...queryKeys.projections.all, "field", tournamentId] as const,
   },
 
   // Betting
   betting: {
-    all: ['betting'] as const,
+    all: ["betting"] as const,
     edges: (tournamentId: string, filters?: Record<string, unknown>) =>
-      [...queryKeys.betting.all, 'edges', tournamentId, filters] as const,
+      [...queryKeys.betting.all, "edges", tournamentId, filters] as const,
     odds: (tournamentId: string, filters?: Record<string, unknown>) =>
-      [...queryKeys.betting.all, 'odds', tournamentId, filters] as const,
+      [...queryKeys.betting.all, "odds", tournamentId, filters] as const,
   },
 
   // Articles
   articles: {
-    all: ['articles'] as const,
-    lists: () => [...queryKeys.articles.all, 'list'] as const,
-    list: (filters?: Record<string, unknown>) =>
-      [...queryKeys.articles.lists(), filters] as const,
-    details: () => [...queryKeys.articles.all, 'detail'] as const,
+    all: ["articles"] as const,
+    lists: () => [...queryKeys.articles.all, "list"] as const,
+    list: (filters?: Record<string, unknown>) => [...queryKeys.articles.lists(), filters] as const,
+    details: () => [...queryKeys.articles.all, "detail"] as const,
     detail: (slug: string) => [...queryKeys.articles.details(), slug] as const,
   },
 
   // Stats
   stats: {
-    all: ['stats'] as const,
-    overview: () => [...queryKeys.stats.all, 'overview'] as const,
+    all: ["stats"] as const,
+    overview: () => [...queryKeys.stats.all, "overview"] as const,
   },
 };
