@@ -90,6 +90,335 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 - [ ] Establish typed API client contracts, GraphQL and REST split, Zod validation, query key standards, invalidation rules, and stable frontend architecture conventions.
 - [ ] Implement page-level SEO/schema hooks and premium gating UX for public and premium surfaces.
 
+Caddy Stats — Design System Master Task List
+
+Status: UI Foundation Roadmap Owner: Product + Frontend + Design
+
+
+---
+
+MASTER INDEX
+
+DS-0 Governance DS-1 Foundations DS-2 Tokens DS-3 Layout + Grid DS-4 Typography DS-5 Color System DS-6 Icons DS-7 Navigation DS-8 Core Components DS-9 Dashboard Components DS-10 Data Components DS-11 Charts + Visualization DS-12 Forms DS-13 Search + Filters DS-14 Content Components DS-15 States + Feedback DS-16 Accessibility DS-17 Motion DS-18 Mobile DS-19 Dark Mode DS-20 Storybook DS-21 Figma DS-22 QA + Release
+
+
+---
+
+DS-0 GOVERNANCE
+
+□ Create naming conventions □ Define component ownership □ Create component lifecycle states □ Create ADR process □ Define contribution workflow □ Create release process □ Create versioning strategy
+
+Validation: □ Governance approved
+
+
+---
+
+DS-1 FOUNDATIONS
+
+□ Create design principles □ Create UI philosophy □ Define density rules □ Define spacing principles □ Define dashboard standards □ Define interaction rules
+
+
+---
+
+DS-2 TOKENS
+
+□ spacing tokens □ radius tokens □ shadow tokens □ opacity tokens □ z-index tokens □ transition tokens □ semantic tokens □ export token JSON □ Tailwind mapping
+
+Validation: □ token system implemented
+
+
+---
+
+DS-3 GRID + LAYOUT
+
+□ desktop grid □ tablet grid □ mobile grid □ shell layout □ sidebar layout □ dashboard layout □ card spacing rules □ responsive breakpoints
+
+
+---
+
+DS-4 TYPOGRAPHY
+
+□ font stack □ display hierarchy □ heading scale □ body scale □ caption scale □ numeric typography □ responsive typography
+
+Validation: □ typography applied globally
+
+
+---
+
+DS-5 COLOR SYSTEM
+
+□ primary palette □ neutral palette □ chart palette □ semantic colors □ status colors □ dark mode colors □ contrast testing
+
+
+---
+
+DS-6 ICONS
+
+□ icon library setup □ icon sizing system □ navigation icons □ analytics icons □ betting icons □ admin icons □ state icons
+
+Validation: □ icon audit complete
+
+
+---
+
+DS-7 NAVIGATION
+
+□ sidebar □ top nav □ breadcrumbs □ command palette □ profile menu □ mobile nav
+
+
+---
+
+DS-8 CORE COMPONENTS
+
+□ button □ input □ textarea □ select □ checkbox □ radio □ switch □ badge □ tooltip □ modal □ drawer □ tabs □ accordion □ avatar
+
+Validation: □ Storybook coverage
+
+
+---
+
+DS-9 DASHBOARD COMPONENTS
+
+□ KPI card □ trend card □ projection card □ insight card □ player card □ stat card □ confidence card □ alert card □ comparison card □ widget container
+
+
+---
+
+DS-10 DATA COMPONENTS
+
+□ TanStack table setup □ table toolbar □ pagination □ sorting □ filtering □ column visibility □ row actions □ exports □ virtualization
+
+Patterns: □ rankings □ player stats □ odds tables □ historical tables
+
+
+---
+
+DS-11 CHARTS + VISUALIZATION
+
+□ line chart □ bar chart □ stacked chart □ radar chart □ scatter plot □ heatmap □ timeline □ confidence bands □ chart legends □ chart controls □ tooltips
+
+Validation: □ visualization standards complete
+
+
+---
+
+DS-12 FORMS
+
+□ validation patterns □ error patterns □ helper text □ form layouts □ loading states
+
+
+---
+
+DS-13 SEARCH + FILTERS
+
+□ predictive search □ search results panel □ global filters □ chip filters □ date selectors □ range controls
+
+
+---
+
+DS-14 CONTENT COMPONENTS
+
+□ article hero □ author card □ stat callout □ quote block □ AI insights panel □ related content
+
+
+---
+
+DS-15 STATES + FEEDBACK
+
+□ loading □ empty □ success □ warning □ error □ skeletons □ banners □ toast notifications
+
+
+---
+
+DS-16 ACCESSIBILITY
+
+□ keyboard navigation □ screen reader support □ focus states □ contrast testing □ aria standards □ WCAG audit
+
+Validation: □ WCAG AA pass
+
+
+---
+
+DS-17 MOTION
+
+□ motion principles □ hover animation □ page transitions □ chart transitions □ modal transitions □ performance audit
+
+
+---
+
+DS-18 MOBILE
+
+□ mobile dashboard patterns □ stacked cards □ responsive tables □ touch interactions □ mobile filters
+
+
+---
+
+DS-19 DARK MODE
+
+□ semantic implementation □ token switching □ chart themes □ contrast validation
+
+Validation: □ dark mode audit complete
+
+
+---
+
+DS-20 STORYBOOK
+
+□ component stories □ controls □ states □ documentation □ interaction tests □ visual tests
+
+
+---
+
+DS-21 FIGMA
+
+□ component library □ variants □ auto layout □ token mapping □ page organization □ naming rules
+
+
+---
+
+DS-10A ADVANCED TABLE SYSTEM
+
+Architecture
+
+□ Create DataTableProvider □ Create table state engine □ Create persisted preferences □ Create schema registry □ Create URL sync □ Create plugin architecture
+
+Core Infrastructure
+
+□ sticky headers □ sticky columns □ nested headers □ row grouping □ expandable rows □ tree rows □ virtual rows □ infinite scroll
+
+Column Types
+
+□ text column □ numeric column □ currency column □ percentage column □ odds column □ confidence column □ trend column □ sparkline column □ AI insight column
+
+Advanced Cells
+
+□ confidence badge □ risk meter □ exposure badge □ momentum indicator □ expected value badge
+
+Row Actions
+
+□ compare rows □ row preview □ bookmarks □ watchlists □ context menu
+
+Templates
+
+□ rankings table □ odds table □ strokes gained table □ simulation table □ ownership table
+
+Validation: □ 50k row benchmark
+
+
+---
+
+DS-11A ADVANCED DASHBOARDS
+
+Dashboard Core
+
+□ dashboard registry □ widget schema □ drag/drop engine □ resize engine □ dashboard persistence □ role layouts □ personalization engine
+
+Layouts
+
+□ executive dashboard □ analytics dashboard □ betting dashboard □ editor dashboard □ admin dashboard □ premium dashboard
+
+Widget System
+
+□ widget shell □ widget actions □ fullscreen mode □ loading state □ empty state □ error state
+
+KPI Widgets
+
+□ metric card □ delta card □ confidence score □ exposure metric □ AI summary card
+
+Intelligence Widgets
+
+□ anomaly detector □ AI insights panel □ narrative panel □ betting edge panel
+
+Validation: □ dashboard interaction tests pass
+
+
+---
+
+DS-11B ADVANCED CHARTS
+
+Infrastructure
+
+□ chart wrapper □ chart registry □ export engine □ synchronized tooltips □ annotation engine
+
+Controls
+
+□ date selector □ compare selector □ zoom controls □ chart presets □ fullscreen
+
+Chart Library
+
+□ line chart □ area chart □ stacked chart □ radar chart □ scatter plot □ heatmap □ histogram □ box plot □ timeline
+
+Golf Analytics
+
+□ strokes gained trend □ course fit radar □ ownership chart □ simulation confidence bands □ player projection graph
+
+Betting Analytics
+
+□ odds movement graph □ ROI graph □ edge graph □ sportsbook comparison □ bankroll graph
+
+Validation: □ visualization cookbook complete
+
+
+---
+
+DS-11D ADVANCED GRAPH SYSTEM
+
+Relationship Graphs
+
+□ player similarity graph □ tournament graph □ model dependency graph □ content graph
+
+Network Graphs
+
+□ force graph □ relationship engine □ prediction graph
+
+AI Graphs
+
+□ confidence network □ workflow graph □ prompt graph
+
+Validation: □ graph benchmark complete
+
+
+---
+
+DS-22 QA + RELEASE
+
+□ responsive audit □ component audit □ browser testing □ performance audit □ analytics event audit □ export validation □ visualization performance testing □ accessibility testing □ release checklist
+
+Final Gate: □ Responsive verified □ WCAG AA verified □ Dark mode verified □ Storybook >95% □ Performance verified □ Production approved
+
+Updated the Design System Master Task List and merged the advanced systems into the core roadmap.
+
+Added:
+
+Advanced table architecture
+
+Table plugin/state systems
+
+Large dataset performance tasks
+
+Advanced dashboard framework
+
+Widget registry and personalization
+
+KPI and intelligence widgets
+
+Chart infrastructure and controls
+
+Golf analytics visualizations
+
+Betting intelligence graphs
+
+Network and relationship graph systems
+
+Expanded QA and visualization validation gates
+
+
+The master task list now operates as a complete implementation WBS for the design system, dashboard framework, and data visualization layer.
+
+
+
+
+
 ### Phase 5 — Editor, CMS & Editorial Operations
 
 - [ ] Build the editor app, routing, article CRUD, preview, publish, save, autosave, revision history, and workflow state management.
