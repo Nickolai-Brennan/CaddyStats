@@ -47,5 +47,3 @@ Status dashboard, a specialized simulation engine that allows for cross-era perf
 #### Event Clout Score
 
 Creating scoring system that measures the importance compared to other events, and fan engagement, the quality of players to perform in event, the financial purse of event.
-
-#### xFactor Engine Dashboard, a specialized simulation and scenario-modeling tool that analyzes the psychological and environmental variables impacting player performance.
