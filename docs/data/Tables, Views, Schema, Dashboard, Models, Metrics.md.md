@@ -1,7 +1,13 @@
+#### 
+Event → Course 
+
+
 ### Tables, Views and Schemas
 
-Course*General - Course_Hole_By_Hole - Course*
-Course_Field_Performance - Course
+Course General - Course_Hole_By_Hole 
+- Course 
+Course_Hole_Average Course_Greens_Putting Course_TeeShot_Output 
+
 
 Event_General - Event_Player_Field - Event_Leaderboard
 Event_Past_Results - Event_Season_Schedule
@@ -21,6 +27,8 @@ Player_By_Season -
   Player_Season*
 
 ### Dashboards
+
+Course Overview Dashboard 
 
 Player by Nationailty World Map
 
@@ -47,3 +55,16 @@ Status dashboard, a specialized simulation engine that allows for cross-era perf
 #### Event Clout Score
 
 Creating scoring system that measures the importance compared to other events, and fan engagement, the quality of players to perform in event, the financial purse of event.
+
+
+### Articles, Content, Long Form, Deep Dives, Projections 
+
+- (Single Article) [OpEd, LongForm] Tiger Woods Pain Management And His Problems With Substance Control.
+
+-  (Weekly) (Article, Data) Upcoming Event Guide and Rundown
+
+-  (Weekly) (Article, Analytics) Value Picks, Projections, Salary PickEm, Parlay Shot, 🔒 Of Week, Best Single Bet
+
+-  (Weekly) (Data and Content) Inside The Course, Unearthing The Course, Projecting Out The Best Performance Types To Succeed The Most.
+
+-  Course (Slides) Hole by Hole 
