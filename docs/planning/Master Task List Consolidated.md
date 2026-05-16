@@ -94,13 +94,11 @@ Caddy Stats — Design System Master Task List
 
 Status: UI Foundation Roadmap Owner: Product + Frontend + Design
 
-
 ---
 
 MASTER INDEX
 
 DS-0 Governance DS-1 Foundations DS-2 Tokens DS-3 Layout + Grid DS-4 Typography DS-5 Color System DS-6 Icons DS-7 Navigation DS-8 Core Components DS-9 Dashboard Components DS-10 Data Components DS-11 Charts + Visualization DS-12 Forms DS-13 Search + Filters DS-14 Content Components DS-15 States + Feedback DS-16 Accessibility DS-17 Motion DS-18 Mobile DS-19 Dark Mode DS-20 Storybook DS-21 Figma DS-22 QA + Release
-
 
 ---
 
@@ -110,13 +108,11 @@ DS-0 GOVERNANCE
 
 Validation: □ Governance approved
 
-
 ---
 
 DS-1 FOUNDATIONS
 
 □ Create design principles □ Create UI philosophy □ Define density rules □ Define spacing principles □ Define dashboard standards □ Define interaction rules
-
 
 ---
 
@@ -126,13 +122,11 @@ DS-2 TOKENS
 
 Validation: □ token system implemented
 
-
 ---
 
 DS-3 GRID + LAYOUT
 
 □ desktop grid □ tablet grid □ mobile grid □ shell layout □ sidebar layout □ dashboard layout □ card spacing rules □ responsive breakpoints
-
 
 ---
 
@@ -142,13 +136,11 @@ DS-4 TYPOGRAPHY
 
 Validation: □ typography applied globally
 
-
 ---
 
 DS-5 COLOR SYSTEM
 
 □ primary palette □ neutral palette □ chart palette □ semantic colors □ status colors □ dark mode colors □ contrast testing
-
 
 ---
 
@@ -158,13 +150,11 @@ DS-6 ICONS
 
 Validation: □ icon audit complete
 
-
 ---
 
 DS-7 NAVIGATION
 
 □ sidebar □ top nav □ breadcrumbs □ command palette □ profile menu □ mobile nav
-
 
 ---
 
@@ -174,13 +164,11 @@ DS-8 CORE COMPONENTS
 
 Validation: □ Storybook coverage
 
-
 ---
 
 DS-9 DASHBOARD COMPONENTS
 
 □ KPI card □ trend card □ projection card □ insight card □ player card □ stat card □ confidence card □ alert card □ comparison card □ widget container
-
 
 ---
 
@@ -190,7 +178,6 @@ DS-10 DATA COMPONENTS
 
 Patterns: □ rankings □ player stats □ odds tables □ historical tables
 
-
 ---
 
 DS-11 CHARTS + VISUALIZATION
@@ -199,13 +186,11 @@ DS-11 CHARTS + VISUALIZATION
 
 Validation: □ visualization standards complete
 
-
 ---
 
 DS-12 FORMS
 
 □ validation patterns □ error patterns □ helper text □ form layouts □ loading states
-
 
 ---
 
@@ -213,20 +198,17 @@ DS-13 SEARCH + FILTERS
 
 □ predictive search □ search results panel □ global filters □ chip filters □ date selectors □ range controls
 
-
 ---
 
 DS-14 CONTENT COMPONENTS
 
 □ article hero □ author card □ stat callout □ quote block □ AI insights panel □ related content
 
-
 ---
 
 DS-15 STATES + FEEDBACK
 
 □ loading □ empty □ success □ warning □ error □ skeletons □ banners □ toast notifications
-
 
 ---
 
@@ -236,20 +218,17 @@ DS-16 ACCESSIBILITY
 
 Validation: □ WCAG AA pass
 
-
 ---
 
 DS-17 MOTION
 
 □ motion principles □ hover animation □ page transitions □ chart transitions □ modal transitions □ performance audit
 
-
 ---
 
 DS-18 MOBILE
 
 □ mobile dashboard patterns □ stacked cards □ responsive tables □ touch interactions □ mobile filters
-
 
 ---
 
@@ -259,20 +238,17 @@ DS-19 DARK MODE
 
 Validation: □ dark mode audit complete
 
-
 ---
 
 DS-20 STORYBOOK
 
 □ component stories □ controls □ states □ documentation □ interaction tests □ visual tests
 
-
 ---
 
 DS-21 FIGMA
 
 □ component library □ variants □ auto layout □ token mapping □ page organization □ naming rules
-
 
 ---
 
@@ -304,7 +280,6 @@ Templates
 
 Validation: □ 50k row benchmark
 
-
 ---
 
 DS-11A ADVANCED DASHBOARDS
@@ -330,7 +305,6 @@ Intelligence Widgets
 □ anomaly detector □ AI insights panel □ narrative panel □ betting edge panel
 
 Validation: □ dashboard interaction tests pass
-
 
 ---
 
@@ -358,7 +332,6 @@ Betting Analytics
 
 Validation: □ visualization cookbook complete
 
-
 ---
 
 DS-11D ADVANCED GRAPH SYSTEM
@@ -376,7 +349,6 @@ AI Graphs
 □ confidence network □ workflow graph □ prompt graph
 
 Validation: □ graph benchmark complete
-
 
 ---
 
@@ -412,12 +384,7 @@ Network and relationship graph systems
 
 Expanded QA and visualization validation gates
 
-
 The master task list now operates as a complete implementation WBS for the design system, dashboard framework, and data visualization layer.
-
-
-
-
 
 ### Phase 5 — Editor, CMS & Editorial Operations
 
