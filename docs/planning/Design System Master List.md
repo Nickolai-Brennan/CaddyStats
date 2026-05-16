@@ -1,4 +1,4 @@
-Expanded into an implementation-level Design System Work Breakdown Structure (WBS) with sub-tasks, dependencies, outputs, and validation gates. This follows the Caddy Stats sequencing model and keeps every task mapped to artifacts and execution stages. 
+Expanded into an implementation-level Design System Work Breakdown Structure (WBS) with sub-tasks, dependencies, outputs, and validation gates. This follows the Caddy Stats sequencing model and keeps every task mapped to artifacts and execution stages.
 
 DS-0 Governance + Architecture
 
@@ -14,7 +14,6 @@ Ownership
 
 □ Assign Accessibility Owner
 
-
 Lifecycle
 
 □ Define statuses
@@ -27,7 +26,6 @@ Approved
 
 Deprecated
 
-
 □ Create RFC template
 
 □ Create ADR template
@@ -35,7 +33,6 @@ Deprecated
 □ Create change request process
 
 □ Create component approval workflow
-
 
 Deliverables
 
@@ -47,12 +44,9 @@ Files:
 
 /docs/design/component-lifecycle.md
 
-
 Validation:
 
 □ Governance signoff
-
-
 
 ---
 
@@ -72,7 +66,6 @@ Design Principles
 
 □ Define scan hierarchy standards
 
-
 UX Standards
 
 □ Dashboard readability rules
@@ -85,19 +78,15 @@ UX Standards
 
 □ Empty state principles
 
-
 Deliverables
 
 /docs/design/foundations.md
 
 /docs/design/principles.md
 
-
 Validation:
 
 □ Foundation review complete
-
-
 
 ---
 
@@ -123,7 +112,6 @@ Spacing Tokens
 
 □ 96
 
-
 Radius Tokens
 
 □ xs
@@ -138,7 +126,6 @@ Radius Tokens
 
 □ 2xl
 
-
 Motion Tokens
 
 □ duration-fast
@@ -150,7 +137,6 @@ Motion Tokens
 □ easing-standard
 
 □ easing-emphasized
-
 
 Layer Tokens
 
@@ -164,7 +150,6 @@ Layer Tokens
 
 □ tooltip
 
-
 Deliverables
 
 Files:
@@ -175,14 +160,11 @@ Files:
 
 /packages/tokens/tailwind.config.ts
 
-
 Validation:
 
 □ Token export successful
 
 □ Figma sync successful
-
-
 
 ---
 
@@ -198,7 +180,6 @@ Shell
 
 □ Footer structure
 
-
 Dashboard Regions
 
 □ Toolbar region
@@ -211,23 +192,19 @@ Dashboard Regions
 
 □ Action region
 
-
 Responsive
 
 Desktop:
 
 □ 12-column
 
-
 Tablet:
 
 □ 8-column
 
-
 Mobile:
 
 □ 4-column
-
 
 Deliverables
 
@@ -235,12 +212,9 @@ Deliverables
 
 /components/layout
 
-
 Validation:
 
 □ Responsive audit
-
-
 
 ---
 
@@ -254,7 +228,6 @@ Font Setup
 
 □ Mono numeric font
 
-
 Scale
 
 Display:
@@ -262,7 +235,6 @@ Display:
 □ XL
 
 □ LG
-
 
 Headings:
 
@@ -278,7 +250,6 @@ Headings:
 
 □ H6
 
-
 Body:
 
 □ Large
@@ -286,7 +257,6 @@ Body:
 □ Standard
 
 □ Small
-
 
 Metrics Rules
 
@@ -298,17 +268,13 @@ Metrics Rules
 
 □ Odds formatting
 
-
 Deliverables:
 
 /styles/typography.ts
 
-
 Validation:
 
 □ Typography rendered globally
-
-
 
 ---
 
@@ -324,7 +290,6 @@ Brand
 
 □ Background
 
-
 Semantic
 
 □ Success
@@ -334,7 +299,6 @@ Semantic
 □ Error
 
 □ Info
-
 
 Analytics
 
@@ -350,7 +314,6 @@ Analytics
 
 □ Trend
 
-
 Dark Mode
 
 □ Surface elevation colors
@@ -359,17 +322,13 @@ Dark Mode
 
 □ Chart theme colors
 
-
 Deliverables
 
 /styles/colors.ts
 
-
 Validation
 
 □ Contrast pass
-
-
 
 ---
 
@@ -380,7 +339,6 @@ Setup
 □ Lucide install
 
 □ Create icon wrapper
-
 
 Categories
 
@@ -394,7 +352,6 @@ Navigation
 
 □ Content
 
-
 Golf
 
 □ Tee
@@ -404,7 +361,6 @@ Golf
 □ Trophy
 
 □ Course
-
 
 Betting
 
@@ -416,7 +372,6 @@ Betting
 
 □ Confidence
 
-
 Admin
 
 □ Users
@@ -425,17 +380,13 @@ Admin
 
 □ Audit
 
-
 Files:
 
 /components/icons
 
-
 Validation:
 
 □ Inventory complete
-
-
 
 ---
 
@@ -455,7 +406,6 @@ States
 
 □ loading
 
-
 Variants
 
 □ primary
@@ -470,12 +420,9 @@ Variants
 
 □ icon
 
-
 Files:
 
 /components/ui/button.tsx
-
-
 
 ---
 
@@ -491,7 +438,6 @@ Text
 
 □ loading
 
-
 Specialized
 
 □ search
@@ -504,12 +450,9 @@ Specialized
 
 □ numeric
 
-
 Validation:
 
 □ Form tests pass
-
-
 
 ---
 
@@ -527,7 +470,6 @@ KPI Components
 
 □ Confidence metric
 
-
 Betting
 
 □ Edge card
@@ -538,7 +480,6 @@ Betting
 
 □ Exposure widget
 
-
 AI
 
 □ Narrative panel
@@ -547,17 +488,13 @@ AI
 
 □ Model explanation panel
 
-
 Files:
 
 /components/dashboard
 
-
 Validation:
 
 □ Dashboard render complete
-
-
 
 ---
 
@@ -573,7 +510,6 @@ Base Engine
 
 □ saved views
 
-
 Columns
 
 □ number cell
@@ -586,7 +522,6 @@ Columns
 
 □ confidence cell
 
-
 Advanced
 
 □ column reorder
@@ -597,17 +532,13 @@ Advanced
 
 □ grouping
 
-
 Deliverables:
 
 /components/table
 
-
 Validation:
 
 □ 10k-row benchmark
-
-
 
 ---
 
@@ -625,7 +556,6 @@ Chart Infrastructure
 
 □ export action
 
-
 Charts
 
 Performance
@@ -636,20 +566,17 @@ Performance
 
 □ trend
 
-
 Comparison
 
 □ radar
 
 □ scatter
 
-
 Distribution
 
 □ histogram
 
 □ heatmap
-
 
 Golf-specific
 
@@ -661,17 +588,13 @@ Golf-specific
 
 □ simulation confidence
 
-
 Deliverables:
 
 /components/charts
 
-
 Validation:
 
 □ chart performance benchmark
-
-
 
 ---
 
@@ -684,7 +607,6 @@ Setup
 □ theme switching
 
 □ docs mode
-
 
 Stories
 
@@ -702,7 +624,6 @@ Each component:
 
 □ accessibility
 
-
 Addons
 
 □ accessibility
@@ -713,12 +634,9 @@ Addons
 
 □ visual regression
 
-
 Validation:
 
 □ story coverage ≥95%
-
-
 
 ---
 
@@ -730,20 +648,17 @@ Performance
 
 □ interaction latency tested
 
-
 Accessibility
 
 □ WCAG AA
 
 □ keyboard navigation
 
-
 Visual
 
 □ dark mode
 
 □ responsive audit
-
 
 Engineering
 
@@ -752,7 +667,6 @@ Engineering
 □ documented
 
 □ tested
-
 
 Release
 
@@ -776,9 +690,7 @@ Files:
 
 /components/table/types
 
-
 Validation: □ table architecture approved
-
 
 ---
 
@@ -799,7 +711,6 @@ Layout
 □ infinite scroll
 
 Validation: □ 50k row benchmark
-
 
 ---
 
@@ -828,9 +739,7 @@ Files:
 
 /components/table/cells
 
-
 Validation: □ all cell stories complete
-
 
 ---
 
@@ -849,7 +758,6 @@ Analytics
 □ momentum indicator
 □ value edge indicator
 
-
 ---
 
 Row Interaction
@@ -863,7 +771,6 @@ Row Interaction
 □ bookmark row
 □ watchlist add
 □ context actions
-
 
 ---
 
@@ -880,7 +787,6 @@ Toolbar
 □ advanced filters
 □ command actions
 
-
 ---
 
 Column Controls
@@ -894,7 +800,6 @@ Column Controls
 □ preset views
 
 Validation: □ preference persistence working
-
 
 ---
 
@@ -929,9 +834,7 @@ Files:
 
 /components/table/templates
 
-
 Validation: □ template library complete
-
 
 ---
 
@@ -952,8 +855,6 @@ Files:
 
 /components/dashboard/core
 
-
-
 ---
 
 Dashboard Layout Types
@@ -965,7 +866,6 @@ Dashboard Layout Types
 □ admin dashboard
 □ premium dashboard
 □ mobile dashboard
-
 
 ---
 
@@ -983,7 +883,6 @@ Widget Container
 
 Validation: □ widget shell complete
 
-
 ---
 
 KPI Widgets
@@ -997,7 +896,6 @@ KPI Widgets
 □ live score card
 □ AI summary card
 
-
 ---
 
 Intelligence Widgets
@@ -1009,7 +907,6 @@ Intelligence Widgets
 □ projections summary
 □ betting edge summary
 □ opportunity panel
-
 
 ---
 
@@ -1024,7 +921,6 @@ Dashboard Interactions
 □ clone dashboard
 
 Validation: □ dashboard interaction tests pass
-
 
 ---
 
@@ -1044,8 +940,6 @@ Files:
 
 /components/charts/core
 
-
-
 ---
 
 Chart Controls
@@ -1057,7 +951,6 @@ Chart Controls
 □ range controls
 □ chart presets
 □ full screen mode
-
 
 ---
 
@@ -1074,7 +967,6 @@ Shared Features
 
 Validation: □ chart infrastructure approved
 
-
 ---
 
 DS-11C Chart Library Tasks
@@ -1089,7 +981,6 @@ Performance
 □ dual axis chart
 □ trend chart
 
-
 ---
 
 Comparison
@@ -1099,7 +990,6 @@ Comparison
 □ comparison matrix
 □ scatter plot
 □ quadrant chart
-
 
 ---
 
@@ -1111,7 +1001,6 @@ Distribution
 □ density graph
 □ box plot
 
-
 ---
 
 Time Series
@@ -1122,7 +1011,6 @@ Time Series
 □ cumulative chart
 □ live updates chart
 
-
 ---
 
 Geographic
@@ -1130,7 +1018,6 @@ Geographic
 □ location map
 □ regional heatmap
 □ tournament map
-
 
 ---
 
@@ -1146,7 +1033,6 @@ Golf Analytics
 □ cut probability graph
 □ player projection graph
 
-
 ---
 
 Betting Intelligence
@@ -1160,7 +1046,6 @@ Betting Intelligence
 
 Validation: □ visualization cookbook complete
 
-
 ---
 
 DS-11D Advanced Graph System
@@ -1172,7 +1057,6 @@ Relationship Graphs
 □ model dependency graph
 □ content relationship graph
 
-
 ---
 
 Network Visualizations
@@ -1181,7 +1065,6 @@ Network Visualizations
 □ force graph
 □ entity relationship graph
 □ prediction relationship graph
-
 
 ---
 
@@ -1195,9 +1078,7 @@ Files:
 
 /components/graphs
 
-
 Validation: □ graph rendering benchmark complete
-
 
 ---
 
