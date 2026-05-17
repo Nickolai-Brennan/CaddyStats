@@ -15,6 +15,7 @@ import { ArchivePage, type ArchiveSearch } from "@/pages/articles/archive";
 import { AboutPage } from "@/pages/about";
 import { ContactPage } from "@/pages/contact";
 import { LabPage } from "@/pages/lab";
+import { HomePage } from "@/pages/home";
 
 /**
  * Root route with global layout
@@ -32,11 +33,7 @@ export const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: () => (
-    <div className="flex min-h-[60vh] items-center justify-center text-slate-400 text-xl">
-      Home Page — Coming Soon
-    </div>
-  ),
+  component: HomePage,
 });
 
 // Player search/list page

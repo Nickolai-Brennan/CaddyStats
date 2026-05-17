@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-05-17 — Reusable Frontend UI + SEO Foundations
+
+- Added:
+  - `apps/web/src/components/ui/` reusable component suite covering:
+    - Primitives: `Button`, `Input`, `Select`, `Textarea`, `Badge`, `Skeleton`
+    - Layout: `Container`, `Section`, `Stack`
+    - Cards: `Card`, `MetricCard`
+    - States: `EmptyState`, `LoadingState`, `ErrorState`
+    - Forms: `FormField`, `FormShell`, `FormActions`
+    - Tables: generic `DataTable`
+    - Charts: `BarChart`, `Sparkline`
+    - Navigation: `TopNav`, `Breadcrumbs`, `Pagination`
+    - SEO: `SeoHead` and canonical URL helper
+  - `apps/web/src/pages/home.tsx` as a live composition page that demonstrates the reusable component system.
+  - Extended `packages/seo/src/index.ts` with typed SEO metadata utilities and Open Graph tag generation helpers.
+
+- Changed:
+  - `apps/web/src/router.tsx` root (`/`) now renders the new `HomePage` component.
+
+- Fixed:
+  - N/A
+
+- Plugins:
+  - N/A
+
+- Commands:
+  - `pnpm --filter web lint`
+  - `pnpm --filter web typecheck`
+  - `pnpm --filter web build`
+  - `pnpm --filter web test`
+
+- Notes:
+  - Component APIs are intentionally small and composable to support editorial pages, analytics views, and admin UI shells.
+
 ## 2026-05-15 — Local Stack Bootstrap & Runtime Compatibility Fixes
 
 - Added:
