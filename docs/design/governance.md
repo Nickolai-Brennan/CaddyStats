@@ -15,13 +15,13 @@ This governance model applies to:
 
 ## Ownership Roles
 
-| Role | Primary responsibility | Required decisions |
-| --- | --- | --- |
-| Design System Owner | Sets design-system roadmap and release direction. | Approves component lifecycle transitions to `Approved` or `Deprecated`. |
-| Frontend Owner | Ensures React/Tailwind implementation quality across the monorepo. | Approves technical feasibility, API shape, and integration readiness. |
-| Figma Owner | Maintains design source-of-truth parity with implementation tokens/components. | Confirms design parity and variant coverage before approval. |
-| Documentation Owner | Maintains canonical guidance and examples in `docs/design/`. | Approves documentation completeness and migration notes. |
-| Accessibility Owner | Enforces WCAG-focused behavior and accessibility acceptance criteria. | Approves accessibility validation before production release. |
+| Role                | Primary responsibility                                                         | Required decisions                                                      |
+| ------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Design System Owner | Sets design-system roadmap and release direction.                              | Approves component lifecycle transitions to `Approved` or `Deprecated`. |
+| Frontend Owner      | Ensures React/Tailwind implementation quality across the monorepo.             | Approves technical feasibility, API shape, and integration readiness.   |
+| Figma Owner         | Maintains design source-of-truth parity with implementation tokens/components. | Confirms design parity and variant coverage before approval.            |
+| Documentation Owner | Maintains canonical guidance and examples in `docs/design/`.                   | Approves documentation completeness and migration notes.                |
+| Accessibility Owner | Enforces WCAG-focused behavior and accessibility acceptance criteria.          | Approves accessibility validation before production release.            |
 
 ## Lifecycle Statuses
 

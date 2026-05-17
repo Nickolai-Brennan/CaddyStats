@@ -12,12 +12,12 @@ Define how Caddy Stats design-system assets progress from proposal to production
 
 ## Lifecycle States
 
-| Status | Entry criteria | Exit criteria |
-| --- | --- | --- |
-| Draft | Initial proposal or implementation in progress. | Required docs and baseline implementation exist, ready for review. |
-| In Review | Candidate is implemented and submitted for cross-owner review. | Review approvals + validation complete. |
-| Approved | Candidate is accepted for production use. | Replaced or sunset, then moved to Deprecated. |
-| Deprecated | Candidate has replacement and migration guidance. | Fully removed after migration window closes. |
+| Status     | Entry criteria                                                 | Exit criteria                                                      |
+| ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Draft      | Initial proposal or implementation in progress.                | Required docs and baseline implementation exist, ready for review. |
+| In Review  | Candidate is implemented and submitted for cross-owner review. | Review approvals + validation complete.                            |
+| Approved   | Candidate is accepted for production use.                      | Replaced or sunset, then moved to Deprecated.                      |
+| Deprecated | Candidate has replacement and migration guidance.              | Fully removed after migration window closes.                       |
 
 ## State Transition Rules
 
