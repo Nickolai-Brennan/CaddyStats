@@ -17,7 +17,6 @@ import type {
   PlayerStats,
   Tournament,
   TournamentDetail,
-  Ranking,
   RankingCategory,
   Projection,
   FieldProjection,
@@ -29,9 +28,9 @@ import type {
   PaginationParams,
   FilterParams,
   APIError,
-} from '@/types';
+} from "@/types";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1";
 
 /**
  * Request configuration with auth token support
@@ -58,14 +57,14 @@ class APIClient {
    */
   private loadTokensFromStorage(): void {
     try {
-      const stored = localStorage.getItem('auth_tokens');
+      const stored = localStorage.getItem("auth_tokens");
       if (stored) {
         const tokens = JSON.parse(stored);
         this.authToken = tokens.access_token;
         this.refreshToken = tokens.refresh_token;
       }
     } catch (error) {
-      console.error('Failed to load tokens from storage:', error);
+      console.error("Failed to load tokens from storage:", error);
     }
   }
 
@@ -74,7 +73,7 @@ class APIClient {
    */
   private saveTokensToStorage(access: string, refresh: string): void {
     localStorage.setItem(
-      'auth_tokens',
+      "auth_tokens",
       JSON.stringify({
         access_token: access,
         refresh_token: refresh,
@@ -88,7 +87,7 @@ class APIClient {
    * Clear auth tokens
    */
   private clearTokens(): void {
-    localStorage.removeItem('auth_tokens');
+    localStorage.removeItem("auth_tokens");
     this.authToken = null;
     this.refreshToken = null;
   }
@@ -137,10 +136,10 @@ class APIClient {
     const url = this.buildURL(path, params);
 
     const headers = new Headers(fetchConfig.headers);
-    headers.set('Content-Type', 'application/json');
+    headers.set("Content-Type", "application/json");
 
     if (this.authToken) {
-      headers.set('Authorization', `Bearer ${this.authToken}`);
+      headers.set("Authorization", `Bearer ${this.authToken}`);
     }
 
     try {
@@ -160,8 +159,8 @@ class APIClient {
 
       // Parse response
       let data: T | APIError;
-      const contentType = response.headers.get('content-type');
-      if (contentType?.includes('application/json')) {
+      const contentType = response.headers.get("content-type");
+      if (contentType?.includes("application/json")) {
         data = await response.json();
       } else {
         data = (await response.text()) as T;
@@ -176,12 +175,12 @@ class APIClient {
       }
 
       return { data: data as T, status: response.status };
-    } catch (error) {
-      if (error instanceof APIError || (error && typeof error === 'object' && 'detail' in error)) {
-        throw error;
+    } catch (_error) {
+      if (_error && typeof _error === "object" && "detail" in _error) {
+        throw _error;
       }
       throw {
-        detail: error instanceof Error ? error.message : 'Unknown error',
+        detail: _error instanceof Error ? _error.message : "Unknown error",
         status_code: 0,
         timestamp: new Date().toISOString(),
       } as APIError;
@@ -195,14 +194,15 @@ class APIClient {
     if (!this.refreshToken) return false;
 
     try {
-      const { data } = await this.request<AuthResponse>('/auth/refresh', {
-        method: 'POST',
+      const { data } = await this.request<AuthResponse>("/auth/refresh", {
+        method: "POST",
         body: JSON.stringify({ refresh_token: this.refreshToken } as RefreshTokenRequest),
       });
 
       this.saveTokensToStorage(data.access_token, data.refresh_token);
       return true;
-    } catch (error) {
+    } catch (_err) {
+      void _err;
       this.clearTokens();
       return false;
     }
@@ -213,8 +213,8 @@ class APIClient {
   // ========================================================================
 
   async login(credentials: LoginRequest): Promise<AuthResponse> {
-    const { data } = await this.request<AuthResponse>('/auth/login', {
-      method: 'POST',
+    const { data } = await this.request<AuthResponse>("/auth/login", {
+      method: "POST",
       body: JSON.stringify(credentials),
     });
     this.saveTokensToStorage(data.access_token, data.refresh_token);
@@ -222,8 +222,8 @@ class APIClient {
   }
 
   async register(credentials: RegisterRequest): Promise<AuthResponse> {
-    const { data } = await this.request<AuthResponse>('/auth/register', {
-      method: 'POST',
+    const { data } = await this.request<AuthResponse>("/auth/register", {
+      method: "POST",
       body: JSON.stringify(credentials),
     });
     this.saveTokensToStorage(data.access_token, data.refresh_token);
@@ -232,20 +232,20 @@ class APIClient {
 
   async logout(): Promise<void> {
     try {
-      await this.request('/auth/logout', { method: 'POST' });
+      await this.request("/auth/logout", { method: "POST" });
     } finally {
       this.clearTokens();
     }
   }
 
   async getCurrentUser(): Promise<User> {
-    const { data } = await this.request<User>('/auth/me', { method: 'GET' });
+    const { data } = await this.request<User>("/auth/me", { method: "GET" });
     return data;
   }
 
-  async refreshToken(request: RefreshTokenRequest): Promise<AuthResponse> {
-    const { data } = await this.request<AuthResponse>('/auth/refresh', {
-      method: 'POST',
+  async renewToken(request: RefreshTokenRequest): Promise<AuthResponse> {
+    const { data } = await this.request<AuthResponse>("/auth/refresh", {
+      method: "POST",
       body: JSON.stringify(request),
     });
     this.saveTokensToStorage(data.access_token, data.refresh_token);
@@ -256,11 +256,9 @@ class APIClient {
   // Player Endpoints
   // ========================================================================
 
-  async getPlayers(
-    params?: PaginationParams & FilterParams
-  ): Promise<PaginatedResponse<Player>> {
-    const { data } = await this.request<PaginatedResponse<Player>>('/players', {
-      method: 'GET',
+  async getPlayers(params?: PaginationParams & FilterParams): Promise<PaginatedResponse<Player>> {
+    const { data } = await this.request<PaginatedResponse<Player>>("/players", {
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
@@ -268,14 +266,14 @@ class APIClient {
 
   async getPlayer(playerId: string): Promise<PlayerDetail> {
     const { data } = await this.request<PlayerDetail>(`/players/${playerId}`, {
-      method: 'GET',
+      method: "GET",
     });
     return data;
   }
 
   async searchPlayers(query: string, limit: number = 20): Promise<Player[]> {
-    const { data } = await this.request<Player[]>('/players', {
-      method: 'GET',
+    const { data } = await this.request<Player[]>("/players", {
+      method: "GET",
       params: { q: query, page_size: limit },
     });
     return Array.isArray(data) ? data : [];
@@ -283,7 +281,7 @@ class APIClient {
 
   async getPlayerStats(playerId: string, season?: number): Promise<PlayerStats> {
     const { data } = await this.request<PlayerStats>(`/players/${playerId}/stats`, {
-      method: 'GET',
+      method: "GET",
       params: season ? { season } : undefined,
     });
     return data;
@@ -296,8 +294,8 @@ class APIClient {
   async getTournaments(
     params?: PaginationParams & FilterParams
   ): Promise<PaginatedResponse<Tournament>> {
-    const { data } = await this.request<PaginatedResponse<Tournament>>('/tournaments', {
-      method: 'GET',
+    const { data } = await this.request<PaginatedResponse<Tournament>>("/tournaments", {
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
@@ -305,7 +303,7 @@ class APIClient {
 
   async getTournament(tournamentId: string): Promise<TournamentDetail> {
     const { data } = await this.request<TournamentDetail>(`/tournaments/${tournamentId}`, {
-      method: 'GET',
+      method: "GET",
     });
     return data;
   }
@@ -316,7 +314,7 @@ class APIClient {
     const { data } = await this.request<
       PaginatedResponse<{ position: number; player: Player; score: number }>
     >(`/tournaments/${tournamentId}/leaderboard`, {
-      method: 'GET',
+      method: "GET",
     });
     return data;
   }
@@ -326,16 +324,16 @@ class APIClient {
   // ========================================================================
 
   async getWorldRankings(params?: PaginationParams): Promise<RankingCategory> {
-    const { data } = await this.request<RankingCategory>('/rankings/world', {
-      method: 'GET',
+    const { data } = await this.request<RankingCategory>("/rankings/world", {
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
   }
 
   async getFedexCupRankings(params?: PaginationParams): Promise<RankingCategory> {
-    const { data } = await this.request<RankingCategory>('/rankings/fedex-cup', {
-      method: 'GET',
+    const { data } = await this.request<RankingCategory>("/rankings/fedex-cup", {
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
@@ -346,7 +344,7 @@ class APIClient {
     params?: PaginationParams
   ): Promise<RankingCategory> {
     const { data } = await this.request<RankingCategory>(`/rankings/tournament/${tournamentId}`, {
-      method: 'GET',
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
@@ -360,8 +358,8 @@ class APIClient {
     tournamentId: string,
     params?: PaginationParams
   ): Promise<PaginatedResponse<Projection>> {
-    const { data } = await this.request<PaginatedResponse<Projection>>('/projections', {
-      method: 'GET',
+    const { data } = await this.request<PaginatedResponse<Projection>>("/projections", {
+      method: "GET",
       params: { tournament_id: tournamentId, ...params } as Record<
         string,
         string | number | boolean
@@ -370,12 +368,9 @@ class APIClient {
     return data;
   }
 
-  async getPlayerProjections(
-    playerId: string,
-    tournamentId: string
-  ): Promise<Projection[]> {
-    const { data } = await this.request<Projection[]>('/projections', {
-      method: 'GET',
+  async getPlayerProjections(playerId: string, tournamentId: string): Promise<Projection[]> {
+    const { data } = await this.request<Projection[]>("/projections", {
+      method: "GET",
       params: { player_id: playerId, tournament_id: tournamentId },
     });
     return Array.isArray(data) ? data : [];
@@ -383,7 +378,7 @@ class APIClient {
 
   async getFieldProjections(tournamentId: string): Promise<FieldProjection> {
     const { data } = await this.request<FieldProjection>(`/projections/field/${tournamentId}`, {
-      method: 'GET',
+      method: "GET",
     });
     return data;
   }
@@ -396,8 +391,8 @@ class APIClient {
     tournamentId: string,
     params?: PaginationParams
   ): Promise<PaginatedResponse<BettingEdge>> {
-    const { data } = await this.request<PaginatedResponse<BettingEdge>>('/betting/edges', {
-      method: 'GET',
+    const { data } = await this.request<PaginatedResponse<BettingEdge>>("/betting/edges", {
+      method: "GET",
       params: { tournament_id: tournamentId, ...params } as Record<
         string,
         string | number | boolean
@@ -410,8 +405,8 @@ class APIClient {
     tournamentId: string,
     params?: PaginationParams
   ): Promise<PaginatedResponse<BettingOdds>> {
-    const { data } = await this.request<PaginatedResponse<BettingOdds>>('/betting/odds', {
-      method: 'GET',
+    const { data } = await this.request<PaginatedResponse<BettingOdds>>("/betting/odds", {
+      method: "GET",
       params: { tournament_id: tournamentId, ...params } as Record<
         string,
         string | number | boolean
@@ -425,8 +420,8 @@ class APIClient {
   // ========================================================================
 
   async getArticles(params?: PaginationParams & FilterParams): Promise<ArticleList> {
-    const { data } = await this.request<ArticleList>('/content/articles', {
-      method: 'GET',
+    const { data } = await this.request<ArticleList>("/content/articles", {
+      method: "GET",
       params: params as Record<string, string | number | boolean>,
     });
     return data;
@@ -434,7 +429,7 @@ class APIClient {
 
   async getArticle(slug: string): Promise<Article> {
     const { data } = await this.request<Article>(`/content/articles/${slug}`, {
-      method: 'GET',
+      method: "GET",
     });
     return data;
   }
@@ -448,8 +443,8 @@ class APIClient {
       total_players: number;
       tournaments_this_season: number;
       active_players: number;
-    }>('/stats/overview', {
-      method: 'GET',
+    }>("/stats/overview", {
+      method: "GET",
     });
     return data;
   }

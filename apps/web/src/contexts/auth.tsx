@@ -5,9 +5,10 @@
  * Handles session initialization, token refresh, and logout flows.
  */
 
-import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react';
-import { apiClient } from '@/lib/api-client';
-import type { User, Session } from '@/types';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
+import { apiClient } from "@/lib/api-client";
+import type { User, Session } from "@/types";
 
 interface AuthContextType {
   user: User | null;
@@ -60,7 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to initialize session';
+      const errorMessage = error instanceof Error ? error.message : "Failed to initialize session";
       setSession({
         user: null,
         isAuthenticated: false,
@@ -91,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         error: null,
       });
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Login failed';
+      const errorMessage = error instanceof Error ? error.message : "Login failed";
       setSession((prev) => ({
         ...prev,
         isLoading: false,
@@ -115,7 +116,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         error: null,
       });
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Registration failed';
+      const errorMessage = error instanceof Error ? error.message : "Registration failed";
       setSession((prev) => ({
         ...prev,
         isLoading: false,
@@ -139,7 +140,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         error: null,
       });
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Logout failed';
+      const errorMessage = error instanceof Error ? error.message : "Logout failed";
       setSession({
         user: null,
         isAuthenticated: false,
@@ -173,7 +174,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Session refresh failed';
+      const errorMessage = error instanceof Error ? error.message : "Session refresh failed";
       setSession({
         user: null,
         isAuthenticated: false,
@@ -211,7 +212,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }

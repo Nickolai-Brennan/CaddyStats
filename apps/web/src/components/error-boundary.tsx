@@ -4,7 +4,7 @@
  * React Error Boundary for catching and displaying errors gracefully.
  */
 
-import { Component, ReactNode, ErrorInfo } from 'react';
+import { Component, ReactNode, ErrorInfo } from "react";
 
 interface Props {
   children: ReactNode;
@@ -36,7 +36,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // Log to console and error tracking service
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error("Error caught by boundary:", error, errorInfo);
 
     this.setState({
       error,
@@ -65,7 +65,7 @@ export class ErrorBoundary extends Component<Props, State> {
               We encountered an unexpected error. Our team has been notified.
             </p>
 
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {process.env.NODE_ENV === "development" && this.state.error && (
               <div className="space-y-2 rounded bg-slate-900/50 p-4 font-mono text-sm">
                 <p className="font-semibold text-red-400">Error Details:</p>
                 <p className="text-slate-300">{this.state.error.toString()}</p>

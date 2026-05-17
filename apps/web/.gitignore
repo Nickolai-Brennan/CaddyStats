@@ -1,0 +1,7 @@
+# CaddyStats Web App - Local gitignore
+# Prevents compiled TypeScript output (*.js) from being tracked in src/
+# tsc should never write to src/ but this guards against accidental runs without --outDir
+
+src/**/*.js
+src/**/*.d.ts
+src/**/*.js.map
