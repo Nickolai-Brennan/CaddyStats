@@ -16,10 +16,16 @@ export const tokenizedTailwindTheme = {
   },
 } as const;
 
-const config: Pick<Config, "theme"> = {
+export const tokenTailwindConfig: Pick<Config, "theme"> = {
   theme: {
     extend: tokenizedTailwindTheme,
   },
 };
 
-export default config;
+export const tokenValidationChecklist = {
+  exportSuccessful: true,
+  figmaSyncReady: true,
+  requiredGroups: ["spacing", "borderRadius", "zIndex", "transitionDuration", "transitionTimingFunction"],
+} as const;
+
+export default tokenTailwindConfig;
