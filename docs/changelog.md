@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-05-17 — DS-4 Typography System
+
+- Added:
+  - `docs/design/typography-system.md` defining DS-4 font stacks, responsive scale, caption/body/display hierarchy, and numeric typography rules.
+  - `apps/web/src/styles/typography.ts` with DS-4 font tokens, typography scale tokens, global application helper, and numeric formatting helpers.
+
+- Changed:
+  - `apps/web/src/index.css` now uses DS-4 typography variables globally, imports Inter + IBM Plex Mono, and adds display/caption/numeric utility classes.
+  - `apps/web/src/main.tsx` now applies the DS-4 typography system before React renders.
+  - Shared frontend components in `apps/web/src/components/layout/system.tsx`, `apps/web/src/components/section-header.tsx`, and `apps/web/src/components/stat-card.tsx` now align with DS-4 heading, caption, and metric typography.
+
+- Fixed:
+  - N/A
+
+- Plugins:
+  - N/A
+
+- Commands:
+  - Baseline (pre-edit) attempted:
+    - `pnpm --filter web lint` (fails: `pnpm` unavailable)
+    - `pnpm --filter web test` (fails: `pnpm` unavailable)
+  - Tool availability checked:
+    - `node -v`
+    - `python3 --version`
+    - `pnpm -v` (unavailable)
+    - `python3 -m ruff --version` (unavailable)
+    - `python3 -m mypy --version` (unavailable)
+    - `python3 -m pytest --version` (unavailable)
+
+- Notes:
+  - DS-4 maps to the typography requirements in `docs/planning/Design System Master List.md` and is applied globally rather than page-by-page.
+
 ## 2026-05-17 — DS-3 Layout System Run + Implementation
 
 - Added:

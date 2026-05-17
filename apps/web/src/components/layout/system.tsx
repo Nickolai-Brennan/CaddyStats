@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
+import { typographyClasses } from "@/styles/typography";
 import { cx } from "@/components/ui/utils";
 
 interface AppShellProps extends HTMLAttributes<HTMLDivElement> {
@@ -131,8 +132,8 @@ export function DashboardRegion({
       {(title || description || action) && (
         <header className="mb-4 flex items-start justify-between gap-4">
           <div>
-            {title && <h2 className="text-base font-semibold text-slate-100 sm:text-lg">{title}</h2>}
-            {description && <p className="mt-1 text-sm text-slate-400">{description}</p>}
+            {title && <h2 className={`text-base sm:text-lg ${typographyClasses.h3}`}>{title}</h2>}
+            {description && <p className="mt-1 text-body-sm">{description}</p>}
           </div>
           {action && <div className="shrink-0">{action}</div>}
         </header>
