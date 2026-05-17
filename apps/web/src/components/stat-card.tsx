@@ -2,6 +2,8 @@
  * StatCard — displays a single numeric stat with label and optional trend/description
  */
 
+import { typographyClasses } from "@/styles/typography";
+
 interface StatCardProps {
   label: string;
   value: string | number | null | undefined;
@@ -18,15 +20,15 @@ export function StatCard({ label, value, description, highlight = false }: StatC
         highlight ? "border-amber-500/30 bg-amber-500/5" : "border-slate-800 bg-slate-900"
       }`}
     >
-      <p className="text-sm font-medium text-slate-400">{label}</p>
+      <p className={`text-caption ${typographyClasses.caption}`}>{label}</p>
       <p
-        className={`mt-2 text-3xl font-bold ${
+        className={`text-metric mt-2 text-3xl ${
           highlight ? "text-amber-400" : "text-slate-50"
         } ${isEmpty ? "text-slate-600" : ""}`}
       >
         {isEmpty ? "—" : value.toLocaleString()}
       </p>
-      {description && <p className="mt-1.5 text-xs text-slate-500">{description}</p>}
+      {description && <p className="mt-1.5 text-body-sm">{description}</p>}
     </div>
   );
 }

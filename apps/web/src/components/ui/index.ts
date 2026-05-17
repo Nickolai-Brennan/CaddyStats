@@ -9,3 +9,4 @@ export * from "./charts";
 export * from "./navigation";
 export * from "./seo";
 export * from "./seo-utils";
+export * from "../layout";
