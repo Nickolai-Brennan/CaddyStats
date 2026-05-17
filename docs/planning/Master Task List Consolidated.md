@@ -82,7 +82,7 @@ Use this section as the primary execution checklist. Tasks here are deduplicated
 ### Phase 4 — Frontend Public App & Shared UI
 
 - [ ] Set up the web app shell with routing, layouts, session/auth plumbing, query client, state organization, and typed API integration.
-- [ ] Build public pages for home, articles, players, tournaments, rankings, projections, betting, course history, and related public content surfaces.
+- [X] Build public pages for home, articles, players, tournaments, rankings, projections, betting, course history, and related public content surfaces.
 - [ ] Build analytics UI for tables, filters, dashboards, premium research views, comparisons, and simulation/projection exploration.
 - [ ] Create reusable UI primitives, layout components, charts, tables, forms, cards, navigation, SEO components, empty states, loading states, and skeletons.
 - [ ] Implement accessibility standards including semantic HTML, keyboard navigation, labels, focus states, and acceptance criteria for high-traffic pages.
