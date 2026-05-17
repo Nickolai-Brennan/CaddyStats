@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-05-17 — DS-2 Tokens, DS-8 Core Components, DS-9 Dashboard, DS-10 Enhanced Table, DS-11 Charts, DS-13 Search, DS-14 Content, DS-15 Feedback, DS-17 Motion
+
+- Added:
+  - `apps/web/src/styles/tokens.ts` — DS-2 complete design token system: spacing (4-pt grid), radius scale, shadow/elevation scale, opacity stops, z-index layering system, transition duration + easing tokens, and semantic role-alias tokens.
+  - DS-8 Core Components in `primitives.tsx`: `Checkbox`, `Radio`, `Switch`, `Tooltip`, `Avatar`, `Tabs`, `Accordion`.
+  - `apps/web/src/components/ui/overlays.tsx` — DS-8 `Modal` (native `<dialog>` centered overlay) and `Drawer` (side-sheet panel, left/right).
+  - DS-9 Dashboard Components in `cards.tsx`: `TrendCard`, `ProjectionCard`, `InsightCard`, `ConfidenceCard`, `AlertCard`, `ComparisonCard`, `WidgetContainer`.
+  - DS-10 Enhanced `DataTable` in `tables.tsx`: built-in global filter, column-level sorting (asc/desc), column-visibility toggle, row actions slot, toolbar slot, row count summary. Added `TablePagination` component.
+  - DS-11 Charts in `charts.tsx`: `LineChart` (multi-series with area fill + legend), `ConfidenceBands` (median + uncertainty envelope), `RadarChart` (spider/polar chart).
+  - `apps/web/src/components/ui/search.tsx` — DS-13 Search + Filters: `SearchInput` (icon + clear), `FilterChips` (single/multi-select pill group), `DateRangeSelector`, `RangeControl` (dual-thumb slider).
+  - `apps/web/src/components/ui/content.tsx` — DS-14 Content Components: `ArticleHero`, `AuthorCard`, `StatCallout`, `QuoteBlock`, `AIInsightsPanel`, `RelatedContent`.
+  - `apps/web/src/components/ui/feedback.tsx` — DS-15 Feedback: `ToastProvider`, `useToast` hook, `Banner` (site/page-level alert bar with auto-dismiss). Toast system supports info/success/warning/error tones, actions, and configurable duration.
+  - DS-17 Motion: CSS keyframe animations (`ds-enter`, `ds-exit`, `ds-slide-up`, `ds-slide-down`, `ds-scale-in`, `ds-fade-in`, `ds-toast-in`) + utility classes in `globals.css`. Full `prefers-reduced-motion` support.
+
+- Changed:
+  - `apps/web/src/styles/globals.css` — DS-2 token CSS vars (radius, shadow, z-index, transition) + DS-17 animation keyframes and utility classes.
+  - `apps/web/tailwind.config.js` — DS-2 borderRadius scale, boxShadow elevation scale, extended transition duration/easing tokens, DS-17 keyframes + animation utilities.
+  - `apps/web/src/components/ui/index.ts` — exports all new modules: `overlays`, `search`, `content`, `feedback`.
+
+- Notes:
+  - All DS-8 overlays use native `<dialog>` element for built-in focus trapping and accessibility.
+  - Toast system uses React Context + `useCallback` for stable references. Maximum 5 simultaneous toasts (FIFO).
+  - All components follow WCAG 2.1 AA: semantic HTML, ARIA roles/labels, keyboard navigation, focus-visible rings.
+
 ## 2026-05-17 — DS-5 / DS-6 / DS-7 Color System, Icons, Navigation
 
 - Added:
