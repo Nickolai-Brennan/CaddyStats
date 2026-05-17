@@ -7,6 +7,8 @@ export * from "./forms";
 export * from "./tables";
 export * from "./charts";
 export * from "./navigation";
+export * from "./sidebar";
 export * from "./seo";
 export * from "./seo-utils";
 export * from "../layout";
+export * from "../icons";

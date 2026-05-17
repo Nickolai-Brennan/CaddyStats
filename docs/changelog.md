@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-05-17 — DS-5 / DS-6 / DS-7 Color System, Icons, Navigation
+
+- Added:
+  - `apps/web/src/styles/colors.ts` — DS-5 canonical color token module: primary palette (amber), neutral palette (slate), 8-stop chart palette, semantic colors (success/warning/error/info), status colors (live/pending/closed/cancelled/upcoming), analytics tokens (projection/confidence/risk/ownership/edge), and dark-mode surface/border/text scales.
+  - `apps/web/src/components/icons/index.tsx` — DS-6 icon library: thin `lucide-react` wrapper with a 5-stop sizing scale (xs/sm/md/lg/xl), `<Icon>` component, and typed re-exports across navigation, golf, analytics, betting, admin, and state categories.
+  - `apps/web/src/components/ui/sidebar.tsx` — DS-7 collapsible sidebar navigation with pinned/collapsed states, section grouping (Main/Analytics/Content/Admin), active-link highlighting, and full keyboard accessibility.
+  - DS-7 `CommandPalette` component (in `navigation.tsx`) — Cmd+K/Ctrl+K overlay with fuzzy search, keyboard navigation (↑↓↵Esc), and extensible command list.
+  - DS-7 `ProfileMenu` component (in `navigation.tsx`) — dropdown with user initials avatar, account/settings/sign-out actions, outside-click and Escape dismissal.
+  - DS-7 `MobileNav` component (in `navigation.tsx`) — fixed bottom navigation bar for ≤ md breakpoints with command palette trigger.
+
+- Changed:
+  - `apps/web/tailwind.config.js` — extended with full brand/chart/analytics/surface color palettes, sidebar width tokens, transition duration/easing tokens, and focus ring tokens.
+  - `apps/web/src/styles/globals.css` — DS-5 CSS custom properties (var(--color-*)) registered for all token categories; dark-mode scrollbar styling and global focus-visible amber ring.
+  - `apps/web/src/components/ui/navigation.tsx` — `TopNav` enhanced with command palette trigger, `ProfileMenu`, and backward-compatible `action` slot.
+  - `apps/web/src/components/ui/index.ts` — exports `sidebar` and `icons` modules.
+  - `apps/web/src/layouts/root.tsx` — rewired to DS-7 shell: sidebar + sticky top bar + `CommandPalette` + `MobileNav`.
+
+- Fixed:
+  - `apps/web/src/styles/globals.css` background token corrected from `gray-950` to `surface-base`.
+
+- Notes:
+  - `lucide-react` added as a dependency for DS-6 icon library.
+  - WCAG 2.1 AA contrast ratios documented inline in `colors.ts`.
+
 ## 2026-05-17 — DS-4 Typography System
 
 - Added:

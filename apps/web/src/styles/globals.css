@@ -2,10 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------------------------------------------------------
+ * DS-5 Color System — CSS custom properties
+ * All tokens mirror styles/colors.ts so they are available as var(--color-*)
+ * in plain CSS, inline styles, and non-Tailwind contexts.
+ * --------------------------------------------------------------------- */
 @layer base {
   :root {
-    --color-primary: #4ade80;
-    --color-surface: #0f172a;
+    /* Primary */
+    --color-brand-50:  #fffbeb;
+    --color-brand-100: #fef3c7;
+    --color-brand-200: #fde68a;
+    --color-brand-300: #fcd34d;
+    --color-brand-400: #fbbf24;
+    --color-brand-500: #f59e0b;
+    --color-brand-600: #d97706;
+    --color-brand-700: #b45309;
+    --color-brand-800: #92400e;
+    --color-brand-900: #78350f;
+
+    /* Surface elevations */
+    --color-surface-base:    #060b14;
+    --color-surface-raised:  #0f172a;
+    --color-surface-overlay: #1e293b;
+    --color-surface-sunken:  #0b1120;
+    --color-surface-accent:  #172033;
+
+    /* Border scale */
+    --color-border-subtle:  rgba(148, 163, 184, 0.10);
+    --color-border-default: rgba(148, 163, 184, 0.18);
+    --color-border-strong:  rgba(148, 163, 184, 0.30);
+    --color-border-focus:   #f59e0b;
+
+    /* Text scale */
+    --color-text-primary:   #f8fafc;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted:     #64748b;
+    --color-text-disabled:  #334155;
+
+    /* Semantic */
+    --color-success: #22c55e;
+    --color-warning: #eab308;
+    --color-error:   #ef4444;
+    --color-info:    #0ea5e9;
+
+    /* Chart palette */
+    --color-chart-1: #f59e0b;
+    --color-chart-2: #38bdf8;
+    --color-chart-3: #a78bfa;
+    --color-chart-4: #34d399;
+    --color-chart-5: #fb7185;
+    --color-chart-6: #fb923c;
+    --color-chart-7: #a3e635;
+    --color-chart-8: #e879f9;
+
+    /* Analytics */
+    --color-projection: #a3e635;
+    --color-confidence: #38bdf8;
+    --color-risk:       #fb7185;
+    --color-ownership:  #a78bfa;
+    --color-edge:       #34d399;
+    --color-trend:      #f59e0b;
+
+    /* Layout */
+    --sidebar-width:           15rem;
+    --sidebar-collapsed-width: 3.5rem;
   }
 
   * {
@@ -13,7 +74,29 @@
   }
 
   body {
-    @apply bg-gray-950 text-gray-100 antialiased;
+    @apply bg-surface-base text-slate-100 antialiased;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Scrollbar styling for dark surfaces */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface-raised);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+  }
+
+  /* Focus visible — consistent amber ring */
+  :focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
   }
 }
