@@ -12,7 +12,7 @@
 
 - Changed:
   - `apps/web/tailwind.config.js` — extended with full brand/chart/analytics/surface color palettes, sidebar width tokens, transition duration/easing tokens, and focus ring tokens.
-  - `apps/web/src/styles/globals.css` — DS-5 CSS custom properties (var(--color-*)) registered for all token categories; dark-mode scrollbar styling and global focus-visible amber ring.
+  - `apps/web/src/styles/globals.css` — DS-5 CSS custom properties (var(--color-\*)) registered for all token categories; dark-mode scrollbar styling and global focus-visible amber ring.
   - `apps/web/src/components/ui/navigation.tsx` — `TopNav` enhanced with command palette trigger, `ProfileMenu`, and backward-compatible `action` slot.
   - `apps/web/src/components/ui/index.ts` — exports `sidebar` and `icons` modules.
   - `apps/web/src/layouts/root.tsx` — rewired to DS-7 shell: sidebar + sticky top bar + `CommandPalette` + `MobileNav`.
