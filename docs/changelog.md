@@ -1,5 +1,40 @@
 # Changelog
 
+## 2026-05-17 — DS-3 Layout System Run + Implementation
+
+- Added:
+  - `docs/design/layout-system.md` defining DS-3 shell structure, dashboard regions, responsive 12/8/4 grid standards, accessibility requirements, and frontend mapping.
+  - `apps/web/src/components/layout/system.tsx` with reusable DS-3 primitives:
+    - `AppShell` (sidebar/main/context/footer orchestration)
+    - `DashboardGrid` (12/8/4 responsive grid)
+    - `DashboardRegion` and named region wrappers (`DashboardToolbar`, `DashboardHeroMetrics`, `DashboardChartRegion`, `DashboardDataRegion`, `DashboardActionRegion`)
+  - `apps/web/src/components/layout/index.ts` barrel export for layout primitives.
+
+- Changed:
+  - `apps/web/src/components/ui/index.ts` now re-exports DS-3 layout primitives for shared consumption.
+  - `apps/web/src/pages/lab.tsx` now runs the DS-3 layout system in-app with live sidebar, context panel, and all dashboard regions rendered using DS-3 primitives.
+
+- Fixed:
+  - N/A
+
+- Plugins:
+  - N/A
+
+- Commands:
+  - Baseline (pre-edit) attempted:
+    - `make lint` (fails: `ruff` unavailable)
+    - `make typecheck` (fails: `mypy` unavailable)
+    - `make build` (fails: `pnpm` unavailable)
+    - `make test` (fails: `pytest` unavailable)
+  - Post-edit web checks attempted:
+    - `pnpm --filter web lint` (fails: `pnpm` unavailable)
+    - `pnpm --filter web typecheck` (fails: `pnpm` unavailable)
+    - `pnpm --filter web build` (fails: `pnpm` unavailable)
+    - `pnpm --filter web test` (fails: `pnpm` unavailable)
+
+- Notes:
+  - DS-3 implementation is scoped to frontend layout architecture and documentation deliverables from `docs/planning/Design System Master List.md`.
+
 ## 2026-05-17 — DS-0 to DS-2 Design System Foundation
 
 - Added:
