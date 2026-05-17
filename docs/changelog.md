@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-05-17 — DS-0 to DS-2 Design System Foundation
+
+- Added:
+  - `docs/design/governance.md` with Caddy Stats design-system ownership roles, lifecycle statuses (`Draft`, `In Review`, `Approved`, `Deprecated`), RFC/change-request flow, and component approval workflow for monorepo evolution.
+  - `docs/design/adr-template.md` as a reusable design-system ADR template for durable token/component/accessibility decisions.
+  - `docs/design/component-lifecycle.md` with status transition criteria, validation requirements, documentation/testing expectations, and deprecation policy.
+  - `docs/design/principles.md` with analytical-first, premium dashboard, density, mobile-first, readability, and scan-hierarchy principles tailored to golf analytics and betting intelligence surfaces.
+  - `docs/design/foundations.md` with dashboard readability, decision hierarchy, interaction cost, visual-noise reduction, and empty-state standards.
+  - New `@caddystats/tokens` workspace at `packages/tokens/` including:
+    - `tokens.json` (spacing, radius, motion, and layer tokens)
+    - `theme.ts` (TypeScript-consumable token exports)
+    - `tailwind.config.ts` (Tailwind theme extension mapping)
+    - `src/index.ts`, `package.json`, `tsconfig.json`
+- Changed:
+  - N/A
+- Fixed:
+  - N/A
+- Plugins:
+  - N/A
+- Commands:
+  - Attempted baseline validation commands:
+    - `make lint` (failed locally: missing `ruff`)
+    - `make test-web` (failed locally: missing `pnpm`)
+- Notes:
+  - Scope intentionally limited to DS-0 Governance + Architecture, DS-1 Foundations, and DS-2 Token Architecture from `docs/planning/Design System Master List.md`.
+
 ## 2026-05-15 — Local Stack Bootstrap & Runtime Compatibility Fixes
 
 - Added:
