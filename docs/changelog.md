@@ -20,9 +20,9 @@
 - Plugins:
   - N/A
 - Commands:
-  - Attempted baseline validation commands:
-    - `make lint` (failed locally: missing `ruff`)
-    - `make test-web` (failed locally: missing `pnpm`)
+  - Local verification commands run:
+    - `python3 -m json.tool packages/tokens/tokens.json`
+    - `git --no-pager diff --check`
 - Notes:
   - Scope intentionally limited to DS-0 Governance + Architecture, DS-1 Foundations, and DS-2 Token Architecture from `docs/planning/Design System Master List.md`.
 
