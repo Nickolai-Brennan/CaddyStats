@@ -380,6 +380,8 @@ UserRoleManager
 
 4A. Content Post Templates & Text Editor
 
+a modern, block-based CMS platform built for editorial teams and content-driven organizations. It combines the flexibility of a headless CMS with the usability of a visual editor, giving teams full control over content creation, SEO performance, and data storytelling from a single admin interface
+
 Purpose
 
 Templates and the editor system allow repeatable, structured, SEO-ready article production for golf betting, fantasy previews, player profiles, and tournament analysis.
