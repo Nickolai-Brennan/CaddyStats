@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-05-18 — DS-11 Missing Charts, DS-13 Predictive Search, DS-16 Accessibility, DS-20 Storybook, DS-22 QA Release, DS-10A/11A/11B/11D Advanced Systems
+
+- Added:
+  - `apps/web/.storybook/main.ts` — DS-20 Storybook 8 configuration (Vite builder, a11y addon, essentials addon, `@` path alias).
+  - `apps/web/.storybook/preview.ts` — Storybook preview: dark background default, a11y color-contrast rule, layout: centered.
+  - `apps/web/src/stories/` — Storybook stories for all component families: `Primitives`, `Badge`, `Cards`, `Charts`, `ChartsAdvanced`, `Search`, `SearchAdvanced`, `Overlays`, `Feedback`, `Advanced`.
+  - `apps/web/src/components/ui/charts.tsx` — DS-11 missing charts: `StackedBarChart` (multi-segment horizontal bars), `ScatterPlot` (SVG scatter with labeled highlights), `HeatMap` (grid color-encoded table), `Timeline` (vertical event timeline with tone indicators).
+  - `apps/web/src/components/ui/search.tsx` — DS-13 `PredictiveSearch` (autocomplete combobox with keyboard navigation, ARIA, loading state) and `SearchResultsPanel` (grouped results with loading skeleton and empty state).
+  - `apps/web/src/components/ui/advanced.tsx` — DS-10A/11A/11B/11D advanced systems:
+    - DS-10A: `NumericCell`, `PercentageCell`, `OddsCell`, `ConfidenceBadgeCell`, `TrendIndicatorCell`, `ExposureBadgeCell`, `ExpandableRow`, `ContextMenu`
+    - DS-11A: `WidgetShell`, `DeltaCard`, `ExposureMetric`, `AISummaryCard`, `AnomalyDetectorWidget`
+    - DS-11B: `ChartWrapper`, `ChartDateSelector`, `CompareSelector`
+    - DS-11D: `NetworkGraph`, `ConfidenceNetwork`
+  - `docs/design/accessibility.md` — DS-16 WCAG 2.1 AA standards, per-component acceptance criteria, audit process, screen-reader and keyboard testing guidance.
+  - `docs/design/qa-release-checklist.md` — DS-22 release gates, pre-release audit checklist (responsive, component, browser, performance, a11y, lint, test, docs), final release gate table, rollback plan, post-release monitoring.
+
+- Changed:
+  - `apps/web/src/components/ui/index.ts` — added `advanced` export.
+  - `apps/web/src/components/ui/feedback.tsx` — eslint-disable for `react-refresh/only-export-components` on `useToast` (mixed hook+component file).
+  - `apps/web/package.json` — added `storybook` and `build-storybook` scripts; added `@storybook/react@8`, `@storybook/react-vite@8`, `@storybook/addon-essentials@8`, `@storybook/addon-a11y@8`, `storybook@8` devDependencies.
+
+- Notes:
+  - `pnpm --filter web lint` and `pnpm --filter web typecheck` pass with zero errors.
+  - Storybook stories cover all exported component families and match the actual TypeScript interfaces.
+
 ## 2026-05-17 — DS-2 Tokens, DS-8 Core Components, DS-9 Dashboard, DS-10 Enhanced Table, DS-11 Charts, DS-13 Search, DS-14 Content, DS-15 Feedback, DS-17 Motion
 
 - Added:

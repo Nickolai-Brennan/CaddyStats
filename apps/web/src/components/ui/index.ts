@@ -14,5 +14,6 @@ export * from "./overlays";
 export * from "./search";
 export * from "./content";
 export * from "./feedback";
+export * from "./advanced";
 export * from "../layout";
 export * from "../icons";
