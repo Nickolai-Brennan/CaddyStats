@@ -1,1096 +1,650 @@
-Expanded into an implementation-level Design System Work Breakdown Structure (WBS) with sub-tasks, dependencies, outputs, and validation gates. This follows the Caddy Stats sequencing model and keeps every task mapped to artifacts and execution stages.
+# Design System Master Roadmap
 
-DS-0 Governance + Architecture
-
-Ownership
-
-□ Assign Design System Owner
-
-□ Assign Frontend Owner
-
-□ Assign Figma Owner
-
-□ Assign Documentation Owner
-
-□ Assign Accessibility Owner
-
-Lifecycle
-
-□ Define statuses
-
-Draft
-
-In Review
-
-Approved
-
-Deprecated
-
-□ Create RFC template
-
-□ Create ADR template
-
-□ Create change request process
-
-□ Create component approval workflow
-
-Deliverables
-
-Files:
-
-/docs/design/governance.md
-
-/docs/design/adr-template.md
-
-/docs/design/component-lifecycle.md
-
-Validation:
-
-□ Governance signoff
+A complete implementation Work Breakdown Structure (WBS) for the Design System, Dashboard Framework, Data Platform, Visualization Layer, Accessibility, QA, and Release Management.
 
 ---
 
-DS-1 Foundations
+# Overview
 
-Design Principles
-
-□ Define analytical-first principles
-
-□ Define premium dashboard principles
-
-□ Define density rules
-
-□ Define mobile-first rules
-
-□ Define data readability rules
-
-□ Define scan hierarchy standards
-
-UX Standards
-
-□ Dashboard readability rules
-
-□ Decision hierarchy
-
-□ Interaction cost rules
-
-□ Visual noise reduction standards
-
-□ Empty state principles
-
-Deliverables
-
-/docs/design/foundations.md
-
-/docs/design/principles.md
-
-Validation:
-
-□ Foundation review complete
+| Section | Area |
+|----------|----------|
+| DS-0 | Governance |
+| DS-1 | Foundations |
+| DS-2 | Design Tokens |
+| DS-3 | Layout & Grid |
+| DS-4 | Typography |
+| DS-5 | Color System |
+| DS-6 | Icons |
+| DS-7 | Navigation |
+| DS-8 | Core Components |
+| DS-9 | Dashboard Components |
+| DS-10 | Data Components |
+| DS-10A | Advanced Table System |
+| DS-11 | Charts & Visualization |
+| DS-11A | Advanced Dashboards |
+| DS-11B | Advanced Charts |
+| DS-11D | Advanced Graph System |
+| DS-12 | Forms |
+| DS-13 | Search & Filters |
+| DS-14 | Content Components |
+| DS-15 | States & Feedback |
+| DS-16 | Accessibility |
+| DS-17 | Motion |
+| DS-18 | Mobile |
+| DS-19 | Dark Mode |
+| DS-20 | Storybook |
+| DS-21 | Figma |
+| DS-22 | QA & Release |
 
 ---
 
-DS-2 Token Architecture
+# DS-0 Governance
 
-Spacing Tokens
+## Purpose
+Establish standards, ownership, contribution workflows, release processes, and long-term maintenance strategy.
 
-□ 4
+### Tasks
 
-□ 8
+- [ ] Create naming conventions
+- [ ] Define component ownership
+- [ ] Create component lifecycle states
+- [ ] Create ADR process
+- [ ] Define contribution workflow
+- [ ] Create release process
+- [ ] Create versioning strategy
 
-□ 12
+### Validation
 
-□ 16
-
-□ 24
-
-□ 32
-
-□ 48
-
-□ 64
-
-□ 96
-
-Radius Tokens
-
-□ xs
-
-□ sm
-
-□ md
-
-□ lg
-
-□ xl
-
-□ 2xl
-
-Motion Tokens
-
-□ duration-fast
-
-□ duration-default
-
-□ duration-slow
-
-□ easing-standard
-
-□ easing-emphasized
-
-Layer Tokens
-
-□ dropdown
-
-□ overlay
-
-□ modal
-
-□ toast
-
-□ tooltip
-
-Deliverables
-
-Files:
-
-/packages/tokens/tokens.json
-
-/packages/tokens/theme.ts
-
-/packages/tokens/tailwind.config.ts
-
-Validation:
-
-□ Token export successful
-
-□ Figma sync successful
+- [ ] Governance approved
 
 ---
 
-DS-3 Layout System
+# DS-1 Foundations
 
-Shell
+## Purpose
+Define the guiding principles that govern all UI and UX decisions.
 
-□ Sidebar structure
+### Tasks
 
-□ Header structure
-
-□ Context panel
-
-□ Footer structure
-
-Dashboard Regions
-
-□ Toolbar region
-
-□ Hero metrics region
-
-□ Chart region
-
-□ Data region
-
-□ Action region
-
-Responsive
-
-Desktop:
-
-□ 12-column
-
-Tablet:
-
-□ 8-column
-
-Mobile:
-
-□ 4-column
-
-Deliverables
-
-/docs/design/layout-system.md
-
-/components/layout
-
-Validation:
-
-□ Responsive audit
+- [ ] Create design principles
+- [ ] Create UI philosophy
+- [ ] Define density rules
+- [ ] Define spacing principles
+- [ ] Define dashboard standards
+- [ ] Define interaction rules
 
 ---
 
-DS-4 Typography System
+# DS-2 Design Tokens
 
-Font Setup
+## Purpose
+Create the foundational token system used throughout all interfaces.
 
-□ Inter install
+### Core Tokens
 
-□ Fallback setup
+- [ ] Spacing tokens
+- [ ] Radius tokens
+- [ ] Shadow tokens
+- [ ] Opacity tokens
+- [ ] Z-index tokens
+- [ ] Transition tokens
+- [ ] Semantic tokens
 
-□ Mono numeric font
+### Distribution
 
-Scale
+- [ ] Export token JSON
+- [ ] Create Tailwind mappings
+- [ ] Create CSS variable mappings
+- [ ] Create Figma token mappings
 
-Display:
+### Validation
 
-□ XL
-
-□ LG
-
-Headings:
-
-□ H1
-
-□ H2
-
-□ H3
-
-□ H4
-
-□ H5
-
-□ H6
-
-Body:
-
-□ Large
-
-□ Standard
-
-□ Small
-
-Metrics Rules
-
-□ Tabular numbers
-
-□ Decimal alignment
-
-□ Percentage rules
-
-□ Odds formatting
-
-Deliverables:
-
-/styles/typography.ts
-
-Validation:
-
-□ Typography rendered globally
+- [ ] Token system implemented
 
 ---
 
-DS-5 Color System
+# DS-3 Layout & Grid
 
-Brand
+## Purpose
+Create responsive layout standards for applications and dashboards.
 
-□ Primary
+### Grid Systems
 
-□ Secondary
+- [ ] Desktop grid
+- [ ] Tablet grid
+- [ ] Mobile grid
 
-□ Surface
+### Layout Patterns
 
-□ Background
+- [ ] Application shell
+- [ ] Sidebar layout
+- [ ] Dashboard layout
+- [ ] Content layout
+- [ ] Split panel layout
 
-Semantic
+### Responsive Standards
 
-□ Success
-
-□ Warning
-
-□ Error
-
-□ Info
-
-Analytics
-
-□ Projection
-
-□ Confidence
-
-□ Risk
-
-□ Ownership
-
-□ Odds movement
-
-□ Trend
-
-Dark Mode
-
-□ Surface elevation colors
-
-□ Border colors
-
-□ Chart theme colors
-
-Deliverables
-
-/styles/colors.ts
-
-Validation
-
-□ Contrast pass
+- [ ] Card spacing rules
+- [ ] Responsive breakpoints
+- [ ] Container sizing
+- [ ] Max-width standards
 
 ---
 
-DS-6 Icon System
+# DS-4 Typography
 
-Setup
+## Purpose
+Create a scalable and accessible typography system.
 
-□ Lucide install
+### Tasks
 
-□ Create icon wrapper
+- [ ] Font stack
+- [ ] Display hierarchy
+- [ ] Heading scale
+- [ ] Body scale
+- [ ] Caption scale
+- [ ] Numeric typography
+- [ ] Responsive typography
 
-Categories
+### Validation
 
-Navigation
-
-□ Dashboard
-
-□ Search
-
-□ Models
-
-□ Content
-
-Golf
-
-□ Tee
-
-□ Flag
-
-□ Trophy
-
-□ Course
-
-Betting
-
-□ Odds
-
-□ Dollar
-
-□ Risk
-
-□ Confidence
-
-Admin
-
-□ Users
-
-□ Settings
-
-□ Audit
-
-Files:
-
-/components/icons
-
-Validation:
-
-□ Inventory complete
+- [ ] Typography applied globally
 
 ---
 
-DS-8 Core Component Expansion
+# DS-5 Color System
 
-Buttons
+## Purpose
+Create a semantic color architecture.
 
-States
+### Tasks
 
-□ default
-
-□ hover
-
-□ active
-
-□ disabled
-
-□ loading
-
-Variants
-
-□ primary
-
-□ secondary
-
-□ destructive
-
-□ ghost
-
-□ outline
-
-□ icon
-
-Files:
-
-/components/ui/button.tsx
+- [ ] Primary palette
+- [ ] Neutral palette
+- [ ] Chart palette
+- [ ] Semantic colors
+- [ ] Status colors
+- [ ] Dark mode colors
+- [ ] Contrast testing
 
 ---
 
-Inputs
+# DS-6 Icons
 
-Text
+## Purpose
+Standardize icon usage across products.
 
-□ base
+### Tasks
 
-□ error
+- [ ] Icon library setup
+- [ ] Icon sizing system
+- [ ] Navigation icons
+- [ ] Analytics icons
+- [ ] Betting icons
+- [ ] Admin icons
+- [ ] State icons
 
-□ disabled
+### Validation
 
-□ loading
-
-Specialized
-
-□ search
-
-□ money
-
-□ odds
-
-□ percentage
-
-□ numeric
-
-Validation:
-
-□ Form tests pass
+- [ ] Icon audit complete
 
 ---
 
-DS-9 Dashboard Components
+# DS-7 Navigation
 
-KPI Components
+## Purpose
+Provide consistent navigation patterns.
 
-□ Metric card
+### Tasks
 
-□ Delta metric
-
-□ Trend comparison
-
-□ Projection metric
-
-□ Confidence metric
-
-Betting
-
-□ Edge card
-
-□ Value card
-
-□ Bet slip
-
-□ Exposure widget
-
-AI
-
-□ Narrative panel
-
-□ AI insight block
-
-□ Model explanation panel
-
-Files:
-
-/components/dashboard
-
-Validation:
-
-□ Dashboard render complete
+- [ ] Sidebar
+- [ ] Top navigation
+- [ ] Breadcrumbs
+- [ ] Command palette
+- [ ] Profile menu
+- [ ] Mobile navigation
 
 ---
 
-DS-10 Table System
+# DS-8 Core Components
 
-Base Engine
+## Purpose
+Build reusable UI primitives.
 
-□ TanStack setup
+### Components
 
-□ virtualization
+- [ ] Button
+- [ ] Input
+- [ ] Textarea
+- [ ] Select
+- [ ] Checkbox
+- [ ] Radio
+- [ ] Switch
+- [ ] Badge
+- [ ] Tooltip
+- [ ] Modal
+- [ ] Drawer
+- [ ] Tabs
+- [ ] Accordion
+- [ ] Avatar
 
-□ persisted preferences
+### Validation
 
-□ saved views
-
-Columns
-
-□ number cell
-
-□ trend cell
-
-□ player cell
-
-□ status cell
-
-□ confidence cell
-
-Advanced
-
-□ column reorder
-
-□ export csv
-
-□ pinning
-
-□ grouping
-
-Deliverables:
-
-/components/table
-
-Validation:
-
-□ 10k-row benchmark
+- [ ] Storybook coverage complete
 
 ---
 
-DS-11 Visualization Cookbook
+# DS-9 Dashboard Components
 
-Chart Infrastructure
+### Components
 
-□ chart wrapper
-
-□ chart toolbar
-
-□ legend engine
-
-□ tooltip engine
-
-□ export action
-
-Charts
-
-Performance
-
-□ line
-
-□ area
-
-□ trend
-
-Comparison
-
-□ radar
-
-□ scatter
-
-Distribution
-
-□ histogram
-
-□ heatmap
-
-Golf-specific
-
-□ strokes gained
-
-□ ownership
-
-□ odds movement
-
-□ simulation confidence
-
-Deliverables:
-
-/components/charts
-
-Validation:
-
-□ chart performance benchmark
+- [ ] KPI card
+- [ ] Trend card
+- [ ] Projection card
+- [ ] Insight card
+- [ ] Player card
+- [ ] Stat card
+- [ ] Confidence card
+- [ ] Alert card
+- [ ] Comparison card
+- [ ] Widget container
 
 ---
 
-DS-20 Storybook Expansion
+# DS-10 Data Components
 
-Setup
+### Infrastructure
 
-□ Storybook install
+- [ ] TanStack Table setup
+- [ ] Table toolbar
+- [ ] Pagination
+- [ ] Sorting
+- [ ] Filtering
+- [ ] Column visibility
+- [ ] Row actions
+- [ ] Exports
+- [ ] Virtualization
 
-□ theme switching
+### Patterns
 
-□ docs mode
-
-Stories
-
-Each component:
-
-□ default
-
-□ loading
-
-□ error
-
-□ mobile
-
-□ dark mode
-
-□ accessibility
-
-Addons
-
-□ accessibility
-
-□ interaction
-
-□ viewport
-
-□ visual regression
-
-Validation:
-
-□ story coverage ≥95%
+- [ ] Rankings tables
+- [ ] Player statistics tables
+- [ ] Odds tables
+- [ ] Historical tables
 
 ---
 
-DS-22 Production Release Gate
+# DS-10A Advanced Table System
 
-Performance
+## Architecture
 
-□ Lighthouse >90
+- [ ] DataTableProvider
+- [ ] Table state engine
+- [ ] Persisted preferences
+- [ ] Schema registry
+- [ ] URL synchronization
+- [ ] Plugin architecture
 
-□ interaction latency tested
+## Core Infrastructure
 
-Accessibility
+- [ ] Sticky headers
+- [ ] Sticky columns
+- [ ] Nested headers
+- [ ] Row grouping
+- [ ] Expandable rows
+- [ ] Tree rows
+- [ ] Virtual rows
+- [ ] Infinite scrolling
 
-□ WCAG AA
+## Column Types
 
-□ keyboard navigation
+- [ ] Text
+- [ ] Numeric
+- [ ] Currency
+- [ ] Percentage
+- [ ] Odds
+- [ ] Confidence
+- [ ] Trend
+- [ ] Sparkline
+- [ ] AI Insight
 
-Visual
+## Advanced Cells
 
-□ dark mode
+- [ ] Confidence badge
+- [ ] Risk meter
+- [ ] Exposure badge
+- [ ] Momentum indicator
+- [ ] Expected value badge
 
-□ responsive audit
+## Row Actions
 
-Engineering
+- [ ] Compare rows
+- [ ] Row preview
+- [ ] Bookmarks
+- [ ] Watchlists
+- [ ] Context menu
 
-□ typed
+## Templates
 
-□ documented
+- [ ] Rankings table
+- [ ] Odds table
+- [ ] Strokes gained table
+- [ ] Simulation table
+- [ ] Ownership table
 
-□ tested
+### Validation
 
-Release
-
-□ v1 approved
-
-Add this as a new expansion section to the Design System under DS-10 Advanced Data Systems and DS-11 Advanced Visualization Systems. Structured for implementation, Storybook coverage, Figma mapping, and engineering execution.
-
-DS-10A Advanced Table System Tasks
-
-Architecture
-
-□ Create DataTableProvider □ Create table state engine □ Create persisted table preferences □ Create table schema registry □ Create server/client mode support □ Create query adapter layer □ Create URL state sync □ Create table plugin architecture
-
-Files:
-
-/components/table/core
-
-/components/table/hooks
-
-/components/table/providers
-
-/components/table/types
-
-Validation: □ table architecture approved
-
----
-
-Core Table Infrastructure
-
-Layout
-
-□ sticky header
-□ sticky footer
-□ sticky columns
-□ column groups
-□ nested headers
-□ row grouping
-□ expandable rows
-□ tree rows
-□ dynamic height rows
-□ virtual rows
-□ infinite scroll
-
-Validation: □ 50k row benchmark
+- [ ] 50K row benchmark achieved
 
 ---
 
-Column System
+# DS-11 Charts & Visualization
 
-Column Types
+### Components
 
-□ text column
-□ numeric column
-□ currency column
-□ percentage column
-□ delta column
-□ odds column
-□ confidence column
-□ avatar column
-□ trend column
-□ progress column
-□ sparkline column
-□ badge column
-□ tags column
-□ status column
-□ action column
-□ AI explanation column
+- [ ] Line chart
+- [ ] Bar chart
+- [ ] Stacked chart
+- [ ] Radar chart
+- [ ] Scatter plot
+- [ ] Heatmap
+- [ ] Timeline
+- [ ] Confidence bands
 
-Files:
+### UX
 
-/components/table/cells
+- [ ] Legends
+- [ ] Controls
+- [ ] Tooltips
 
-Validation: □ all cell stories complete
+### Validation
+
+- [ ] Visualization standards complete
 
 ---
 
-Advanced Cell Patterns
+# DS-11A Advanced Dashboards
 
-Analytics
+## Dashboard Core
 
-□ mini trend sparkline
-□ confidence indicator
-□ projection pill
-□ risk meter
-□ ownership exposure badge
-□ expected value badge
-□ AI insight icon
-□ streak visualization
-□ momentum indicator
-□ value edge indicator
+- [ ] Dashboard registry
+- [ ] Widget schema
+- [ ] Drag-and-drop engine
+- [ ] Resize engine
+- [ ] Dashboard persistence
+- [ ] Role layouts
+- [ ] Personalization engine
 
----
+## Dashboard Layouts
 
-Row Interaction
+- [ ] Executive dashboard
+- [ ] Analytics dashboard
+- [ ] Betting dashboard
+- [ ] Editor dashboard
+- [ ] Admin dashboard
+- [ ] Premium dashboard
 
-□ expand row details
-□ quick preview drawer
-□ hover insights
-□ row compare
-□ multi-select actions
-□ row pinning
-□ bookmark row
-□ watchlist add
-□ context actions
+## Widget Framework
 
----
+- [ ] Widget shell
+- [ ] Widget actions
+- [ ] Fullscreen mode
+- [ ] Loading state
+- [ ] Empty state
+- [ ] Error state
 
-Toolbar
+## KPI Widgets
 
-□ global search
-□ saved views
-□ export CSV
-□ export JSON
-□ export XLSX
-□ refresh
-□ share state URL
-□ reset filters
-□ advanced filters
-□ command actions
+- [ ] Metric card
+- [ ] Delta card
+- [ ] Confidence score
+- [ ] Exposure metric
+- [ ] AI summary card
 
----
+## Intelligence Widgets
 
-Column Controls
+- [ ] Anomaly detector
+- [ ] AI insights panel
+- [ ] Narrative panel
+- [ ] Betting edge panel
 
-□ reorder columns
-□ resize columns
-□ show hide columns
-□ drag columns
-□ lock columns
-□ save layouts
-□ preset views
+### Validation
 
-Validation: □ preference persistence working
+- [ ] Dashboard interaction tests pass
 
 ---
 
-Analytics Table Templates
+# DS-11B Advanced Charts
 
-Golf
+## Infrastructure
 
-□ player rankings
-□ strokes gained table
-□ tournament stats
-□ course fit matrix
-□ historical performance
-□ ownership table
-□ weather impact table
+- [ ] Chart wrapper
+- [ ] Chart registry
+- [ ] Export engine
+- [ ] Synchronized tooltips
+- [ ] Annotation engine
 
-Betting
+## Controls
 
-□ odds comparison
-□ value finder
-□ exposure table
-□ model edge table
-□ simulation table
-□ bankroll analysis
+- [ ] Date selector
+- [ ] Compare selector
+- [ ] Zoom controls
+- [ ] Chart presets
+- [ ] Fullscreen mode
 
-AI
+## Chart Library
 
-□ model predictions
-□ narrative confidence
-□ prompt results audit
+- [ ] Line chart
+- [ ] Area chart
+- [ ] Stacked chart
+- [ ] Radar chart
+- [ ] Scatter plot
+- [ ] Heatmap
+- [ ] Histogram
+- [ ] Box plot
+- [ ] Timeline
 
-Files:
+## Golf Analytics
 
-/components/table/templates
+- [ ] Strokes gained trend
+- [ ] Course fit radar
+- [ ] Ownership chart
+- [ ] Simulation confidence bands
+- [ ] Player projection graph
 
-Validation: □ template library complete
+## Betting Analytics
 
----
+- [ ] Odds movement graph
+- [ ] ROI graph
+- [ ] Edge graph
+- [ ] Sportsbook comparison
+- [ ] Bankroll graph
 
-DS-11A Advanced Dashboard System
+### Validation
 
-Dashboard Framework
-
-□ dashboard registry
-□ widget schema
-□ drag/drop engine
-□ resize engine
-□ dashboard persistence
-□ saved layouts
-□ role layouts
-□ personalization engine
-
-Files:
-
-/components/dashboard/core
+- [ ] Visualization cookbook complete
 
 ---
 
-Dashboard Layout Types
+# DS-11D Advanced Graph System
 
-□ executive dashboard
-□ analytics dashboard
-□ betting dashboard
-□ editor dashboard
-□ admin dashboard
-□ premium dashboard
-□ mobile dashboard
+## Relationship Graphs
 
----
+- [ ] Player similarity graph
+- [ ] Tournament graph
+- [ ] Model dependency graph
+- [ ] Content graph
 
-Widget Container
+## Network Graphs
 
-□ title
-□ actions
-□ collapse
-□ expand
-□ refresh
-□ fullscreen
-□ loading state
-□ empty state
-□ error state
+- [ ] Force graph
+- [ ] Relationship engine
+- [ ] Prediction graph
 
-Validation: □ widget shell complete
+## AI Graphs
 
----
+- [ ] Confidence network
+- [ ] Workflow graph
+- [ ] Prompt graph
 
-KPI Widgets
+### Validation
 
-□ metric card
-□ delta card
-□ trend card
-□ confidence score
-□ probability score
-□ exposure metric
-□ live score card
-□ AI summary card
+- [ ] Graph benchmark complete
 
 ---
 
-Intelligence Widgets
+# DS-12 Forms
 
-□ AI insights panel
-□ trend engine
-□ anomaly detector
-□ narrative panel
-□ projections summary
-□ betting edge summary
-□ opportunity panel
+- [ ] Validation patterns
+- [ ] Error patterns
+- [ ] Helper text
+- [ ] Form layouts
+- [ ] Loading states
 
 ---
 
-Dashboard Interactions
+# DS-13 Search & Filters
 
-□ drag widgets
-□ resize widgets
-□ compare mode
-□ cross-filter widgets
-□ synchronized state
-□ save view
-□ clone dashboard
-
-Validation: □ dashboard interaction tests pass
+- [ ] Predictive search
+- [ ] Search results panel
+- [ ] Global filters
+- [ ] Chip filters
+- [ ] Date selectors
+- [ ] Range controls
 
 ---
 
-DS-11B Advanced Chart Infrastructure
+# DS-14 Content Components
 
-Base Chart System
-
-□ create chart wrapper
-□ create chart theme provider
-□ create chart registry
-□ create chart controls
-□ create export engine
-□ create synchronized tooltips
-□ create annotation engine
-
-Files:
-
-/components/charts/core
+- [ ] Article hero
+- [ ] Author card
+- [ ] Stat callout
+- [ ] Quote block
+- [ ] AI insights panel
+- [ ] Related content
 
 ---
 
-Chart Controls
+# DS-15 States & Feedback
 
-□ date selector
-□ metric selector
-□ compare selector
-□ zoom controls
-□ range controls
-□ chart presets
-□ full screen mode
-
----
-
-Shared Features
-
-□ export PNG
-□ export SVG
-□ export CSV
-□ annotations
-□ snapshots
-□ print mode
-□ loading states
-□ skeletons
-
-Validation: □ chart infrastructure approved
+- [ ] Loading states
+- [ ] Empty states
+- [ ] Success states
+- [ ] Warning states
+- [ ] Error states
+- [ ] Skeleton loaders
+- [ ] Banners
+- [ ] Toast notifications
 
 ---
 
-DS-11C Chart Library Tasks
+# DS-16 Accessibility
 
-Performance
+- [ ] Keyboard navigation
+- [ ] Screen reader support
+- [ ] Focus states
+- [ ] Contrast testing
+- [ ] ARIA standards
+- [ ] WCAG audit
 
-□ line chart
-□ area chart
-□ stacked area
-□ bar chart
-□ stacked bar
-□ dual axis chart
-□ trend chart
+### Validation
 
----
-
-Comparison
-
-□ radar chart
-□ grouped bar chart
-□ comparison matrix
-□ scatter plot
-□ quadrant chart
+- [ ] WCAG AA pass
 
 ---
 
-Distribution
+# DS-17 Motion
 
-□ histogram
-□ violin plot
-□ heat map
-□ density graph
-□ box plot
-
----
-
-Time Series
-
-□ timeline
-□ event timeline
-□ rolling average
-□ cumulative chart
-□ live updates chart
+- [ ] Motion principles
+- [ ] Hover animations
+- [ ] Page transitions
+- [ ] Chart transitions
+- [ ] Modal transitions
+- [ ] Performance audit
 
 ---
 
-Geographic
+# DS-18 Mobile
 
-□ location map
-□ regional heatmap
-□ tournament map
-
----
-
-Golf Analytics
-
-□ strokes gained trend
-□ round progression chart
-□ hole performance chart
-□ course fit radar
-□ tee-to-green trend
-□ ownership movement chart
-□ simulation confidence bands
-□ cut probability graph
-□ player projection graph
+- [ ] Mobile dashboard patterns
+- [ ] Stacked cards
+- [ ] Responsive tables
+- [ ] Touch interactions
+- [ ] Mobile filters
 
 ---
 
-Betting Intelligence
+# DS-19 Dark Mode
 
-□ odds movement chart
-□ edge distribution graph
-□ risk exposure graph
-□ ROI chart
-□ sportsbook comparison chart
-□ bankroll performance graph
+- [ ] Semantic implementation
+- [ ] Token switching
+- [ ] Chart themes
+- [ ] Contrast validation
 
-Validation: □ visualization cookbook complete
+### Validation
 
----
-
-DS-11D Advanced Graph System
-
-Relationship Graphs
-
-□ player similarity graph
-□ tournament relationship graph
-□ model dependency graph
-□ content relationship graph
+- [ ] Dark mode audit complete
 
 ---
 
-Network Visualizations
+# DS-20 Storybook
 
-□ node graph engine
-□ force graph
-□ entity relationship graph
-□ prediction relationship graph
-
----
-
-AI Graphing
-
-□ model confidence network
-□ prompt flow graph
-□ editorial workflow graph
-
-Files:
-
-/components/graphs
-
-Validation: □ graph rendering benchmark complete
+- [ ] Component stories
+- [ ] Controls
+- [ ] States
+- [ ] Documentation
+- [ ] Interaction tests
+- [ ] Visual tests
 
 ---
 
-Final Visualization Release Gate
+# DS-21 Figma
 
-□ synchronized filters work
-□ exports work
-□ accessibility complete
-□ keyboard navigation complete
-□ mobile responsiveness complete
-□ dark mode complete
-□ performance tested with large datasets
-□ Storybook coverage >95%
-□ Figma mapping complete
-□ production approved
+- [ ] Component library
+- [ ] Variants
+- [ ] Auto layout
+- [ ] Token mapping
+- [ ] Page organization
+- [ ] Naming rules
+
+---
+
+# DS-22 QA & Release
+
+## QA
+
+- [ ] Responsive audit
+- [ ] Component audit
+- [ ] Browser testing
+- [ ] Performance audit
+- [ ] Analytics event audit
+- [ ] Export validation
+- [ ] Visualization performance testing
+- [ ] Accessibility testing
+
+## Release Gates
+
+- [ ] Responsive verified
+- [ ] WCAG AA verified
+- [ ] Dark mode verified
+- [ ] Storybook >95% coverage
+- [ ] Performance verified
+- [ ] Production approved
+
+---
+
+# Final Outcome
+
+- Complete Design System
+- Enterprise Component Library
+- Dashboard Framework
+- Advanced Data Table Platform
+- Analytics Visualization System
+- AI Intelligence Widgets
+- Network & Relationship Graph Engine
+- Accessibility-Compliant UI
+- Storybook Documentation Platform
+- Figma Design Library
+- Production QA & Release Pipeline
+
+**Estimated Scope:** 250+ implementation tasks across design, frontend engineering, analytics, accessibility, documentation, and release management. 
