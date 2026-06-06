@@ -100,3 +100,93 @@
     outline-offset: 2px;
   }
 }
+
+/* -------------------------------------------------------------------------
+ * DS-2 Token CSS custom properties — spacing, radius, shadow, z-index,
+ * opacity, transition
+ * --------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* Radius */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-2xl: 16px;
+    --radius-3xl: 24px;
+    --radius-full: 9999px;
+
+    /* Shadow */
+    --shadow-xs:    0 1px 2px rgba(0,0,0,0.4);
+    --shadow-sm:    0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:    0 4px 6px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+    --shadow-lg:    0 10px 15px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.3);
+    --shadow-xl:    0 20px 25px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.3);
+    --shadow-2xl:   0 25px 50px rgba(0,0,0,0.6);
+    --shadow-brand: 0 0 0 1px rgba(245,158,11,0.3), 0 4px 12px rgba(245,158,11,0.15);
+    --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.4);
+
+    /* Z-index */
+    --z-dropdown: 10;
+    --z-sticky:   20;
+    --z-banner:   30;
+    --z-overlay:  40;
+    --z-modal:    50;
+    --z-popover:  60;
+    --z-tooltip:  70;
+    --z-toast:    80;
+
+    /* Transition */
+    --duration-fast:    120ms;
+    --duration-default: 200ms;
+    --duration-slow:    350ms;
+    --ease-standard:    cubic-bezier(0.2,0,0,1);
+    --ease-emphasized:  cubic-bezier(0.05,0.7,0.1,1);
+    --ease-overshoot:   cubic-bezier(0.34,1.56,0.64,1);
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * DS-17 Motion — utility classes + reduced-motion respect
+ * --------------------------------------------------------------------- */
+@layer utilities {
+  .animate-enter {
+    animation: ds-enter var(--duration-default) var(--ease-emphasized) forwards;
+  }
+  .animate-exit {
+    animation: ds-exit var(--duration-fast) var(--ease-standard) forwards;
+  }
+  .animate-slide-up {
+    animation: ds-slide-up var(--duration-default) var(--ease-emphasized) forwards;
+  }
+  .animate-slide-down {
+    animation: ds-slide-down var(--duration-default) var(--ease-emphasized) forwards;
+  }
+  .animate-scale-in {
+    animation: ds-scale-in var(--duration-default) var(--ease-overshoot) forwards;
+  }
+  .animate-fade-in {
+    animation: ds-fade-in var(--duration-default) var(--ease-standard) forwards;
+  }
+}
+
+@keyframes ds-enter   { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+@keyframes ds-exit    { from { opacity:1; transform:scale(1);    } to { opacity:0; transform:scale(0.96); } }
+@keyframes ds-slide-up   { from { opacity:0; transform:translateY(8px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes ds-slide-down { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes ds-scale-in { from { opacity:0; transform:scale(0.90); } to { opacity:1; transform:scale(1); } }
+@keyframes ds-fade-in  { from { opacity:0; } to { opacity:1; } }
+@keyframes ds-toast-in { from { opacity:0; transform:translateX(calc(100% + 1rem)); } to { opacity:1; transform:translateX(0); } }
+@keyframes ds-toast-out { from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(calc(100% + 1rem)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter,
+  .animate-exit,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-scale-in,
+  .animate-fade-in {
+    animation: none;
+  }
+}

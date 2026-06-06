@@ -63,15 +63,69 @@ export default {
         "sidebar-collapsed": "3.5rem",
       },
 
-      // Animation tokens
+      // DS-2 — border radius scale
+      borderRadius: {
+        none:  "0px",
+        xs:    "2px",
+        sm:    "4px",
+        DEFAULT: "6px",
+        md:    "6px",
+        lg:    "8px",
+        xl:    "12px",
+        "2xl": "16px",
+        "3xl": "24px",
+        full:  "9999px",
+      },
+
+      // DS-2 — shadow / elevation scale
+      boxShadow: {
+        xs:    "0 1px 2px rgba(0,0,0,0.4)",
+        sm:    "0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3)",
+        DEFAULT: "0 4px 6px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)",
+        md:    "0 4px 6px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)",
+        lg:    "0 10px 15px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.3)",
+        xl:    "0 20px 25px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.3)",
+        "2xl": "0 25px 50px rgba(0,0,0,0.6)",
+        brand: "0 0 0 1px rgba(245,158,11,0.3), 0 4px 12px rgba(245,158,11,0.15)",
+        inner: "inset 0 2px 4px rgba(0,0,0,0.4)",
+        none:  "none",
+      },
+
+      // DS-2/DS-17 — animation tokens
       transitionDuration: {
+        instant: "0ms",
         fast:    "120ms",
         default: "200ms",
         slow:    "350ms",
+        enter:   "250ms",
+        exit:    "180ms",
       },
       transitionTimingFunction: {
         standard:   "cubic-bezier(0.2,0,0,1)",
         emphasized: "cubic-bezier(0.05,0.7,0.1,1)",
+        overshoot:  "cubic-bezier(0.34,1.56,0.64,1)",
+        enter:      "cubic-bezier(0.0,0.0,0.2,1)",
+        exit:       "cubic-bezier(0.4,0.0,1,1)",
+      },
+
+      // DS-17 — keyframe animations
+      keyframes: {
+        "ds-enter":      { from: { opacity:"0", transform:"scale(0.96)" }, to: { opacity:"1", transform:"scale(1)" } },
+        "ds-exit":       { from: { opacity:"1", transform:"scale(1)"    }, to: { opacity:"0", transform:"scale(0.96)" } },
+        "ds-slide-up":   { from: { opacity:"0", transform:"translateY(8px)"  }, to: { opacity:"1", transform:"translateY(0)" } },
+        "ds-slide-down": { from: { opacity:"0", transform:"translateY(-8px)" }, to: { opacity:"1", transform:"translateY(0)" } },
+        "ds-scale-in":   { from: { opacity:"0", transform:"scale(0.90)" }, to: { opacity:"1", transform:"scale(1)" } },
+        "ds-fade-in":    { from: { opacity:"0" }, to: { opacity:"1" } },
+        "ds-toast-in":   { from: { opacity:"0", transform:"translateX(calc(100% + 1rem))" }, to: { opacity:"1", transform:"translateX(0)" } },
+      },
+      animation: {
+        "enter":      "ds-enter 200ms cubic-bezier(0.05,0.7,0.1,1) forwards",
+        "exit":       "ds-exit 120ms cubic-bezier(0.2,0,0,1) forwards",
+        "slide-up":   "ds-slide-up 200ms cubic-bezier(0.05,0.7,0.1,1) forwards",
+        "slide-down": "ds-slide-down 200ms cubic-bezier(0.05,0.7,0.1,1) forwards",
+        "scale-in":   "ds-scale-in 200ms cubic-bezier(0.34,1.56,0.64,1) forwards",
+        "fade-in":    "ds-fade-in 200ms cubic-bezier(0.2,0,0,1) forwards",
+        "toast-in":   "ds-toast-in 250ms cubic-bezier(0.05,0.7,0.1,1) forwards",
       },
 
       // Focus ring
